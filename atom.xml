@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[just in ram]]></title>
+  <link href="http://justinramel.github.com/atom.xml" rel="self"/>
+  <link href="http://justinramel.github.com/"/>
+  <updated>2012-08-31T21:29:06+01:00</updated>
+  <id>http://justinramel.github.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[hello brave new world]]></title>
+    <link href="http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world/"/>
+    <updated>2012-08-31T21:21:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world</id>
+    <content type="html"><![CDATA[<p>Bloggin&#8217; from vim, yay!</p>
+]]></content>
+  </entry>
+  
+</feed>
