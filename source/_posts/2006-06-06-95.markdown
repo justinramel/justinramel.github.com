@@ -1,0 +1,14 @@
+---
+comments: true
+date: 2006-06-06 13:44:35
+layout: post
+slug: '95'
+title: Location of XML files
+wordpress_id: 95
+categories:
+- SAP Enterprise Portal
+---
+
+http://YOUR SERVER NAME:50000/irj/servlet/prt/portal/prtroot/com.sap.km.cm.docs/documents/
+
+documents\portalResource\USER.R3_DATASOURCE.[user id]

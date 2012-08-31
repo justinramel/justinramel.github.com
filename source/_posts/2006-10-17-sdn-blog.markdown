@@ -1,0 +1,25 @@
+---
+comments: true
+date: 2006-10-17 09:15:33
+layout: post
+slug: sdn-blog
+title: SDN Blog
+wordpress_id: 107
+categories:
+- SAP Enterprise Portal
+- Testing
+- Watir
+---
+
+I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I've written a series of posts about Automated Functional testing the SAP Portal using Watir:  
+  
+[SDN Blog](https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/u/251690007)  
+  
+[Introduction](https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4050)  
+[Automated Functional Testing - Part 1 of ...](https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4103)  
+[Automated Functional Testing - Part 2 of ...](https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4138)  
+[Automated Functional Testing - Part 3 of ...](https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4236)  
+[Automated Functional Testing - Part 4 of ...](https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4426)  
+  
+IMHO worth a look if your interested in testing your SAP Portal. I'll start posting the rest of the series on here from now.  
+

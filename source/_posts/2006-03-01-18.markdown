@@ -1,0 +1,14 @@
+---
+comments: true
+date: 2006-03-01 18:17:40
+layout: post
+slug: '18'
+title: SAP Portal Developer Guide
+wordpress_id: 18
+categories:
+- SAP Enterprise Portal
+---
+
+Can't remember that HTMLB syntax? Look no further...
+
+[SAP Portal Developer Guide](http://help.sap.com/saphelp_nw04/helpdata/en/9f/fd4e41bbd1f423e10000000a155106/frameset.htm)

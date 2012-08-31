@@ -1,0 +1,21 @@
+---
+comments: true
+date: 2006-03-28 13:58:23
+layout: post
+slug: '35'
+title: 'SAP Portal: How do I reference a Javascript file in my iView?'
+wordpress_id: 35
+categories:
+- SAP Enterprise Portal
+---
+
+Easy when you know how
+
+
+    
+    public void doInitialization(){
+      request = (IPortalComponentRequest)this.getRequest();
+      response = (IPortalComponentResponse)this.getResponse();
+      IResource jsResource = request.getResource(IResource.SCRIPT, “scripts/myscript.js”);
+      response.addResource(jsResource);
+    }
