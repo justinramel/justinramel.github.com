@@ -1,5 +1,6 @@
 ---
 layout: post
+<<<<<<< HEAD
 title: Hello brave new world
 date: 2012-08-31 21:21
 comments: true
@@ -42,3 +43,11 @@ That pretty much covers everything I want to do with this blog so I think
 Octopress is a go, go, go!
 
 I wonder if I can blog from my ipad? Hmmm...
+=======
+title: "hello brave new world"
+date: 2012-08-31 21:21
+comments: true
+categories: 
+---
+Bloggin' from vim, yay!
+>>>>>>> initall blog post, testing octopress

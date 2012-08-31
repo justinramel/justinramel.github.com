@@ -8,6 +8,7 @@ ssh_user       = "user@domain.com"
 ssh_port       = "22"
 document_root  = "~/website.com/"
 <<<<<<< HEAD
+<<<<<<< HEAD
 rsync_delete   = true
 deploy_default = "push"
 =======
@@ -15,6 +16,10 @@ rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
 deploy_default = "rsync"
 >>>>>>> Disabled Rsync delete by default. Closes #787
+=======
+rsync_delete   = true
+deploy_default = "push"
+>>>>>>> initall blog post, testing octopress
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "master"
@@ -253,7 +258,7 @@ desc "deploy public directory to github pages"
 multitask :push do
   puts "## Deploying branch to Github Pages "
   puts "## Pulling any updates from Github Pages "
-  cd "#{deploy_dir}" do 
+  cd "#{deploy_dir}" do
     system "git pull"
   end
   (Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
