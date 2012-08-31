@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | just ram]]></title>
+  <link href="http://justinramel.github.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://justinramel.github.com/"/>
+  <updated>2012-09-01T00:31:21+01:00</updated>
+  <id>http://justinramel.github.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SETUP GIT REPO]]></title>
+    <link href="http://justinramel.github.com/blog/2011/07/12/setup-git-repo/"/>
+    <updated>2011-07-12T21:48:22+01:00</updated>
+    <id>http://justinramel.github.com/blog/2011/07/12/setup-git-repo</id>
+    <content type="html"><![CDATA[<h4>ADDING KEY TO SERVER</h4>
+
+<p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
+
+<h4>SERVER</h4>
+
+<p><code>sudo mkdir /home/git/myrepo
+cd /home/git/myrepo
+sudo git --bare init
+sudo chown -R git:git /home/git/myrepo
+</code></p>
+
+<h4>CLIENT</h4>
+
+<p>`mkdir myrepo
+cd myrepo
+git init</p>
+
+<h1>add some files</h1>
+
+<p>git add .
+git commit -m "added some files"</p>
+
+<p>git remote add origin git@myserver.com:myrepo
+git push origin master</p>
+
+<p>rm -r myrepo/
+git clone git@yourserver.com:myrepo
+`</p>
+]]></content>
+  </entry>
+  
+</feed>

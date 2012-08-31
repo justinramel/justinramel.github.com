@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-08-31T23:26:05+01:00</updated>
+  <updated>2012-09-01T00:31:21+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -14,11 +14,844 @@
 
   
   <entry>
-    <title type="html"><![CDATA[hello brave new world]]></title>
+    <title type="html"><![CDATA[Hello brave new world]]></title>
     <link href="http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world/"/>
     <updated>2012-08-31T21:21:00+01:00</updated>
     <id>http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world</id>
-    <content type="html"><![CDATA[<p>Bloggin&#8217; from vim, yay!</p>
+    <content type="html"><![CDATA[<p><a href="http://octopress.org/">Octopress</a> for the win!</p>
+
+<p>Bloggin&#8217; from vim, yay.</p>
+
+<p>Updated the theme to <a href="https://github.com/amelandri/darkstripes">darkstripes</a></p>
+
+<p>Imported my old worpress posts using <a href="https://github.com/thomasf/exitwp">exitwp</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My first Redcar plugin]]></title>
+    <link href="http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin/"/>
+    <updated>2011-08-19T01:04:35+01:00</updated>
+    <id>http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin</id>
+    <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
+
+<h4>Introduction</h4>
+
+<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what&#8217;s not to like? Though I must confess I don&#8217;t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
+
+<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
+
+<h4>What&#8217;s da big idea</h4>
+
+<p>The idea for my first plugin is rather ambitious considering I&#8217;ve no idea how to write a plugin. I&#8217;d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
+
+<p>I&#8217;m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
+
+<h4>Install Redcar</h4>
+
+<p>I first followed the install instructions:</p>
+
+<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
+
+<p>All good no problems there (I&#8217;m running on a Mac OSX 10.7.1)</p>
+
+<h4>Plugin Guides</h4>
+
+<p>I then read the plugin guides I found here:</p>
+
+<ul>
+<li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
+<li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
+</ul>
+
+
+<h4>Plugin.rb</h4>
+
+<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin&#8217;s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
+
+<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
+</span><span class='line'>  <span class="no">RefreshBrowser</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
+
+<h4>Browser refresh script</h4>
+
+<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
+
+<p>I managed to find a script to refresh the browser here:</p>
+
+<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
+
+<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
+
+<h4>Storage</h4>
+
+<p>Redcar&#8217;s storage mechanism allows you to easily store configuration data into a yaml file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">storage</span>
+</span><span class='line'>  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@storage</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here I am using this mechanism to store the &#8216;keyword&#8217; used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It&#8217;s also possible to setup a nice edit page but for now this will do.</p>
+
+<h4>Source</h4>
+
+<p>You can find the source for this plugin here:</p>
+
+<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
+
+<h4>Was it easy?</h4>
+
+<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I&#8217;ve spent more time fussing over this blog post than developing the plugin.</p>
+
+<p>So what you waiting for? Go give it a try!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
+    <link href="http://justinramel.github.com/blog/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
+    <updated>2011-07-20T20:19:55+01:00</updated>
+    <id>http://justinramel.github.com/blog/2011/07/20/upload-files-to-sharepoint-from-linux</id>
+    <content type="html"><![CDATA[<h4>Fortress</h4>
+
+<p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
+
+<h4>curl to the rescue!</h4>
+
+<p>You can upload files using curl directly into Sharepoint via it&#8217;s HTTP PUT interface.</p>
+
+<p><code>curl --ntlm --user username:password --upload-file myfile.xls https://sharepointserver.com/sites/mysite/myfile.xls</code></p>
+
+<p>Told you, easy when you know how.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Shibboleth settings for TorqueBox]]></title>
+    <link href="http://justinramel.github.com/blog/2011/07/16/shibboleth-settings-for-torquebox/"/>
+    <updated>2011-07-16T23:14:52+01:00</updated>
+    <id>http://justinramel.github.com/blog/2011/07/16/shibboleth-settings-for-torquebox</id>
+    <content type="html"><![CDATA[<h4>Authentication Settings</h4>
+
+<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
+
+<p>Config File: /etc/httpd/conf.d/shib.conf</p>
+
+<p><code> ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  require valid-user
+</code></p>
+
+<p>The &#8217;<code>ShibUseHeaders On</code>&#8217; setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
+
+<h4>Simple Authorisation</h4>
+
+<p>If you don&#8217;t need a complex authorisation system and you don&#8217;t mind users seeing a standard Shibboleth authorisation error page:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
+
+<p>You can implement this via your Shibboleth settings using the require statement:</p>
+
+<p><code> ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  **require grouper_groups ~ MySecurityGroup**
+</code></p>
+
+<p>Here we require the custom grouper_groups attribute matches on the regular expression after the &#8217;<code>~</code>&#8217;. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
+
+<h5>Top Tip</h5>
+
+<p>When playing with your Shib settings don&#8217;t forget to restart httpd to see the affect.
+<code>sudo /sbin/service httpd restart</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
+    <link href="http://justinramel.github.com/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
+    <updated>2011-07-16T22:16:31+01:00</updated>
+    <id>http://justinramel.github.com/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
+    <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
+
+<h4>Apache Setup</h4>
+
+<h5>Proxy Module</h5>
+
+<p>For this to work Apache must have the mod_proxy module loaded:</p>
+
+<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
+
+<p>Config file: /etc/httpd/conf/httpd.conf</p>
+
+<p><code>ProxyRequests     Off                         # Switch off forward proxy
+ProxyPreserveHost On                               # Pass host name onto the proxy
+ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server
+ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
+</code>
+Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
+
+<h4>TorqueBox Setup</h4>
+
+<p>In your Torquebox application folder create a file &#8216;config/torquebox.yml&#8217; which contains a context which matches the Apache reverse proxy url.</p>
+
+<p>torquebox.yml</p>
+
+<p>web:
+  context: /myapp
+ruby:
+  version: 1.9</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TorqueBox - gem install error]]></title>
+    <link href="http://justinramel.github.com/blog/2011/07/14/torquebox-gem-install-error/"/>
+    <updated>2011-07-14T12:42:27+01:00</updated>
+    <id>http://justinramel.github.com/blog/2011/07/14/torquebox-gem-install-error</id>
+    <content type="html"><![CDATA[<h4>TorqueBox Install</h4>
+
+<p>I&#8217;m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
+
+<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
+
+<h4>Error</h4>
+
+<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
+
+<p>Error: Your application used more memory than the safety cap of 500m.
+Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
+
+<h4>Fix</h4>
+
+<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
+
+<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
+
+<p>Hope that helps someone or maybe me if have to do this again!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SETUP GIT REPO]]></title>
+    <link href="http://justinramel.github.com/blog/2011/07/12/setup-git-repo/"/>
+    <updated>2011-07-12T21:48:22+01:00</updated>
+    <id>http://justinramel.github.com/blog/2011/07/12/setup-git-repo</id>
+    <content type="html"><![CDATA[<h4>ADDING KEY TO SERVER</h4>
+
+<p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
+
+<h4>SERVER</h4>
+
+<p><code>sudo mkdir /home/git/myrepo
+cd /home/git/myrepo
+sudo git --bare init
+sudo chown -R git:git /home/git/myrepo
+</code></p>
+
+<h4>CLIENT</h4>
+
+<p>`mkdir myrepo
+cd myrepo
+git init</p>
+
+<h1>add some files</h1>
+
+<p>git add .
+git commit -m &#8220;added some files&#8221;</p>
+
+<p>git remote add origin git@myserver.com:myrepo
+git push origin master</p>
+
+<p>rm -r myrepo/
+git clone git@yourserver.com:myrepo
+`</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails new app workflow]]></title>
+    <link href="http://justinramel.github.com/blog/2011/01/11/rails-new-app-workflow/"/>
+    <updated>2011-01-11T14:58:47+00:00</updated>
+    <id>http://justinramel.github.com/blog/2011/01/11/rails-new-app-workflow</id>
+    <content type="html"><![CDATA[<p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
+
+<h4>Create app</h4>
+
+<p>rails new <app_name></p>
+
+<p>cd <app_name></p>
+
+<h4>git</h4>
+
+<p>git init</p>
+
+<p>git add .</p>
+
+<p>git commit –m &#8216;Initial commit&#8217;</p>
+
+<p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
+
+<h4>rvm and gemsets</h4>
+
+<p>rvm gemset create <app_name></p>
+
+<p>echo &#8216;rvm use 1.9.2@<app_name>&#8217; >> .rvmrc</p>
+
+<p>echo &#8216;.rvmrc&#8217; >> .gitignore</p>
+
+<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created.</p>
+
+<p>Change in and out of the directory to get rvm to kick in:</p>
+
+<p>cd ..</p>
+
+<p>cd <app_name></p>
+
+<h4>Gemfile</h4>
+
+<p>Edit ./Gemfile and add the following lines.</p>
+
+<p>gem &#8216;haml&#8217;</p>
+
+<p>group :test do</p>
+
+<p>gem &#8216;rspec&#8217;</p>
+
+<p>gem &#8216;rspec-rails&#8217;</p>
+
+<p>end</p>
+
+<p>Then install and run bundler:</p>
+
+<p>gem install bundler</p>
+
+<p>bundle install</p>
+
+<h4>rspec</h4>
+
+<p>Generate the rspec files:</p>
+
+<p>rails g rspec:install</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method/"/>
+    <updated>2010-12-31T01:32:57+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Extract Method</h4>
+
+<p>Extracts a selection into a method and places it above the current method.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/extractMethod.html">http://www.refactoring.com/catalog/extractMethod.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br/>
+Visually select lines you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rem     <br/>
+</strong>You will now see a prompt to enter the new method name: <br/>
+Method name: print_details</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br/>
+A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
+
+<p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Instance Variable]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
+    <updated>2010-12-31T01:14:03+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Rename Instance Variable</h4>
+
+<p>Renames the selected instance variable.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br/>
+Visually select the instance variable you wish to rename    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rriv      <br/>
+</strong>You will now see a prompt to enter the new variable name: <br/>
+Rename to: new_name</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br/>
+The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
+
+<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Local Variable]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
+    <updated>2010-12-31T00:59:58+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Rename Local Variable</h4>
+
+<p>Renames the selected local variable.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renamevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_before_thumb.png" alt="RenameVar_Before" /></a>    <br/>
+Visually select the local variable you wish to rename    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rrlv      <br/>
+</strong>You will now see a prompt to enter the new variable name: <br/>
+Rename to: is_mac_os</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renamevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_after_thumb.png" alt="RenameVar_After" /></a>    <br/>
+The local variable <em><strong>mac_os</strong></em> has been renamed to <strong><em>is_mac_os</em></strong> in both locations within the method.</p>
+
+<p><strong>rrlv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>L</strong>ocal <strong>V</strong>ariable.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Local Variable]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
+    <updated>2010-12-31T00:27:45+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Extract Local Variable</h4>
+
+<p>Extracts a visual selection into a local variable.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/introduceExplainingVariable.html">http://www.refactoring.com/catalog/introduceExplainingVariable.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractvar_before1.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_before_thumb1.png" alt="ExtractVar_Before" /></a>    <br/>
+Visually select the value you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>relv      <br/>
+</strong>You will now see a prompt to enter the variable name: <br/>
+Variable name: mac_os</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractvar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_after_thumb.png" alt="ExtractVar_After" /></a>    <br/>
+The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been extracted into a local variable <strong><em>mac_os</em></strong>.</p>
+
+<p><strong>relv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>ocal <strong>V</strong>ariable.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Extract to Let]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
+    <updated>2010-12-30T23:49:00+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Extract to Let</h4>
+
+<p>This is an <a href="http://rspec.info/">RSpec</a> specific refactoring which will extract an initialisation line and create a let method for you.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractlet_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_before_thumb.png" alt="ExtractLet_Before" /></a> <br/>
+Move the cursor on to the line you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rel </strong></p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractlet_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_after_thumb.png" alt="ExtractLet_After" /></a>    <br/>
+The let method is created above the it block, using the initialisation line - account = Account.new.</p>
+
+<p><strong>rel</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>et.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Constant]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-constant/"/>
+    <updated>2010-12-30T23:04:56+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-constant</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Extract Constant</h4>
+
+<p>Extracts a selection into a constant which is placed at the top of the current module or class.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html">http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_before_thumb.png" alt="ExtractConstant_Before" /></a> <br/>
+Visually select the value you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rec      <br/>
+</strong>You will now see a prompt to enter the constant name: <br/>
+Constant name: Gravitational_Constant</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_after_thumb.png" alt="ExtractConstant_After" /></a>    <br/>
+The value <strong><em>9.81</em></strong> has been extracted into a constant <strong><em>GRAVITATIONAL_CONSTANT</em></strong> which is placed at the top of the module.</p>
+
+<p><strong>rec</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>C</strong>onstant.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Convert Post Conditional]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-convert-post-conditional/"/>
+    <updated>2010-12-30T22:37:07+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-convert-post-conditional</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Convert Post Conditional</h4>
+
+<p>Converts a post conditional expression to a conditional expression.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before_thumb.png" alt="ConvertPostConditional_Before" /></a>     <br/>
+Move the cursor onto the line which contains the post conditional expression     <br/>
+Hit your <strong><leader-key></strong> then type <strong>rcpc      <br/>
+</strong></p>
+
+<p>After refactoring:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after_thumb.png" alt="ConvertPostConditional_After" /></a>     <br/>
+The post conditional expression is split across 3 lines and converted into a standard if expression.</p>
+
+<p><strong>rcpc</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>C</strong>onvert <strong>P</strong>ost <strong>C</strong>onditional.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Inline Temp]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-inline-temp/"/>
+    <updated>2010-12-30T21:37:59+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-inline-temp</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Inline Temp</h4>
+
+<p>Replaces a temporary variable with a direct call to the method or formula.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/inlineTemp.html">http://www.refactoring.com/catalog/inlineTemp.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_before.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_before_thumb.png" alt="InlineTemp_Before" /></a>     <br/>
+Move the cursor onto the temp variable (in this case base_price)     <br/>
+Hit your <strong><leader-key></strong> then type <strong>rit      <br/>
+</strong></p>
+
+<p>After refactoring:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_after.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_after_thumb.png" alt="InlineTemp_After" /></a>     <br/>
+The temp variable base_price has been replace with a direct call to the method and we’ve saved a line of code.</p>
+
+<p><strong>rit</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>I</strong>nline <strong>T</strong>emp.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Add Parameter]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-add-parameter-2/"/>
+    <updated>2010-12-30T17:10:35+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-add-parameter-2</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Add Parameter</h4>
+
+<p>Simply adds a parameter (or many separated with commas) to a method.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/addParameter.html">http://www.refactoring.com/catalog/addParameter.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:<a href="http://justinram.files.wordpress.com/2010/12/addparameter_before.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_before_thumb.png" alt="AddParameter_Before" /></a>     <br/>
+Move your cursor onto the method where you wish to add the parameter     <br/>
+Hit your <strong><leader-key></strong> then type <strong>rap      <br/>
+</strong>You will now see a prompt to enter the parameter name:     <br/>
+Parameter name: <strong>date</strong></p>
+
+<p>After refactoring:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2010/12/addparameter_after.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_after_thumb.png" alt="AddParameter_After" /></a>     <br/>
+The contact method now has a date parameter added.</p>
+
+<p><strong>rap</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>A</strong>dd <strong>P</strong>arameter.</p>
+
+<p>The default <strong><leader-key></strong> in vim is the ‘\’ key but you can remap this to any key you like.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using vim to write ruby code? Check out this excellent refactoring plugin]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-series/"/>
+    <updated>2010-12-30T15:33:32+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-series</id>
+    <content type="html"><![CDATA[<p>I’ve written a series of posts documenting the excellent <a href="http://www.vim.org/">vim</a> plugin <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a>. As you may have guessed from the name, its a <a href="http://www.ruby-lang.org/">Ruby</a> refactoring plugin for <a href="http://www.vim.org/">vim</a>.</p>
+
+<ol>
+<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-add-parameter-2/">Add Parameter</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-inline-temp/">Inline Temp</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">Convert Post Conditional</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-constant/">Extract Constant</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-to-let/">Extract to Let</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/">Extract Local Variable</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/">Rename Local Variable</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">Rename Instance Variable</a></p></li>
+<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-method/">Extract Method</a></p></li>
+</ol>
+
+
+<p><strong>IMPORTANT:</strong> When installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, make sure you also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin otherwise some of these refactoring&#8217;s will not work.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How the new Host feature works in nServiceBus]]></title>
+    <link href="http://justinramel.github.com/blog/2009/08/03/how-the-new-host-feature-works-in-nservicebus/"/>
+    <updated>2009-08-03T18:02:24+01:00</updated>
+    <id>http://justinramel.github.com/blog/2009/08/03/how-the-new-host-feature-works-in-nservicebus</id>
+    <content type="html"><![CDATA[<p>The latest <em>Alpha</em> version of <a href="http://www.nservicebus.com/">nServiceBus</a> uses the <a href="http://code.google.com/p/topshelf/">TopShelf</a> project as part of its new hosting feature. This new Host feature makes it super easy to setup a console/windows service for your clients/servers. So here’s how <em>I think</em> it works and what you can do with it…</p>
+
+<h2>Get nServiceBus</h2>
+
+<p>First you’ll need to get the latest build which includes the new Host feature either:</p>
+
+<ul>
+<li><p>Check out the source and build it yourself from the <a href="http://subversion.tigris.org/">subversion</a> repository:       <br/>
+<a href="https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/">https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/</a>       <br/>
+OR</p></li>
+<li><p>Download a demo solution I hacked out of the nServiceBus samples (FullDuplex/RequestResponse): <a href="http://cid-d7d57b78b0ddedf5.skydrive.live.com/browse.aspx/.Public/blog/nServiceBus">nServiceBus Host Demo</a></p></li>
+</ul>
+
+
+<p>Either way take a look at the FullDuplex/RequestResponse sample project which consists of a Client, Server and Messages project:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb.png" alt="image" /></a></p>
+
+<h2>Run the sample</h2>
+
+<p><strong>Note:</strong> To get the Server to run successfully in my demo solution I had to change the app.config slightly by replacing the UnicastBusConfig setting with:</p>
+
+<p><UnicastBusConfig DistributorControlAddress="" DistributorDataAddress="">    <br/>
+<MessageEndpointMappings>     <br/>
+</MessageEndpointMappings>     <br/>
+</UnicastBusConfig></p>
+
+<p>Ok simply hit F5 to run the sample and two console windows should appear one for the Client and one for the Server:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image1.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb1.png" alt="image" /></a></p>
+
+<p>So everything is running ok our Client can send messages to the Server and receive a response. But what’s just happened?</p>
+
+<h2>Multiple startup projects</h2>
+
+<p>First the solution is set to start both the Client and the Server projects. This is set in the solution property pages you can view this setting by right clicking on the solution and selecting Set St_a_rtUp Projects…</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image2.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb2.png" alt="image" /></a></p>
+
+<p>As you can see the solution is set to start multiple projects namely the Client and the Server.</p>
+
+<p>Now the Server and Client projects are both Class Library’s so how come they are running as console apps when we F5 (debug) the solution?</p>
+
+<h2>Debug settings</h2>
+
+<p>If we take a look at the Debug settings for the Client (Right click the Client project and select P_r_operties, then Debug from the tab):</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image3.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb3.png" alt="image" /></a></p>
+
+<p>Notice the Start Action is set to Start e_x_ternal program NServiceBus.Host.exe from the Client projects debug\bin directory. When we hit F5 to debug the application visual studio runs this exe and that’s how we get the console windows.</p>
+
+<h2>Reference NServiceBus.Host.exe</h2>
+
+<p>NServiceBus.Host.exe ends up in the debug\bin because its referenced by the project for example in the Client:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image4.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb4.png" alt="image" /></a></p>
+
+<p>But how does it know where to get its configuration?</p>
+
+<h2>Configuration</h2>
+
+<p>NServiceBus.Host.exe scans its current directory for any dlls. For each dll it finds it searches for a class which implements the interface IConfigureThisEndpoint. If the search is successful the Host knows to use the app.config for this dll so in the case of the Client – Client.dll.config is used to configure nServiceBus.</p>
+
+<h2>Client</h2>
+
+<p>If we take a look at the Client project we’ll find the class EndpointConfig which implements the IConfigureThisEndpoint. This is simply a marker interface which has no actual implementation. Notice there are other interfaces used to configure the client which do require implementations:</p>
+
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
+As.aClient, <br/>
+ISpecify.ToUseXmlSerialization,     <br/>
+ISpecify.XmlSerializationNamespace,     <br/>
+IWantCustomInitialization,     <br/>
+ISpecify.ToRun<ClientEndpoint>     <br/>
+{     <br/>
+public string Namespace     <br/>
+{     <br/>
+get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
+}</p>
+
+<p>public void Init(Configure configure)    <br/>
+{     <br/>
+configure.RijndaelEncryptionService();     <br/>
+}     <br/>
+}</p>
+
+<p>Of particular interest, the interface used to configure the dll as a client (As.aClient) and another to specify which code to actually run (ISpecify.ToRun<ClientEndpoint>). The ClientEndPoint class contains the code which is runs when the Host starts and stops.</p>
+
+<p>Note there are lots more interfaces which can be used to specify configuration options:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image5.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb5.png" alt="image" /></a></p>
+
+<h2>Server</h2>
+
+<p>The Server project works in pretty much the same way as the Client it has an EndpointConfig class:</p>
+
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
+As.aServer,     <br/>
+ISpecify.ToUseXmlSerialization,</p>
+
+<p>ISpecify.XmlSerializationNamespace,     <br/>
+IWantCustomInitialization     <br/>
+{     <br/>
+public string Namespace     <br/>
+{     <br/>
+get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
+}</p>
+
+<p>public void Init(Configure configure)    <br/>
+{     <br/>
+configure.RijndaelEncryptionService();     <br/>
+}     <br/>
+}</p>
+
+<p>Here the interfaces are used to configure the dll as a server (As.aServer) and IWantCustomInitialization which allows you to specify additional configuration via the Init method. The Server project also contains the RequestDataMessageHandler class which the bus knows to use when a RequestDataMessage arrives.</p>
+
+<p>All this makes it very easy to create Client and Server applications for nServiceBus which are a doddle to debug in visual studio.</p>
+
+<p>But wait there&#8217;s more…</p>
+
+<h2>Run from console</h2>
+
+<p>You can run the Client or Server from outside Visual Studio from the command line. Open a command prompt, cd to the relevant bin folder and type:</p>
+
+<p>NServiceBus.Host.exe</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image6.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb6.png" alt="image" /></a></p>
+
+<h2>Install as a Windows Service</h2>
+
+<p>We can install the Server as a Windows Service no extra code or configuration required! Open a command prompt, cd to the relevant bin folder and type:</p>
+
+<p>NServiceBus.Host.exe /install</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image7.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb7.png" alt="image" /></a></p>
+
+<p>You’ll then be prompted to supply some authentication details for the service:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image8.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb8.png" alt="image" /></a></p>
+
+<p>Enter some relevant user details and hit ok and your service will be installed and ready to start:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image11.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb11.png" alt="image" /></a></p>
+
+<h2>Uninstall service</h2>
+
+<p>Finally you can also uninstall the service:</p>
+
+<p>NServiceBus.Host.exe /uninstall</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image10.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb10.png" alt="image" /></a></p>
+
+<p><strong>Note:</strong> The service will not disappear from this Services management console until you reboot your machine, this is standard for a windows service.</p>
+
+<p>That’s as much as I have puzzled out for now, if I’ve made and glaring errors please let me know.</p>
+
+<p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f&amp;bgcolor=FF3300" alt="kick it on DotNetKicks.com" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[jQuery Validation Plugin – Dynamically change validator message]]></title>
+    <link href="http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/"/>
+    <updated>2009-06-25T22:43:12+01:00</updated>
+    <id>http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message</id>
+    <content type="html"><![CDATA[<h4>**</h4>
+
+<p>UPDATE:** Please read <a href="http://gusgus.wordpress.com/">Guu</a>’s comment below for a far better solution to this problem!</p>
+
+<p>I’ve been using the <a href="http://docs.jquery.com/Plugins/Validation">jQuery Validation Plugin</a> and needed to change a validation message dynamically based on the user input. I had a quick search but couldn’t find an easy solution. Unfortunately the messages are not changeable after the initial construction of the validator object. I managed to get around the problem by removing the validator an then re-adding with a new message:</p>
+
+<h2>Create validator</h2>
+
+<p>$(&#8220;#Enquiry&#8221;).validate({   <br/>
+rules: {    <br/>
+EnquiryText: { required: true }    <br/>
+},    <br/>
+messages: {    <br/>
+EnquiryText: &#8220;Enquiry must contain an entry.&#8221;    <br/>
+}    <br/>
+});</p>
+
+<h2>Dynamically change message</h2>
+
+<p>function setEnquiryValidationTo(message) {   <br/>
+$(&#8220;#EnquiryText&#8221;).rules(&#8220;remove&#8221;);    <br/>
+$(&#8220;#EnquiryText&#8221;).rules(&#8220;add&#8221;, {    <br/>
+required: true,    <br/>
+messages: {    <br/>
+required: message    <br/>
+}    <br/>
+});    <br/>
+}</p>
+
+<p>There may be a better/easier way to do this but I couldn’t find one via Google.</p>
 ]]></content>
   </entry>
   

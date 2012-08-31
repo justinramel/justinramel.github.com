@@ -1,0 +1,1010 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>just ram</title>
+  <meta name="author" content="Justin Ramel">
+
+  
+  <meta name="description" content="http://YOURSERVERNAME:50000/irj/servlet/prt/portal/prtroot/com.sap.km.cm.docs/documents/ documents\portalResource\USER.R3_DATASOURCE.
+">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://justinramel.github.com/blog/page/5/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">jr</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">just ram</a></h1>
+  
+    <h2>stuff I should remember</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:justinramel.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/12/05/location-of-xml-files/">Location of XML files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-12-05T12:24:32+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>http://YOURSERVERNAME:50000/irj/servlet/prt/portal/prtroot/com.sap.km.cm.docs/documents/</p>
+
+<p>documents\portalResource\USER.R3_DATASOURCE.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/12/05/monorail-active-record-testing-createschemafromfile-2/">Castle Monorail + Active Record + Testing + CreateSchemaFromFile</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-12-05T12:24:11+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It’s always a good idea to have your test database match your production database exactly to do that use:</p>
+
+<p><code>ActiveRecordStarter.CreateSchemaFromFile()</code></p>
+
+<p>Unlike CreateSchema which takes a best guess at how your schema should be CreateSchemaFromFile uses an SQL script which allows you to control exactly what the schema should be.</p>
+
+<p>Call CreateSchemaFromFile as part of your PrepareSchema method in your AbstractTestCase class.</p>
+
+<p><code>protected virtual void PrepareSchema()
+{
+// If you want to delete everything from the model.
+// Remember to do it in a descendent dependency order
+// Office.DeleteAll();
+// User.DeleteAll();
+// Another approach is to always recreate the schema
+// (please use a separate test database if you want to do that)
+ActiveRecordStarter.DropSchema();
+ActiveRecordStarter.CreateSchemaFromFile("schema.sql");
+}</code></p>
+
+<p>Your schema.sql file should contain scripts in the standard MS SQL format:</p>
+
+<p>`if exists (select * from dbo.sysobjects where id = object_id(N&#8217;[dbo].[Application_Status]&#8217;) and OBJECTPROPERTY(id, N&#8217;IsUserTable&#8217;) = 1)
+drop table [dbo].[Application_Status]
+GO</p>
+
+<p>CREATE TABLE [dbo].[Application_Status] (</p>
+
+<pre><code>[ID] [int] NOT NULL ,
+[Title] [varchar] (50) NOT NULL ,
+[Description] [text] NULL
+</code></pre>
+
+<p>) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+`</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/11/10/fw-castle-projects-monorail-10-release-candidate-2/">FW: Castle Projects + Monorail + 1.0 Release Candidate 2</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-11-10T11:08:20+00:00" pubdate data-updated="true">Nov 10<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’m a little late with this one (I’ve been busy honest!) the Castle project have a new release:</p>
+
+<p><a href="http://castleproject.org/castle/download.html">1.0 Release Candidate 2 – November 1st 2006</a></p>
+
+<p>They have also have a jazzy new site and updated documentation too. Top work!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/10/27/automated-functional-testing-part-6-of/">SAP Enterprise Portal - Automated Functional Testing - Part 6 of &#8230;</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-27T11:58:26+01:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there.</p>
+
+<p><strong>TOP TIP - How to navigate the portal</strong><br/>
+So how do you navigate around the portal using the menu? Simple you don&#8217;t! I found there are lots of problems using the portal menus due to the number of frames used so I simply jump directly to the URL of the PAR file I am testing. Here is a typical test:<br/>
+`def test_typical</p>
+
+<h1>My Helper method which logs in using the given user id and password</h1>
+
+<p>logon(&#8220;myuserid&#8221;, &#8220;mypassword&#8221;)</p>
+
+<h1>Go directly to the URL of the PAR I want to test</h1>
+
+<p>@ie.goto(&#8216;http://portal:50000/irj/servlet/prt/portal/prtroot/uk.ac.ncl.testing.ISRPageProcessor&#8217;)</p>
+
+<h1>do tests here</h1>
+
+<p>end`<br/>
+Ok that&#8217;s fine but how do you find the direct URL of the PAR file you want to test? Ahh thats were my next top tip comes in.</p>
+
+<p><strong>TOP TIP - How to find the direct URL of a PAR file</strong><br/>
+Open up the SAP Netweaver Developer Studio</p>
+
+<p>Open your project</p>
+
+<p>Open the file:<br/>
+<code>MyPortalProject  
+dist  
+PORTAL-INF  
+Portalapp.xml</code><br/>
+You should now see a &#8220;Run…&#8221; button for each portal component in your project</p>
+
+<p>Click the &#8220;Run…&#8221; button and the dev studio will open up a new browser window with the URL of your PAR file. Now simply use this URL in your test scripts.</p>
+
+<p><strong>COMING UP IN PART SEVEN</strong><br/>
+Short and sweet but at least I&#8217;m posting more often. Next time&#8230; You guessed it more top tips!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of/">SAP Enterprise Portal - Automated Functional Testing - Part 5 of &#8230;</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-18T12:13:13+01:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ok last time I promised some hints and tips so lets begin. I&#8217;m going to keep the hints and tips posts fairly short in the hope it will encourage me to post more often. I received a comment on my last post asking how I find the ID/Name attributes of my forms so I though that would be a good place to start.</p>
+
+<p><strong>TOP TIP - How to find ID/Name attributes of a form<br/>
+</strong>To save me having to sifting through the html code of a page for the ID/Name of a control I use the <a href="http://www.mozilla.com/firefox/">FireFox</a> browser with the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> extension installed. The <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> is a great time saver not only for finding out form details but it has lots of other features too, I strongly recommend you check it out.</p>
+
+<p>When you have the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> installed under the <strong>Forms menu</strong> you have the <strong>Display Form Details</strong> option, simply select this option and the page will be highlighted with yellow tags showing the ID/Name attributes of each item on the form.</p>
+
+<p><strong>NOTE:</strong> Forms items which are created using HTMLB do not get a static ID/Name attribute these attributes appear to be generated each time the page is created. If this is the case how do we write tests against HTMLB forms? That&#8217;s were the next top tip comes in&#8230;</p>
+
+<p><strong>TOP TIP - Writing Watir test against HTMLB forms</strong><br/>
+As I mentioned above HTMLB forms do not have a static ID/Name attribute, they are generated each time the page is created so you will find your HTMLB form controls will have an ID/Name of something along the lines of &#8220;htmlb_18528_htmlb_9998_3&#8221; if you then reload the page the ID/Name attributes will have changed i.e. &#8220;htmlb_18328_htmlb_9991_1&#8221;. This means the following Watir test code would not work as each time the page reloaded the <em>:id</em> attribute would be different.</p>
+
+<p><code>@ie.text_field(:id, 'htmlb_18528_htmlb_9998_3').set('test me')</code></p>
+
+<p>So how do we get around this? Well the best way I have found is to use Watir&#8217;s <em>:index</em> parameter when accessing form controls. The <em>:index</em> parameter works by sequentially counting form controls from left to right top to bottom. So to set the text of the second control on the page we use the following code:</p>
+
+<p><code>@ie.text_field(:index, 2).set('test me')</code></p>
+
+<p>This is not an ideal solution due to the fact if you change the layout of the page your index&#8217;s will also change and break your tests. However I&#8217;ve been using this method for a while now and it&#8217;s never been a major problem, besides I&#8217;m not sure how else it could be done!</p>
+
+<p><strong>COMING UP IN PART SIX</strong><br/>
+Well that post turned out to be slightly longer than I planned, so much for keeping these tips short. Next time more of the same.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/10/17/sdn-blog/">SDN Blog</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-17T10:15:33+01:00" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I&#8217;ve written a series of posts about Automated Functional testing the SAP Portal using Watir:</p>
+
+<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/u/251690007">SDN Blog</a></p>
+
+<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4050">Introduction</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4103">Automated Functional Testing - Part 1 of &#8230;</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4138">Automated Functional Testing - Part 2 of &#8230;</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4236">Automated Functional Testing - Part 3 of &#8230;</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4426">Automated Functional Testing - Part 4 of &#8230;</a></p>
+
+<p>IMHO worth a look if your interested in testing your SAP Portal. I&#8217;ll start posting the rest of the series on here from now.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/07/27/monorail-active-record-testing-createschemafromfile/">Castle Monorail + Active Record + Testing + CreateSchemaFromFile</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-07-27T10:21:34+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It’s always a good idea to have your test database match your production database exactly, we can do that easily using:</p>
+
+<p><code>ActiveRecordStarter.CreateSchemaFromFile()</code></p>
+
+<p>Unlike CreateSchema which makes a best guess at how your schema should be CreateSchemaFromFile takes an SQL script which allows you to fully control the database schema.</p>
+
+<p>Call CreateSchemaFromFile as part of your PrepareSchema method in your AbstractTestCase class.</p>
+
+<p><code>protected virtual void PrepareSchema()
+{
+ActiveRecordStarter.DropSchema();
+ActiveRecordStarter.CreateSchemaFromFile("schema.sql");
+}</code></p>
+
+<p>Your schema.sql file should contain scripts in the standard MS SQL format:</p>
+
+<p>`if exists (select * from dbo.sysobjects where id = object_id(N&#8217;[dbo].[Application_Status]&#8217;) and OBJECTPROPERTY(id, N&#8217;IsUserTable&#8217;) = 1)
+drop table [dbo].[Application_Status]
+GO&#8220;
+CREATE TABLE [dbo].[Application_Status] (</p>
+
+<pre><code>[ID] [int] NOT NULL ,
+[Title] [varchar] (50) NOT NULL ,
+[Description] [text] NULL
+</code></pre>
+
+<p>) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+`</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/07/20/continuous-integration-cruisecontrolnet-subversion-msbuild-net-20/">Continuous Integration + CruiseControl.Net + Subversion + MSBuild + .Net 2.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-07-20T11:20:14+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve read quite a bit about <a href="http://www.martinfowler.com/articles/continuousIntegration.html">Continuous Integration</a> and the .Net implementation <a href="http://confluence.public.thoughtworks.org/display/CCNET">CruiseControl.Net</a>. It always seemed like a really good idea but I’ve never gotten around to trying it out, until now…</p>
+
+<p>By the way setting up the server was a lot easier than I thought it would be! Here’s what I did:</p>
+
+<h3>CruiseControl.Net Setup</h3>
+
+<p>Download and run CruiseControl.Net setup
+<a href="http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198">
+http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198</a></p>
+
+<p>I’ve used version 1.0.1:</p>
+
+<p><a href="http://prdownloads.sourceforge.net/ccnet/CruiseControl.NET-1.0.1-Setup.exe?download">CruiseControl.NET-1.0.1-Setup.exe</a></p>
+
+<p><strong>NOTE:</strong> After setup if your server has .Net 1.1 and 2.0 as mine did you may need to change the ccnet website to use .Net 2.0.  This can be done through the IIS control panel, get the properties of the ccnet site  and  change via the ASP.NET tab.</p>
+
+<h3>Subversion Client</h3>
+
+<p>Your server will need the subversion console client on the server to allow CruiseControl to checkout your source.</p>
+
+<p><a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></p>
+
+<h3>.Net 2 SDK</h3>
+
+<p>To allow us to build .Net 2  projects without the need for Visual Studio we need to download and install .Net 2 SDK onto  the server</p>
+
+<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en</a></p>
+
+<h3>Setup MSBuild</h3>
+
+<p>To use MSBuild with CC.Net we need the logger dll -ThoughtWorks.CruiseControl.MsBuild.dll from:</p>
+
+<p><a href="http://ccnetlive.thoughtworks.com/MSBuildXmlLogger%2DBuilds/">http://ccnetlive.thoughtworks.com/MSBuildXmlLogger%2DBuilds/</a></p>
+
+<p>Download and copy to:
+C:\Program Files\CruiseControl.NET\webdashboard\bin\</p>
+
+<h3>Directory structure</h3>
+
+<p>Setup your directory structure:</p>
+
+<p>C:\CI\Myproject\
+C:\CI\Myproject\build
+C:\CI\Myproject\logs</p>
+
+<p>Using your subversion client checkout source to C:\CI\MyProject\build</p>
+
+<h3>ccnet.config</h3>
+
+<p>Add the project config to ccnet.confg:</p>
+
+<pre><code>&lt;cruisecontrol&gt;
+ &lt;project name="MyProject"&gt;
+  &lt;!-- after a change is detected, wait 10 mins and then kick off the build--&gt;
+  &lt;schedule type="schedule" sleepSeconds="600" /&gt;
+  &lt;!--set the sourcecontrol type to subversion and point to the subversion exe--&gt;
+  &lt;sourcecontrol type="svn"&gt;
+   &lt;executable&gt;C:\Program Files\Subversion\bin\svn.exe&lt;/executable&gt;
+   &lt;workingDirectory&gt;C:\CI\MyProject\build&lt;/workingDirectory&gt;
+   &lt;trunkUrl&gt;svn://svnserver/MyProject/trunk&lt;/trunkUrl&gt;
+   &lt;autoGetSource&gt;true&lt;/autoGetSource&gt;
+   &lt;username&gt;myuser&lt;/username&gt;
+   &lt;password&gt;mypassword&lt;/password&gt;
+  &lt;/sourcecontrol&gt;
+  &lt;tasks&gt;
+   &lt;!-- Configure MSBuild to compile the updated files --&gt;c:\
+   &lt;msbuild&gt;
+    &lt;executable&gt;C:\windows\Microsoft.NET\Framework\v2.0.50727\MSBuild.exe&lt;/executable&gt;
+    &lt;workingDirectory&gt;C:\CI\MyProject\build\src\&lt;/workingDirectory&gt;
+    &lt;projectFile&gt;MyProject.sln&lt;/projectFile&gt;
+    &lt;buildArgs&gt;/noconsolelogger /p:Configuration=Debug&lt;/buildArgs&gt;
+    &lt;targets&gt;&lt;/targets&gt;
+    &lt;timeout&gt;15&lt;/timeout&gt;
+    &lt;logger&gt;ThoughtWorks.CruiseControl.MsBuild.XmlLogger,C:\Program Files\CruiseControl.NET\webdashboard\bin\ThoughtWorks.CruiseControl.MsBuild.dll&lt;/logger&gt;
+   &lt;/msbuild&gt;
+  &lt;/tasks&gt;
+  &lt;!--Publishers will be done after the build has completed--&gt;
+  &lt;publishers&gt;
+   &lt;xmllogger&gt;
+    &lt;logDir&gt;C:\CI\MyProject\Logs&lt;/logDir&gt;
+   &lt;/xmllogger&gt;
+  &lt;/publishers&gt;
+  &lt;modificationDelaySeconds&gt;10&lt;/modificationDelaySeconds&gt;
+ &lt;/project&gt;
+&lt;/cruisecontrol&gt;
+</code></pre>
+
+<h3>CC Tray</h3>
+
+<p>You will also want to install the CC Tray monitoring software on your pc:</p>
+
+<p><a href="http://prdownloads.sourceforge.net/ccnet/CruiseControl.NET-CCTray-1.0.1-Setup.exe?download">CCTray</a></p>
+
+<p>It will allow you to keep an eye on the server from the comfort of your own pc.</p>
+
+<p>That&#8217;s it we&#8217;re down!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/06/29/monorail-e28093-moving-from-beta5-to-latest-build/">Castle Monorail – Moving from Beta5 to latest build</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-29T14:34:23+01:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve decided to move my &#8220;toy&#8221; MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly Formhelper!</p>
+
+<p>Moving to the latest build broke a few things in my solution:</p>
+
+<h3>The Build</h3>
+
+<p><strong>Nunit framework</strong></p>
+
+<p>My web test project was using Nunit version 2.2.0.0. Which is used by Castle.MonoRail.TestSupport I believe although don&#8217;t quote me on that I could be wrong. Any who it now requires the latest version of the nunit.framework.dll (2.2.8.0). I change the reference and all was well.</p>
+
+<p><strong>DataBindAttribute</strong>
+Next up was the DataBindAttribute which appears to have changs slightly. I did have:</p>
+
+<p><code>public void LoginSubmit([DataBind(Prefix = "student")] Student student)</code></p>
+
+<p>It appears the <strong>Prefix</strong> parameter is now explicit, a simple change:</p>
+
+<p><code>public void LoginSubmit([DataBind("student")] Student student)</code></p>
+
+<h3>The Tests</h3>
+
+<p>Ok now my solution builds but all of my ActiveRecord unit tests fail. I get the following error:</p>
+
+<p><code>TestFixture failed: You can't invoke ActiveRecordStarter.Initialize more than once</code></p>
+
+<p>Turns out to be a problem in the InitFramework method of my AbstractModelTestCase class. Initalialze is being called twice:</p>
+
+<p>`protected virtual void InitFramework()
+{
+  IConfigurationSource source = ConfigurationManager.GetSection(&#8220;activerecord&#8221;) as IConfigurationSource;</p>
+
+<p>  ActiveRecordStarter.Initialize(source);</p>
+
+<p>  ActiveRecordStarter.Initialize( source, typeof(Student), typeof(LoginAudit) );
+}`</p>
+
+<p>I guess there is now no need for the first <strong>ActiveRecordStarter.Initialize(source);</strong> call so I remove it and all is well!</p>
+
+<h3>The Run</h3>
+
+<p>Ok now my solution builds and passes the test but all is not well at run time I get the following error:</p>
+
+<p><code>Looks like you forgot to register the http module Castle.MonoRail.Framework.EngineContextModule
+Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" /&gt;' to the &lt;httpModules&gt; section on your web.config</code></p>
+
+<p>This is a breaking change mentioned in the release notes and you must update your web.config. But don’t get your httpModules and your httpHandlers mixed up as I did. Simply add the httpModules to your web.config:</p>
+
+<p>`&lt;system.web>
+  <httpHandlers></p>
+
+<pre><code>    &lt;add verb="*" path="*.aspx" type="Castle.MonoRail.Framework.MonoRailHttpHandlerFactory, Castle.MonoRail.Framework"  /&gt;
+</code></pre>
+
+<p>  </httpHandlers>
+  <httpModules></p>
+
+<pre><code>    &lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" /&gt;
+&lt;/httpModules&gt;
+</code></pre>
+
+<p>&lt;/system.web>
+`</p>
+
+<h3>The End</h3>
+
+<p>That’s it we’re down! Now I get to play with the latest version.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/06/22/monorail-nvelocity-view-engine/">Castle Monorail - NVelocity View Engine</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-22T12:08:05+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m using the recommended view engine <a href="http://www.castleproject.org/index.php/MonoRail:View_Engines_Book#NVelocity_View_Engine">NVelocity</a>.</p>
+
+<p>The following objects are available to the view code:
+• context (IRailsEngineContext)
+• request
+• response
+• session
+• All entries in the request (if any)
+• All entries in the Flash (if any)
+• All entries in the PropertyBag (if any)</p>
+
+<p>Also, a siteRoot string is added so you can build url definitions like:
+<code>$siteRoot/home/index.rails
+ &lt;img src="$siteRoot/images/someimage.gif" /&gt;
+</code></p>
+
+<p><strong>Notation (variable name): </strong></p>
+
+<p>$ [ ! ][ { ][ a..z, A..Z ][ a..z, A..Z, 0..9, -, _ ][ } ]</p>
+
+<p>Examples:</p>
+
+<ul>
+<li><p>Normal notation: $mud-Slinger_9</p></li>
+<li><p>Silent notation: $!mud-Slinger_9</p></li>
+<li><p>Formal notation: ${mud-Slinger_9}</p></li>
+</ul>
+
+
+<p><strong>Loops</strong>
+`#foreach($i in $items)</p>
+
+<h1>each (this is optional since its the default section)</h1>
+
+<pre><code>   text which appears for each item
+</code></pre>
+
+<h1>before</h1>
+
+<pre><code>   text which appears before each item
+</code></pre>
+
+<h1>after</h1>
+
+<pre><code>   text which appears after each item
+</code></pre>
+
+<h1>between</h1>
+
+<pre><code>   text which appears between each two items
+</code></pre>
+
+<h1>odd</h1>
+
+<pre><code>   text which appears for every other item, including the first
+</code></pre>
+
+<h1>even</h1>
+
+<pre><code>   text which appears for every other item, starting with the second
+</code></pre>
+
+<h1>nodata</h1>
+
+<pre><code>   Content rendered if $items evaluated to null or empty
+</code></pre>
+
+<h1>beforeall</h1>
+
+<pre><code>   text which appears before the loop, only if there are items
+   matching condition
+</code></pre>
+
+<h1>afterall</h1>
+
+<pre><code>   text which appears after the loop, only of there are items
+   matching condition
+</code></pre>
+
+<h1>end</h1>
+
+<p>`</p>
+
+<p><strong>Binary expressions</strong>
+`#if($order.Status == &#8220;Undefined&#8221;)
+  Sorry, but we don&#8217;t know this order.</p>
+
+<h1>elseif($order.Status == &#8220;Created&#8221;)</h1>
+
+<p>  Your order is being processed. Hold on!</p>
+
+<h1>elseif($order.Status == &#8220;Dispatched&#8221;)</h1>
+
+<p>  Your order has been dispatched through UPS. Cross your fingers!</p>
+
+<h1>end</h1>
+
+<p>`</p>
+
+<p><strong>IDictonary Parameters</strong>
+Calling a helper with IDictonary Paramaters:
+<code>$HtmlHelper.SubmitButton("Login", $DictHelper.CreateDict("id=btnLogin"))</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/justinramel">@justinramel</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'justinramel',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("justinramel", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/justinramel" class="twitter-follow-button" data-show-count="false">Follow @justinramel</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll&#8230;</ul>
+  <p><a href="http://pinboard.in/u:njr11">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "njr11"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108885363809433432894?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Justin Ramel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

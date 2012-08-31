@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: vim | just ram]]></title>
+  <link href="http://justinramel.github.com/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://justinramel.github.com/"/>
+  <updated>2012-09-01T00:31:21+01:00</updated>
+  <id>http://justinramel.github.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method/"/>
+    <updated>2010-12-31T01:32:57+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Extract Method</h4>
+
+<p>Extracts a selection into a method and places it above the current method.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/extractMethod.html">http://www.refactoring.com/catalog/extractMethod.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br/>
+Visually select lines you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rem     <br/>
+</strong>You will now see a prompt to enter the new method name: <br/>
+Method name: print_details</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br/>
+A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
+
+<p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Instance Variable]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
+    <updated>2010-12-31T01:14:03+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Rename Instance Variable</h4>
+
+<p>Renames the selected instance variable.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br/>
+Visually select the instance variable you wish to rename    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rriv      <br/>
+</strong>You will now see a prompt to enter the new variable name: <br/>
+Rename to: new_name</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br/>
+The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
+
+<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Local Variable]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
+    <updated>2010-12-31T00:59:58+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Rename Local Variable</h4>
+
+<p>Renames the selected local variable.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renamevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_before_thumb.png" alt="RenameVar_Before" /></a>    <br/>
+Visually select the local variable you wish to rename    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rrlv      <br/>
+</strong>You will now see a prompt to enter the new variable name: <br/>
+Rename to: is_mac_os</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renamevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_after_thumb.png" alt="RenameVar_After" /></a>    <br/>
+The local variable <em><strong>mac_os</strong></em> has been renamed to <strong><em>is_mac_os</em></strong> in both locations within the method.</p>
+
+<p><strong>rrlv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>L</strong>ocal <strong>V</strong>ariable.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Local Variable]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
+    <updated>2010-12-31T00:27:45+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Extract Local Variable</h4>
+
+<p>Extracts a visual selection into a local variable.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/introduceExplainingVariable.html">http://www.refactoring.com/catalog/introduceExplainingVariable.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractvar_before1.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_before_thumb1.png" alt="ExtractVar_Before" /></a>    <br/>
+Visually select the value you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>relv      <br/>
+</strong>You will now see a prompt to enter the variable name: <br/>
+Variable name: mac_os</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractvar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_after_thumb.png" alt="ExtractVar_After" /></a>    <br/>
+The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been extracted into a local variable <strong><em>mac_os</em></strong>.</p>
+
+<p><strong>relv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>ocal <strong>V</strong>ariable.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-ruby-refactoring - Extract to Let]]></title>
+    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
+    <updated>2010-12-30T23:49:00+00:00</updated>
+    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
+    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Extract to Let</h4>
+
+<p>This is an <a href="http://rspec.info/">RSpec</a> specific refactoring which will extract an initialisation line and create a let method for you.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractlet_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_before_thumb.png" alt="ExtractLet_Before" /></a> <br/>
+Move the cursor on to the line you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rel </strong></p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractlet_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_after_thumb.png" alt="ExtractLet_After" /></a>    <br/>
+The let method is created above the it block, using the initialisation line - account = Account.new.</p>
+
+<p><strong>rel</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>et.</p>
+]]></content>
+  </entry>
+  
+</feed>

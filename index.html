@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Bloggin&#8217; from vim, yay!
+  <meta name="description" content="Octopress for the win! Bloggin&#8217; from vim, yay. Updated the theme to darkstripes Imported my old worpress posts using exitwp
 ">
   
 
@@ -80,7 +80,7 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/31/hello-brave-new-world/">hello brave new world</a></h1>
+        <h1 class="entry-title"><a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a></h1>
       
     
     
@@ -104,7 +104,667 @@
   </header>
 
 
-  <div class="entry-content"><p>Bloggin&#8217; from vim, yay!</p>
+  <div class="entry-content"><p><a href="http://octopress.org/">Octopress</a> for the win!</p>
+
+<p>Bloggin&#8217; from vim, yay.</p>
+
+<p>Updated the theme to <a href="https://github.com/amelandri/darkstripes">darkstripes</a></p>
+
+<p>Imported my old worpress posts using <a href="https://github.com/thomasf/exitwp">exitwp</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
+
+<h4>Introduction</h4>
+
+<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what&#8217;s not to like? Though I must confess I don&#8217;t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
+
+<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
+
+<h4>What&#8217;s da big idea</h4>
+
+<p>The idea for my first plugin is rather ambitious considering I&#8217;ve no idea how to write a plugin. I&#8217;d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
+
+<p>I&#8217;m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
+
+<h4>Install Redcar</h4>
+
+<p>I first followed the install instructions:</p>
+
+<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
+
+<p>All good no problems there (I&#8217;m running on a Mac OSX 10.7.1)</p>
+
+<h4>Plugin Guides</h4>
+
+<p>I then read the plugin guides I found here:</p>
+
+<ul>
+<li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
+<li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
+</ul>
+
+
+<h4>Plugin.rb</h4>
+
+<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin&#8217;s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
+
+<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
+</span><span class='line'>  <span class="no">RefreshBrowser</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
+
+<h4>Browser refresh script</h4>
+
+<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
+
+<p>I managed to find a script to refresh the browser here:</p>
+
+<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
+
+<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
+
+<h4>Storage</h4>
+
+<p>Redcar&#8217;s storage mechanism allows you to easily store configuration data into a yaml file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">storage</span>
+</span><span class='line'>  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@storage</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here I am using this mechanism to store the &#8216;keyword&#8217; used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It&#8217;s also possible to setup a nice edit page but for now this will do.</p>
+
+<h4>Source</h4>
+
+<p>You can find the source for this plugin here:</p>
+
+<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
+
+<h4>Was it easy?</h4>
+
+<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I&#8217;ve spent more time fussing over this blog post than developing the plugin.</p>
+
+<p>So what you waiting for? Go give it a try!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-20T20:19:55+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>Fortress</h4>
+
+<p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
+
+<h4>curl to the rescue!</h4>
+
+<p>You can upload files using curl directly into Sharepoint via it&#8217;s HTTP PUT interface.</p>
+
+<p><code>curl --ntlm --user username:password --upload-file myfile.xls https://sharepointserver.com/sites/mysite/myfile.xls</code></p>
+
+<p>Told you, easy when you know how.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>Authentication Settings</h4>
+
+<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
+
+<p>Config File: /etc/httpd/conf.d/shib.conf</p>
+
+<p><code> ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  require valid-user
+</code></p>
+
+<p>The &#8217;<code>ShibUseHeaders On</code>&#8217; setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
+
+<h4>Simple Authorisation</h4>
+
+<p>If you don&#8217;t need a complex authorisation system and you don&#8217;t mind users seeing a standard Shibboleth authorisation error page:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
+
+<p>You can implement this via your Shibboleth settings using the require statement:</p>
+
+<p><code> ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  **require grouper_groups ~ MySecurityGroup**
+</code></p>
+
+<p>Here we require the custom grouper_groups attribute matches on the regular expression after the &#8217;<code>~</code>&#8217;. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
+
+<h5>Top Tip</h5>
+
+<p>When playing with your Shib settings don&#8217;t forget to restart httpd to see the affect.
+<code>sudo /sbin/service httpd restart</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T22:16:31+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
+
+<h4>Apache Setup</h4>
+
+<h5>Proxy Module</h5>
+
+<p>For this to work Apache must have the mod_proxy module loaded:</p>
+
+<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
+
+<p>Config file: /etc/httpd/conf/httpd.conf</p>
+
+<p><code>ProxyRequests     Off                         # Switch off forward proxy
+ProxyPreserveHost On                               # Pass host name onto the proxy
+ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server
+ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
+</code>
+Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
+
+<h4>TorqueBox Setup</h4>
+
+<p>In your Torquebox application folder create a file &#8216;config/torquebox.yml&#8217; which contains a context which matches the Apache reverse proxy url.</p>
+
+<p>torquebox.yml</p>
+
+<p>web:
+  context: /myapp
+ruby:
+  version: 1.9</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-14T12:42:27+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>TorqueBox Install</h4>
+
+<p>I&#8217;m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
+
+<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
+
+<h4>Error</h4>
+
+<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
+
+<p>Error: Your application used more memory than the safety cap of 500m.
+Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
+
+<h4>Fix</h4>
+
+<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
+
+<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
+
+<p>Hope that helps someone or maybe me if have to do this again!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2011/07/12/setup-git-repo/">SETUP GIT REPO</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-12T21:48:22+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>ADDING KEY TO SERVER</h4>
+
+<p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
+
+<h4>SERVER</h4>
+
+<p><code>sudo mkdir /home/git/myrepo
+cd /home/git/myrepo
+sudo git --bare init
+sudo chown -R git:git /home/git/myrepo
+</code></p>
+
+<h4>CLIENT</h4>
+
+<p>`mkdir myrepo
+cd myrepo
+git init</p>
+
+<h1>add some files</h1>
+
+<p>git add .
+git commit -m &#8220;added some files&#8221;</p>
+
+<p>git remote add origin git@myserver.com:myrepo
+git push origin master</p>
+
+<p>rm -r myrepo/
+git clone git@yourserver.com:myrepo
+`</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2011/01/11/rails-new-app-workflow/">Rails new app workflow</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-11T14:58:47+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
+
+<h4>Create app</h4>
+
+<p>rails new <app_name></p>
+
+<p>cd <app_name></p>
+
+<h4>git</h4>
+
+<p>git init</p>
+
+<p>git add .</p>
+
+<p>git commit –m &#8216;Initial commit&#8217;</p>
+
+<p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
+
+<h4>rvm and gemsets</h4>
+
+<p>rvm gemset create <app_name></p>
+
+<p>echo &#8216;rvm use 1.9.2@<app_name>&#8217; >> .rvmrc</p>
+
+<p>echo &#8216;.rvmrc&#8217; >> .gitignore</p>
+
+<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created.</p>
+
+<p>Change in and out of the directory to get rvm to kick in:</p>
+
+<p>cd ..</p>
+
+<p>cd <app_name></p>
+
+<h4>Gemfile</h4>
+
+<p>Edit ./Gemfile and add the following lines.</p>
+
+<p>gem &#8216;haml&#8217;</p>
+
+<p>group :test do</p>
+
+<p>gem &#8216;rspec&#8217;</p>
+
+<p>gem &#8216;rspec-rails&#8217;</p>
+
+<p>end</p>
+
+<p>Then install and run bundler:</p>
+
+<p>gem install bundler</p>
+
+<p>bundle install</p>
+
+<h4>rspec</h4>
+
+<p>Generate the rspec files:</p>
+
+<p>rails g rspec:install</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-extract-method/">vim-ruby-refactoring - Extract Method</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-31T01:32:57+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Extract Method</h4>
+
+<p>Extracts a selection into a method and places it above the current method.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/extractMethod.html">http://www.refactoring.com/catalog/extractMethod.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br/>
+Visually select lines you wish to extract    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rem     <br/>
+</strong>You will now see a prompt to enter the new method name: <br/>
+Method name: print_details</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br/>
+A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
+
+<p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">vim-ruby-refactoring - Rename Instance Variable</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-31T01:14:03+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Rename Instance Variable</h4>
+
+<p>Renames the selected instance variable.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br/>
+Visually select the instance variable you wish to rename    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rriv      <br/>
+</strong>You will now see a prompt to enter the new variable name: <br/>
+Rename to: new_name</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br/>
+The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
+
+<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
 </div>
   
   
@@ -113,6 +773,8 @@
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -125,7 +787,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/08/31/hello-brave-new-world/">hello brave new world</a>
+        <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a>
       </li>
     
   </ul>
