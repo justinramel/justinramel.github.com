@@ -21,7 +21,7 @@ puts 'hello world!'
 
 ## Images
 ### I'm Old Gregg!
-{% img /images/Old-Gregg.jpeg I'm old Gregg %}
+{% img /images/old-gregg.jpeg I'm old Gregg %}
 
 ## Quotes
 ### Block quote
