@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I&#8217;m going to give Ruby on Rails (RoR) a try on my Windows XP machine. Here&#8217;s how I&#8217;ve set it up&#8230; Install Ruby
-Using the Ruby &hellip;">
+  <meta name="description" content="Sorry I just can&#8217;t live with plural table names, I just can&#8217;t get my head around it! Luckily it is easily turned off. In RadRails there &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +72,50 @@ Using the Ruby &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/04/04/pluralize-table-names-no-thanks/">Pluralize table names - no thanks!</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-04-04T14:05:19+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sorry I just can&#8217;t live with plural table names, I just can&#8217;t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
+
+<pre><code># Include your application configuration below
+ActiveRecord::Base.pluralize_table_names = false
+</code></pre>
+
+<p>I may live to regret not embracing plural table names but I doubt it!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -626,46 +669,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/03/01/18/">SAP Portal Developer Guide</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-01T18:17:40+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Can&#8217;t remember that HTMLB syntax? Look no further&#8230;</p>
-
-<p><a href="http://help.sap.com/saphelp_nw04/helpdata/en/9f/fd4e41bbd1f423e10000000a155106/frameset.htm">SAP Portal Developer Guide</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -683,6 +686,10 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
       </li>
     
@@ -696,10 +703,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
     
       <li class="post">
         <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a>
       </li>
     
   </ul>

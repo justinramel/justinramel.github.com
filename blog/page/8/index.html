@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I&#8217;ve defected from blogger.com, so far I&#8217;m impressed. Categories, stats, lots of nice skins and the import feature just saved me a boat &hellip;">
+  <meta name="description" content="Can&#8217;t remember that HTMLB syntax? Look no further&#8230; SAP Portal Developer Guide
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +73,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/03/01/18/">SAP Portal Developer Guide</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-03-01T18:17:40+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Can&#8217;t remember that HTMLB syntax? Look no further&#8230;</p>
+
+<p><a href="http://help.sap.com/saphelp_nw04/helpdata/en/9f/fd4e41bbd1f423e10000000a155106/frameset.htm">SAP Portal Developer Guide</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -590,61 +631,6 @@ Enter the repository/ProjectName an import message and click OK.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/22/sap-portal-http-or-https/">SAP Portal HTTP or HTTPS?</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-02-22T11:36:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Want to tell if your iView is running over HTTP or HTTPS?</p>
-
-<p>Try this:</p>
-
-<p>WARNING: Untested code ahead!
-<code>
-HttpServletRequest servletRequest = componentRequest.getServletRequest();
-String requestURL = servletRequest.getRequestURL().toString();
-String protocol = requestURL.substring(0, requestURL.indexOf(":"));</code></p>
-
-<p>if(protocol.equals(&#8220;http&#8221;))
-{
-// do HTTP stuff
-}
-else
-{
-// do HTTPS stuff
-}</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -662,6 +648,10 @@ else
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
       </li>
     
@@ -675,10 +665,6 @@ else
     
       <li class="post">
         <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a>
       </li>
     
   </ul>

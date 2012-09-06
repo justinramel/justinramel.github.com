@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-09-01T21:01:37+01:00</updated>
+  <updated>2012-09-07T00:16:01+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[vim tip: !mkdir %:h]]></title>
+    <link href="http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h/"/>
+    <updated>2012-09-06T22:10:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h</id>
+    <content type="html"><![CDATA[<p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
+as well as the great content, I'm picking up lots of vim tips. I'm having to
+pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
+damn fast. Any way I'm going to start writing these vim gems down in the vain
+hope I'll remember some of them.</p>
+
+<h2>Quickly creating a project structure</h2>
+
+<p>It's possible to setup a new project without leaving vim. Lets create a new dir
+for a quick demo:</p>
+
+<p><code>
+mkdir demo
+cd demo
+vim
+</code></p>
+
+<p>From the vim command prompt we can create a new user model in the models dir
+using the vim command <code>:n models/user.rb</code></p>
+
+<p><img src="images/vim-tip-1/new-file.png"></p>
+
+<p>Lets break this command down:</p>
+
+<ul>
+<li><strong>:n</strong>             - n is short for new as in file</li>
+<li><strong>models/user.rb</strong> - the directory and name of our new file</li>
+</ul>
+
+
+<p>This creates the new file in a vim buffer but when we go to write this file we
+get an error <code>E212: Can't open file for writing</code>, this is because the directory
+models does not exist.</p>
+
+<p><img src="images/vim-tip-1/write-error.png"></p>
+
+<p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
+
+<p><img src="images/vim-tip-1/mkdir-command.png"></p>
+
+<p>Now the directory has been created we can write the new file from vim.</p>
+
+<p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
+
+<ul>
+<li><strong>:!</strong>    - Execute {command} with the shell</li>
+<li><strong>mkdir</strong> - Make a directory shell command</li>
+<li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
+</ul>
+
+
+<p>The full vim help text for <code>%:h</code>:</p>
+
+<p>```
+:h  Head of the file name (the last component and any separators</p>
+
+<pre><code>removed).  Cannot be used with :e, :r or :t.
+Can be repeated to remove several components at the end.
+When the file name ends in a path separator, only the path
+separator is removed.  Thus ":p:h" on a directory name results
+on the directory name itself (without trailing slash).
+When the file name is an absolute path (starts with "/" for
+Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
+part is not removed.  When there is no head (path is relative
+to current directory) the result is empty.
+</code></pre>
+
+<p>```</p>
+
+<h2>Deeper folder structure</h2>
+
+<p>You can create deeper folder structures using the same technique with one extra
+switch on the mkdir command.</p>
+
+<p><code>
+:n specs/models/user_spec.rb
+:!mkdir -p %:h
+:w
+</code></p>
+
+<p>The <code>-p</code> switch will create the intermediate directories for you. If you don't
+use this switch the command will fail.</p>
+
+<p>The full command line help for the <code>mkdir -p</code> switch:</p>
+
+<p><code>
+-p  Create intermediate directories as required.  If this option is not
+specified, the full path prefix of each operand must already exist.  On the
+other hand, with this option specified, no error will be reported if a
+directory given as an operand already exists.  Intermediate directories are
+created with permission bits of rwxrwxrwx (0777) as modified by the current
+umask, plus write and search permission for the owner.
+</code></p>
+
+<p>I think that's as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
@@ -132,32 +235,6 @@ Variable name: mac_os</p>
 The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been extracted into a local variable <strong><em>mac_os</em></strong>.</p>
 
 <p><strong>relv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>ocal <strong>V</strong>ariable.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Extract to Let]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
-    <updated>2010-12-30T23:49:00+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Extract to Let</h4>
-
-<p>This is an <a href="http://rspec.info/">RSpec</a> specific refactoring which will extract an initialisation line and create a let method for you.</p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractlet_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_before_thumb.png" alt="ExtractLet_Before" /></a> <br/>
-Move the cursor on to the line you wish to extract    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rel </strong></p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractlet_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_after_thumb.png" alt="ExtractLet_After" /></a>    <br/>
-The let method is created above the it block, using the initialisation line - account = Account.new.</p>
-
-<p><strong>rel</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>et.</p>
 ]]></content>
   </entry>
   

@@ -79,6 +79,65 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">vim-ruby-refactoring - Rename Instance Variable</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-31T01:14:03+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+
+<h4>Rename Instance Variable</h4>
+
+<p>Renames the selected instance variable.</p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br/>
+Visually select the instance variable you wish to rename    <br/>
+Hit your <strong><leader-key></strong> then type <strong>rriv      <br/>
+</strong>You will now see a prompt to enter the new variable name: <br/>
+Rename to: new_name</p>
+
+<p>After refactoring:   <br/>
+<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br/>
+The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
+
+<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
         <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable/">vim-ruby-refactoring - Rename Local Variable</a></h1>
       
     
@@ -730,73 +789,6 @@ configure.RijndaelEncryptionService();     <br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/">jQuery Validation Plugin – Dynamically change validator message</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-25T22:43:12+01:00" pubdate data-updated="true">Jun 25<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>**</h4>
-
-<p>UPDATE:** Please read <a href="http://gusgus.wordpress.com/">Guu</a>’s comment below for a far better solution to this problem!</p>
-
-<p>I’ve been using the <a href="http://docs.jquery.com/Plugins/Validation">jQuery Validation Plugin</a> and needed to change a validation message dynamically based on the user input. I had a quick search but couldn’t find an easy solution. Unfortunately the messages are not changeable after the initial construction of the validator object. I managed to get around the problem by removing the validator an then re-adding with a new message:</p>
-
-<h2>Create validator</h2>
-
-<p>$(&#8220;#Enquiry&#8221;).validate({   <br/>
-rules: {    <br/>
-EnquiryText: { required: true }    <br/>
-},    <br/>
-messages: {    <br/>
-EnquiryText: &#8220;Enquiry must contain an entry.&#8221;    <br/>
-}    <br/>
-});</p>
-
-<h2>Dynamically change message</h2>
-
-<p>function setEnquiryValidationTo(message) {   <br/>
-$(&#8220;#EnquiryText&#8221;).rules(&#8220;remove&#8221;);    <br/>
-$(&#8220;#EnquiryText&#8221;).rules(&#8220;add&#8221;, {    <br/>
-required: true,    <br/>
-messages: {    <br/>
-required: message    <br/>
-}    <br/>
-});    <br/>
-}</p>
-
-<p>There may be a better/easier way to do this but I couldn’t find one via Google.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -814,6 +806,10 @@ required: message    <br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
       </li>
     
@@ -827,10 +823,6 @@ required: message    <br/>
     
       <li class="post">
         <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a>
       </li>
     
   </ul>

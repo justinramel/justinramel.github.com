@@ -9,7 +9,9 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’m taking a look at a .net implementation of Ruby on Rails called Monorail. It’s part of the Castle project. So far it looks pretty good! Community &hellip;">
+  <meta name="description" content="I&#8217;m using the recommended view engine NVelocity. The following objects are available to the view code:
+• context (IRailsEngineContext)
+• &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +74,145 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/06/22/monorail-nvelocity-view-engine/">Castle Monorail - NVelocity View Engine</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-22T12:08:05+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m using the recommended view engine <a href="http://www.castleproject.org/index.php/MonoRail:View_Engines_Book#NVelocity_View_Engine">NVelocity</a>.</p>
+
+<p>The following objects are available to the view code:
+• context (IRailsEngineContext)
+• request
+• response
+• session
+• All entries in the request (if any)
+• All entries in the Flash (if any)
+• All entries in the PropertyBag (if any)</p>
+
+<p>Also, a siteRoot string is added so you can build url definitions like:
+<code>$siteRoot/home/index.rails
+ &lt;img src="$siteRoot/images/someimage.gif" /&gt;
+</code></p>
+
+<p><strong>Notation (variable name): </strong></p>
+
+<p>$ [ ! ][ { ][ a..z, A..Z ][ a..z, A..Z, 0..9, -, _ ][ } ]</p>
+
+<p>Examples:</p>
+
+<ul>
+<li><p>Normal notation: $mud-Slinger_9</p></li>
+<li><p>Silent notation: $!mud-Slinger_9</p></li>
+<li><p>Formal notation: ${mud-Slinger_9}</p></li>
+</ul>
+
+
+<p><strong>Loops</strong>
+`#foreach($i in $items)</p>
+
+<h1>each (this is optional since its the default section)</h1>
+
+<pre><code>   text which appears for each item
+</code></pre>
+
+<h1>before</h1>
+
+<pre><code>   text which appears before each item
+</code></pre>
+
+<h1>after</h1>
+
+<pre><code>   text which appears after each item
+</code></pre>
+
+<h1>between</h1>
+
+<pre><code>   text which appears between each two items
+</code></pre>
+
+<h1>odd</h1>
+
+<pre><code>   text which appears for every other item, including the first
+</code></pre>
+
+<h1>even</h1>
+
+<pre><code>   text which appears for every other item, starting with the second
+</code></pre>
+
+<h1>nodata</h1>
+
+<pre><code>   Content rendered if $items evaluated to null or empty
+</code></pre>
+
+<h1>beforeall</h1>
+
+<pre><code>   text which appears before the loop, only if there are items
+   matching condition
+</code></pre>
+
+<h1>afterall</h1>
+
+<pre><code>   text which appears after the loop, only of there are items
+   matching condition
+</code></pre>
+
+<h1>end</h1>
+
+<p>`</p>
+
+<p><strong>Binary expressions</strong>
+`#if($order.Status == &#8220;Undefined&#8221;)
+  Sorry, but we don&#8217;t know this order.</p>
+
+<h1>elseif($order.Status == &#8220;Created&#8221;)</h1>
+
+<p>  Your order is being processed. Hold on!</p>
+
+<h1>elseif($order.Status == &#8220;Dispatched&#8221;)</h1>
+
+<p>  Your order has been dispatched through UPS. Cross your fingers!</p>
+
+<h1>end</h1>
+
+<p>`</p>
+
+<p><strong>IDictonary Parameters</strong>
+Calling a helper with IDictonary Paramaters:
+<code>$HtmlHelper.SubmitButton("Login", $DictHelper.CreateDict("id=btnLogin"))</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -494,50 +635,6 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/04/04/pluralize-table-names-no-thanks/">Pluralize table names - no thanks!</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-04-04T14:05:19+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sorry I just can&#8217;t live with plural table names, I just can&#8217;t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
-
-<pre><code># Include your application configuration below
-ActiveRecord::Base.pluralize_table_names = false
-</code></pre>
-
-<p>I may live to regret not embracing plural table names but I doubt it!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -555,6 +652,10 @@ ActiveRecord::Base.pluralize_table_names = false
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
       </li>
     
@@ -568,10 +669,6 @@ ActiveRecord::Base.pluralize_table_names = false
     
       <li class="post">
         <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-09-01T21:01:37+01:00</updated>
+  <updated>2012-09-07T00:16:01+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,124 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[vim tip: !mkdir %:h]]></title>
+    <link href="http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h/"/>
+    <updated>2012-09-06T22:10:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h</id>
+    <content type="html"><![CDATA[<p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
+as well as the great content, I&#8217;m picking up lots of vim tips. I&#8217;m having to
+pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
+damn fast. Any way I&#8217;m going to start writing these vim gems down in the vain
+hope I&#8217;ll remember some of them.</p>
+
+<h2>Quickly creating a project structure</h2>
+
+<p>It&#8217;s possible to setup a new project without leaving vim. Lets create a new dir
+for a quick demo:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir demo
+</span><span class='line'>cd demo
+</span><span class='line'>vim</span></code></pre></td></tr></table></div></figure>
+
+
+<p>From the vim command prompt we can create a new user model in the models dir
+using the vim command <code>:n models/user.rb</code></p>
+
+<p><img src="images/vim-tip-1/new-file.png"></p>
+
+<p>Lets break this command down:</p>
+
+<ul>
+<li><strong>:n</strong>             - n is short for new as in file</li>
+<li><strong>models/user.rb</strong> - the directory and name of our new file</li>
+</ul>
+
+
+<p>This creates the new file in a vim buffer but when we go to write this file we
+get an error <code>E212: Can't open file for writing</code>, this is because the directory
+models does not exist.</p>
+
+<p><img src="images/vim-tip-1/write-error.png"></p>
+
+<p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
+
+<p><img src="images/vim-tip-1/mkdir-command.png"></p>
+
+<p>Now the directory has been created we can write the new file from vim.</p>
+
+<p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
+
+<ul>
+<li><strong>:!</strong>    - Execute {command} with the shell</li>
+<li><strong>mkdir</strong> - Make a directory shell command</li>
+<li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
+</ul>
+
+
+<p>The full vim help text for <code>%:h</code>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:h   Head of the file name (the last component and any separators
+</span><span class='line'>  removed).  Cannot be used with :e, :r or :t.
+</span><span class='line'>  Can be repeated to remove several components at the end.
+</span><span class='line'>  When the file name ends in a path separator, only the path
+</span><span class='line'>  separator is removed.  Thus ":p:h" on a directory name results
+</span><span class='line'>  on the directory name itself (without trailing slash).
+</span><span class='line'>  When the file name is an absolute path (starts with "/" for
+</span><span class='line'>  Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
+</span><span class='line'>  part is not removed.  When there is no head (path is relative
+</span><span class='line'>  to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Deeper folder structure</h2>
+
+<p>You can create deeper folder structures using the same technique with one extra
+switch on the mkdir command.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:n specs/models/user_spec.rb
+</span><span class='line'>:!mkdir -p %:h
+</span><span class='line'>:w</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>-p</code> switch will create the intermediate directories for you. If you don&#8217;t
+use this switch the command will fail.</p>
+
+<p>The full command line help for the <code>mkdir -p</code> switch:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-p   Create intermediate directories as required.  If this option is not
+</span><span class='line'>specified, the full path prefix of each operand must already exist.  On the
+</span><span class='line'>other hand, with this option specified, no error will be reported if a
+</span><span class='line'>directory given as an operand already exists.  Intermediate directories are
+</span><span class='line'>created with permission bits of rwxrwxrwx (0777) as modified by the current
+</span><span class='line'>umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I think that&#8217;s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello brave new world]]></title>
@@ -853,44 +971,6 @@ configure.RijndaelEncryptionService();     <br/>
 <p>That’s as much as I have puzzled out for now, if I’ve made and glaring errors please let me know.</p>
 
 <p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f&amp;bgcolor=FF3300" alt="kick it on DotNetKicks.com" /></a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[jQuery Validation Plugin – Dynamically change validator message]]></title>
-    <link href="http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/"/>
-    <updated>2009-06-25T22:43:12+01:00</updated>
-    <id>http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message</id>
-    <content type="html"><![CDATA[<h4>**</h4>
-
-<p>UPDATE:** Please read <a href="http://gusgus.wordpress.com/">Guu</a>’s comment below for a far better solution to this problem!</p>
-
-<p>I’ve been using the <a href="http://docs.jquery.com/Plugins/Validation">jQuery Validation Plugin</a> and needed to change a validation message dynamically based on the user input. I had a quick search but couldn’t find an easy solution. Unfortunately the messages are not changeable after the initial construction of the validator object. I managed to get around the problem by removing the validator an then re-adding with a new message:</p>
-
-<h2>Create validator</h2>
-
-<p>$(&#8220;#Enquiry&#8221;).validate({   <br/>
-rules: {    <br/>
-EnquiryText: { required: true }    <br/>
-},    <br/>
-messages: {    <br/>
-EnquiryText: &#8220;Enquiry must contain an entry.&#8221;    <br/>
-}    <br/>
-});</p>
-
-<h2>Dynamically change message</h2>
-
-<p>function setEnquiryValidationTo(message) {   <br/>
-$(&#8220;#EnquiryText&#8221;).rules(&#8220;remove&#8221;);    <br/>
-$(&#8220;#EnquiryText&#8221;).rules(&#8220;add&#8221;, {    <br/>
-required: true,    <br/>
-messages: {    <br/>
-required: message    <br/>
-}    <br/>
-});    <br/>
-}</p>
-
-<p>There may be a better/easier way to do this but I couldn’t find one via Google.</p>
 ]]></content>
   </entry>
   
