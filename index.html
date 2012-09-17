@@ -9,9 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I just subscribed to Destroy All Software
-as well as the great content, I&#8217;m picking up lots of vim tips. I&#8217;m having to
-pause the video a &hellip;">
+  <meta name="description" content="Introduction This is the first in a series of posts which I’ll be writing on using Jenkins
+to build .NET solutions. These posts will be as detailed &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +92,154 @@ pause the video a &hellip;">
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T21:58:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Introduction</h2>
+
+<p>This is the first in a series of posts which I’ll be writing on using Jenkins
+to build .NET solutions. These posts will be as detailed as possible, probably
+too detailed in places.</p>
+
+<h2>Installing Jenkins</h2>
+
+<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as &#8216;Hudson&#8217; but when Oracle bought Sun there
+was a fall out between the then &#8216;Hudson&#8217; developers and Oracle so they decided
+to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
+
+<p>I&#8217;m going to install and setup Jenkins on a freshly minted Windows 7 virtual
+machine although this process should work fine on other versions of Windows.</p>
+
+<p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
+
+<p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
+
+<h3>Download</h3>
+
+<p>Rather than the generic .war file we&#8217;ll download the Windows native package,
+which saves as a few steps during installation. The latest windows package is
+available here:</p>
+
+<p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
+
+<p>I&#8217;m using Internet Explorer here, which by default blocks the installer from
+downloading. Notice the warning message shown at the top of the browser
+window.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
+
+<p>Click the message bar to get the download options context menu.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
+
+<p>Select the Download File… menu option. You will now see the File Download
+dialog.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
+
+<p>Click the Save button to download the installation zip file to your download
+folder. You will now see the Save As dialog again click the Save button to
+actually download the file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
+
+<p>In a short while you will see the Download complete dialog. Click the Open
+button to open the zipped installation file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
+
+<p>Internet Explorer Security may kick in and ask if you want to allow this
+operation. Click the Allow button to open the zip file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
+
+<p>Once the zip file is open, Click Extract all files from the menu.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
+
+<p>You will now see the Extract zip file dialog, Click the Extract button to
+extract the files to the default location.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
+
+<p>Phew! That&#8217;s the download complete.</p>
+
+<h3>Setup</h3>
+
+<p>Finally we can run the Setup program. Double click setup to run the program.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
+
+<p>Windows will show a Security Warning to make sure you trust the publisher of
+this software. Click Run to begin the installation.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
+
+<p>You will now see the Jenkins installation wizard. Click the Next button.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
+
+<p>The wizard allows you to change the installation folder. Click Next to accept
+the default folder.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
+
+<p>You are now at the final page of the setup wizard. Click the Install button
+and the installation will begin.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
+
+<p>On Windows 7 the User Account Control may kick in to ask permission to run the
+installation. Click the Yes button to continue.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
+
+<p>The installation wizard will now copy Jenkins onto your machine and display a
+message upon completion. Click the Finish button.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
+
+<p>The install wizard will now open the Jenkins web page.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
+
+<p>Congratulation Jenkins is now installed on your machine!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
         <h1 class="entry-title"><a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a></h1>
       
     
@@ -139,7 +286,7 @@ for a quick demo:</p>
 <p>From the vim command prompt we can create a new user model in the models dir
 using the vim command <code>:n models/user.rb</code></p>
 
-<p><img src="images/vim-tip-1/new-file.png"></p>
+<p><img src="/images/vim-tip-1/new-file.png"></p>
 
 <p>Lets break this command down:</p>
 
@@ -153,11 +300,11 @@ using the vim command <code>:n models/user.rb</code></p>
 get an error <code>E212: Can't open file for writing</code>, this is because the directory
 models does not exist.</p>
 
-<p><img src="images/vim-tip-1/write-error.png"></p>
+<p><img src="/images/vim-tip-1/write-error.png"></p>
 
 <p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
 
-<p><img src="images/vim-tip-1/mkdir-command.png"></p>
+<p><img src="/images/vim-tip-1/mkdir-command.png"></p>
 
 <p>Now the directory has been created we can write the new file from vim.</p>
 
@@ -851,67 +998,6 @@ git clone git@yourserver.com:myrepo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-extract-method/">vim-ruby-refactoring - Extract Method</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-31T01:32:57+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4>Extract Method</h4>
-
-<p>Extracts a selection into a method and places it above the current method.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/extractMethod.html">http://www.refactoring.com/catalog/extractMethod.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br/>
-Visually select lines you wish to extract    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rem     <br/>
-</strong>You will now see a prompt to enter the new method name: <br/>
-Method name: print_details</p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br/>
-A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
-
-<p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -927,6 +1013,10 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
       </li>
     
@@ -940,10 +1030,6 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
     
       <li class="post">
         <a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
       </li>
     
   </ul>

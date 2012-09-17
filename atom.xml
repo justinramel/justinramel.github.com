@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-09-08T09:43:17+01:00</updated>
+  <updated>2012-09-17T22:10:47+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,125 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET]]></title>
+    <link href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/"/>
+    <updated>2012-09-17T21:58:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>This is the first in a series of posts which I’ll be writing on using Jenkins
+to build .NET solutions. These posts will be as detailed as possible, probably
+too detailed in places.</p>
+
+<h2>Installing Jenkins</h2>
+
+<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as &#8216;Hudson&#8217; but when Oracle bought Sun there
+was a fall out between the then &#8216;Hudson&#8217; developers and Oracle so they decided
+to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
+
+<p>I&#8217;m going to install and setup Jenkins on a freshly minted Windows 7 virtual
+machine although this process should work fine on other versions of Windows.</p>
+
+<p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
+
+<p><a href="http://jenkins-ci.org/"><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
+
+<h3>Download</h3>
+
+<p>Rather than the generic .war file we&#8217;ll download the Windows native package,
+which saves as a few steps during installation. The latest windows package is
+available here:</p>
+
+<p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
+
+<p>I&#8217;m using Internet Explorer here, which by default blocks the installer from
+downloading. Notice the warning message shown at the top of the browser
+window.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
+
+<p>Click the message bar to get the download options context menu.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
+
+<p>Select the Download File… menu option. You will now see the File Download
+dialog.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
+
+<p>Click the Save button to download the installation zip file to your download
+folder. You will now see the Save As dialog again click the Save button to
+actually download the file.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
+
+<p>In a short while you will see the Download complete dialog. Click the Open
+button to open the zipped installation file.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
+
+<p>Internet Explorer Security may kick in and ask if you want to allow this
+operation. Click the Allow button to open the zip file.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
+
+<p>Once the zip file is open, Click Extract all files from the menu.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
+
+<p>You will now see the Extract zip file dialog, Click the Extract button to
+extract the files to the default location.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
+
+<p>Phew! That&#8217;s the download complete.</p>
+
+<h3>Setup</h3>
+
+<p>Finally we can run the Setup program. Double click setup to run the program.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
+
+<p>Windows will show a Security Warning to make sure you trust the publisher of
+this software. Click Run to begin the installation.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
+
+<p>You will now see the Jenkins installation wizard. Click the Next button.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
+
+<p>The wizard allows you to change the installation folder. Click Next to accept
+the default folder.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
+
+<p>You are now at the final page of the setup wizard. Click the Install button
+and the installation will begin.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
+
+<p>On Windows 7 the User Account Control may kick in to ask permission to run the
+installation. Click the Yes button to continue.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
+
+<p>The installation wizard will now copy Jenkins onto your machine and display a
+message upon completion. Click the Finish button.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
+
+<p>The install wizard will now open the Jenkins web page.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
+
+<p>Congratulation Jenkins is now installed on your machine!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[vim tip: !mkdir %:h]]></title>
@@ -40,7 +159,7 @@ for a quick demo:</p>
 <p>From the vim command prompt we can create a new user model in the models dir
 using the vim command <code>:n models/user.rb</code></p>
 
-<p><img src="images/vim-tip-1/new-file.png"></p>
+<p><img src="http://justinramel.github.com/images/vim-tip-1/new-file.png"></p>
 
 <p>Lets break this command down:</p>
 
@@ -54,11 +173,11 @@ using the vim command <code>:n models/user.rb</code></p>
 get an error <code>E212: Can't open file for writing</code>, this is because the directory
 models does not exist.</p>
 
-<p><img src="images/vim-tip-1/write-error.png"></p>
+<p><img src="http://justinramel.github.com/images/vim-tip-1/write-error.png"></p>
 
 <p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
 
-<p><img src="images/vim-tip-1/mkdir-command.png"></p>
+<p><img src="http://justinramel.github.com/images/vim-tip-1/mkdir-command.png"></p>
 
 <p>Now the directory has been created we can write the new file from vim.</p>
 
@@ -807,170 +926,6 @@ The contact method now has a date parameter added.</p>
 
 
 <p><strong>IMPORTANT:</strong> When installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, make sure you also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin otherwise some of these refactoring&#8217;s will not work.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How the new Host feature works in nServiceBus]]></title>
-    <link href="http://justinramel.github.com/blog/2009/08/03/how-the-new-host-feature-works-in-nservicebus/"/>
-    <updated>2009-08-03T18:02:24+01:00</updated>
-    <id>http://justinramel.github.com/blog/2009/08/03/how-the-new-host-feature-works-in-nservicebus</id>
-    <content type="html"><![CDATA[<p>The latest <em>Alpha</em> version of <a href="http://www.nservicebus.com/">nServiceBus</a> uses the <a href="http://code.google.com/p/topshelf/">TopShelf</a> project as part of its new hosting feature. This new Host feature makes it super easy to setup a console/windows service for your clients/servers. So here’s how <em>I think</em> it works and what you can do with it…</p>
-
-<h2>Get nServiceBus</h2>
-
-<p>First you’ll need to get the latest build which includes the new Host feature either:</p>
-
-<ul>
-<li><p>Check out the source and build it yourself from the <a href="http://subversion.tigris.org/">subversion</a> repository:       <br/>
-<a href="https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/">https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/</a>       <br/>
-OR</p></li>
-<li><p>Download a demo solution I hacked out of the nServiceBus samples (FullDuplex/RequestResponse): <a href="http://cid-d7d57b78b0ddedf5.skydrive.live.com/browse.aspx/.Public/blog/nServiceBus">nServiceBus Host Demo</a></p></li>
-</ul>
-
-
-<p>Either way take a look at the FullDuplex/RequestResponse sample project which consists of a Client, Server and Messages project:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb.png" alt="image" /></a></p>
-
-<h2>Run the sample</h2>
-
-<p><strong>Note:</strong> To get the Server to run successfully in my demo solution I had to change the app.config slightly by replacing the UnicastBusConfig setting with:</p>
-
-<p><UnicastBusConfig DistributorControlAddress="" DistributorDataAddress="">    <br/>
-<MessageEndpointMappings>     <br/>
-</MessageEndpointMappings>     <br/>
-</UnicastBusConfig></p>
-
-<p>Ok simply hit F5 to run the sample and two console windows should appear one for the Client and one for the Server:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image1.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb1.png" alt="image" /></a></p>
-
-<p>So everything is running ok our Client can send messages to the Server and receive a response. But what’s just happened?</p>
-
-<h2>Multiple startup projects</h2>
-
-<p>First the solution is set to start both the Client and the Server projects. This is set in the solution property pages you can view this setting by right clicking on the solution and selecting Set St_a_rtUp Projects…</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image2.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb2.png" alt="image" /></a></p>
-
-<p>As you can see the solution is set to start multiple projects namely the Client and the Server.</p>
-
-<p>Now the Server and Client projects are both Class Library’s so how come they are running as console apps when we F5 (debug) the solution?</p>
-
-<h2>Debug settings</h2>
-
-<p>If we take a look at the Debug settings for the Client (Right click the Client project and select P_r_operties, then Debug from the tab):</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image3.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb3.png" alt="image" /></a></p>
-
-<p>Notice the Start Action is set to Start e_x_ternal program NServiceBus.Host.exe from the Client projects debug\bin directory. When we hit F5 to debug the application visual studio runs this exe and that’s how we get the console windows.</p>
-
-<h2>Reference NServiceBus.Host.exe</h2>
-
-<p>NServiceBus.Host.exe ends up in the debug\bin because its referenced by the project for example in the Client:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image4.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb4.png" alt="image" /></a></p>
-
-<p>But how does it know where to get its configuration?</p>
-
-<h2>Configuration</h2>
-
-<p>NServiceBus.Host.exe scans its current directory for any dlls. For each dll it finds it searches for a class which implements the interface IConfigureThisEndpoint. If the search is successful the Host knows to use the app.config for this dll so in the case of the Client – Client.dll.config is used to configure nServiceBus.</p>
-
-<h2>Client</h2>
-
-<p>If we take a look at the Client project we’ll find the class EndpointConfig which implements the IConfigureThisEndpoint. This is simply a marker interface which has no actual implementation. Notice there are other interfaces used to configure the client which do require implementations:</p>
-
-<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
-As.aClient, <br/>
-ISpecify.ToUseXmlSerialization,     <br/>
-ISpecify.XmlSerializationNamespace,     <br/>
-IWantCustomInitialization,     <br/>
-ISpecify.ToRun<ClientEndpoint>     <br/>
-{     <br/>
-public string Namespace     <br/>
-{     <br/>
-get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
-}</p>
-
-<p>public void Init(Configure configure)    <br/>
-{     <br/>
-configure.RijndaelEncryptionService();     <br/>
-}     <br/>
-}</p>
-
-<p>Of particular interest, the interface used to configure the dll as a client (As.aClient) and another to specify which code to actually run (ISpecify.ToRun<ClientEndpoint>). The ClientEndPoint class contains the code which is runs when the Host starts and stops.</p>
-
-<p>Note there are lots more interfaces which can be used to specify configuration options:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image5.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb5.png" alt="image" /></a></p>
-
-<h2>Server</h2>
-
-<p>The Server project works in pretty much the same way as the Client it has an EndpointConfig class:</p>
-
-<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
-As.aServer,     <br/>
-ISpecify.ToUseXmlSerialization,</p>
-
-<p>ISpecify.XmlSerializationNamespace,     <br/>
-IWantCustomInitialization     <br/>
-{     <br/>
-public string Namespace     <br/>
-{     <br/>
-get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
-}</p>
-
-<p>public void Init(Configure configure)    <br/>
-{     <br/>
-configure.RijndaelEncryptionService();     <br/>
-}     <br/>
-}</p>
-
-<p>Here the interfaces are used to configure the dll as a server (As.aServer) and IWantCustomInitialization which allows you to specify additional configuration via the Init method. The Server project also contains the RequestDataMessageHandler class which the bus knows to use when a RequestDataMessage arrives.</p>
-
-<p>All this makes it very easy to create Client and Server applications for nServiceBus which are a doddle to debug in visual studio.</p>
-
-<p>But wait there&#8217;s more…</p>
-
-<h2>Run from console</h2>
-
-<p>You can run the Client or Server from outside Visual Studio from the command line. Open a command prompt, cd to the relevant bin folder and type:</p>
-
-<p>NServiceBus.Host.exe</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image6.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb6.png" alt="image" /></a></p>
-
-<h2>Install as a Windows Service</h2>
-
-<p>We can install the Server as a Windows Service no extra code or configuration required! Open a command prompt, cd to the relevant bin folder and type:</p>
-
-<p>NServiceBus.Host.exe /install</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image7.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb7.png" alt="image" /></a></p>
-
-<p>You’ll then be prompted to supply some authentication details for the service:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image8.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb8.png" alt="image" /></a></p>
-
-<p>Enter some relevant user details and hit ok and your service will be installed and ready to start:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image11.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb11.png" alt="image" /></a></p>
-
-<h2>Uninstall service</h2>
-
-<p>Finally you can also uninstall the service:</p>
-
-<p>NServiceBus.Host.exe /uninstall</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/08/image10.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb10.png" alt="image" /></a></p>
-
-<p><strong>Note:</strong> The service will not disappear from this Services management console until you reboot your machine, this is standard for a windows service.</p>
-
-<p>That’s as much as I have puzzled out for now, if I’ve made and glaring errors please let me know.</p>
-
-<p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f&amp;bgcolor=FF3300" alt="kick it on DotNetKicks.com" /></a></p>
 ]]></content>
   </entry>
   

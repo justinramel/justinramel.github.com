@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Sorry I just can&#8217;t live with plural table names, I just can&#8217;t get my head around it! Luckily it is easily turned off. In RadRails there &hellip;">
+  <meta name="description" content="Getting &#8216;Zombie State&#8217; errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb: ActiveRecord::Base. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2006/04/04/migrations-zombie-state-and-ms-sql/">Migrations &#8216;Zombie State&#8217; and MS SQL</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-04-04T14:28:44+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Getting &#8216;Zombie State&#8217; errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
+
+<pre><code>ActiveRecord::Base.connection.instance_variable_get("@connection")["AutoCommit"] = false
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -625,62 +666,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/03/16/installing-sap-netweaver-developer-studio/">Installing SAP Netweaver Developer studio</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-16T16:29:10+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Before installing the studio you must first install the Java SDK:</p>
-
-<p>j2sdk-1_4_2_06-windows-i586-p.exe</p>
-
-<p>Just accept the defaults.</p>
-
-<p>Now install Netweaver Depeloper studio (SP13 in my case)</p>
-
-<p>NWDS_SP13\J2EE-RUNT-CD\IDE\JDTsetup.exe</p>
-
-<p>Install all components.</p>
-
-<p>You will be asked for the location of the Java SDK which if you accepted the default should be:</p>
-
-<p>C:\j2sdk1.4.2_06</p>
-
-<p>Next enter your proxy settings, wwwcache:8080 in my case.</p>
-
-<p>Now sit back, relax and wait for the long install to finish!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -698,6 +683,10 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
       </li>
     
@@ -711,10 +700,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
     
       <li class="post">
         <a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-09-08T09:43:17+01:00</updated>
+  <updated>2012-09-17T22:10:47+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -38,7 +38,7 @@ vim
 <p>From the vim command prompt we can create a new user model in the models dir
 using the vim command <code>:n models/user.rb</code></p>
 
-<p><img src="images/vim-tip-1/new-file.png"></p>
+<p><img src="/images/vim-tip-1/new-file.png"></p>
 
 <p>Lets break this command down:</p>
 
@@ -52,11 +52,11 @@ using the vim command <code>:n models/user.rb</code></p>
 get an error <code>E212: Can't open file for writing</code>, this is because the directory
 models does not exist.</p>
 
-<p><img src="images/vim-tip-1/write-error.png"></p>
+<p><img src="/images/vim-tip-1/write-error.png"></p>
 
 <p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
 
-<p><img src="images/vim-tip-1/mkdir-command.png"></p>
+<p><img src="/images/vim-tip-1/mkdir-command.png"></p>
 
 <p>Now the directory has been created we can write the new file from vim.</p>
 
