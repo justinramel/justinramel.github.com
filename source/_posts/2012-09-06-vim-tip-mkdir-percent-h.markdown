@@ -26,7 +26,7 @@ vim
 From the vim command prompt we can create a new user model in the models dir
 using the vim command `:n models/user.rb`
 
-{% img images/vim-tip-1/new-file.png %}
+{% img /images/vim-tip-1/new-file.png %}
 
 Lets break this command down:
 
@@ -37,11 +37,11 @@ This creates the new file in a vim buffer but when we go to write this file we
 get an error `E212: Can't open file for writing`, this is because the directory
 models does not exist.
 
-{% img images/vim-tip-1/write-error.png %}
+{% img /images/vim-tip-1/write-error.png %}
 
 We can create this directory right from the vim command prompt with `!mkdir %:h`
 
-{% img images/vim-tip-1/mkdir-command.png %}
+{% img /images/vim-tip-1/mkdir-command.png %}
 
 Now the directory has been created we can write the new file from vim.
 
