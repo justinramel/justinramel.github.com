@@ -9,10 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="NOTE: You must have TortoiseSVN installed for these instructions to work! First create your Project folder structure: ProjectName
-branches
-tags
-trunk &hellip;">
+  <meta name="description" content="It is a good idea to create a library project which includes all the jar files needed for a portal project. Why?
+1. The SAP consultant told us to do &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -28,7 +26,6 @@ trunk &hellip;">
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -51,17 +48,10 @@ trunk &hellip;">
 
 <body   >
   <header role="banner"><hgroup>
-  <div id="logo">
-  	<div id="logoLeft">{</div>
-  	<div id="logoText">jr</div>
-  	<div id="logoRight">}</div>
-  	<div class="clear"></div>
-  </div>
   <h1><a href="/">just ram</a></h1>
   
     <h2>stuff I should remember</h2>
   
-  <div class="clear"></div>
 </hgroup>
 
 </header>
@@ -93,9 +83,88 @@ trunk &hellip;">
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp/">Add a new project to Subversion server in Windows XP</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/02/22/create-a-library-project-of-sap-portal-pdk-jars/">Create a library project of SAP Portal PDK JARs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-22T15:53:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It is a good idea to create a library project which includes all the jar files needed for a portal project.  Why?
+1. The SAP consultant told us to do it this way
+2. It means on each new project you just need to include the library project and we are good to go.</p>
+
+<p>So this is what we need to do:</p>
+
+<p><strong>Step 1: Get the portal PDK JAR files</strong>
+These JAR files can de downloaded from the portal, they live under the following portal menu:</p>
+
+<p>(Top Menu) Java Development -> (Left Sub Menu) Tools -> PDK Jars Download</p>
+
+<p>Download the zip file and extract the JAR files to a folder on your PC for example c:\source\sap\devlibs</p>
+
+<p><strong>Step 2: Create the library project</strong>
+In SAP Netweaver Developer Studio create a new project:</p>
+
+<p>File -> New -> Project&#8230;</p>
+
+<p>You will now see a wizard dialog:</p>
+
+<p>Select Java -> Java Project</p>
+
+<p>Click Next</p>
+
+<p>Give the project a name DevLibs for example and specify a folder to save the project to.</p>
+
+<p>You should now have a blank project to work with.</p>
+
+<p><strong>Step 3: Import the SAP Portal PDK JAR files</strong>
+Right click your mouse on the new blank project you just created (in this case DevLibs) select Properties from the context menu.</p>
+
+<p>You will now see the DevLibs properties dialog:
+<a href="http://photos1.blogger.com/blogger/752/2322/1600/devlibs.0.jpg"><img src="http://photos1.blogger.com/blogger/752/2322/320/devlibs.0.jpg" alt="" /></a>
+Select Java Build Path from the left pane.</p>
+
+<p>Select &#8220;Libaries&#8221; from the Tab.</p>
+
+<p>Click the &#8220;Add External JARs&#8221; button.</p>
+
+<p>The file open dialog will now appear, select the downloaded JAR files from Step 1.</p>
+
+<p>Click the &#8220;Order and Export&#8221; tab, click the &#8220;Select all&#8221; button.</p>
+
+<p>Finally click the &#8220;OK&#8221; button.</p>
+
+<p>You now have a library project which can be included in new portal projects!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
       
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp/">Add a new project to Subversion server in Windows XP</a></h1>
     
     
       <p class="meta">
@@ -150,9 +219,7 @@ Enter the repository/ProjectName an import message and click OK.</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/22/sap-portal-http-or-https/">SAP Portal HTTP or HTTPS?</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/22/sap-portal-http-or-https/">SAP Portal HTTP or HTTPS?</a></h1>
     
     
       <p class="meta">
@@ -205,9 +272,7 @@ else
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/21/installing-subversion-server-on-windows/">Installing subversion server on windows</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/21/installing-subversion-server-on-windows/">Installing subversion server on windows</a></h1>
     
     
       <p class="meta">
@@ -261,9 +326,7 @@ else
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/21/my-first-post/">My first post</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/21/my-first-post/">My first post</a></h1>
     
     
       <p class="meta">
@@ -309,6 +372,10 @@ else
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
@@ -322,10 +389,6 @@ else
     
       <li class="post">
         <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a>
       </li>
     
   </ul>

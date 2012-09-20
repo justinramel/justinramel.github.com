@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-09-17T22:10:47+01:00</updated>
+  <updated>2012-09-20T23:11:24+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -14,11 +14,157 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
+    <link href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/"/>
+    <updated>2012-09-20T18:43:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+<li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+</ol>
+
+
+<h2>Plugins</h2>
+
+<p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
+Thankfully Jenkins makes is very easy to find and install plugins. On the main
+Jenkins menu click the &#8216;Manage Jenkins&#8217; link.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the &#8216;Manage Plugins&#8217; link.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
+
+<p>You will now see a list of the currently installed plugins. Click the
+Available tab to see a list of all the Jenkins plugins, which are available to
+install.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
+
+<p>As you can see Jenkins has a massive number of plugins. I encourage you to
+look through and play with the plugins they are really useful and the list is
+growing by the day.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
+
+<h2>Required Plugins</h2>
+
+<p>Without these required Plugins you will not be able to build and test .NET
+solutions. So you must at least install these Plugins for the rest of this
+guide to work.</p>
+
+<h3>Build Plugins</h3>
+
+<p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
+solution.</p>
+
+<ul>
+<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+projects.</em></li>
+</ul>
+
+
+<h3>Testing Plugins</h3>
+
+<p>You&#8217;ll need one of these depending on your chosen test framework.</p>
+
+<ul>
+<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+XML reports so it can be integrated with Jenkins JUnit features.</em></li>
+<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+of an execution of a testing tool in Jenkins.</em></li>
+<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+test results.</em></li>
+</ul>
+
+
+<p>Tick the check box next to each of the required Plugins and then click the
+&#8216;Download now and install after restart&#8217; button.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
+
+<h3>Optional Plugins</h3>
+
+<p>These Plugins are optional but still recommend ranging from genuine
+productivity tools to just plain fun.</p>
+
+<h3>Jenkins Enhancements</h3>
+
+<ul>
+<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn&#8217;t want Green Balls!</strong></em></li>
+<li><strong>Copy project link plugin</strong> - <em>This plugin adds the &#8220;Copy project&#8221; link into
+left side panel in the main project page.</em></li>
+<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+a highly visible manner. This is ideal for displaying on a screen on the
+office wall as a form of Extreme Feedback Device.</em></li>
+</ul>
+
+
+<h3>Authentication</h3>
+
+<ul>
+<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+authenticates the username and the password through Active Directory.</em></li>
+</ul>
+
+
+<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+guessing most of you already login via Active Directory so this Plugin saves
+you having to remember yet another password.</p></blockquote>
+
+<h3>Code Analysis</h3>
+
+<ul>
+<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+tasks and generates a trend report.</em></li>
+<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+warnings in the console log or in log files.</em></li>
+</ul>
+
+
+<h3>Build Tools</h3>
+
+<ul>
+<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+build step.</em></li>
+<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+</ul>
+
+
+<h3>Fun, Fun, Fun</h3>
+
+<ul>
+<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris &#8216;The Programmer&#8217; fact on each
+build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
+<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+where users get points on improving the builds. Although this is indeed a fun
+plugin it can help when first introducing Jenkins to your team, a little
+healthy competition never did anyone any harm.</em></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Jenkins.NET]]></title>
     <link href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/"/>
     <updated>2012-09-17T21:58:00+01:00</updated>
     <id>http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net</id>
-    <content type="html"><![CDATA[<h2>Introduction</h2>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+<li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+</ol>
+
+
+<h2>Introduction</h2>
 
 <p>This is the first in a series of posts which I’ll be writing on using Jenkins
 to build .NET solutions. These posts will be as detailed as possible, probably
@@ -902,30 +1048,6 @@ The contact method now has a date parameter added.</p>
 <p><strong>rap</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>A</strong>dd <strong>P</strong>arameter.</p>
 
 <p>The default <strong><leader-key></strong> in vim is the ‘\’ key but you can remap this to any key you like.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Using vim to write ruby code? Check out this excellent refactoring plugin]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-series/"/>
-    <updated>2010-12-30T15:33:32+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-series</id>
-    <content type="html"><![CDATA[<p>I’ve written a series of posts documenting the excellent <a href="http://www.vim.org/">vim</a> plugin <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a>. As you may have guessed from the name, its a <a href="http://www.ruby-lang.org/">Ruby</a> refactoring plugin for <a href="http://www.vim.org/">vim</a>.</p>
-
-<ol>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-add-parameter-2/">Add Parameter</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-inline-temp/">Inline Temp</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">Convert Post Conditional</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-constant/">Extract Constant</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-to-let/">Extract to Let</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/">Extract Local Variable</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/">Rename Local Variable</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">Rename Instance Variable</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-method/">Extract Method</a></p></li>
-</ol>
-
-
-<p><strong>IMPORTANT:</strong> When installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, make sure you also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin otherwise some of these refactoring&#8217;s will not work.</p>
 ]]></content>
   </entry>
   

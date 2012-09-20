@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Before installing the studio you must first install the Java SDK: j2sdk-1_4_2_06-windows-i586-p.exe Just accept the defaults. Now install Netweaver &hellip;">
+  <meta name="description" content="First download the correct version of Subclipse: Download the Eclipse 2.x version Extract the zip file and copy the two folders: org.tigris. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,7 +25,6 @@
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -48,17 +47,10 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <div id="logo">
-  	<div id="logoLeft">{</div>
-  	<div id="logoText">jr</div>
-  	<div id="logoRight">}</div>
-  	<div class="clear"></div>
-  </div>
   <h1><a href="/">just ram</a></h1>
   
     <h2>stuff I should remember</h2>
   
-  <div class="clear"></div>
 </hgroup>
 
 </header>
@@ -90,9 +82,76 @@
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/03/16/installing-sap-netweaver-developer-studio/">Installing SAP Netweaver Developer studio</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/03/20/installing-subclipse-for-sap-netweaver-developer-studio-2013/">Installing Subclipse for SAP NetWeaver Developer Studio 2.0.13</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-03-20T12:30:50+00:00" pubdate data-updated="true">Mar 20<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>First download the correct version of Subclipse:</p>
+
+<p><a href="http://subclipse.tigris.org/files/documents/906/22688/org.tigris.subversion.subclipse_0.9.3.3.zip">Download the Eclipse 2.x version</a></p>
+
+<p>Extract the zip file and copy the two folders:</p>
+
+<pre><code>org.tigris.subversion.subclipse.core_0.9.3.3
+org.tigris.subversion.subclipse.ui_0.9.3.3
+</code></pre>
+
+<p>To your plugins folder, in my case:</p>
+
+<pre><code>C:\\Program Files\\SAP\\JDT\\eclipse\\plugins
+</code></pre>
+
+<p>Fire up the developer studio and you should now have the subversion perspective available.</p>
+
+<p>Menu: Window => Open Perspective => Other…</p>
+
+<p>Select SVN Repository Exploring from the dialog.</p>
+
+<p>Right click on the SVN Repository windows to add a new repository:</p>
+
+<p>Menu: New => Repository Location…</p>
+
+<p>You will now see the following dialog:</p>
+
+<p><img src="http://justinram.files.wordpress.com/2006/03/repository.jpg" alt="New Repository Dialog" /></p>
+
+<p>Simply enter your subversion server address and user/password if required.</p>
+
+<p>You should now see your source code, right click on the Trunk folder of a project and select Check Out as Project.</p>
+
+<p>Cogs will start turning and when finished you will have a shiny new project to play with.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
       
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/03/16/installing-sap-netweaver-developer-studio/">Installing SAP Netweaver Developer studio</a></h1>
     
     
       <p class="meta">
@@ -146,9 +205,7 @@
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/03/01/18/">SAP Portal Developer Guide</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/03/01/18/">SAP Portal Developer Guide</a></h1>
     
     
       <p class="meta">
@@ -186,9 +243,7 @@
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/28/my-first-wordpress-post/">My first wordpress post</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/28/my-first-wordpress-post/">My first wordpress post</a></h1>
     
     
       <p class="meta">
@@ -224,9 +279,7 @@
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/28/functionally-testing-sap-enterprise-portal-using-watir/">Functionally testing SAP Enterprise Portal using Watir</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/28/functionally-testing-sap-enterprise-portal-using-watir/">Functionally testing SAP Enterprise Portal using Watir</a></h1>
     
     
       <p class="meta">
@@ -302,9 +355,7 @@ end&lt;/code&gt;
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/27/searching-google-for-watir-help/">Searching Google for Watir help</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/27/searching-google-for-watir-help/">Searching Google for Watir help</a></h1>
     
     
       <p class="meta">
@@ -345,9 +396,7 @@ end&lt;/code&gt;
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/27/installing-watir-via-the-gem-utility/">Installing Watir via the gem utility</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/27/installing-watir-via-the-gem-utility/">Installing Watir via the gem utility</a></h1>
     
     
       <p class="meta">
@@ -402,9 +451,7 @@ end&lt;/code&gt;
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/27/watir-testing-your-website/">Watir - Testing your website</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/27/watir-testing-your-website/">Watir - Testing your website</a></h1>
     
     
       <p class="meta">
@@ -460,9 +507,7 @@ automating browser-based tests of web applications. It is pronounced water.”</
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/23/removing-par-files-from-the-sap-portal/">Removing PAR files from the SAP Portal</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/23/removing-par-files-from-the-sap-portal/">Removing PAR files from the SAP Portal</a></h1>
     
     
       <p class="meta">
@@ -513,9 +558,7 @@ INFO: MyApp has been successfully removed from the PCD.</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/23/sap-portal-par-locations/">SAP Portal PAR locations</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2006/02/23/sap-portal-par-locations/">SAP Portal PAR locations</a></h1>
     
     
       <p class="meta">
@@ -558,89 +601,6 @@ INFO: MyApp has been successfully removed from the PCD.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2006/02/22/create-a-library-project-of-sap-portal-pdk-jars/">Create a library project of SAP Portal PDK JARs</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-02-22T15:53:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It is a good idea to create a library project which includes all the jar files needed for a portal project.  Why?
-1. The SAP consultant told us to do it this way
-2. It means on each new project you just need to include the library project and we are good to go.</p>
-
-<p>So this is what we need to do:</p>
-
-<p><strong>Step 1: Get the portal PDK JAR files</strong>
-These JAR files can de downloaded from the portal, they live under the following portal menu:</p>
-
-<p>(Top Menu) Java Development -> (Left Sub Menu) Tools -> PDK Jars Download</p>
-
-<p>Download the zip file and extract the JAR files to a folder on your PC for example c:\source\sap\devlibs</p>
-
-<p><strong>Step 2: Create the library project</strong>
-In SAP Netweaver Developer Studio create a new project:</p>
-
-<p>File -> New -> Project&#8230;</p>
-
-<p>You will now see a wizard dialog:</p>
-
-<p>Select Java -> Java Project</p>
-
-<p>Click Next</p>
-
-<p>Give the project a name DevLibs for example and specify a folder to save the project to.</p>
-
-<p>You should now have a blank project to work with.</p>
-
-<p><strong>Step 3: Import the SAP Portal PDK JAR files</strong>
-Right click your mouse on the new blank project you just created (in this case DevLibs) select Properties from the context menu.</p>
-
-<p>You will now see the DevLibs properties dialog:
-<a href="http://photos1.blogger.com/blogger/752/2322/1600/devlibs.0.jpg"><img src="http://photos1.blogger.com/blogger/752/2322/320/devlibs.0.jpg" alt="" /></a>
-Select Java Build Path from the left pane.</p>
-
-<p>Select &#8220;Libaries&#8221; from the Tab.</p>
-
-<p>Click the &#8220;Add External JARs&#8221; button.</p>
-
-<p>The file open dialog will now appear, select the downloaded JAR files from Step 1.</p>
-
-<p>Click the &#8220;Order and Export&#8221; tab, click the &#8220;Select all&#8221; button.</p>
-
-<p>Finally click the &#8220;OK&#8221; button.</p>
-
-<p>You now have a library project which can be included in new portal projects!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -658,6 +618,10 @@ Select Java Build Path from the left pane.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
@@ -671,10 +635,6 @@ Select Java Build Path from the left pane.</p>
     
       <li class="post">
         <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a>
       </li>
     
   </ul>

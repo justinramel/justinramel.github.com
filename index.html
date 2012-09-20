@@ -9,8 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Introduction This is the first in a series of posts which I’ll be writing on using Jenkins
-to build .NET solutions. These posts will be as detailed &hellip;">
+  <meta name="description" content="This post is part of a series: Jenkins.NET
+Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a few plugins to Jenkins. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,7 +26,6 @@ to build .NET solutions. These posts will be as detailed &hellip;">
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -49,17 +48,10 @@ to build .NET solutions. These posts will be as detailed &hellip;">
 
 <body   >
   <header role="banner"><hgroup>
-  <div id="logo">
-  	<div id="logoLeft">{</div>
-  	<div id="logoText">jr</div>
-  	<div id="logoRight">}</div>
-  	<div class="clear"></div>
-  </div>
   <h1><a href="/">just ram</a></h1>
   
     <h2>stuff I should remember</h2>
   
-  <div class="clear"></div>
 </hgroup>
 
 </header>
@@ -91,9 +83,172 @@ to build .NET solutions. These posts will be as detailed &hellip;">
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-20T18:43:00+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+<li><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+</ol>
+
+
+<h2>Plugins</h2>
+
+<p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
+Thankfully Jenkins makes is very easy to find and install plugins. On the main
+Jenkins menu click the &#8216;Manage Jenkins&#8217; link.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the &#8216;Manage Plugins&#8217; link.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
+
+<p>You will now see a list of the currently installed plugins. Click the
+Available tab to see a list of all the Jenkins plugins, which are available to
+install.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
+
+<p>As you can see Jenkins has a massive number of plugins. I encourage you to
+look through and play with the plugins they are really useful and the list is
+growing by the day.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
+
+<h2>Required Plugins</h2>
+
+<p>Without these required Plugins you will not be able to build and test .NET
+solutions. So you must at least install these Plugins for the rest of this
+guide to work.</p>
+
+<h3>Build Plugins</h3>
+
+<p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
+solution.</p>
+
+<ul>
+<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+projects.</em></li>
+</ul>
+
+
+<h3>Testing Plugins</h3>
+
+<p>You&#8217;ll need one of these depending on your chosen test framework.</p>
+
+<ul>
+<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+XML reports so it can be integrated with Jenkins JUnit features.</em></li>
+<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+of an execution of a testing tool in Jenkins.</em></li>
+<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+test results.</em></li>
+</ul>
+
+
+<p>Tick the check box next to each of the required Plugins and then click the
+&#8216;Download now and install after restart&#8217; button.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
+
+<h3>Optional Plugins</h3>
+
+<p>These Plugins are optional but still recommend ranging from genuine
+productivity tools to just plain fun.</p>
+
+<h3>Jenkins Enhancements</h3>
+
+<ul>
+<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn&#8217;t want Green Balls!</strong></em></li>
+<li><strong>Copy project link plugin</strong> - <em>This plugin adds the &#8220;Copy project&#8221; link into
+left side panel in the main project page.</em></li>
+<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+a highly visible manner. This is ideal for displaying on a screen on the
+office wall as a form of Extreme Feedback Device.</em></li>
+</ul>
+
+
+<h3>Authentication</h3>
+
+<ul>
+<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+authenticates the username and the password through Active Directory.</em></li>
+</ul>
+
+
+<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+guessing most of you already login via Active Directory so this Plugin saves
+you having to remember yet another password.</p></blockquote>
+
+<h3>Code Analysis</h3>
+
+<ul>
+<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+tasks and generates a trend report.</em></li>
+<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+warnings in the console log or in log files.</em></li>
+</ul>
+
+
+<h3>Build Tools</h3>
+
+<ul>
+<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+build step.</em></li>
+<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+</ul>
+
+
+<h3>Fun, Fun, Fun</h3>
+
+<ul>
+<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris &#8216;The Programmer&#8217; fact on each
+build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
+<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+where users get points on improving the builds. Although this is indeed a fun
+plugin it can help when first introducing Jenkins to your team, a little
+healthy competition never did anyone any harm.</em></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
       
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></h1>
     
     
       <p class="meta">
@@ -116,7 +271,15 @@ to build .NET solutions. These posts will be as detailed &hellip;">
   </header>
 
 
-  <div class="entry-content"><h2>Introduction</h2>
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+<li><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+</ol>
+
+
+<h2>Introduction</h2>
 
 <p>This is the first in a series of posts which I’ll be writing on using Jenkins
 to build .NET solutions. These posts will be as detailed as possible, probably
@@ -239,9 +402,7 @@ message upon completion. Click the Finish button.</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a></h1>
     
     
       <p class="meta">
@@ -386,9 +547,7 @@ use this switch the command will fail.</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a></h1>
     
     
       <p class="meta">
@@ -469,9 +628,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
     
     
       <p class="meta">
@@ -595,9 +752,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a></h1>
     
     
       <p class="meta">
@@ -643,9 +798,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a></h1>
     
     
       <p class="meta">
@@ -714,9 +867,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a></h1>
     
     
       <p class="meta">
@@ -780,9 +931,7 @@ ruby:
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
     
     
       <p class="meta">
@@ -841,9 +990,7 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
       
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2011/07/12/setup-git-repo/">SETUP GIT REPO</a></h1>
-      
+      <h1 class="entry-title"><a href="/blog/2011/07/12/setup-git-repo/">SETUP GIT REPO</a></h1>
     
     
       <p class="meta">
@@ -902,102 +1049,6 @@ git clone git@yourserver.com:myrepo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2011/01/11/rails-new-app-workflow/">Rails new app workflow</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-11T14:58:47+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
-
-<h4>Create app</h4>
-
-<p>rails new <app_name></p>
-
-<p>cd <app_name></p>
-
-<h4>git</h4>
-
-<p>git init</p>
-
-<p>git add .</p>
-
-<p>git commit –m &#8216;Initial commit&#8217;</p>
-
-<p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
-
-<h4>rvm and gemsets</h4>
-
-<p>rvm gemset create <app_name></p>
-
-<p>echo &#8216;rvm use 1.9.2@<app_name>&#8217; >> .rvmrc</p>
-
-<p>echo &#8216;.rvmrc&#8217; >> .gitignore</p>
-
-<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created.</p>
-
-<p>Change in and out of the directory to get rvm to kick in:</p>
-
-<p>cd ..</p>
-
-<p>cd <app_name></p>
-
-<h4>Gemfile</h4>
-
-<p>Edit ./Gemfile and add the following lines.</p>
-
-<p>gem &#8216;haml&#8217;</p>
-
-<p>group :test do</p>
-
-<p>gem &#8216;rspec&#8217;</p>
-
-<p>gem &#8216;rspec-rails&#8217;</p>
-
-<p>end</p>
-
-<p>Then install and run bundler:</p>
-
-<p>gem install bundler</p>
-
-<p>bundle install</p>
-
-<h4>rspec</h4>
-
-<p>Generate the rspec files:</p>
-
-<p>rails g rspec:install</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1013,6 +1064,10 @@ git clone git@yourserver.com:myrepo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
@@ -1026,10 +1081,6 @@ git clone git@yourserver.com:myrepo
     
       <li class="post">
         <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a>
       </li>
     
   </ul>
