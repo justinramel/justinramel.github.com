@@ -3,8 +3,10 @@ layout: post
 title: "Jenkins.NET"
 date: 2012-09-17 21:58
 comments: true
-categories: jenkins .NET
+categories: jenkins .net
 ---
+{% render_partial _partials/jenkins.markdown %}
+
 ## Introduction
 
 This is the first in a series of posts which I’ll be writing on using Jenkins
