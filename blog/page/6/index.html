@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’ve read quite a bit about Continuous Integration and the .Net implementation CruiseControl.Net. It always seemed like a really good idea but I’ve &hellip;">
+  <meta name="description" content="It’s always a good idea to have your test database match your production database exactly, we can do that easily using: ActiveRecordStarter. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/07/27/monorail-active-record-testing-createschemafromfile/">Castle Monorail + Active Record + Testing + CreateSchemaFromFile</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-07-27T10:21:34+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It’s always a good idea to have your test database match your production database exactly, we can do that easily using:</p>
+
+<p><code>ActiveRecordStarter.CreateSchemaFromFile()</code></p>
+
+<p>Unlike CreateSchema which makes a best guess at how your schema should be CreateSchemaFromFile takes an SQL script which allows you to fully control the database schema.</p>
+
+<p>Call CreateSchemaFromFile as part of your PrepareSchema method in your AbstractTestCase class.</p>
+
+<p><code>protected virtual void PrepareSchema()
+{
+ActiveRecordStarter.DropSchema();
+ActiveRecordStarter.CreateSchemaFromFile("schema.sql");
+}</code></p>
+
+<p>Your schema.sql file should contain scripts in the standard MS SQL format:</p>
+
+<p>`if exists (select * from dbo.sysobjects where id = object_id(N&#8217;[dbo].[Application_Status]&#8217;) and OBJECTPROPERTY(id, N&#8217;IsUserTable&#8217;) = 1)
+drop table [dbo].[Application_Status]
+GO&#8220;
+CREATE TABLE [dbo].[Application_Status] (</p>
+
+<pre><code>[ID] [int] NOT NULL ,
+[Title] [varchar] (50) NOT NULL ,
+[Description] [text] NULL
+</code></pre>
+
+<p>) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+`</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -701,51 +765,6 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/">Windows SubVersion / TortoiseSVN - Compare two versions of a file</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-04-26T14:47:52+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Today I needed to compare two different versions of a source file.  One in the main trunk folder and the other in a previously tagged version folder. This is easily done in TortoiseSVN, snippet from the TortoiseSVN manual:</p>
-
-<blockquote><p><strong>Compare two revisions of a file</strong>
-If you want to compare two revisions in a file&#8217;s history, for example revisions 100 and 200 of the same file, just use TortoiseSVN => Show Log to list the revision history for that file. Pick the two revisions you want to compare then use Context Menu => Compare Revisions.</p></blockquote>
-
-<p>If you want to compare the same file in two different trees, for example the trunk and a branch, you can use the repository browser to open up both trees, select the file in both places, then use Context Menu => Compare Revisions.</p>
-
-<p>If you want to compare two trees to see what has changed, for example the trunk and a tagged release, you can use TortoiseSVN => Revision Graph Select the two nodes to compare, then use Context Menu => Compare HEAD Revisions. This will show a list of changed files, and you can then select individual files to view the changes in detail. Alternatively use Context Menu => Unified Diff of HEAD Revisions to see a summary of all differences, with minimal context.</p>
-
-<p>The process of comparing two trees is really nicely done, you get a list of all the files which have been changed between the two trees. You can then drill into this list and see the changes made to individual files. Kewl!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -763,6 +782,10 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
@@ -776,10 +799,6 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
     
       <li class="post">
         <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
       </li>
     
   </ul>

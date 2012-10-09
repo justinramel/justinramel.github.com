@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .net | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/-net/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-09T20:09:37+01:00</updated>
+  <updated>2012-10-09T21:14:53+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
+    <link href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/"/>
+    <updated>2012-10-09T20:35:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
+2. [Jenkins.NET Plugins](/blog/2012/09/20/jenkins-dot-net-plugins/)
+2. [Setup Jenkins.NET](/blog/2012/10/09/setup-jenkins-dot-net/)
+</p>
+
+<p>There are some important settings, that we need to configure before we get
+started building our first project.</p>
+
+<h2>Manage</h2>
+
+<p>On the main Jenkins menu, click the 'Manage Jenkins' link.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the 'Configure System' link to
+get to the main configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
+
+<h2>MSBuild</h2>
+
+<p>We need to setup MSBuild to carry out the compilation and build of your .NET
+solutions. We can use any version of MSBuild you have installed on the Jenkins
+machine. As Windows 7 comes with version 3.5 of the .NET Framework pre
+installed I’ll demo that version here but obviously you can download, install
+and use any version of the .NET Framework.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
+
+<p>Click the 'Add MSBuild' button.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
+
+<p>Set the name and path to MSBuild:</p>
+
+<ol>
+<li>Name: v3.5</li>
+<li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+<li>Click the 'Save' button</li>
+</ol>
+
+
+<p>In my next post we'll actually get to setup our first job!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
@@ -22,6 +75,7 @@
 
 1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
 2. [Jenkins.NET Plugins](/blog/2012/09/20/jenkins-dot-net-plugins/)
+2. [Setup Jenkins.NET](/blog/2012/10/09/setup-jenkins-dot-net/)
 </p>
 
 <h2>Plugins</h2>
@@ -158,6 +212,7 @@ healthy competition never did anyone any harm.</em></li>
 
 1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
 2. [Jenkins.NET Plugins](/blog/2012/09/20/jenkins-dot-net-plugins/)
+2. [Setup Jenkins.NET](/blog/2012/10/09/setup-jenkins-dot-net/)
 </p>
 
 <h2>Introduction</h2>

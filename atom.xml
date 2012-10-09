@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-09T20:09:37+01:00</updated>
+  <updated>2012-10-09T21:14:53+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
+    <link href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/"/>
+    <updated>2012-10-09T20:35:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+<li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+</ol>
+
+
+<p>There are some important settings, that we need to configure before we get
+started building our first project.</p>
+
+<h2>Manage</h2>
+
+<p>On the main Jenkins menu, click the &#8216;Manage Jenkins&#8217; link.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the &#8216;Configure System&#8217; link to
+get to the main configuration page.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
+
+<h2>MSBuild</h2>
+
+<p>We need to setup MSBuild to carry out the compilation and build of your .NET
+solutions. We can use any version of MSBuild you have installed on the Jenkins
+machine. As Windows 7 comes with version 3.5 of the .NET Framework pre
+installed I’ll demo that version here but obviously you can download, install
+and use any version of the .NET Framework.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
+
+<p>Click the &#8216;Add MSBuild&#8217; button.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
+
+<p>Set the name and path to MSBuild:</p>
+
+<ol>
+<li>Name: v3.5</li>
+<li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+<li>Click the &#8216;Save&#8217; button</li>
+</ol>
+
+
+<p>In my next post we&#8217;ll actually get to setup our first job!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
@@ -23,6 +78,7 @@
 <ol>
 <li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
 </ol>
 
 
@@ -161,6 +217,7 @@ healthy competition never did anyone any harm.</em></li>
 <ol>
 <li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
 </ol>
 
 
@@ -1016,38 +1073,6 @@ Hit your <strong><leader-key></strong> then type <strong>rit      <br/>
 The temp variable base_price has been replace with a direct call to the method and we’ve saved a line of code.</p>
 
 <p><strong>rit</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>I</strong>nline <strong>T</strong>emp.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Add Parameter]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-add-parameter-2/"/>
-    <updated>2010-12-30T17:10:35+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-add-parameter-2</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Add Parameter</h4>
-
-<p>Simply adds a parameter (or many separated with commas) to a method.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/addParameter.html">http://www.refactoring.com/catalog/addParameter.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:<a href="http://justinram.files.wordpress.com/2010/12/addparameter_before.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_before_thumb.png" alt="AddParameter_Before" /></a>     <br/>
-Move your cursor onto the method where you wish to add the parameter     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rap      <br/>
-</strong>You will now see a prompt to enter the parameter name:     <br/>
-Parameter name: <strong>date</strong></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/addparameter_after.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_after_thumb.png" alt="AddParameter_After" /></a>     <br/>
-The contact method now has a date parameter added.</p>
-
-<p><strong>rap</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>A</strong>dd <strong>P</strong>arameter.</p>
-
-<p>The default <strong><leader-key></strong> in vim is the ‘\’ key but you can remap this to any key you like.</p>
 ]]></content>
   </entry>
   

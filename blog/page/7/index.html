@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="NOTE: These instructions are now seriously out of date. You may want to check out my always up to date ebook instead. The secret of connecting Rails &hellip;">
+  <meta name="description" content="Today I needed to compare two different versions of a source file. One in the main trunk folder and the other in a previously tagged version folder. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/">Windows SubVersion / TortoiseSVN - Compare two versions of a file</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-04-26T14:47:52+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today I needed to compare two different versions of a source file.  One in the main trunk folder and the other in a previously tagged version folder. This is easily done in TortoiseSVN, snippet from the TortoiseSVN manual:</p>
+
+<blockquote><p><strong>Compare two revisions of a file</strong>
+If you want to compare two revisions in a file&#8217;s history, for example revisions 100 and 200 of the same file, just use TortoiseSVN => Show Log to list the revision history for that file. Pick the two revisions you want to compare then use Context Menu => Compare Revisions.</p></blockquote>
+
+<p>If you want to compare the same file in two different trees, for example the trunk and a branch, you can use the repository browser to open up both trees, select the file in both places, then use Context Menu => Compare Revisions.</p>
+
+<p>If you want to compare two trees to see what has changed, for example the trunk and a tagged release, you can use TortoiseSVN => Revision Graph Select the two nodes to compare, then use Context Menu => Compare HEAD Revisions. This will show a list of changed files, and you can then select individual files to view the changes in detail. Alternatively use Context Menu => Unified Diff of HEAD Revisions to see a summary of all differences, with minimal context.</p>
+
+<p>The process of comparing two trees is really nicely done, you get a list of all the files which have been changed between the two trees. You can then drill into this list and see the changes made to individual files. Kewl!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,58 +626,6 @@ c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/03/22/how-do-i-find-the-url-of-my-sap-portal-component/">How do I find the url of my SAP Portal Component?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-22T14:49:29+00:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Try this…</p>
-
-<p>In SAP Netweaver Developer Studio</p>
-
-<p>Open your project</p>
-
-<p>Open the file:</p>
-
-<pre><code>MyPortalProject
-    dist
-        PORTAL-INF
-            Portalapp.xml
-</code></pre>
-
-<p>You should now see a “Run…” button for each portal component in your project</p>
-
-<p>Click the “Run…” button and the dev studio will open up a new browser window with the url to your component.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -650,6 +643,10 @@ c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
@@ -663,10 +660,6 @@ c
     
       <li class="post">
         <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’ve written a series of posts documenting the excellent vim plugin vim-ruby-refactoring. As you may have guessed from the name, its a Ruby &hellip;">
+  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Add Parameter Simply adds a parameter (or many separated with commas) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/12/30/vim-ruby-refactoring-add-parameter-2/">vim-ruby-refactoring - Add Parameter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-30T17:10:35+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4>Add Parameter</h4>
+
+<p>Simply adds a parameter (or many separated with commas) to a method.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/addParameter.html">http://www.refactoring.com/catalog/addParameter.html</a></p>
+
+<h4>Example</h4>
+
+<p>Before refactoring:<a href="http://justinram.files.wordpress.com/2010/12/addparameter_before.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_before_thumb.png" alt="AddParameter_Before" /></a>     <br/>
+Move your cursor onto the method where you wish to add the parameter     <br/>
+Hit your <strong><leader-key></strong> then type <strong>rap      <br/>
+</strong>You will now see a prompt to enter the parameter name:     <br/>
+Parameter name: <strong>date</strong></p>
+
+<p>After refactoring:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2010/12/addparameter_after.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_after_thumb.png" alt="AddParameter_After" /></a>     <br/>
+The contact method now has a date parameter added.</p>
+
+<p><strong>rap</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>A</strong>dd <strong>P</strong>arameter.</p>
+
+<p>The default <strong><leader-key></strong> in vim is the ‘\’ key but you can remap this to any key you like.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -952,97 +1011,6 @@ In the example above: tools svn://server/tools/trunk       <br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/04/30/developwithpassionbdd-notes/">developwithpassion.bdd - notes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-30T19:29:37+01:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A few notes I’ve compiled while starting to play with <a href="http://blog.jpboodhoo.com/">JP Boodhoo&#8217;s</a> BDD framework (<a href="http://github.com/developwithpassion">http://github.com/developwithpassion</a>). At first sight the syntax looks quite alien but try it for a while you eyes soon adjust.</p>
-
-<h2>JP blog posts</h2>
-
-<ul>
-<li><p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart1.aspx">How I’m Currently Writing My BDD Style Tests – Part 1</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart2.aspx">How I’m Currently Writing My BDD Style Tests – Part 2</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/TestExamplesWithMBUnitAndJpboodhoobdd.aspx">Test examples with MBUnit and jpboodhoo.bdd</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/SlightAdditionToJpboodhoobdd.aspx">Slight addition to jpboodhoo.bdd</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/UsingJpboodhoobddWithTestDrivenNet.aspx">Using jpboodhoo.bdd with TestDriven.Net</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/MoreNewConventionsForHowIOrganizeMyTests.aspx">More new conventions for how I organize my tests!!</a></p></li>
-</ul>
-
-
-<h2>Base classes</h2>
-
-<ul>
-<li><p>observations_for_a_static_sut – For testing a static class or a quick inline test</p></li>
-<li><p>observations_for_a_sut_with_a_contract – For testing against the interface of a class</p>
-
-<ul>
-<li><p>sut is automatically created</p></li>
-<li><p>No more broken test when you add a new dependency to a class! YAY</p></li>
-<li><p>Automatic creation of sut can be over ridden</p></li>
-</ul>
-</li>
-<li><p>observations_for_a_sut_without_a_contract – For testing against a concrete class</p></li>
-</ul>
-
-
-<h2>Delegate call order</h2>
-
-<ul>
-<li><p>context</p>
-
-<ul>
-<li><p>Can define a context block in the concerns base class which will be run before a context block in the inheriting class</p></li>
-<li><p>Can call method provide_a_basic_sut_constructor_argument</p></li>
-</ul>
-</li>
-<li><p>after_sut_has_been_initialized</p></li>
-<li><p>because</p></li>
-<li><p>it</p></li>
-<li><p>after_each_observation</p></li>
-</ul>
-
-
-<h2>Exceptions</h2>
-
-<p>When you want to <strike>test</strike> spec? for an exception use the doing method:</p>
-
-<blockquote><p>because b = () =>      <br/>
-doing(() => sut.MethodWhichThrows());</p>
-
-<p>it should_throw_exception = () =>     <br/>
-exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);</p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1060,6 +1028,10 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
@@ -1073,10 +1045,6 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
     
       <li class="post">
         <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
       </li>
     
   </ul>
