@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: MonoRail | just ram]]></title>
+  <link href="http://justinramel.github.com/blog/categories/monorail/atom.xml" rel="self"/>
+  <link href="http://justinramel.github.com/"/>
+  <updated>2012-09-20T23:11:24+01:00</updated>
+  <id>http://justinramel.github.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MonoRail custom rescue controller (IRescueController)]]></title>
+    <link href="http://justinramel.github.com/blog/2009/01/09/monorail-custom-rescue-controller-irescuecontroller/"/>
+    <updated>2009-01-09T14:28:01+00:00</updated>
+    <id>http://justinramel.github.com/blog/2009/01/09/monorail-custom-rescue-controller-irescuecontroller</id>
+    <content type="html"><![CDATA[<h5>The problem</h5>
+
+<p>I am calling a web service from a controller and the web service throws a WebException with different exception messages, one when the remote server is unavailable and another when the remote server times out. I’d like to show a rescue view based on the exception type <strong>and</strong> message not just it’s type.</p>
+
+<p>The standard Monorail Rescue attribute only takes an exception type so there didn’t seem to be an easy way to solve my problem. I could have a generic rescue view which shows an error for all WebExceptions but I’d like to be a bit more specific. I could send all WebExceptions to the same rescue view and then handle the different messages in the view but I didn’t want the logic in my rescue view.</p>
+
+<p>I noticed in the trunk (revision 5407) the Rescue attribute takes a rescue controller which I’d never seen before. I started digging around the web and source and came up with the following solution which works although I not sure its the best solution!</p>
+
+<h5>My solution</h5>
+
+<p>I changed my base controller to use a rescue controller instead of rescue views:</p>
+
+<pre><code>[Rescue(typeof(RescueController))]
+public class ApplicationController : SmartDispatcherController
+</code></pre>
+
+<p>I then created a RescueController:</p>
+
+<pre><code>[Layout("default")]
+public class RescueController : SmartDispatcherController, IRescueController
+{
+    public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
+    {
+        SetRescueView("generalerror");
+        if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "Unable to connect to the remote server") SetRescueView("webexception_cannot_connect");
+        if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "The operation has timed out") SetRescueView("webexception_portal_timeout");
+
+    }
+
+    private void SetRescueView(string viewname)
+    {
+        RenderSharedView(Path.Combine("rescues", viewname));
+    }
+}
+</code></pre>
+
+<p>The Rescue method simply checks the exception type and message and if it gets a match it sets the relevant rescue view. Notice I’m using a little helper method to set the rescue view this tells Monorail look in the standard folder Views\rescues for the view otherwise it would be looking for these views in Views\Rescue which could get confusing.</p>
+
+<h5>Gotchas!</h5>
+
+<ul>
+<li><p>Make sure your custom rescue controller inherits from SmartDispatcherController otherwise your custom controller will not get called. See Castle Project Users list for <a href="http://groups.google.co.uk/group/castle-project-users/browse_thread/thread/caab15edb9714ccc/5d8e5a96c309b42e">more detail</a></p></li>
+<li><p>Add the Layout attribute to the Rescue controller if you want to use your standard layout on the rescue pages.</p></li>
+<li><p>If your using the Windsor container remember to add the Rescue controller to your container otherwise your custom rescue controller will not be found and called. This one had me scratching my head for a while!</p></li>
+<li><p>Make sure your rescue views exist in the Views\rescues folder otherwise you will get the standard ASP.NET error page and it will look like none of this has worked.</p></li>
+<li><p>This works with the trunk (revision 5407) not sure when the IRescueController functionality was added so it may not work with earlier revisions.</p></li>
+</ul>
+
+
+<h5>A better solution?</h5>
+
+<p>I thought a better solution would be to add a sub string message to the Rescue attribute which could be used to match the exception type and message. E.g:</p>
+
+<pre><code>Rescue("web_exception_unable_to_connect", typeof(WebException), "Unable to connect to remote server")
+Rescue("web_exception_timeout", typeof(WebException), "The operation has timed out")
+</code></pre>
+
+<p>I couldn’t see an easy way to extend the standard Monorail rescue functionality so I ended up creating a builder which allowed me to define a map of exceptions to rescue views.</p>
+
+<pre><code>builder.Map&lt;WebException&gt;()
+    .WithMessageContaining("Unable to connect to the remote server")
+    .OrMessageContaining("The remote server returned an error: (403) Forbidden.")
+    .ToRescue("webexception_cannot_connect");
+
+builder.Map&lt;WebException&gt;()
+    .WithMessageContaining("The operation has timed out")
+    .ToRescue("webexception_portal_timeout");
+</code></pre>
+
+<p>My final rescue controller simply uses the map to select the correct rescue view, no more if statements needed.</p>
+
+<pre><code>[Layout("default")]
+public class RescueController : SmartDispatcherController, IRescueController
+{
+    private readonly IExceptionToRescueMapper _mapper;
+
+    public RescueController(IExceptionToRescueMapper mapper)
+    {
+        _mapper = mapper;
+    }
+
+    public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
+    {
+        SetRescueView(_mapper.GetRescueFor(exception));
+    }
+
+    private void SetRescueView(string viewname)
+    {
+        RenderSharedView(Path.Combine("rescues", viewname));
+    }
+}
+</code></pre>
+
+<p>If you know of a better way I’d love to hear it…</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Monorail + NVelocity + How to find out if your in the first item of a foreach loop?]]></title>
+    <link href="http://justinramel.github.com/blog/2007/05/17/monorail-nvelocity-how-to-find-out-if-your-in-the-first-item-of-a-foreach-loop/"/>
+    <updated>2007-05-17T11:41:24+01:00</updated>
+    <id>http://justinramel.github.com/blog/2007/05/17/monorail-nvelocity-how-to-find-out-if-your-in-the-first-item-of-a-foreach-loop</id>
+    <content type="html"><![CDATA[<p>A colleague needed to add a button to the first row of a table but how do you do this in a foreach loop?</p>
+
+<p>NVelocity has a property called $velocityCount which you can check within the foreach loop:</p>
+
+<pre><code>&lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;table&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
+#foreach($detail in $details)
+  &lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;tr&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
+    &lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;td&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
+      $detail.ShortText)
+      #if($velocityCount == 1) First Row! #end
+    &lt;span class="kwrd"&gt;&lt;/&lt;/span&gt;&lt;span class="html"&gt;td&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
+  &lt;span class="kwrd"&gt;&lt;/&lt;/span&gt;&lt;span class="html"&gt;tr&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
+#end
+&lt;span class="kwrd"&gt;&lt;/&lt;/span&gt;&lt;span class="html"&gt;table&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Castle Monorail + Active Record + Testing + CreateSchemaFromFile]]></title>
+    <link href="http://justinramel.github.com/blog/2006/12/05/monorail-active-record-testing-createschemafromfile-2/"/>
+    <updated>2006-12-05T12:24:11+00:00</updated>
+    <id>http://justinramel.github.com/blog/2006/12/05/monorail-active-record-testing-createschemafromfile-2</id>
+    <content type="html"><![CDATA[<p>It’s always a good idea to have your test database match your production database exactly to do that use:</p>
+
+<p><code>ActiveRecordStarter.CreateSchemaFromFile()</code></p>
+
+<p>Unlike CreateSchema which takes a best guess at how your schema should be CreateSchemaFromFile uses an SQL script which allows you to control exactly what the schema should be.</p>
+
+<p>Call CreateSchemaFromFile as part of your PrepareSchema method in your AbstractTestCase class.</p>
+
+<p><code>protected virtual void PrepareSchema()
+{
+// If you want to delete everything from the model.
+// Remember to do it in a descendent dependency order
+// Office.DeleteAll();
+// User.DeleteAll();
+// Another approach is to always recreate the schema
+// (please use a separate test database if you want to do that)
+ActiveRecordStarter.DropSchema();
+ActiveRecordStarter.CreateSchemaFromFile("schema.sql");
+}</code></p>
+
+<p>Your schema.sql file should contain scripts in the standard MS SQL format:</p>
+
+<p>`if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Application_Status]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[Application_Status]
+GO</p>
+
+<p>CREATE TABLE [dbo].[Application_Status] (</p>
+
+<pre><code>[ID] [int] NOT NULL ,
+[Title] [varchar] (50) NOT NULL ,
+[Description] [text] NULL
+</code></pre>
+
+<p>) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+`</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FW: Castle Projects + Monorail + 1.0 Release Candidate 2]]></title>
+    <link href="http://justinramel.github.com/blog/2006/11/10/fw-castle-projects-monorail-10-release-candidate-2/"/>
+    <updated>2006-11-10T11:08:20+00:00</updated>
+    <id>http://justinramel.github.com/blog/2006/11/10/fw-castle-projects-monorail-10-release-candidate-2</id>
+    <content type="html"><![CDATA[<p>I’m a little late with this one (I’ve been busy honest!) the Castle project have a new release:</p>
+
+<p><a href="http://castleproject.org/castle/download.html">1.0 Release Candidate 2 – November 1st 2006</a></p>
+
+<p>They have also have a jazzy new site and updated documentation too. Top work!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Castle Monorail + Active Record + Testing + CreateSchemaFromFile]]></title>
+    <link href="http://justinramel.github.com/blog/2006/07/27/monorail-active-record-testing-createschemafromfile/"/>
+    <updated>2006-07-27T10:21:34+01:00</updated>
+    <id>http://justinramel.github.com/blog/2006/07/27/monorail-active-record-testing-createschemafromfile</id>
+    <content type="html"><![CDATA[<p>It’s always a good idea to have your test database match your production database exactly, we can do that easily using:</p>
+
+<p><code>ActiveRecordStarter.CreateSchemaFromFile()</code></p>
+
+<p>Unlike CreateSchema which makes a best guess at how your schema should be CreateSchemaFromFile takes an SQL script which allows you to fully control the database schema.</p>
+
+<p>Call CreateSchemaFromFile as part of your PrepareSchema method in your AbstractTestCase class.</p>
+
+<p><code>protected virtual void PrepareSchema()
+{
+ActiveRecordStarter.DropSchema();
+ActiveRecordStarter.CreateSchemaFromFile("schema.sql");
+}</code></p>
+
+<p>Your schema.sql file should contain scripts in the standard MS SQL format:</p>
+
+<p>`if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Application_Status]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[Application_Status]
+GO``
+CREATE TABLE [dbo].[Application_Status] (</p>
+
+<pre><code>[ID] [int] NOT NULL ,
+[Title] [varchar] (50) NOT NULL ,
+[Description] [text] NULL
+</code></pre>
+
+<p>) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+`</p>
+]]></content>
+  </entry>
+  
+</feed>

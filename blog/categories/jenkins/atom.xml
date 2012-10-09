@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jenkins | just ram]]></title>
+  <link href="http://justinramel.github.com/blog/categories/jenkins/atom.xml" rel="self"/>
+  <link href="http://justinramel.github.com/"/>
+  <updated>2012-09-20T23:11:24+01:00</updated>
+  <id>http://justinramel.github.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
+    <link href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/"/>
+    <updated>2012-09-20T18:43:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
+2. [Jenkins.NET Plugins](/blog/2012/09/20/jenkins-dot-net-plugins/)
+</p>
+
+<h2>Plugins</h2>
+
+<p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
+Thankfully Jenkins makes is very easy to find and install plugins. On the main
+Jenkins menu click the 'Manage Jenkins' link.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the 'Manage Plugins' link.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
+
+<p>You will now see a list of the currently installed plugins. Click the
+Available tab to see a list of all the Jenkins plugins, which are available to
+install.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
+
+<p>As you can see Jenkins has a massive number of plugins. I encourage you to
+look through and play with the plugins they are really useful and the list is
+growing by the day.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
+
+<h2>Required Plugins</h2>
+
+<p>Without these required Plugins you will not be able to build and test .NET
+solutions. So you must at least install these Plugins for the rest of this
+guide to work.</p>
+
+<h3>Build Plugins</h3>
+
+<p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
+solution.</p>
+
+<ul>
+<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+projects.</em></li>
+</ul>
+
+
+<h3>Testing Plugins</h3>
+
+<p>You'll need one of these depending on your chosen test framework.</p>
+
+<ul>
+<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+XML reports so it can be integrated with Jenkins JUnit features.</em></li>
+<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+of an execution of a testing tool in Jenkins.</em></li>
+<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+test results.</em></li>
+</ul>
+
+
+<p>Tick the check box next to each of the required Plugins and then click the
+'Download now and install after restart' button.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
+
+<h3>Optional Plugins</h3>
+
+<p>These Plugins are optional but still recommend ranging from genuine
+productivity tools to just plain fun.</p>
+
+<h3>Jenkins Enhancements</h3>
+
+<ul>
+<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn't want Green Balls!</strong></em></li>
+<li><strong>Copy project link plugin</strong> - <em>This plugin adds the "Copy project" link into
+left side panel in the main project page.</em></li>
+<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+a highly visible manner. This is ideal for displaying on a screen on the
+office wall as a form of Extreme Feedback Device.</em></li>
+</ul>
+
+
+<h3>Authentication</h3>
+
+<ul>
+<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+authenticates the username and the password through Active Directory.</em></li>
+</ul>
+
+
+<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+guessing most of you already login via Active Directory so this Plugin saves
+you having to remember yet another password.</p></blockquote>
+
+<h3>Code Analysis</h3>
+
+<ul>
+<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+tasks and generates a trend report.</em></li>
+<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+warnings in the console log or in log files.</em></li>
+</ul>
+
+
+<h3>Build Tools</h3>
+
+<ul>
+<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+build step.</em></li>
+<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+</ul>
+
+
+<h3>Fun, Fun, Fun</h3>
+
+<ul>
+<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris 'The Programmer' fact on each
+build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
+<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+where users get points on improving the builds. Although this is indeed a fun
+plugin it can help when first introducing Jenkins to your team, a little
+healthy competition never did anyone any harm.</em></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET]]></title>
+    <link href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/"/>
+    <updated>2012-09-17T21:58:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
+2. [Jenkins.NET Plugins](/blog/2012/09/20/jenkins-dot-net-plugins/)
+</p>
+
+<h2>Introduction</h2>
+
+<p>This is the first in a series of posts which I’ll be writing on using Jenkins
+to build .NET solutions. These posts will be as detailed as possible, probably
+too detailed in places.</p>
+
+<h2>Installing Jenkins</h2>
+
+<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as 'Hudson' but when Oracle bought Sun there
+was a fall out between the then 'Hudson' developers and Oracle so they decided
+to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
+
+<p>I'm going to install and setup Jenkins on a freshly minted Windows 7 virtual
+machine although this process should work fine on other versions of Windows.</p>
+
+<p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
+
+<p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
+
+<h3>Download</h3>
+
+<p>Rather than the generic .war file we'll download the Windows native package,
+which saves as a few steps during installation. The latest windows package is
+available here:</p>
+
+<p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
+
+<p>I'm using Internet Explorer here, which by default blocks the installer from
+downloading. Notice the warning message shown at the top of the browser
+window.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
+
+<p>Click the message bar to get the download options context menu.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
+
+<p>Select the Download File… menu option. You will now see the File Download
+dialog.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
+
+<p>Click the Save button to download the installation zip file to your download
+folder. You will now see the Save As dialog again click the Save button to
+actually download the file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
+
+<p>In a short while you will see the Download complete dialog. Click the Open
+button to open the zipped installation file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
+
+<p>Internet Explorer Security may kick in and ask if you want to allow this
+operation. Click the Allow button to open the zip file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
+
+<p>Once the zip file is open, Click Extract all files from the menu.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
+
+<p>You will now see the Extract zip file dialog, Click the Extract button to
+extract the files to the default location.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
+
+<p>Phew! That's the download complete.</p>
+
+<h3>Setup</h3>
+
+<p>Finally we can run the Setup program. Double click setup to run the program.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
+
+<p>Windows will show a Security Warning to make sure you trust the publisher of
+this software. Click Run to begin the installation.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
+
+<p>You will now see the Jenkins installation wizard. Click the Next button.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
+
+<p>The wizard allows you to change the installation folder. Click Next to accept
+the default folder.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
+
+<p>You are now at the final page of the setup wizard. Click the Install button
+and the installation will begin.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
+
+<p>On Windows 7 the User Account Control may kick in to ask permission to run the
+installation. Click the Yes button to continue.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
+
+<p>The installation wizard will now copy Jenkins onto your machine and display a
+message upon completion. Click the Finish button.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
+
+<p>The install wizard will now open the Jenkins web page.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
+
+<p>Congratulation Jenkins is now installed on your machine!</p>
+]]></content>
+  </entry>
+  
+</feed>

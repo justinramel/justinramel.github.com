@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jQuery | just ram]]></title>
+  <link href="http://justinramel.github.com/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://justinramel.github.com/"/>
+  <updated>2012-09-20T23:11:24+01:00</updated>
+  <id>http://justinramel.github.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[jQuery Validation Plugin – Dynamically change validator message]]></title>
+    <link href="http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/"/>
+    <updated>2009-06-25T22:43:12+01:00</updated>
+    <id>http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message</id>
+    <content type="html"><![CDATA[<h4>**</h4>
+
+<p>UPDATE:** Please read <a href="http://gusgus.wordpress.com/">Guu</a>’s comment below for a far better solution to this problem!</p>
+
+<p>I’ve been using the <a href="http://docs.jquery.com/Plugins/Validation">jQuery Validation Plugin</a> and needed to change a validation message dynamically based on the user input. I had a quick search but couldn’t find an easy solution. Unfortunately the messages are not changeable after the initial construction of the validator object. I managed to get around the problem by removing the validator an then re-adding with a new message:</p>
+
+<h2>Create validator</h2>
+
+<p>$("#Enquiry").validate({   <br/>
+rules: {    <br/>
+EnquiryText: { required: true }    <br/>
+},    <br/>
+messages: {    <br/>
+EnquiryText: "Enquiry must contain an entry."    <br/>
+}    <br/>
+});</p>
+
+<h2>Dynamically change message</h2>
+
+<p>function setEnquiryValidationTo(message) {   <br/>
+$("#EnquiryText").rules("remove");    <br/>
+$("#EnquiryText").rules("add", {    <br/>
+required: true,    <br/>
+messages: {    <br/>
+required: message    <br/>
+}    <br/>
+});    <br/>
+}</p>
+
+<p>There may be a better/easier way to do this but I couldn’t find one via Google.</p>
+]]></content>
+  </entry>
+  
+</feed>
