@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jenkins | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/jenkins/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-21T00:08:39+01:00</updated>
+  <updated>2012-10-21T00:35:33+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
-    <link href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
+    <link href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
     <updated>2012-10-20T21:14:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
+    <id>http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
@@ -166,9 +166,9 @@ detected. This is done via the “Add build step” button under the Build secti
   
   <entry>
     <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/"/>
+    <link href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/"/>
     <updated>2012-10-09T20:35:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net</id>
+    <id>http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
@@ -220,9 +220,9 @@ and use any version of the .NET Framework.</p>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/"/>
+    <link href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/"/>
     <updated>2012-09-20T18:43:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins</id>
+    <id>http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)
@@ -358,9 +358,9 @@ healthy competition never did anyone any harm.</em></li>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/"/>
+    <link href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/"/>
     <updated>2012-09-17T21:58:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net</id>
+    <id>http://justinramel.github.com/2012/09/17/jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/blog/2012/09/17/jenkins-dot-net/)

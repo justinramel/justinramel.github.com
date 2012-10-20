@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-21T00:08:39+01:00</updated>
+  <updated>2012-10-21T00:35:33+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My first Redcar plugin]]></title>
-    <link href="http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin/"/>
+    <link href="http://justinramel.github.com/2011/08/19/my-first-redcar-plugin/"/>
     <updated>2011-08-19T01:04:35+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin</id>
+    <id>http://justinramel.github.com/2011/08/19/my-first-redcar-plugin</id>
     <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I'm documenting the process of creating my first plugin.</p>
 
 <h4>Introduction</h4>
@@ -104,9 +104,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-method/"/>
     <updated>2010-12-31T01:32:57+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-method</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -136,9 +136,9 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Rename Instance Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
     <updated>2010-12-31T01:14:03+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -166,9 +166,9 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Rename Local Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
     <updated>2010-12-31T00:59:58+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -196,9 +196,9 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Local Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
     <updated>2010-12-31T00:27:45+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <h4>Extract Local Variable</h4>

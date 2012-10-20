@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My first Redcar plugin - just ram</title>
+  <meta name="author" content="Justin Ramel">
+
+  
+  <meta name="description" content="As a small thank you to the Redcar team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://justinramel.github.com/2011/08/19/my-first-redcar-plugin/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34670425-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">just ram</a></h1>
+  
+    <h2>stuff I should remember</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:justinramel.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">My first Redcar plugin</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
+
+<h4>Introduction</h4>
+
+<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what&#8217;s not to like? Though I must confess I don&#8217;t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
+
+<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
+
+<h4>What&#8217;s da big idea</h4>
+
+<p>The idea for my first plugin is rather ambitious considering I&#8217;ve no idea how to write a plugin. I&#8217;d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
+
+<p>I&#8217;m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
+
+<h4>Install Redcar</h4>
+
+<p>I first followed the install instructions:</p>
+
+<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
+
+<p>All good no problems there (I&#8217;m running on a Mac OSX 10.7.1)</p>
+
+<h4>Plugin Guides</h4>
+
+<p>I then read the plugin guides I found here:</p>
+
+<ul>
+<li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
+<li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
+</ul>
+
+
+<h4>Plugin.rb</h4>
+
+<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin&#8217;s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
+
+<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
+</span><span class='line'>  <span class="no">RefreshBrowser</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
+
+<h4>Browser refresh script</h4>
+
+<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
+
+<p>I managed to find a script to refresh the browser here:</p>
+
+<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
+
+<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
+
+<h4>Storage</h4>
+
+<p>Redcar&#8217;s storage mechanism allows you to easily store configuration data into a yaml file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">storage</span>
+</span><span class='line'>  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vi">@storage</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here I am using this mechanism to store the &#8216;keyword&#8217; used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It&#8217;s also possible to setup a nice edit page but for now this will do.</p>
+
+<h4>Source</h4>
+
+<p>You can find the source for this plugin here:</p>
+
+<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
+
+<h4>Was it easy?</h4>
+
+<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I&#8217;ve spent more time fussing over this blog post than developing the plugin.</p>
+
+<p>So what you waiting for? Go give it a try!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Justin Ramel</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/general/'>General</a>, <a class='category' href='/blog/categories/ruby/'>Ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.github.com/2011/08/19/my-first-redcar-plugin/" data-via="justinramel" data-counturl="http://justinramel.github.com/2011/08/19/my-first-redcar-plugin/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/07/20/upload-files-to-sharepoint-from-linux/" title="Previous Post: Upload files to Sharepoint from linux">&laquo; Upload files to Sharepoint from linux</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/08/31/hello-brave-new-world/" title="Next Post: Hello brave new world">Hello brave new world &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/justinramel">@justinramel</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'justinramel',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Strava</h1>
+  <br />
+  <iframe height='160' width='272' frameborder='0' allowtransparency='true' scrolling='no' src='http://app.strava.com/athletes/1108047/activity-summary/38bbd39fbf5da9f3bf5e3845fb2f4592704e5de4'></iframe>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("justinramel", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/justinramel" class="twitter-follow-button" data-show-count="false">Follow @justinramel</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:njr11">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "njr11"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108885363809433432894?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Justin Ramel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
