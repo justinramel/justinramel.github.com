@@ -125,4 +125,4 @@ detected. This is done via the “Add build step” button under the Build secti
 
 Congratulations your first Jenkins Job is setup.
 
-In my next post we'll build it.
+In my next post we'll build it!
