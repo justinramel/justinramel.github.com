@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-20T22:43:17+01:00</updated>
+  <updated>2012-10-20T22:56:15+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -162,7 +162,7 @@ detected. This is done via the “Add build step” button under the Build secti
 
 <p>Congratulations your first Jenkins Job is setup.</p>
 
-<p>In my next post we&#8217;ll build it.</p>
+<p>In my next post we&#8217;ll build it!</p>
 ]]></content>
   </entry>
   
