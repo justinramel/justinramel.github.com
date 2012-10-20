@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-09T21:14:53+01:00</updated>
+  <updated>2012-10-20T22:43:17+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,159 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
+    <link href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
+    <updated>2012-10-20T21:14:00+01:00</updated>
+    <id>http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+<li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+</ol>
+
+
+<p>In Jenkins the definition of a build process is called a Job. Jobs are created
+using the main menu on the Jenkins home page. We&#8217;ll create a basic Job that
+will checkout our source and build the solution.</p>
+
+<p>From the main Jenkins menu, Click the &#8216;New Job&#8217; link.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
+
+<p>You now see the New Job configuration page.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
+
+<ol>
+<li>Set Job name to Demo.</li>
+<li>Select the &#8216;Build a free-style software project&#8217; radio button.</li>
+<li>Click the &#8216;OK&#8217; button.</li>
+</ol>
+
+
+<p>Jenkins will now create the Job workspace on disk and redirect you to the job
+configuration page.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
+
+<p>Next we&#8217;re going to checkout our solution from source control and build it.  So
+we first need to give Jenkins details of our source control server.</p>
+
+<h2>Source Control</h2>
+
+<p>For the purpose of this demo we&#8217;ll use
+<a href="http://subversion.apache.org/">Subversion</a>, mainly because this is the source
+control management software I use day to day. Subversion is a very popular open
+source choice for .NET.</p>
+
+<p>Jenkins supports Subversion right out of the box but it also has support for
+all the major source control management systems. For example here are few which
+are popular for use with the .NET framework:</p>
+
+<ul>
+<li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
+Foundation Server source control to Jenkins.</em></li>
+<li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
+system with Jenkins.</em></li>
+<li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
+newer is required.</em></li>
+<li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
+Visual SourceSafe.</em></li>
+</ul>
+
+
+<p><span class='pullquote-right' data-pullquote='Visual SourceSafe, seriously?'>
+Visual SourceSafe, seriously? Maybe you&#8217;re being forced to use it at gunpoint? If not do yourself a favour
+and check out Subversion.
+<a href="http://www.visualsvn.com/server/download/">VisualSVNServer</a> is a very easy to
+install, administer and use on Windows best of all its free! There is also a
+great Subversion Plugin
+<a href="http://www.visualsvn.com/visualsvn/download/">VisualSVN</a> for Visual Studio
+that I highly recommend.
+</span></p>
+
+<p>I have created a Subversion repository on GoogleCode that we&#8217;ll use to demo the
+build process from Jenkins. Lets setup our Job to grab the source code from
+this repository. This is done in the Source Code Management section of the
+configuration page.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
+
+<ol>
+<li>Select the Subversion radio button.</li>
+<li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
+</ol>
+
+
+<h2>Subversion Authentication</h2>
+
+<p>Unlike the demo repository used here, it&#8217;s more likely your source code
+repository requires authentication (if it doesn&#8217;t, you may want to think about
+securing it). If your repository does require authentication Jenkins will
+display and error message and ask for you to supply login credentials.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
+
+<p>Click the &#8220;enter credential&#8221; link. You will now be shown the Subversion
+Authentication page.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
+
+<p>Enter your authentication details and then click the &#8220;OK&#8221; button.</p>
+
+<p>Subversion is now configured and we can move onto Build Triggers.</p>
+
+<h2>Build Triggers</h2>
+
+<p>We want to trigger a build every time our source code changes; we achieve this
+by creating a “Build Trigger” which polls our source code repository. When a
+change is detected a new build is triggered.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
+
+<ol>
+<li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+<li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
+minutes.</li>
+</ol>
+
+
+<p>As you can see from the help (which is available by clicking the
+<img src="http://justinramel.github.com/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
+in how often we check the source code repository for changes. Checking every 5
+minutes is my default as I tend make lots of small commits and I want to know
+quickly if I’ve introduced a problem.</p>
+
+<p>Finally we just need to tell Jenkins how to build the solution when changes are
+detected. This is done via the “Add build step” button under the Build section.</p>
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
+
+<ol>
+<li><p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p></li>
+<li><p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p></li>
+</ol>
+
+
+<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/build.png" alt="" /></p>
+
+<ol>
+<li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+<li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
+<li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+</ol>
+
+
+<p>Congratulations your first Jenkins Job is setup.</p>
+
+<p>In my next post we&#8217;ll build it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
@@ -24,6 +177,7 @@
 <li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
 </ol>
 
 
@@ -79,6 +233,7 @@ and use any version of the .NET Framework.</p>
 <li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
 </ol>
 
 
@@ -218,6 +373,7 @@ healthy competition never did anyone any harm.</em></li>
 <li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
 <li><a href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
 </ol>
 
 
@@ -1042,37 +1198,6 @@ Hit your <strong><leader-key></strong> then type <strong>rcpc      <br/>
 The post conditional expression is split across 3 lines and converted into a standard if expression.</p>
 
 <p><strong>rcpc</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>C</strong>onvert <strong>P</strong>ost <strong>C</strong>onditional.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Inline Temp]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-inline-temp/"/>
-    <updated>2010-12-30T21:37:59+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-inline-temp</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Inline Temp</h4>
-
-<p>Replaces a temporary variable with a direct call to the method or formula.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/inlineTemp.html">http://www.refactoring.com/catalog/inlineTemp.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_before.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_before_thumb.png" alt="InlineTemp_Before" /></a>     <br/>
-Move the cursor onto the temp variable (in this case base_price)     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rit      <br/>
-</strong></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_after.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_after_thumb.png" alt="InlineTemp_After" /></a>     <br/>
-The temp variable base_price has been replace with a direct call to the method and we’ve saved a line of code.</p>
-
-<p><strong>rit</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>I</strong>nline <strong>T</strong>emp.</p>
 ]]></content>
   </entry>
   

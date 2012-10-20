@@ -9,9 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="ADDING KEY TO SERVER scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys SERVER sudo mkdir /home/git/myrepo
-cd /home/git/myrepo
-sudo git -- &hellip;">
+  <meta name="description" content="TorqueBox Install I&#8217;m playing with latest version of TorqueBox (Currently 2.x.incremental.245) the easiest way to install it is via a gem: gem &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +76,65 @@ sudo git -- &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-14T12:42:27+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>TorqueBox Install</h4>
+
+<p>I&#8217;m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
+
+<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
+
+<h4>Error</h4>
+
+<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
+
+<p>Error: Your application used more memory than the safety cap of 500m.
+Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
+
+<h4>Fix</h4>
+
+<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
+
+<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
+
+<p>Hope that helps someone or maybe me if have to do this again!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -633,64 +690,6 @@ The post conditional expression is split across 3 lines and converted into a sta
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/12/30/vim-ruby-refactoring-inline-temp/">vim-ruby-refactoring - Inline Temp</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T21:37:59+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Inline Temp</h4>
-
-<p>Replaces a temporary variable with a direct call to the method or formula.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/inlineTemp.html">http://www.refactoring.com/catalog/inlineTemp.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_before.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_before_thumb.png" alt="InlineTemp_Before" /></a>     <br/>
-Move the cursor onto the temp variable (in this case base_price)     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rit      <br/>
-</strong></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_after.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_after_thumb.png" alt="InlineTemp_After" /></a>     <br/>
-The temp variable base_price has been replace with a direct call to the method and we’ve saved a line of code.</p>
-
-<p><strong>rit</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>I</strong>nline <strong>T</strong>emp.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -708,6 +707,10 @@ The temp variable base_price has been replace with a direct call to the method a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
@@ -721,10 +724,6 @@ The temp variable base_price has been replace with a direct call to the method a
     
       <li class="post">
         <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="It’s always a good idea to have your test database match your production database exactly, we can do that easily using: ActiveRecordStarter. &hellip;">
+  <meta name="description" content="I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I&#8217;ve written a series of posts about Automated &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/17/sdn-blog/">SDN Blog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-17T10:15:33+01:00" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I&#8217;ve written a series of posts about Automated Functional testing the SAP Portal using Watir:</p>
+
+<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/u/251690007">SDN Blog</a></p>
+
+<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4050">Introduction</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4103">Automated Functional Testing - Part 1 of &#8230;</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4138">Automated Functional Testing - Part 2 of &#8230;</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4236">Automated Functional Testing - Part 3 of &#8230;</a><br/>
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4426">Automated Functional Testing - Part 4 of &#8230;</a></p>
+
+<p>IMHO worth a look if your interested in testing your SAP Portal. I&#8217;ll start posting the rest of the series on here from now.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -713,58 +759,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/05/03/subversion-server-windows-backup/">Subversion server + windows + backup</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-05-03T11:46:34+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So you want to backup your repository?</p>
-
-<p>Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which will cause problems on restore. So you should do a &#8220;hot copy&#8221; to prevent any locking issues when the actual backup is made.  My &#8220;hot copy&#8221; is created using the following batch file:</p>
-
-<pre><code>REM Reset hot copy
-rmdir /S /Q c:\\svnrepos_hotcopy
-mkdir c:\\svnrepos_hotcopy
-
-REM Initiate SVN backup. Use svadmin hotcopy --help for details
-svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
-</code></pre>
-
-<p>I run this batch file daily as a scheduled task before the actual backup.</p>
-
-<p>This batch file is a modification of the batch file described over at:</p>
-
-<p><a href="http://www.blendedtechnologies.com/daily-backup-of-subversion/21">Blended Technologies</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -782,6 +776,10 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
@@ -795,10 +793,6 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
     
       <li class="post">
         <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
       </li>
     
   </ul>

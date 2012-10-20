@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Today I needed to compare two different versions of a source file. One in the main trunk folder and the other in a previously tagged version folder. &hellip;">
+  <meta name="description" content="So you want to backup your repository? Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/05/03/subversion-server-windows-backup/">Subversion server + windows + backup</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-03T11:46:34+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So you want to backup your repository?</p>
+
+<p>Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which will cause problems on restore. So you should do a &#8220;hot copy&#8221; to prevent any locking issues when the actual backup is made.  My &#8220;hot copy&#8221; is created using the following batch file:</p>
+
+<pre><code>REM Reset hot copy
+rmdir /S /Q c:\\svnrepos_hotcopy
+mkdir c:\\svnrepos_hotcopy
+
+REM Initiate SVN backup. Use svadmin hotcopy --help for details
+svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
+</code></pre>
+
+<p>I run this batch file daily as a scheduled task before the actual backup.</p>
+
+<p>This batch file is a modification of the batch file described over at:</p>
+
+<p><a href="http://www.blendedtechnologies.com/daily-backup-of-subversion/21">Blended Technologies</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -582,50 +634,6 @@ c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2006/03/28/35/">SAP Portal: How do I reference a Javascript file in my iView?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-28T14:58:23+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Easy when you know how</p>
-
-<pre><code>public void doInitialization(){
-  request = (IPortalComponentRequest)this.getRequest();
-  response = (IPortalComponentResponse)this.getResponse();
-  IResource jsResource = request.getResource(IResource.SCRIPT, “scripts/myscript.js”);
-  response.addResource(jsResource);
-}
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -643,6 +651,10 @@ c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
@@ -656,10 +668,6 @@ c
     
       <li class="post">
         <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
       </li>
     
   </ul>
