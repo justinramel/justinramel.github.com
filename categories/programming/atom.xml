@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Programming | just ram]]></title>
-  <link href="http://justinramel.github.com//categories/programming/atom.xml" rel="self"/>
-  <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T23:55:23+01:00</updated>
-  <id>http://justinramel.github.com/</id>
+  <link href="http://justinramel.com//categories/programming/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2012-10-24T23:56:51+01:00</updated>
+  <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[TortoiseSVN + Global ignore pattern]]></title>
-    <link href="http://justinramel.github.com/2007/10/10/tortoisesvn-global-ignore-pattern/"/>
+    <link href="http://justinramel.com/2007/10/10/tortoisesvn-global-ignore-pattern/"/>
     <updated>2007-10-10T14:37:22+01:00</updated>
-    <id>http://justinramel.github.com/2007/10/10/tortoisesvn-global-ignore-pattern</id>
+    <id>http://justinramel.com/2007/10/10/tortoisesvn-global-ignore-pattern</id>
     <content type="html"><![CDATA[<p><img src="http://justinram.files.wordpress.com/2007/10/tortoise.GIF" alt="Tortoise" />
 <code>build_log.xml *.suo *.user _ReSharper* *.resharper bin obj class build</code></p>
 ]]></content>
@@ -25,9 +25,9 @@
   
   <entry>
     <title type="html"><![CDATA[Add a new project to Subversion server in Windows XP]]></title>
-    <link href="http://justinramel.github.com/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp/"/>
+    <link href="http://justinramel.com/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp/"/>
     <updated>2006-02-22T12:12:00+00:00</updated>
-    <id>http://justinramel.github.com/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp</id>
+    <id>http://justinramel.com/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp</id>
     <content type="html"><![CDATA[<p>NOTE: You must have <a href="http://tortoisesvn.tigris.org/">TortoiseSVN</a> installed for these instructions to work!</p>
 
 <p>First create your Project folder structure:</p>
@@ -53,9 +53,9 @@ Enter the repository/ProjectName an import message and click OK.</p>
   
   <entry>
     <title type="html"><![CDATA[Installing subversion server on windows]]></title>
-    <link href="http://justinramel.github.com/2006/02/21/installing-subversion-server-on-windows/"/>
+    <link href="http://justinramel.com/2006/02/21/installing-subversion-server-on-windows/"/>
     <updated>2006-02-21T17:24:00+00:00</updated>
-    <id>http://justinramel.github.com/2006/02/21/installing-subversion-server-on-windows</id>
+    <id>http://justinramel.com/2006/02/21/installing-subversion-server-on-windows</id>
     <content type="html"><![CDATA[<p>We used subversion (or svn for short) server running on windows as our version control server as it integrates very nicely with eclipse.</p>
 
 <p>We found a guide for installation:</p>

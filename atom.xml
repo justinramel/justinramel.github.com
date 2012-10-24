@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[just ram]]></title>
-  <link href="http://justinramel.github.com/atom.xml" rel="self"/>
-  <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T23:55:23+01:00</updated>
-  <id>http://justinramel.github.com/</id>
+  <link href="http://justinramel.com/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2012-10-24T23:56:51+01:00</updated>
+  <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
     
@@ -15,17 +15,17 @@
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Your first build]]></title>
-    <link href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
+    <link href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
     <updated>2012-10-24T21:11:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build</id>
+    <id>http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
-<li><a href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+<li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+<li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
 </ol>
 
 
@@ -68,7 +68,7 @@ will.</p>
 
 <h3>Build Now</h3>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch05/build-now.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/build-now.png" alt="" /></p>
 
 <p>Click the “Build Now” link.</p>
 
@@ -76,12 +76,12 @@ will.</p>
 
 <h3>Build History</h3>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
 
 <p>The Build History will show the Job running. Once the build is complete you
 should have your first successful build.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch05/build-history-2.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/build-history-2.png" alt="" /></p>
 
 <p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
 you to the build page for the Demo Job.</p>
@@ -92,11 +92,11 @@ you to the build page for the Demo Job.</p>
 ran. The area we are interested in is the Console Output this shows all the
 programs that ran during the build.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch05/console-output-1.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/console-output-1.png" alt="" /></p>
 
 <p>Click the “Console Output” link.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch05/console-output-2.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/console-output-2.png" alt="" /></p>
 
 <p>This is the place to come whenever you are trying to debug a failing build.
 Everything you need to fix the problem will usually be shown on this page.</p>
@@ -125,17 +125,17 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
-    <link href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
+    <link href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
     <updated>2012-10-20T21:14:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
+    <id>http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
-<li><a href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+<li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+<li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
 </ol>
 
 
@@ -179,11 +179,11 @@ will checkout our source and build the solution.</p>
 
 <p>From the main Jenkins menu, Click the &#8216;New Job&#8217; link.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
 
 <p>You now see the New Job configuration page.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
 
 <ol>
 <li>Set Job name to Demo.</li>
@@ -195,7 +195,7 @@ will checkout our source and build the solution.</p>
 <p>Jenkins will now create the Job workspace on disk and redirect you to the job
 configuration page.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
 
 <p>Next we&#8217;re going to checkout our solution from source control and build it.  So
 we first need to give Jenkins details of our source control server.</p>
@@ -238,7 +238,7 @@ build process from Jenkins. Lets setup our Job to grab the source code from
 this repository. This is done in the Source Code Management section of the
 configuration page.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
 
 <ol>
 <li>Select the Subversion radio button.</li>
@@ -253,12 +253,12 @@ repository requires authentication (if it doesn&#8217;t, you may want to think a
 securing it). If your repository does require authentication Jenkins will
 display and error message and ask for you to supply login credentials.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
 
 <p>Click the &#8220;enter credential&#8221; link. You will now be shown the Subversion
 Authentication page.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
 
 <p>Enter your authentication details and then click the &#8220;OK&#8221; button.</p>
 
@@ -270,7 +270,7 @@ Authentication page.</p>
 by creating a “Build Trigger” which polls our source code repository. When a
 change is detected a new build is triggered.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
 
 <ol>
 <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
@@ -280,7 +280,7 @@ minutes.</li>
 
 
 <p>As you can see from the help (which is available by clicking the
-<img src="http://justinramel.github.com/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
+<img src="http://justinramel.com/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
 in how often we check the source code repository for changes. Checking every 5
 minutes is my default as I tend make lots of small commits and I want to know
 quickly if I’ve introduced a problem.</p>
@@ -288,7 +288,7 @@ quickly if I’ve introduced a problem.</p>
 <p>Finally we just need to tell Jenkins how to build the solution when changes are
 detected. This is done via the “Add build step” button under the Build section.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
 
 <ol>
 <li><p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p></li>
@@ -296,7 +296,7 @@ detected. This is done via the “Add build step” button under the Build secti
 </ol>
 
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch04/build.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/build.png" alt="" /></p>
 
 <ol>
 <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
@@ -313,17 +313,17 @@ detected. This is done via the “Add build step” button under the Build secti
   
   <entry>
     <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/"/>
+    <link href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/"/>
     <updated>2012-10-09T20:35:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net</id>
+    <id>http://justinramel.com/2012/10/09/setup-jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
-<li><a href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+<li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+<li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
 </ol>
 
 
@@ -368,12 +368,12 @@ started building our first project.</p>
 
 <p>On the main Jenkins menu, click the &#8216;Manage Jenkins&#8217; link.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
 
 <p>You will now see the Manage Jenkins page. Click the &#8216;Configure System&#8217; link to
 get to the main configuration page.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
 
 <h2>MSBuild</h2>
 
@@ -383,11 +383,11 @@ machine. As Windows 7 comes with version 3.5 of the .NET Framework pre
 installed I’ll demo that version here but obviously you can download, install
 and use any version of the .NET Framework.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
 
 <p>Click the &#8216;Add MSBuild&#8217; button.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
 
 <p>Set the name and path to MSBuild:</p>
 
@@ -404,17 +404,17 @@ and use any version of the .NET Framework.</p>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
-    <link href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/"/>
+    <link href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/"/>
     <updated>2012-09-20T18:43:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins</id>
+    <id>http://justinramel.com/2012/09/20/jenkins-dot-net-plugins</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
-<li><a href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+<li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+<li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
 </ol>
 
 
@@ -458,23 +458,23 @@ this series
 Thankfully Jenkins makes is very easy to find and install plugins. On the main
 Jenkins menu click the &#8216;Manage Jenkins&#8217; link.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
 
 <p>You will now see the Manage Jenkins page. Click the &#8216;Manage Plugins&#8217; link.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
 
 <p>You will now see a list of the currently installed plugins. Click the
 Available tab to see a list of all the Jenkins plugins, which are available to
 install.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
 
 <p>As you can see Jenkins has a massive number of plugins. I encourage you to
 look through and play with the plugins they are really useful and the list is
 growing by the day.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
 
 <h2>Required Plugins</h2>
 
@@ -511,7 +511,7 @@ test results.</em></li>
 <p>Tick the check box next to each of the required Plugins and then click the
 &#8216;Download now and install after restart&#8217; button.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
 
 <h3>Optional Plugins</h3>
 
@@ -579,17 +579,17 @@ healthy competition never did anyone any harm.</em></li>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/"/>
+    <link href="http://justinramel.com/2012/09/17/jenkins-dot-net/"/>
     <updated>2012-09-17T21:58:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/09/17/jenkins-dot-net</id>
+    <id>http://justinramel.com/2012/09/17/jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
-<li><a href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+<li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+<li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+<li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+<li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
 </ol>
 
 
@@ -644,7 +644,7 @@ machine although this process should work fine on other versions of Windows.</p>
 
 <p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
 
-<p><a href="http://jenkins-ci.org/"><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
+<p><a href="http://jenkins-ci.org/"><img src="http://justinramel.com/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
 
 <h3>Download</h3>
 
@@ -654,47 +654,47 @@ available here:</p>
 
 <p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
 
 <p>I&#8217;m using Internet Explorer here, which by default blocks the installer from
 downloading. Notice the warning message shown at the top of the browser
 window.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
 
 <p>Click the message bar to get the download options context menu.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
 
 <p>Select the Download File… menu option. You will now see the File Download
 dialog.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
 
 <p>Click the Save button to download the installation zip file to your download
 folder. You will now see the Save As dialog again click the Save button to
 actually download the file.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
 
 <p>In a short while you will see the Download complete dialog. Click the Open
 button to open the zipped installation file.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
 
 <p>Internet Explorer Security may kick in and ask if you want to allow this
 operation. Click the Allow button to open the zip file.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
 
 <p>Once the zip file is open, Click Extract all files from the menu.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
 
 <p>You will now see the Extract zip file dialog, Click the Extract button to
 extract the files to the default location.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
 
 <p>Phew! That&#8217;s the download complete.</p>
 
@@ -702,40 +702,40 @@ extract the files to the default location.</p>
 
 <p>Finally we can run the Setup program. Double click setup to run the program.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
 
 <p>Windows will show a Security Warning to make sure you trust the publisher of
 this software. Click Run to begin the installation.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
 
 <p>You will now see the Jenkins installation wizard. Click the Next button.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
 
 <p>The wizard allows you to change the installation folder. Click Next to accept
 the default folder.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
 
 <p>You are now at the final page of the setup wizard. Click the Install button
 and the installation will begin.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
 
 <p>On Windows 7 the User Account Control may kick in to ask permission to run the
 installation. Click the Yes button to continue.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
 
 <p>The installation wizard will now copy Jenkins onto your machine and display a
 message upon completion. Click the Finish button.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
 
 <p>The install wizard will now open the Jenkins web page.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
 
 <p>Congratulation Jenkins is now installed on your machine!</p>
 ]]></content>
@@ -743,9 +743,9 @@ message upon completion. Click the Finish button.</p>
   
   <entry>
     <title type="html"><![CDATA[vim tip: !mkdir %:h]]></title>
-    <link href="http://justinramel.github.com/2012/09/06/vim-tip-mkdir-percent-h/"/>
+    <link href="http://justinramel.com/2012/09/06/vim-tip-mkdir-percent-h/"/>
     <updated>2012-09-06T22:10:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/09/06/vim-tip-mkdir-percent-h</id>
+    <id>http://justinramel.com/2012/09/06/vim-tip-mkdir-percent-h</id>
     <content type="html"><![CDATA[<p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
 as well as the great content, I&#8217;m picking up lots of vim tips. I&#8217;m having to
 pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
@@ -768,7 +768,7 @@ for a quick demo:</p>
 <p>From the vim command prompt we can create a new user model in the models dir
 using the vim command <code>:n models/user.rb</code></p>
 
-<p><img src="http://justinramel.github.com/images/vim-tip-1/new-file.png"></p>
+<p><img src="http://justinramel.com/images/vim-tip-1/new-file.png"></p>
 
 <p>Lets break this command down:</p>
 
@@ -782,11 +782,11 @@ using the vim command <code>:n models/user.rb</code></p>
 get an error <code>E212: Can't open file for writing</code>, this is because the directory
 models does not exist.</p>
 
-<p><img src="http://justinramel.github.com/images/vim-tip-1/write-error.png"></p>
+<p><img src="http://justinramel.com/images/vim-tip-1/write-error.png"></p>
 
 <p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
 
-<p><img src="http://justinramel.github.com/images/vim-tip-1/mkdir-command.png"></p>
+<p><img src="http://justinramel.com/images/vim-tip-1/mkdir-command.png"></p>
 
 <p>Now the directory has been created we can write the new file from vim.</p>
 
@@ -861,9 +861,9 @@ use this switch the command will fail.</p>
   
   <entry>
     <title type="html"><![CDATA[Hello brave new world]]></title>
-    <link href="http://justinramel.github.com/2012/08/31/hello-brave-new-world/"/>
+    <link href="http://justinramel.com/2012/08/31/hello-brave-new-world/"/>
     <updated>2012-08-31T21:21:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/08/31/hello-brave-new-world</id>
+    <id>http://justinramel.com/2012/08/31/hello-brave-new-world</id>
     <content type="html"><![CDATA[<h1>Trying out Octopress</h1>
 
 <p><a href="http://octopress.org/">Octopress</a> for the win!</p>
@@ -885,7 +885,7 @@ use this switch the command will fail.</p>
 
 <h3>I&#8217;m Old Gregg!</h3>
 
-<p><img src="http://justinramel.github.com/images/old-gregg.jpeg" title="I'm old Gregg" ></p>
+<p><img src="http://justinramel.com/images/old-gregg.jpeg" title="I'm old Gregg" ></p>
 
 <h2>Quotes</h2>
 
@@ -915,9 +915,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[My first Redcar plugin]]></title>
-    <link href="http://justinramel.github.com/2011/08/19/my-first-redcar-plugin/"/>
+    <link href="http://justinramel.com/2011/08/19/my-first-redcar-plugin/"/>
     <updated>2011-08-19T01:04:35+01:00</updated>
-    <id>http://justinramel.github.com/2011/08/19/my-first-redcar-plugin</id>
+    <id>http://justinramel.com/2011/08/19/my-first-redcar-plugin</id>
     <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
 
 <h4>Introduction</h4>
@@ -1012,9 +1012,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
-    <link href="http://justinramel.github.com/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
+    <link href="http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
     <updated>2011-07-20T20:19:55+01:00</updated>
-    <id>http://justinramel.github.com/2011/07/20/upload-files-to-sharepoint-from-linux</id>
+    <id>http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux</id>
     <content type="html"><![CDATA[<h4>Fortress</h4>
 
 <p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
@@ -1031,9 +1031,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[Shibboleth settings for TorqueBox]]></title>
-    <link href="http://justinramel.github.com/2011/07/16/shibboleth-settings-for-torquebox/"/>
+    <link href="http://justinramel.com/2011/07/16/shibboleth-settings-for-torquebox/"/>
     <updated>2011-07-16T23:14:52+01:00</updated>
-    <id>http://justinramel.github.com/2011/07/16/shibboleth-settings-for-torquebox</id>
+    <id>http://justinramel.com/2011/07/16/shibboleth-settings-for-torquebox</id>
     <content type="html"><![CDATA[<h4>Authentication Settings</h4>
 
 <p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
@@ -1073,9 +1073,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
-    <link href="http://justinramel.github.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
+    <link href="http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
     <updated>2011-07-16T22:16:31+01:00</updated>
-    <id>http://justinramel.github.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
+    <id>http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
     <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
 
 <h4>Apache Setup</h4>
@@ -1110,9 +1110,9 @@ ruby:
   
   <entry>
     <title type="html"><![CDATA[TorqueBox - gem install error]]></title>
-    <link href="http://justinramel.github.com/2011/07/14/torquebox-gem-install-error/"/>
+    <link href="http://justinramel.com/2011/07/14/torquebox-gem-install-error/"/>
     <updated>2011-07-14T12:42:27+01:00</updated>
-    <id>http://justinramel.github.com/2011/07/14/torquebox-gem-install-error</id>
+    <id>http://justinramel.com/2011/07/14/torquebox-gem-install-error</id>
     <content type="html"><![CDATA[<h4>TorqueBox Install</h4>
 
 <p>I&#8217;m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
@@ -1142,9 +1142,9 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
   
   <entry>
     <title type="html"><![CDATA[SETUP GIT REPO]]></title>
-    <link href="http://justinramel.github.com/2011/07/12/setup-git-repo/"/>
+    <link href="http://justinramel.com/2011/07/12/setup-git-repo/"/>
     <updated>2011-07-12T21:48:22+01:00</updated>
-    <id>http://justinramel.github.com/2011/07/12/setup-git-repo</id>
+    <id>http://justinramel.com/2011/07/12/setup-git-repo</id>
     <content type="html"><![CDATA[<h4>ADDING KEY TO SERVER</h4>
 
 <p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
@@ -1179,9 +1179,9 @@ git clone git@yourserver.com:myrepo
   
   <entry>
     <title type="html"><![CDATA[Rails new app workflow]]></title>
-    <link href="http://justinramel.github.com/2011/01/11/rails-new-app-workflow/"/>
+    <link href="http://justinramel.com/2011/01/11/rails-new-app-workflow/"/>
     <updated>2011-01-11T14:58:47+00:00</updated>
-    <id>http://justinramel.github.com/2011/01/11/rails-new-app-workflow</id>
+    <id>http://justinramel.com/2011/01/11/rails-new-app-workflow</id>
     <content type="html"><![CDATA[<p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
 
 <h4>Create app</h4>
@@ -1246,9 +1246,9 @@ git clone git@yourserver.com:myrepo
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
-    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-method/"/>
+    <link href="http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-method/"/>
     <updated>2010-12-31T01:32:57+00:00</updated>
-    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-method</id>
+    <id>http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-method</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -1278,9 +1278,9 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Rename Instance Variable]]></title>
-    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
+    <link href="http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
     <updated>2010-12-31T01:14:03+00:00</updated>
-    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
+    <id>http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -1308,9 +1308,9 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Rename Local Variable]]></title>
-    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
+    <link href="http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
     <updated>2010-12-31T00:59:58+00:00</updated>
-    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
+    <id>http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -1338,9 +1338,9 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Local Variable]]></title>
-    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
+    <link href="http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
     <updated>2010-12-31T00:27:45+00:00</updated>
-    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
+    <id>http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <h4>Extract Local Variable</h4>
@@ -1368,9 +1368,9 @@ The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract to Let]]></title>
-    <link href="http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
+    <link href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
     <updated>2010-12-30T23:49:00+00:00</updated>
-    <id>http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
+    <id>http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <h4>Extract to Let</h4>
@@ -1394,9 +1394,9 @@ The let method is created above the it block, using the initialisation line - ac
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Constant]]></title>
-    <link href="http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-constant/"/>
+    <link href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-constant/"/>
     <updated>2010-12-30T23:04:56+00:00</updated>
-    <id>http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-constant</id>
+    <id>http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-constant</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <h4>Extract Constant</h4>
