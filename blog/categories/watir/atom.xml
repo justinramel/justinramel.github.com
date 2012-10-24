@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Watir | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/watir/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T21:43:24+01:00</updated>
+  <updated>2012-10-24T22:55:16+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SAP Enterprise Portal + Automated Functional Testing - Part 7 of ...]]></title>
-    <link href="http://justinramel.github.com/2006/12/05/sap-enterprise-portal-automated-functional-testing-part-7-of/"/>
+    <link href="http://justinramel.github.com/blog/2006/12/05/sap-enterprise-portal-automated-functional-testing-part-7-of/"/>
     <updated>2006-12-05T14:42:36+00:00</updated>
-    <id>http://justinramel.github.com/2006/12/05/sap-enterprise-portal-automated-functional-testing-part-7-of</id>
+    <id>http://justinramel.github.com/blog/2006/12/05/sap-enterprise-portal-automated-functional-testing-part-7-of</id>
     <content type="html"><![CDATA[<p>In anticipation of posting about a new topic I'm going to wrap up my Watir Automated testing posts with a few more top tips.</p>
 
 <p><strong>TOP TIP - How do I run a single test?</strong></p>
@@ -59,9 +59,9 @@ I've been working on creating web services for Enterprise Portal and calling tho
   
   <entry>
     <title type="html"><![CDATA[SAP Enterprise Portal - Automated Functional Testing - Part 6 of ...]]></title>
-    <link href="http://justinramel.github.com/2006/10/27/automated-functional-testing-part-6-of/"/>
+    <link href="http://justinramel.github.com/blog/2006/10/27/automated-functional-testing-part-6-of/"/>
     <updated>2006-10-27T11:58:26+01:00</updated>
-    <id>http://justinramel.github.com/2006/10/27/automated-functional-testing-part-6-of</id>
+    <id>http://justinramel.github.com/blog/2006/10/27/automated-functional-testing-part-6-of</id>
     <content type="html"><![CDATA[<p>Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there.</p>
 
 <p><strong>TOP TIP - How to navigate the portal</strong><br/>
@@ -102,9 +102,9 @@ Short and sweet but at least I'm posting more often. Next time... You guessed it
   
   <entry>
     <title type="html"><![CDATA[SAP Enterprise Portal - Automated Functional Testing - Part 5 of ...]]></title>
-    <link href="http://justinramel.github.com/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of/"/>
+    <link href="http://justinramel.github.com/blog/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of/"/>
     <updated>2006-10-18T12:13:13+01:00</updated>
-    <id>http://justinramel.github.com/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of</id>
+    <id>http://justinramel.github.com/blog/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of</id>
     <content type="html"><![CDATA[<p>Ok last time I promised some hints and tips so lets begin. I'm going to keep the hints and tips posts fairly short in the hope it will encourage me to post more often. I received a comment on my last post asking how I find the ID/Name attributes of my forms so I though that would be a good place to start.</p>
 
 <p><strong>TOP TIP - How to find ID/Name attributes of a form<br/>
@@ -132,9 +132,9 @@ Well that post turned out to be slightly longer than I planned, so much for keep
   
   <entry>
     <title type="html"><![CDATA[SDN Blog]]></title>
-    <link href="http://justinramel.github.com/2006/10/17/sdn-blog/"/>
+    <link href="http://justinramel.github.com/blog/2006/10/17/sdn-blog/"/>
     <updated>2006-10-17T10:15:33+01:00</updated>
-    <id>http://justinramel.github.com/2006/10/17/sdn-blog</id>
+    <id>http://justinramel.github.com/blog/2006/10/17/sdn-blog</id>
     <content type="html"><![CDATA[<p>I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I've written a series of posts about Automated Functional testing the SAP Portal using Watir:</p>
 
 <p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/u/251690007">SDN Blog</a></p>
@@ -151,9 +151,9 @@ Well that post turned out to be slightly longer than I planned, so much for keep
   
   <entry>
     <title type="html"><![CDATA[Ruby unit tests - run only one test method]]></title>
-    <link href="http://justinramel.github.com/2006/03/30/ruby-unit-tests-run-only-one-test-method/"/>
+    <link href="http://justinramel.github.com/blog/2006/03/30/ruby-unit-tests-run-only-one-test-method/"/>
     <updated>2006-03-30T22:04:37+01:00</updated>
-    <id>http://justinramel.github.com/2006/03/30/ruby-unit-tests-run-only-one-test-method</id>
+    <id>http://justinramel.github.com/blog/2006/03/30/ruby-unit-tests-run-only-one-test-method</id>
     <content type="html"><![CDATA[<p>What if you don't wish to run all the unit tests in your test case?</p>
 
 <p>You can tell ruby to run only one test method by passing in the name of the test:</p>

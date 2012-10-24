@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jQuery | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T21:43:24+01:00</updated>
+  <updated>2012-10-24T22:55:16+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[jQuery Validation Plugin – Dynamically change validator message]]></title>
-    <link href="http://justinramel.github.com/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/"/>
+    <link href="http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/"/>
     <updated>2009-06-25T22:43:12+01:00</updated>
-    <id>http://justinramel.github.com/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message</id>
+    <id>http://justinramel.github.com/blog/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message</id>
     <content type="html"><![CDATA[<h4>**</h4>
 
 <p>UPDATE:** Please read <a href="http://gusgus.wordpress.com/">Guu</a>’s comment below for a far better solution to this problem!</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jenkins | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/jenkins/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T21:43:24+01:00</updated>
+  <updated>2012-10-24T22:55:16+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Your first build]]></title>
-    <link href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
+    <link href="http://justinramel.github.com/blog/2012/10/24/jenkins-dot-net-your-first-build/"/>
     <updated>2012-10-24T21:11:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build</id>
+    <id>http://justinramel.github.com/blog/2012/10/24/jenkins-dot-net-your-first-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
@@ -25,6 +25,8 @@
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+
+---
 </p>
 
 <p>From the Project Demo page we created last time we can activate a Build at
@@ -89,9 +91,9 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
-    <link href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
+    <link href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
     <updated>2012-10-20T21:14:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
+    <id>http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
@@ -99,6 +101,8 @@ Everything you need to fix the problem will usually be shown on this page.</p>
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+
+---
 </p>
 
 <p>In Jenkins the definition of a build process is called a Job. Jobs are created
@@ -241,9 +245,9 @@ detected. This is done via the “Add build step” button under the Build secti
   
   <entry>
     <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/"/>
+    <link href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/"/>
     <updated>2012-10-09T20:35:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net</id>
+    <id>http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
@@ -251,6 +255,8 @@ detected. This is done via the “Add build step” button under the Build secti
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+
+---
 </p>
 
 <p>There are some important settings, that we need to configure before we get
@@ -296,9 +302,9 @@ and use any version of the .NET Framework.</p>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
-    <link href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/"/>
+    <link href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/"/>
     <updated>2012-09-20T18:43:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins</id>
+    <id>http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
@@ -306,6 +312,8 @@ and use any version of the .NET Framework.</p>
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+
+---
 </p>
 
 <h2>Plugins</h2>
@@ -435,9 +443,9 @@ healthy competition never did anyone any harm.</em></li>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/"/>
+    <link href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/"/>
     <updated>2012-09-17T21:58:00+01:00</updated>
-    <id>http://justinramel.github.com/2012/09/17/jenkins-dot-net</id>
+    <id>http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
 1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
@@ -445,6 +453,8 @@ healthy competition never did anyone any harm.</em></li>
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+
+---
 </p>
 
 <h2>Introduction</h2>
