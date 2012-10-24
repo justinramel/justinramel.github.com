@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.github.com/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T22:55:16+01:00</updated>
+  <updated>2012-10-24T23:05:02+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Your first build]]></title>
-    <link href="http://justinramel.github.com/blog/2012/10/24/jenkins-dot-net-your-first-build/"/>
+    <link href="http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
     <updated>2012-10-24T21:11:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/10/24/jenkins-dot-net-your-first-build</id>
+    <id>http://justinramel.github.com/2012/10/24/jenkins-dot-net-your-first-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
@@ -93,9 +93,9 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
-    <link href="http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
+    <link href="http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
     <updated>2012-10-20T21:14:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
+    <id>http://justinramel.github.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
@@ -249,9 +249,9 @@ detected. This is done via the “Add build step” button under the Build secti
   
   <entry>
     <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net/"/>
+    <link href="http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net/"/>
     <updated>2012-10-09T20:35:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/10/09/setup-jenkins-dot-net</id>
+    <id>http://justinramel.github.com/2012/10/09/setup-jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
@@ -308,9 +308,9 @@ and use any version of the .NET Framework.</p>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/"/>
+    <link href="http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins/"/>
     <updated>2012-09-20T18:43:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins</id>
+    <id>http://justinramel.github.com/2012/09/20/jenkins-dot-net-plugins</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
@@ -451,9 +451,9 @@ healthy competition never did anyone any harm.</em></li>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/"/>
+    <link href="http://justinramel.github.com/2012/09/17/jenkins-dot-net/"/>
     <updated>2012-09-17T21:58:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net</id>
+    <id>http://justinramel.github.com/2012/09/17/jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
@@ -583,9 +583,9 @@ message upon completion. Click the Finish button.</p>
   
   <entry>
     <title type="html"><![CDATA[vim tip: !mkdir %:h]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h/"/>
+    <link href="http://justinramel.github.com/2012/09/06/vim-tip-mkdir-percent-h/"/>
     <updated>2012-09-06T22:10:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h</id>
+    <id>http://justinramel.github.com/2012/09/06/vim-tip-mkdir-percent-h</id>
     <content type="html"><![CDATA[<p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
 as well as the great content, I&#8217;m picking up lots of vim tips. I&#8217;m having to
 pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
@@ -701,9 +701,9 @@ use this switch the command will fail.</p>
   
   <entry>
     <title type="html"><![CDATA[Hello brave new world]]></title>
-    <link href="http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world/"/>
+    <link href="http://justinramel.github.com/2012/08/31/hello-brave-new-world/"/>
     <updated>2012-08-31T21:21:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world</id>
+    <id>http://justinramel.github.com/2012/08/31/hello-brave-new-world</id>
     <content type="html"><![CDATA[<h1>Trying out Octopress</h1>
 
 <p><a href="http://octopress.org/">Octopress</a> for the win!</p>
@@ -755,9 +755,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[My first Redcar plugin]]></title>
-    <link href="http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin/"/>
+    <link href="http://justinramel.github.com/2011/08/19/my-first-redcar-plugin/"/>
     <updated>2011-08-19T01:04:35+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin</id>
+    <id>http://justinramel.github.com/2011/08/19/my-first-redcar-plugin</id>
     <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
 
 <h4>Introduction</h4>
@@ -852,9 +852,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
+    <link href="http://justinramel.github.com/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
     <updated>2011-07-20T20:19:55+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/20/upload-files-to-sharepoint-from-linux</id>
+    <id>http://justinramel.github.com/2011/07/20/upload-files-to-sharepoint-from-linux</id>
     <content type="html"><![CDATA[<h4>Fortress</h4>
 
 <p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
@@ -871,9 +871,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[Shibboleth settings for TorqueBox]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/16/shibboleth-settings-for-torquebox/"/>
+    <link href="http://justinramel.github.com/2011/07/16/shibboleth-settings-for-torquebox/"/>
     <updated>2011-07-16T23:14:52+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/16/shibboleth-settings-for-torquebox</id>
+    <id>http://justinramel.github.com/2011/07/16/shibboleth-settings-for-torquebox</id>
     <content type="html"><![CDATA[<h4>Authentication Settings</h4>
 
 <p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
@@ -913,9 +913,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
+    <link href="http://justinramel.github.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
     <updated>2011-07-16T22:16:31+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
+    <id>http://justinramel.github.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
     <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
 
 <h4>Apache Setup</h4>
@@ -950,9 +950,9 @@ ruby:
   
   <entry>
     <title type="html"><![CDATA[TorqueBox - gem install error]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/14/torquebox-gem-install-error/"/>
+    <link href="http://justinramel.github.com/2011/07/14/torquebox-gem-install-error/"/>
     <updated>2011-07-14T12:42:27+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/14/torquebox-gem-install-error</id>
+    <id>http://justinramel.github.com/2011/07/14/torquebox-gem-install-error</id>
     <content type="html"><![CDATA[<h4>TorqueBox Install</h4>
 
 <p>I&#8217;m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
@@ -982,9 +982,9 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
   
   <entry>
     <title type="html"><![CDATA[SETUP GIT REPO]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/12/setup-git-repo/"/>
+    <link href="http://justinramel.github.com/2011/07/12/setup-git-repo/"/>
     <updated>2011-07-12T21:48:22+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/12/setup-git-repo</id>
+    <id>http://justinramel.github.com/2011/07/12/setup-git-repo</id>
     <content type="html"><![CDATA[<h4>ADDING KEY TO SERVER</h4>
 
 <p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
@@ -1019,9 +1019,9 @@ git clone git@yourserver.com:myrepo
   
   <entry>
     <title type="html"><![CDATA[Rails new app workflow]]></title>
-    <link href="http://justinramel.github.com/blog/2011/01/11/rails-new-app-workflow/"/>
+    <link href="http://justinramel.github.com/2011/01/11/rails-new-app-workflow/"/>
     <updated>2011-01-11T14:58:47+00:00</updated>
-    <id>http://justinramel.github.com/blog/2011/01/11/rails-new-app-workflow</id>
+    <id>http://justinramel.github.com/2011/01/11/rails-new-app-workflow</id>
     <content type="html"><![CDATA[<p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
 
 <h4>Create app</h4>
@@ -1086,9 +1086,9 @@ git clone git@yourserver.com:myrepo
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-method/"/>
     <updated>2010-12-31T01:32:57+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-method</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -1118,9 +1118,9 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Rename Instance Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
     <updated>2010-12-31T01:14:03+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -1148,9 +1148,9 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Rename Local Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
     <updated>2010-12-31T00:59:58+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
@@ -1178,9 +1178,9 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Local Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
+    <link href="http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
     <updated>2010-12-31T00:27:45+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
+    <id>http://justinramel.github.com/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <h4>Extract Local Variable</h4>
@@ -1208,9 +1208,9 @@ The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract to Let]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
+    <link href="http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
     <updated>2010-12-30T23:49:00+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
+    <id>http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <h4>Extract to Let</h4>
@@ -1234,9 +1234,9 @@ The let method is created above the it block, using the initialisation line - ac
   
   <entry>
     <title type="html"><![CDATA[vim-ruby-refactoring - Extract Constant]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-constant/"/>
+    <link href="http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-constant/"/>
     <updated>2010-12-30T23:04:56+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-constant</id>
+    <id>http://justinramel.github.com/2010/12/30/vim-ruby-refactoring-extract-constant</id>
     <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
 <h4>Extract Constant</h4>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Subversion | just ram]]></title>
+  <link href="http://justinramel.github.com//categories/subversion/atom.xml" rel="self"/>
+  <link href="http://justinramel.github.com/"/>
+  <updated>2012-10-24T23:05:02+01:00</updated>
+  <id>http://justinramel.github.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HOWTO: Add svn:externals in windows using tortoisesvn]]></title>
+    <link href="http://justinramel.github.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/"/>
+    <updated>2009-06-04T01:00:25+01:00</updated>
+    <id>http://justinramel.github.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn</id>
+    <content type="html"><![CDATA[<p>I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into their own repository and include them in the other projects using an svn:external. The advantage this gives you is any changes you make to the external repository can be updated easily across all projects. Any hoose this is who to do it.</p>
+
+<ol>
+<li><p>Go to the root of the folder you want to add the externals too.</p></li>
+<li><p>Right click on the root folder of the project you want to add the external repository to and select <em>T_ortoiseSVN –> </em>P_roperties.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_settings3.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_settings3_thumb.png" alt="tortoise_settings[3]" /></a> <strong>Note:</strong> This folder has to be a checked out subversion repository or you’ll not get the context menu!</p></li>
+<li><p>You will now see the subversion properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties1_thumb.png" alt="tortoise_properties[1]" /></a></p></li>
+<li><p>Click the _N_ew.. button. You will now see the Add properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1_thumb.png" alt="tortoise_add_properties[1]" /></a></p></li>
+<li><p>Select svn:externals from the property name drop down list.</p></li>
+<li><p>Enter the name you want to give to the external folder followed by the path to your tools repository in property value text area.      <br/>
+In the example above: tools svn://server/tools/trunk       <br/>
+<strong>Note:</strong> You can add more external repositories by simply adding more lines to the property value text area.</p></li>
+<li><p>Click Ok to add the property will now be listed in the properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties21.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties21_thumb.png" alt="tortoise_properties2[1]" /></a></p></li>
+<li><p>Right click on the root folder and select SVN Update from the menu. Subversion will now pull down the files from the external repository and your done.</p></li>
+</ol>
+
+
+<p>Once you check this change in other people checking out from the repository will automatically get the externals folder. Also any changes to the external repository will be updated in this repository on any update. So in this case if I add a new tool or update one of the tools all repositories using this external repository will get the changes on their next update.</p>
+
+<h3>Gotchas</h3>
+
+<ul>
+<li>Don't forget to give the folder name before the repository address and not just the repository address or you will get an error along the lines of: Error parsing svn:externals property on …<img src="http://justinram.files.wordpress.com/2009/06/tortoise_error1_thumb.png" alt="tortoise_error[1]" /></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Subversion, TortoiseSVN and the _SVN ASP.NET Hack]]></title>
+    <link href="http://justinramel.github.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/"/>
+    <updated>2006-06-07T12:15:08+01:00</updated>
+    <id>http://justinramel.github.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack</id>
+    <content type="html"><![CDATA[<p>Good write up of the TortoiseSVN ASP.NET Hack <a href="http://www.codefez.com/Home/tabid/36/ctl/ArticleView/mid/364/articleId/191/Subversion-and-the-ASP-NET-Hack.aspx">here</a></p>
+
+<p>Basically involves creating an environment variable SVN_ASP_DOT_NET_HACK with the value of 1. When TortoiseSVN finds this variable it looks for _svn folder instead of .svn</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby script to rename windows subversion files .svn to _svn]]></title>
+    <link href="http://justinramel.github.com/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/"/>
+    <updated>2006-05-04T22:46:34+01:00</updated>
+    <id>http://justinramel.github.com/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn</id>
+    <content type="html"><![CDATA[<pre><code>Dir["**/.svn"].each do |folder|
+    File.rename(folder, folder.sub('.svn', '_svn'))
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Windows SubVersion / TortoiseSVN - Compare two versions of a file]]></title>
+    <link href="http://justinramel.github.com/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/"/>
+    <updated>2006-04-26T14:47:52+01:00</updated>
+    <id>http://justinramel.github.com/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file</id>
+    <content type="html"><![CDATA[<p>Today I needed to compare two different versions of a source file.  One in the main trunk folder and the other in a previously tagged version folder. This is easily done in TortoiseSVN, snippet from the TortoiseSVN manual:</p>
+
+<blockquote><p><strong>Compare two revisions of a file</strong>
+If you want to compare two revisions in a file's history, for example revisions 100 and 200 of the same file, just use TortoiseSVN => Show Log to list the revision history for that file. Pick the two revisions you want to compare then use Context Menu => Compare Revisions.</p></blockquote>
+
+<p>If you want to compare the same file in two different trees, for example the trunk and a branch, you can use the repository browser to open up both trees, select the file in both places, then use Context Menu => Compare Revisions.</p>
+
+<p>If you want to compare two trees to see what has changed, for example the trunk and a tagged release, you can use TortoiseSVN => Revision Graph Select the two nodes to compare, then use Context Menu => Compare HEAD Revisions. This will show a list of changed files, and you can then select individual files to view the changes in detail. Alternatively use Context Menu => Unified Diff of HEAD Revisions to see a summary of all differences, with minimal context.</p>
+
+<p>The process of comparing two trees is really nicely done, you get a list of all the files which have been changed between the two trees. You can then drill into this list and see the changes made to individual files. Kewl!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tagging in subversion]]></title>
+    <link href="http://justinramel.github.com/2006/04/03/tagging-in-subversion/"/>
+    <updated>2006-04-03T10:25:29+01:00</updated>
+    <id>http://justinramel.github.com/2006/04/03/tagging-in-subversion</id>
+    <content type="html"><![CDATA[<p>We have started tagging our source when releasing to QA/porduction which means we can easily roll back to an ealier verison of the code if a problem is found in production. Here's how we do it using TortoiseSVN.</p>
+
+<p>First commit your source then open up the TortoiseSVN repository browser:</p>
+
+<p>Right click in a folder in windows to get a context menu then select TortoiseSVN => Repo-Browser.</p>
+
+<p>You should now see Repository browser:</p>
+
+<p><img src="http://justinram.files.wordpress.com/2006/04/repos.thumbnail.JPG" alt="Repository Browser" /></p>
+
+<p>Find the trunk of the project you wish to tag then right click on the trunk folder and select 'Copy to...' from the context menu.</p>
+
+<p>You will now see the Copy to... dialog:</p>
+
+<p><img src="http://justinram.files.wordpress.com/2006/04/copyto.thumbnail.JPG" alt="CopyTo" /></p>
+
+<p>Enter the path to your tagged copy, along the lines of svn://server/project/tags/Version2.00</p>
+
+<p>You now have tagged version of your project which you can revert to anytime.</p>
+]]></content>
+  </entry>
+  
+</feed>
