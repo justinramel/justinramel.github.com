@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Subversion | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/subversion/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T21:31:31+01:00</updated>
+  <updated>2012-10-24T21:43:24+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[HOWTO: Add svn:externals in windows using tortoisesvn]]></title>
-    <link href="http://justinramel.github.com/blog/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/"/>
+    <link href="http://justinramel.github.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/"/>
     <updated>2009-06-04T01:00:25+01:00</updated>
-    <id>http://justinramel.github.com/blog/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn</id>
+    <id>http://justinramel.github.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn</id>
     <content type="html"><![CDATA[<p>I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into their own repository and include them in the other projects using an svn:external. The advantage this gives you is any changes you make to the external repository can be updated easily across all projects. Any hoose this is who to do it.</p>
 
 <ol>
@@ -47,9 +47,9 @@ In the example above: tools svn://server/tools/trunk       <br/>
   
   <entry>
     <title type="html"><![CDATA[Subversion, TortoiseSVN and the _SVN ASP.NET Hack]]></title>
-    <link href="http://justinramel.github.com/blog/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/"/>
+    <link href="http://justinramel.github.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/"/>
     <updated>2006-06-07T12:15:08+01:00</updated>
-    <id>http://justinramel.github.com/blog/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack</id>
+    <id>http://justinramel.github.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack</id>
     <content type="html"><![CDATA[<p>Good write up of the TortoiseSVN ASP.NET Hack <a href="http://www.codefez.com/Home/tabid/36/ctl/ArticleView/mid/364/articleId/191/Subversion-and-the-ASP-NET-Hack.aspx">here</a></p>
 
 <p>Basically involves creating an environment variable SVN_ASP_DOT_NET_HACK with the value of 1. When TortoiseSVN finds this variable it looks for _svn folder instead of .svn</p>
@@ -58,9 +58,9 @@ In the example above: tools svn://server/tools/trunk       <br/>
   
   <entry>
     <title type="html"><![CDATA[Ruby script to rename windows subversion files .svn to _svn]]></title>
-    <link href="http://justinramel.github.com/blog/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/"/>
+    <link href="http://justinramel.github.com/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/"/>
     <updated>2006-05-04T22:46:34+01:00</updated>
-    <id>http://justinramel.github.com/blog/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn</id>
+    <id>http://justinramel.github.com/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn</id>
     <content type="html"><![CDATA[<pre><code>Dir["**/.svn"].each do |folder|
     File.rename(folder, folder.sub('.svn', '_svn'))
 end
@@ -70,9 +70,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Windows SubVersion / TortoiseSVN - Compare two versions of a file]]></title>
-    <link href="http://justinramel.github.com/blog/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/"/>
+    <link href="http://justinramel.github.com/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/"/>
     <updated>2006-04-26T14:47:52+01:00</updated>
-    <id>http://justinramel.github.com/blog/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file</id>
+    <id>http://justinramel.github.com/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file</id>
     <content type="html"><![CDATA[<p>Today I needed to compare two different versions of a source file.  One in the main trunk folder and the other in a previously tagged version folder. This is easily done in TortoiseSVN, snippet from the TortoiseSVN manual:</p>
 
 <blockquote><p><strong>Compare two revisions of a file</strong>
@@ -88,9 +88,9 @@ If you want to compare two revisions in a file's history, for example revisions 
   
   <entry>
     <title type="html"><![CDATA[Tagging in subversion]]></title>
-    <link href="http://justinramel.github.com/blog/2006/04/03/tagging-in-subversion/"/>
+    <link href="http://justinramel.github.com/2006/04/03/tagging-in-subversion/"/>
     <updated>2006-04-03T10:25:29+01:00</updated>
-    <id>http://justinramel.github.com/blog/2006/04/03/tagging-in-subversion</id>
+    <id>http://justinramel.github.com/2006/04/03/tagging-in-subversion</id>
     <content type="html"><![CDATA[<p>We have started tagging our source when releasing to QA/porduction which means we can easily roll back to an ealier verison of the code if a problem is found in production. Here's how we do it using TortoiseSVN.</p>
 
 <p>First commit your source then open up the TortoiseSVN repository browser:</p>

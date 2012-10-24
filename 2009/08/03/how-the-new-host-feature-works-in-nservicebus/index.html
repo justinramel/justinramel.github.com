@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How the new Host feature works in nServiceBus - just ram</title>
+  <meta name="author" content="Justin Ramel">
+
+  
+  <meta name="description" content="The latest Alpha version of nServiceBus uses the TopShelf project as part of its new hosting feature. This new Host feature makes it super easy to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://justinramel.github.com/2009/08/03/how-the-new-host-feature-works-in-nservicebus/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35853047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">just ram</a></h1>
+  
+    <h2>stuff I should remember</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:justinramel.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How the new Host feature works in nServiceBus</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-03T18:02:24+01:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The latest <em>Alpha</em> version of <a href="http://www.nservicebus.com/">nServiceBus</a> uses the <a href="http://code.google.com/p/topshelf/">TopShelf</a> project as part of its new hosting feature. This new Host feature makes it super easy to setup a console/windows service for your clients/servers. So here’s how <em>I think</em> it works and what you can do with it…</p>
+
+<h2>Get nServiceBus</h2>
+
+<p>First you’ll need to get the latest build which includes the new Host feature either:</p>
+
+<ul>
+<li><p>Check out the source and build it yourself from the <a href="http://subversion.tigris.org/">subversion</a> repository:       <br/>
+<a href="https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/">https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/</a>       <br/>
+OR</p></li>
+<li><p>Download a demo solution I hacked out of the nServiceBus samples (FullDuplex/RequestResponse): <a href="http://cid-d7d57b78b0ddedf5.skydrive.live.com/browse.aspx/.Public/blog/nServiceBus">nServiceBus Host Demo</a></p></li>
+</ul>
+
+
+<p>Either way take a look at the FullDuplex/RequestResponse sample project which consists of a Client, Server and Messages project:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb.png" alt="image" /></a></p>
+
+<h2>Run the sample</h2>
+
+<p><strong>Note:</strong> To get the Server to run successfully in my demo solution I had to change the app.config slightly by replacing the UnicastBusConfig setting with:</p>
+
+<p><UnicastBusConfig DistributorControlAddress="" DistributorDataAddress="">    <br/>
+<MessageEndpointMappings>     <br/>
+</MessageEndpointMappings>     <br/>
+</UnicastBusConfig></p>
+
+<p>Ok simply hit F5 to run the sample and two console windows should appear one for the Client and one for the Server:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image1.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb1.png" alt="image" /></a></p>
+
+<p>So everything is running ok our Client can send messages to the Server and receive a response. But what’s just happened?</p>
+
+<h2>Multiple startup projects</h2>
+
+<p>First the solution is set to start both the Client and the Server projects. This is set in the solution property pages you can view this setting by right clicking on the solution and selecting Set St_a_rtUp Projects…</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image2.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb2.png" alt="image" /></a></p>
+
+<p>As you can see the solution is set to start multiple projects namely the Client and the Server.</p>
+
+<p>Now the Server and Client projects are both Class Library’s so how come they are running as console apps when we F5 (debug) the solution?</p>
+
+<h2>Debug settings</h2>
+
+<p>If we take a look at the Debug settings for the Client (Right click the Client project and select P_r_operties, then Debug from the tab):</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image3.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb3.png" alt="image" /></a></p>
+
+<p>Notice the Start Action is set to Start e_x_ternal program NServiceBus.Host.exe from the Client projects debug\bin directory. When we hit F5 to debug the application visual studio runs this exe and that’s how we get the console windows.</p>
+
+<h2>Reference NServiceBus.Host.exe</h2>
+
+<p>NServiceBus.Host.exe ends up in the debug\bin because its referenced by the project for example in the Client:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image4.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb4.png" alt="image" /></a></p>
+
+<p>But how does it know where to get its configuration?</p>
+
+<h2>Configuration</h2>
+
+<p>NServiceBus.Host.exe scans its current directory for any dlls. For each dll it finds it searches for a class which implements the interface IConfigureThisEndpoint. If the search is successful the Host knows to use the app.config for this dll so in the case of the Client – Client.dll.config is used to configure nServiceBus.</p>
+
+<h2>Client</h2>
+
+<p>If we take a look at the Client project we’ll find the class EndpointConfig which implements the IConfigureThisEndpoint. This is simply a marker interface which has no actual implementation. Notice there are other interfaces used to configure the client which do require implementations:</p>
+
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
+As.aClient, <br/>
+ISpecify.ToUseXmlSerialization,     <br/>
+ISpecify.XmlSerializationNamespace,     <br/>
+IWantCustomInitialization,     <br/>
+ISpecify.ToRun<ClientEndpoint>     <br/>
+{     <br/>
+public string Namespace     <br/>
+{     <br/>
+get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
+}</p>
+
+<p>public void Init(Configure configure)    <br/>
+{     <br/>
+configure.RijndaelEncryptionService();     <br/>
+}     <br/>
+}</p>
+
+<p>Of particular interest, the interface used to configure the dll as a client (As.aClient) and another to specify which code to actually run (ISpecify.ToRun<ClientEndpoint>). The ClientEndPoint class contains the code which is runs when the Host starts and stops.</p>
+
+<p>Note there are lots more interfaces which can be used to specify configuration options:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image5.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb5.png" alt="image" /></a></p>
+
+<h2>Server</h2>
+
+<p>The Server project works in pretty much the same way as the Client it has an EndpointConfig class:</p>
+
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
+As.aServer,     <br/>
+ISpecify.ToUseXmlSerialization,</p>
+
+<p>ISpecify.XmlSerializationNamespace,     <br/>
+IWantCustomInitialization     <br/>
+{     <br/>
+public string Namespace     <br/>
+{     <br/>
+get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
+}</p>
+
+<p>public void Init(Configure configure)    <br/>
+{     <br/>
+configure.RijndaelEncryptionService();     <br/>
+}     <br/>
+}</p>
+
+<p>Here the interfaces are used to configure the dll as a server (As.aServer) and IWantCustomInitialization which allows you to specify additional configuration via the Init method. The Server project also contains the RequestDataMessageHandler class which the bus knows to use when a RequestDataMessage arrives.</p>
+
+<p>All this makes it very easy to create Client and Server applications for nServiceBus which are a doddle to debug in visual studio.</p>
+
+<p>But wait there&#8217;s more…</p>
+
+<h2>Run from console</h2>
+
+<p>You can run the Client or Server from outside Visual Studio from the command line. Open a command prompt, cd to the relevant bin folder and type:</p>
+
+<p>NServiceBus.Host.exe</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image6.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb6.png" alt="image" /></a></p>
+
+<h2>Install as a Windows Service</h2>
+
+<p>We can install the Server as a Windows Service no extra code or configuration required! Open a command prompt, cd to the relevant bin folder and type:</p>
+
+<p>NServiceBus.Host.exe /install</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image7.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb7.png" alt="image" /></a></p>
+
+<p>You’ll then be prompted to supply some authentication details for the service:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image8.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb8.png" alt="image" /></a></p>
+
+<p>Enter some relevant user details and hit ok and your service will be installed and ready to start:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image11.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb11.png" alt="image" /></a></p>
+
+<h2>Uninstall service</h2>
+
+<p>Finally you can also uninstall the service:</p>
+
+<p>NServiceBus.Host.exe /uninstall</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image10.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb10.png" alt="image" /></a></p>
+
+<p><strong>Note:</strong> The service will not disappear from this Services management console until you reboot your machine, this is standard for a windows service.</p>
+
+<p>That’s as much as I have puzzled out for now, if I’ve made and glaring errors please let me know.</p>
+
+<p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f&amp;bgcolor=FF3300" alt="kick it on DotNetKicks.com" /></a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Justin Ramel</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-03T18:02:24+01:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/nservicebus/'>nServiceBus</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.github.com/2009/08/03/how-the-new-host-feature-works-in-nservicebus/" data-via="justinramel" data-counturl="http://justinramel.github.com/2009/08/03/how-the-new-host-feature-works-in-nservicebus/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/" title="Previous Post: jQuery Validation Plugin – Dynamically change validator message">&laquo; jQuery Validation Plugin – Dynamically change validator message</a>
+      
+      
+        <a class="basic-alignment right" href="/2010/12/30/vim-ruby-refactoring-series/" title="Next Post: Using vim to write ruby code? Check out this excellent refactoring plugin">Using vim to write ruby code? Check out this excellent refactoring plugin &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/justinramel">@justinramel</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'justinramel',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Strava</h1>
+  <br />
+  <iframe height='160' width='272' frameborder='0' allowtransparency='true' scrolling='no' src='http://app.strava.com/athletes/1108047/activity-summary/38bbd39fbf5da9f3bf5e3845fb2f4592704e5de4'></iframe>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("justinramel", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/justinramel" class="twitter-follow-button" data-show-count="false">Follow @justinramel</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:njr11">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "njr11"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108885363809433432894?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Justin Ramel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

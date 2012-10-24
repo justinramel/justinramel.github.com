@@ -4,7 +4,7 @@
   <title><![CDATA[Category: BDD | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/bdd/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-24T21:31:31+01:00</updated>
+  <updated>2012-10-24T21:43:24+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[developwithpassion.bdd - notes]]></title>
-    <link href="http://justinramel.github.com/blog/2009/04/30/developwithpassionbdd-notes/"/>
+    <link href="http://justinramel.github.com/2009/04/30/developwithpassionbdd-notes/"/>
     <updated>2009-04-30T19:29:37+01:00</updated>
-    <id>http://justinramel.github.com/blog/2009/04/30/developwithpassionbdd-notes</id>
+    <id>http://justinramel.github.com/2009/04/30/developwithpassionbdd-notes</id>
     <content type="html"><![CDATA[<p>A few notes I’ve compiled while starting to play with <a href="http://blog.jpboodhoo.com/">JP Boodhoo's</a> BDD framework (<a href="http://github.com/developwithpassion">http://github.com/developwithpassion</a>). At first sight the syntax looks quite alien but try it for a while you eyes soon adjust.</p>
 
 <h2>JP blog posts</h2>
@@ -79,9 +79,9 @@ exception_thrown_by_the_sut.Message.should_contain("MY EXCEPTION");</p></blockqu
   
   <entry>
     <title type="html"><![CDATA[Books + Head First C# + Lab 1 Solution]]></title>
-    <link href="http://justinramel.github.com/blog/2008/01/03/books-head-first-c-lab-1-solution/"/>
+    <link href="http://justinramel.github.com/2008/01/03/books-head-first-c-lab-1-solution/"/>
     <updated>2008-01-03T21:52:00+00:00</updated>
-    <id>http://justinramel.github.com/blog/2008/01/03/books-head-first-c-lab-1-solution</id>
+    <id>http://justinramel.github.com/2008/01/03/books-head-first-c-lab-1-solution</id>
     <content type="html"><![CDATA[<p>I've been reading through the new Head First book <a href="http://www.amazon.com/gp/product/0596514824?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596514824">Head First C#</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596514824" alt="" />
 which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> just before Christmas. I've been a fan of the Head Fist books ever since reading their best selling <a href="http://www.amazon.com/gp/product/0596007124?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596007124">Head First Design Patterns</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596007124" alt="" /> book. This particular book is aimed at beginners / hobbyists so I'm not exactly the target audience but hey it covers C# 3 so its got to be worth at least a skim.</p>
 
