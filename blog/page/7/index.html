@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="So you want to backup your repository? Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which &hellip;">
+  <meta name="description" content="Dir["**/.svn"].each do |folder| File.rename(folder, folder.sub('.svn', '_svn'))
+end ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +83,46 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/05/03/subversion-server-windows-backup/">Subversion server + windows + backup</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/">Ruby script to rename windows subversion files .svn to _svn</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-04T22:46:34+01:00" pubdate data-updated="true">May 4<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>Dir["**/.svn"].each do |folder|
+    File.rename(folder, folder.sub('.svn', '_svn'))
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/05/03/subversion-server-windows-backup/">Subversion server + windows + backup</a></h1>
     
     
       <p class="meta">
@@ -134,7 +174,7 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/">Windows SubVersion / TortoiseSVN - Compare two versions of a file</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/">Windows SubVersion / TortoiseSVN - Compare two versions of a file</a></h1>
     
     
       <p class="meta">
@@ -179,7 +219,7 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server/">Connecting Ruby on Rails to Microsoft SQL Server</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server/">Connecting Ruby on Rails to Microsoft SQL Server</a></h1>
     
     
       <p class="meta">
@@ -243,7 +283,7 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/04/04/migrations-zombie-state-and-ms-sql/">Migrations &#8216;Zombie State&#8217; and MS SQL</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/04/04/migrations-zombie-state-and-ms-sql/">Migrations &#8216;Zombie State&#8217; and MS SQL</a></h1>
     
     
       <p class="meta">
@@ -282,7 +322,7 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/04/04/pluralize-table-names-no-thanks/">Pluralize table names - no thanks!</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/04/04/pluralize-table-names-no-thanks/">Pluralize table names - no thanks!</a></h1>
     
     
       <p class="meta">
@@ -324,7 +364,7 @@ ActiveRecord::Base.pluralize_table_names = false
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/04/04/setting-up-ruby-on-rails/">Setting up Ruby on Rails</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/04/04/setting-up-ruby-on-rails/">Setting up Ruby on Rails</a></h1>
     
     
       <p class="meta">
@@ -420,7 +460,7 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/04/03/tagging-in-subversion/">Tagging in subversion</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/04/03/tagging-in-subversion/">Tagging in subversion</a></h1>
     
     
       <p class="meta">
@@ -474,7 +514,7 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/03/30/ruby-iteractive-debugging/">Ruby iteractive debugging</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/03/30/ruby-iteractive-debugging/">Ruby iteractive debugging</a></h1>
     
     
       <p class="meta">
@@ -545,7 +585,7 @@ c
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/03/30/ruby-unit-testing-setting-up-your-project-folder-for-testing/">Ruby unit testing - Setting up your project folder for testing</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/03/30/ruby-unit-testing-setting-up-your-project-folder-for-testing/">Ruby unit testing - Setting up your project folder for testing</a></h1>
     
     
       <p class="meta">
@@ -593,47 +633,6 @@ c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/30/ruby-unit-tests-run-only-one-test-method/">Ruby unit tests - run only one test method</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-30T22:04:37+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>What if you don&#8217;t wish to run all the unit tests in your test case?</p>
-
-<p>You can tell ruby to run only one test method by passing in the name of the test:</p>
-
-<pre><code>  ruby test_mytestcase.rb --name test_just_this_method
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -651,23 +650,23 @@ c
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+        <a href="/blog/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
       <li class="post">
-        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+        <a href="/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+        <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+        <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>

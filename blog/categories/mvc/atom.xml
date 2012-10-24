@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mvc | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/mvc/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-21T00:36:54+01:00</updated>
+  <updated>2012-10-24T21:31:31+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Setup ASP.NET MVC with Spark View Engine in 5 minutes or less]]></title>
-    <link href="http://justinramel.github.com/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/"/>
+    <link href="http://justinramel.github.com/blog/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/"/>
     <updated>2009-06-08T15:33:21+01:00</updated>
-    <id>http://justinramel.github.com/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less</id>
+    <id>http://justinramel.github.com/blog/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less</id>
     <content type="html"><![CDATA[<p>Setup folder structure:</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb.png" alt="image" /></a></p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Resharper | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/resharper/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-21T00:36:54+01:00</updated>
+  <updated>2012-10-24T21:31:31+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Resharper format settings]]></title>
-    <link href="http://justinramel.github.com/2009/06/10/resharper-format-settings/"/>
+    <link href="http://justinramel.github.com/blog/2009/06/10/resharper-format-settings/"/>
     <updated>2009-06-10T18:15:59+01:00</updated>
-    <id>http://justinramel.github.com/2009/06/10/resharper-format-settings</id>
+    <id>http://justinramel.github.com/blog/2009/06/10/resharper-format-settings</id>
     <content type="html"><![CDATA[<p>I can never remember these so thought it best to write them down. Start with the settings from:</p>
 
 <p><a href="http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx">http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx</a></p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: FubuMVC | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/fubumvc/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-21T00:36:54+01:00</updated>
+  <updated>2012-10-24T21:31:31+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Building FubuMVC with a portable version of rake]]></title>
-    <link href="http://justinramel.github.com/2009/06/19/building-fubumvc-with-a-portable-version-of-rake/"/>
+    <link href="http://justinramel.github.com/blog/2009/06/19/building-fubumvc-with-a-portable-version-of-rake/"/>
     <updated>2009-06-19T16:55:24+01:00</updated>
-    <id>http://justinramel.github.com/2009/06/19/building-fubumvc-with-a-portable-version-of-rake</id>
+    <id>http://justinramel.github.com/blog/2009/06/19/building-fubumvc-with-a-portable-version-of-rake</id>
     <content type="html"><![CDATA[<p>To build <a href="http://fubumvc.pbworks.com/">FubuMVC</a> you need to install ruby, rake etc. Unfortunately for me the firewall at work will not allow me to get the rake gem (I’ve downloaded gems before using the HTTP_PROXY setting before but no luck this time). Any hoose I remember reading <a href="http://www.stephenbalkum.com/Default.aspx">Stephen Balkum</a> post on packaging up <a href="http://docs.rubyrake.org/index.html">Rake</a> as an executable.  I followed Stephens guide and created a portable rake package which got around my firewall problem <strong>but</strong> <a href="http://fubumvc.pbworks.com/">FubuMVC</a> required another gem <a href="http://rubyforge.org/frs/download.php/11376/rubyzip-0.9.1.zip">rubyzip</a> to allow a build.</p>
 
 <h2>Adding another gem</h2>
@@ -70,9 +70,9 @@
   
   <entry>
     <title type="html"><![CDATA[FubuMVC – Resources]]></title>
-    <link href="http://justinramel.github.com/2009/06/18/fubumvc-resources/"/>
+    <link href="http://justinramel.github.com/blog/2009/06/18/fubumvc-resources/"/>
     <updated>2009-06-18T01:11:50+01:00</updated>
-    <id>http://justinramel.github.com/2009/06/18/fubumvc-resources</id>
+    <id>http://justinramel.github.com/blog/2009/06/18/fubumvc-resources</id>
     <content type="html"><![CDATA[<p><strong>UPDATE:</strong> Lots of changes are a foot with FubuMVC so a few new blog posts appearing, I’ll update this post as I find them.</p>
 
 <p>I’m looking at FubuMVC for a side project, I thought it would be useful to collect a list of resources.</p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | just ram]]></title>
   <link href="http://justinramel.github.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://justinramel.github.com/"/>
-  <updated>2012-10-21T00:36:54+01:00</updated>
+  <updated>2012-10-24T21:31:31+01:00</updated>
   <id>http://justinramel.github.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SETUP GIT REPO]]></title>
-    <link href="http://justinramel.github.com/2011/07/12/setup-git-repo/"/>
+    <link href="http://justinramel.github.com/blog/2011/07/12/setup-git-repo/"/>
     <updated>2011-07-12T21:48:22+01:00</updated>
-    <id>http://justinramel.github.com/2011/07/12/setup-git-repo</id>
+    <id>http://justinramel.github.com/blog/2011/07/12/setup-git-repo</id>
     <content type="html"><![CDATA[<h4>ADDING KEY TO SERVER</h4>
 
 <p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>

@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I&#8217;ve written a series of posts about Automated &hellip;">
+  <meta name="description" content="Ok last time I promised some hints and tips so lets begin. I&#8217;m going to keep the hints and tips posts fairly short in the hope it will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +82,64 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/10/17/sdn-blog/">SDN Blog</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of/">SAP Enterprise Portal - Automated Functional Testing - Part 5 of &#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-18T12:13:13+01:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ok last time I promised some hints and tips so lets begin. I&#8217;m going to keep the hints and tips posts fairly short in the hope it will encourage me to post more often. I received a comment on my last post asking how I find the ID/Name attributes of my forms so I though that would be a good place to start.</p>
+
+<p><strong>TOP TIP - How to find ID/Name attributes of a form<br/>
+</strong>To save me having to sifting through the html code of a page for the ID/Name of a control I use the <a href="http://www.mozilla.com/firefox/">FireFox</a> browser with the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> extension installed. The <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> is a great time saver not only for finding out form details but it has lots of other features too, I strongly recommend you check it out.</p>
+
+<p>When you have the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> installed under the <strong>Forms menu</strong> you have the <strong>Display Form Details</strong> option, simply select this option and the page will be highlighted with yellow tags showing the ID/Name attributes of each item on the form.</p>
+
+<p><strong>NOTE:</strong> Forms items which are created using HTMLB do not get a static ID/Name attribute these attributes appear to be generated each time the page is created. If this is the case how do we write tests against HTMLB forms? That&#8217;s were the next top tip comes in&#8230;</p>
+
+<p><strong>TOP TIP - Writing Watir test against HTMLB forms</strong><br/>
+As I mentioned above HTMLB forms do not have a static ID/Name attribute, they are generated each time the page is created so you will find your HTMLB form controls will have an ID/Name of something along the lines of &#8220;htmlb_18528_htmlb_9998_3&#8221; if you then reload the page the ID/Name attributes will have changed i.e. &#8220;htmlb_18328_htmlb_9991_1&#8221;. This means the following Watir test code would not work as each time the page reloaded the <em>:id</em> attribute would be different.</p>
+
+<p><code>@ie.text_field(:id, 'htmlb_18528_htmlb_9998_3').set('test me')</code></p>
+
+<p>So how do we get around this? Well the best way I have found is to use Watir&#8217;s <em>:index</em> parameter when accessing form controls. The <em>:index</em> parameter works by sequentially counting form controls from left to right top to bottom. So to set the text of the second control on the page we use the following code:</p>
+
+<p><code>@ie.text_field(:index, 2).set('test me')</code></p>
+
+<p>This is not an ideal solution due to the fact if you change the layout of the page your index&#8217;s will also change and break your tests. However I&#8217;ve been using this method for a while now and it&#8217;s never been a major problem, besides I&#8217;m not sure how else it could be done!</p>
+
+<p><strong>COMING UP IN PART SIX</strong><br/>
+Well that post turned out to be slightly longer than I planned, so much for keeping these tips short. Next time more of the same.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/10/17/sdn-blog/">SDN Blog</a></h1>
     
     
       <p class="meta">
@@ -128,7 +185,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/07/27/monorail-active-record-testing-createschemafromfile/">Castle Monorail + Active Record + Testing + CreateSchemaFromFile</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/07/27/monorail-active-record-testing-createschemafromfile/">Castle Monorail + Active Record + Testing + CreateSchemaFromFile</a></h1>
     
     
       <p class="meta">
@@ -192,7 +249,7 @@ GO
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/07/20/continuous-integration-cruisecontrolnet-subversion-msbuild-net-20/">Continuous Integration + CruiseControl.Net + Subversion + MSBuild + .Net 2.0</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/07/20/continuous-integration-cruisecontrolnet-subversion-msbuild-net-20/">Continuous Integration + CruiseControl.Net + Subversion + MSBuild + .Net 2.0</a></h1>
     
     
       <p class="meta">
@@ -323,7 +380,7 @@ C:\CI\Myproject\logs</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/06/29/monorail-e28093-moving-from-beta5-to-latest-build/">Castle Monorail – Moving from Beta5 to latest build</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/06/29/monorail-e28093-moving-from-beta5-to-latest-build/">Castle Monorail – Moving from Beta5 to latest build</a></h1>
     
     
       <p class="meta">
@@ -424,7 +481,7 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/06/22/monorail-nvelocity-view-engine/">Castle Monorail - NVelocity View Engine</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/06/22/monorail-nvelocity-view-engine/">Castle Monorail - NVelocity View Engine</a></h1>
     
     
       <p class="meta">
@@ -561,7 +618,7 @@ Calling a helper with IDictonary Paramaters:
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/06/22/monorail/">Castle MonoRail</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/06/22/monorail/">Castle MonoRail</a></h1>
     
     
       <p class="meta">
@@ -607,7 +664,7 @@ Calling a helper with IDictonary Paramaters:
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/">Subversion, TortoiseSVN and the _SVN ASP.NET Hack</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/">Subversion, TortoiseSVN and the _SVN ASP.NET Hack</a></h1>
     
     
       <p class="meta">
@@ -645,7 +702,7 @@ Calling a helper with IDictonary Paramaters:
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/06/06/95/">Location of XML files</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/06/06/95/">Location of XML files</a></h1>
     
     
       <p class="meta">
@@ -683,7 +740,7 @@ Calling a helper with IDictonary Paramaters:
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/05/08/sap-netwweaver-developer-studio-compile-error/">SAP NetWeaver developer Studio – Compile Error</a></h1>
+      <h1 class="entry-title"><a href="/blog/2006/05/08/sap-netwweaver-developer-studio-compile-error/">SAP NetWeaver developer Studio – Compile Error</a></h1>
     
     
       <p class="meta">
@@ -720,45 +777,6 @@ Calling a helper with IDictonary Paramaters:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/">Ruby script to rename windows subversion files .svn to _svn</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-05-04T22:46:34+01:00" pubdate data-updated="true">May 4<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>Dir["**/.svn"].each do |folder|
-    File.rename(folder, folder.sub('.svn', '_svn'))
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -776,23 +794,23 @@ end
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+        <a href="/blog/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
       <li class="post">
-        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+        <a href="/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+        <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+        <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>

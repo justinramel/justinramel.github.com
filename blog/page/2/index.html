@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="TorqueBox Install I&#8217;m playing with latest version of TorqueBox (Currently 2.x.incremental.245) the easiest way to install it is via a gem: gem &hellip;">
+  <meta name="description" content="Setup Apache as a Reverse Proxy in front of a standalone Torquebox server. Apache Setup Proxy Module For this to work Apache must have the mod_proxy &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +82,71 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T22:16:31+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
+
+<h4>Apache Setup</h4>
+
+<h5>Proxy Module</h5>
+
+<p>For this to work Apache must have the mod_proxy module loaded:</p>
+
+<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
+
+<p>Config file: /etc/httpd/conf/httpd.conf</p>
+
+<p><code>ProxyRequests     Off                         # Switch off forward proxy
+ProxyPreserveHost On                               # Pass host name onto the proxy
+ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server
+ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
+</code>
+Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
+
+<h4>TorqueBox Setup</h4>
+
+<p>In your Torquebox application folder create a file &#8216;config/torquebox.yml&#8217; which contains a context which matches the Apache reverse proxy url.</p>
+
+<p>torquebox.yml</p>
+
+<p>web:
+  context: /myapp
+ruby:
+  version: 1.9</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
     
     
       <p class="meta">
@@ -141,7 +205,7 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2011/07/12/setup-git-repo/">SETUP GIT REPO</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/07/12/setup-git-repo/">SETUP GIT REPO</a></h1>
     
     
       <p class="meta">
@@ -205,7 +269,7 @@ git clone git@yourserver.com:myrepo
       
   <header>
     
-      <h1 class="entry-title"><a href="/2011/01/11/rails-new-app-workflow/">Rails new app workflow</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/01/11/rails-new-app-workflow/">Rails new app workflow</a></h1>
     
     
       <p class="meta">
@@ -299,7 +363,7 @@ git clone git@yourserver.com:myrepo
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-extract-method/">vim-ruby-refactoring - Extract Method</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-extract-method/">vim-ruby-refactoring - Extract Method</a></h1>
     
     
       <p class="meta">
@@ -358,7 +422,7 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">vim-ruby-refactoring - Rename Instance Variable</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">vim-ruby-refactoring - Rename Instance Variable</a></h1>
     
     
       <p class="meta">
@@ -415,7 +479,7 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-rename-local-variable/">vim-ruby-refactoring - Rename Local Variable</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable/">vim-ruby-refactoring - Rename Local Variable</a></h1>
     
     
       <p class="meta">
@@ -472,7 +536,7 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-extract-local-variable/">vim-ruby-refactoring - Extract Local Variable</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable/">vim-ruby-refactoring - Extract Local Variable</a></h1>
     
     
       <p class="meta">
@@ -529,7 +593,7 @@ The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-to-let/">vim-ruby-refactoring - Extract to Let</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/12/30/vim-ruby-refactoring-extract-to-let/">vim-ruby-refactoring - Extract to Let</a></h1>
     
     
       <p class="meta">
@@ -582,7 +646,7 @@ The let method is created above the it block, using the initialisation line - ac
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-constant/">vim-ruby-refactoring - Extract Constant</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/12/30/vim-ruby-refactoring-extract-constant/">vim-ruby-refactoring - Extract Constant</a></h1>
     
     
       <p class="meta">
@@ -634,62 +698,6 @@ The value <strong><em>9.81</em></strong> has been extracted into a constant <str
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">vim-ruby-refactoring - Convert Post Conditional</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T22:37:07+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Convert Post Conditional</h4>
-
-<p>Converts a post conditional expression to a conditional expression.</p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before_thumb.png" alt="ConvertPostConditional_Before" /></a>     <br/>
-Move the cursor onto the line which contains the post conditional expression     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rcpc      <br/>
-</strong></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after_thumb.png" alt="ConvertPostConditional_After" /></a>     <br/>
-The post conditional expression is split across 3 lines and converted into a standard if expression.</p>
-
-<p><strong>rcpc</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>C</strong>onvert <strong>P</strong>ost <strong>C</strong>onditional.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -707,23 +715,23 @@ The post conditional expression is split across 3 lines and converted into a sta
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+        <a href="/blog/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
       <li class="post">
-        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+        <a href="/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+        <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+        <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>

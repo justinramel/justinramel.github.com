@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Assuming you have an SQL Server 2005 running reporting services you can run Report builder as a ClickOnce app using the following url: http:/// &hellip;">
+  <meta name="description" content="I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +82,66 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0/">HOWTO: Download and run Microsoft Report Builder 1.0</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/">HOWTO: Add svn:externals in windows using tortoisesvn</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-04T01:00:25+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into their own repository and include them in the other projects using an svn:external. The advantage this gives you is any changes you make to the external repository can be updated easily across all projects. Any hoose this is who to do it.</p>
+
+<ol>
+<li><p>Go to the root of the folder you want to add the externals too.</p></li>
+<li><p>Right click on the root folder of the project you want to add the external repository to and select <em>T_ortoiseSVN –> </em>P_roperties.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_settings3.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_settings3_thumb.png" alt="tortoise_settings[3]" /></a> <strong>Note:</strong> This folder has to be a checked out subversion repository or you’ll not get the context menu!</p></li>
+<li><p>You will now see the subversion properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties1_thumb.png" alt="tortoise_properties[1]" /></a></p></li>
+<li><p>Click the _N_ew.. button. You will now see the Add properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1_thumb.png" alt="tortoise_add_properties[1]" /></a></p></li>
+<li><p>Select svn:externals from the property name drop down list.</p></li>
+<li><p>Enter the name you want to give to the external folder followed by the path to your tools repository in property value text area.      <br/>
+In the example above: tools svn://server/tools/trunk       <br/>
+<strong>Note:</strong> You can add more external repositories by simply adding more lines to the property value text area.</p></li>
+<li><p>Click Ok to add the property will now be listed in the properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties21.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties21_thumb.png" alt="tortoise_properties2[1]" /></a></p></li>
+<li><p>Right click on the root folder and select SVN Update from the menu. Subversion will now pull down the files from the external repository and your done.</p></li>
+</ol>
+
+
+<p>Once you check this change in other people checking out from the repository will automatically get the externals folder. Also any changes to the external repository will be updated in this repository on any update. So in this case if I add a new tool or update one of the tools all repositories using this external repository will get the changes on their next update.</p>
+
+<h3>Gotchas</h3>
+
+<ul>
+<li>Don&#8217;t forget to give the folder name before the repository address and not just the repository address or you will get an error along the lines of: Error parsing svn:externals property on …<img src="http://justinram.files.wordpress.com/2009/06/tortoise_error1_thumb.png" alt="tortoise_error[1]" /></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0/">HOWTO: Download and run Microsoft Report Builder 1.0</a></h1>
     
     
       <p class="meta">
@@ -120,7 +179,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/04/30/developwithpassionbdd-notes/">developwithpassion.bdd - notes</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/04/30/developwithpassionbdd-notes/">developwithpassion.bdd - notes</a></h1>
     
     
       <p class="meta">
@@ -211,7 +270,7 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured/">Castle ActiveRecord – Exception : The ProxyFactoryFactory was not configured</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured/">Castle ActiveRecord – Exception : The ProxyFactoryFactory was not configured</a></h1>
     
     
       <p class="meta">
@@ -293,7 +352,7 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/01/09/monorail-custom-rescue-controller-irescuecontroller/">MonoRail custom rescue controller (IRescueController)</a></h1>
+      <h1 class="entry-title"><a href="/blog/2009/01/09/monorail-custom-rescue-controller-irescuecontroller/">MonoRail custom rescue controller (IRescueController)</a></h1>
     
     
       <p class="meta">
@@ -422,7 +481,7 @@ public class RescueController : SmartDispatcherController, IRescueController
       
   <header>
     
-      <h1 class="entry-title"><a href="/2008/01/03/books-head-first-c-lab-1-solution/">Books + Head First C# + Lab 1 Solution</a></h1>
+      <h1 class="entry-title"><a href="/blog/2008/01/03/books-head-first-c-lab-1-solution/">Books + Head First C# + Lab 1 Solution</a></h1>
     
     
       <p class="meta">
@@ -473,7 +532,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
       
   <header>
     
-      <h1 class="entry-title"><a href="/2007/10/10/tortoisesvn-global-ignore-pattern/">TortoiseSVN + Global ignore pattern</a></h1>
+      <h1 class="entry-title"><a href="/blog/2007/10/10/tortoisesvn-global-ignore-pattern/">TortoiseSVN + Global ignore pattern</a></h1>
     
     
       <p class="meta">
@@ -510,7 +569,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
       
   <header>
     
-      <h1 class="entry-title"><a href="/2007/06/18/castle-using-the-trunk-my-config/">Castle + Using the Trunk + My registry entries</a></h1>
+      <h1 class="entry-title"><a href="/blog/2007/06/18/castle-using-the-trunk-my-config/">Castle + Using the Trunk + My registry entries</a></h1>
     
     
       <p class="meta">
@@ -552,7 +611,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
       
   <header>
     
-      <h1 class="entry-title"><a href="/2007/06/12/sap-wiki-my-profile/">SAP Wiki - My Profile</a></h1>
+      <h1 class="entry-title"><a href="/blog/2007/06/12/sap-wiki-my-profile/">SAP Wiki - My Profile</a></h1>
     
     
       <p class="meta">
@@ -592,7 +651,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
       
   <header>
     
-      <h1 class="entry-title"><a href="/2007/05/30/monaco-f1-grand-prix-2007/">Monaco F1 Grand Prix 2007</a></h1>
+      <h1 class="entry-title"><a href="/blog/2007/05/30/monaco-f1-grand-prix-2007/">Monaco F1 Grand Prix 2007</a></h1>
     
     
       <p class="meta">
@@ -639,56 +698,6 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/05/17/monorail-nvelocity-how-to-find-out-if-your-in-the-first-item-of-a-foreach-loop/">Monorail + NVelocity + How to find out if your in the first item of a foreach loop?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-05-17T11:41:24+01:00" pubdate data-updated="true">May 17<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A colleague needed to add a button to the first row of a table but how do you do this in a foreach loop?</p>
-
-<p>NVelocity has a property called $velocityCount which you can check within the foreach loop:</p>
-
-<pre><code>&lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;table&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
-#foreach($detail in $details)
-  &lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;tr&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
-    &lt;span class="kwrd"&gt;&lt;&lt;/span&gt;&lt;span class="html"&gt;td&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
-      $detail.ShortText)
-      #if($velocityCount == 1) First Row! #end
-    &lt;span class="kwrd"&gt;&lt;/&lt;/span&gt;&lt;span class="html"&gt;td&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
-  &lt;span class="kwrd"&gt;&lt;/&lt;/span&gt;&lt;span class="html"&gt;tr&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
-#end
-&lt;span class="kwrd"&gt;&lt;/&lt;/span&gt;&lt;span class="html"&gt;table&lt;/span&gt;&lt;span class="kwrd"&gt;&gt;&lt;/span&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -706,23 +715,23 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+        <a href="/blog/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
       <li class="post">
-        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
+        <a href="/blog/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+        <a href="/blog/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
       <li class="post">
-        <a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+        <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
