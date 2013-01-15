@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Ok last time I promised some hints and tips so lets begin. I&#8217;m going to keep the hints and tips posts fairly short in the hope it will &hellip;">
+  <meta name="description" content="Ok last time I promised some hints and tips so lets begin. I’m going to keep the hints and tips posts fairly short in the hope it will encourage me &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,34 +95,34 @@
   
 
 
-<time datetime="2006-10-18T12:13:13+01:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
+<time datetime="2006-10-18T04:13:13-07:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Ok last time I promised some hints and tips so lets begin. I&#8217;m going to keep the hints and tips posts fairly short in the hope it will encourage me to post more often. I received a comment on my last post asking how I find the ID/Name attributes of my forms so I though that would be a good place to start.</p>
+<div class="entry-content"><p>Ok last time I promised some hints and tips so lets begin. I’m going to keep the hints and tips posts fairly short in the hope it will encourage me to post more often. I received a comment on my last post asking how I find the ID/Name attributes of my forms so I though that would be a good place to start.  </p>
 
-<p><strong>TOP TIP - How to find ID/Name attributes of a form<br/>
-</strong>To save me having to sifting through the html code of a page for the ID/Name of a control I use the <a href="http://www.mozilla.com/firefox/">FireFox</a> browser with the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> extension installed. The <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> is a great time saver not only for finding out form details but it has lots of other features too, I strongly recommend you check it out.</p>
+<p>**TOP TIP - How to find ID/Name attributes of a form<br />
+**To save me having to sifting through the html code of a page for the ID/Name of a control I use the <a href="http://www.mozilla.com/firefox/">FireFox</a> browser with the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> extension installed. The <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> is a great time saver not only for finding out form details but it has lots of other features too, I strongly recommend you check it out.  </p>
 
-<p>When you have the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> installed under the <strong>Forms menu</strong> you have the <strong>Display Form Details</strong> option, simply select this option and the page will be highlighted with yellow tags showing the ID/Name attributes of each item on the form.</p>
+<p>When you have the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> installed under the <strong>Forms menu</strong> you have the <strong>Display Form Details</strong> option, simply select this option and the page will be highlighted with yellow tags showing the ID/Name attributes of each item on the form.  </p>
 
-<p><strong>NOTE:</strong> Forms items which are created using HTMLB do not get a static ID/Name attribute these attributes appear to be generated each time the page is created. If this is the case how do we write tests against HTMLB forms? That&#8217;s were the next top tip comes in&#8230;</p>
+<p><strong>NOTE:</strong> Forms items which are created using HTMLB do not get a static ID/Name attribute these attributes appear to be generated each time the page is created. If this is the case how do we write tests against HTMLB forms? That’s were the next top tip comes in…  </p>
 
-<p><strong>TOP TIP - Writing Watir test against HTMLB forms</strong><br/>
-As I mentioned above HTMLB forms do not have a static ID/Name attribute, they are generated each time the page is created so you will find your HTMLB form controls will have an ID/Name of something along the lines of &#8220;htmlb_18528_htmlb_9998_3&#8221; if you then reload the page the ID/Name attributes will have changed i.e. &#8220;htmlb_18328_htmlb_9991_1&#8221;. This means the following Watir test code would not work as each time the page reloaded the <em>:id</em> attribute would be different.</p>
+<p><strong>TOP TIP - Writing Watir test against HTMLB forms</strong><br />
+As I mentioned above HTMLB forms do not have a static ID/Name attribute, they are generated each time the page is created so you will find your HTMLB form controls will have an ID/Name of something along the lines of “htmlb<em>18528_htmlb</em>9998<em>3” if you then reload the page the ID/Name attributes will have changed i.e. “htmlb</em>18328<em>htmlb</em>9991<em>1”. This means the following Watir test code would not work as each time the page reloaded the _:id</em> attribute would be different.  </p>
 
-<p><code>@ie.text_field(:id, 'htmlb_18528_htmlb_9998_3').set('test me')</code></p>
+<p><code>@ie.text_field(:id, 'htmlb_18528_htmlb_9998_3').set('test me')</code>  </p>
 
-<p>So how do we get around this? Well the best way I have found is to use Watir&#8217;s <em>:index</em> parameter when accessing form controls. The <em>:index</em> parameter works by sequentially counting form controls from left to right top to bottom. So to set the text of the second control on the page we use the following code:</p>
+<p>So how do we get around this? Well the best way I have found is to use Watir’s <em>:index</em> parameter when accessing form controls. The <em>:index</em> parameter works by sequentially counting form controls from left to right top to bottom. So to set the text of the second control on the page we use the following code:  </p>
 
-<p><code>@ie.text_field(:index, 2).set('test me')</code></p>
+<p><code>@ie.text_field(:index, 2).set('test me')</code>  </p>
 
-<p>This is not an ideal solution due to the fact if you change the layout of the page your index&#8217;s will also change and break your tests. However I&#8217;ve been using this method for a while now and it&#8217;s never been a major problem, besides I&#8217;m not sure how else it could be done!</p>
+<p>This is not an ideal solution due to the fact if you change the layout of the page your index’s will also change and break your tests. However I’ve been using this method for a while now and it’s never been a major problem, besides I’m not sure how else it could be done!  </p>
 
-<p><strong>COMING UP IN PART SIX</strong><br/>
+<p><strong>COMING UP IN PART SIX</strong><br />
 Well that post turned out to be slightly longer than I planned, so much for keeping these tips short. Next time more of the same.</p>
 </div>
 
@@ -146,7 +146,7 @@ Well that post turned out to be slightly longer than I planned, so much for keep
   
 
 
-<time datetime="2006-10-18T12:13:13+01:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
+<time datetime="2006-10-18T04:13:13-07:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -195,6 +195,10 @@ Well that post turned out to be slightly longer than I planned, so much for keep
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -208,10 +212,6 @@ Well that post turned out to be slightly longer than I planned, so much for keep
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -306,7 +306,7 @@ Well that post turned out to be slightly longer than I planned, so much for keep
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

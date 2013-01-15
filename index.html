@@ -9,11 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Jenkins.NET
-Jenkins.NET Plugins
-Setup Jenkins.NET
-Setting up your first job
-Your first build From the Project Demo &hellip;">
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +82,105 @@ Your first build From the Project Demo &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T17:38:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
+</ol>
+
+<hr />
+
+<p>Lets break the build to see how Jenkins reacts. I’ll add a DLL to the project
+then “forget” to add it to source control; unfortunately I see this problem a
+lot when new developers join the team.</p>
+
+<h3 id="i-see-red-projects">I see red projects</h3>
+
+<p><img src="/images/jenkins-net/ch06/red-ball.png" alt="" /></p>
+
+<p>As you can see Jenkins now shows a red ball next to the Demo project. Also
+notice the slightly cloudy weather icon indicating all is not well with our
+project.</p>
+
+<h3 id="hows-the-weather">How’s the weather?</h3>
+
+<p>Jenkins uses a weather metaphor to show at a glance how a project is doing.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-1.png" alt="" /></td>
+      <td>No recent builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-2.png" alt="" /></td>
+      <td>1 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-3.png" alt="" /></td>
+      <td>2 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-4.png" alt="" /></td>
+      <td>3 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-5.png" alt="" /></td>
+      <td>4 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-6.png" alt="" /></td>
+      <td>5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Obviously we want our projects to stay sunny and avoid the bad weather so next
+time we’ll discuss how to diagnose and fix a broken build.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a></h1>
     
     
@@ -102,7 +197,7 @@ Your first build From the Project Demo &hellip;">
   
 
 
-<time datetime="2012-10-24T21:11:00+01:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+<time datetime="2012-10-24T21:11:00-07:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
         
       </p>
     
@@ -112,20 +207,24 @@ Your first build From the Project Demo &hellip;">
   <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
 <p>From the Project Demo page we created last time we can activate a Build at
 will.</p>
 
-<h3>Build Now</h3>
+<h3 id="build-now">Build Now</h3>
 
 <p><img src="/images/jenkins-net/ch05/build-now.png" alt="" /></p>
 
@@ -133,7 +232,7 @@ will.</p>
 
 <p>This tells Jenkins to build the Job we have just defined.</p>
 
-<h3>Build History</h3>
+<h3 id="build-history">Build History</h3>
 
 <p><img src="/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
 
@@ -145,7 +244,7 @@ should have your first successful build.</p>
 <p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
 you to the build page for the Demo Job.</p>
 
-<h3>Console Output</h3>
+<h3 id="console-output">Console Output</h3>
 
 <p>This page allows us to access all the information relevant to the build we just
 ran. The area we are interested in is the Console Output this shows all the
@@ -163,22 +262,19 @@ Everything you need to fix the problem will usually be shown on this page.</p>
 <p>As you can see this was a successful build and we can see that:</p>
 
 <ul>
-<li>Jenkins created a workspace for the Job</li>
-<li>Ran a Subversion check out
-
-<ul>
-<li>Listed of all files updated</li>
+  <li>Jenkins created a workspace for the Job</li>
+  <li>Ran a Subversion check out
+    <ul>
+      <li>Listed of all files updated</li>
+    </ul>
+  </li>
+  <li>Ran MSBuild
+    <ul>
+      <li>Shows all output from MSBuild</li>
+    </ul>
+  </li>
+  <li>Shows Success message</li>
 </ul>
-</li>
-<li>Ran MSBuild
-
-<ul>
-<li>Shows all output from MSBuild</li>
-</ul>
-</li>
-<li>Shows Success message</li>
-</ul>
-
 </div>
   
   
@@ -207,7 +303,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   
 
 
-<time datetime="2012-10-20T21:14:00+01:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
+<time datetime="2012-10-20T21:14:00-07:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
         
       </p>
     
@@ -217,21 +313,25 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
 <p>In Jenkins the definition of a build process is called a Job. Jobs are created
-using the main menu on the Jenkins home page. We&#8217;ll create a basic Job that
+using the main menu on the Jenkins home page. We’ll create a basic Job that
 will checkout our source and build the solution.</p>
 
-<p>From the main Jenkins menu, Click the &#8216;New Job&#8217; link.</p>
+<p>From the main Jenkins menu, Click the ‘New Job’ link.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
 
@@ -240,23 +340,22 @@ will checkout our source and build the solution.</p>
 <p><img src="/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
 
 <ol>
-<li>Set Job name to Demo.</li>
-<li>Select the &#8216;Build a free-style software project&#8217; radio button.</li>
-<li>Click the &#8216;OK&#8217; button.</li>
+  <li>Set Job name to Demo.</li>
+  <li>Select the ‘Build a free-style software project’ radio button.</li>
+  <li>Click the ‘OK’ button.</li>
 </ol>
-
 
 <p>Jenkins will now create the Job workspace on disk and redirect you to the job
 configuration page.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
 
-<p>Next we&#8217;re going to checkout our solution from source control and build it.  So
+<p>Next we’re going to checkout our solution from source control and build it.  So
 we first need to give Jenkins details of our source control server.</p>
 
-<h2>Source Control</h2>
+<h2 id="source-control">Source Control</h2>
 
-<p>For the purpose of this demo we&#8217;ll use
+<p>For the purpose of this demo we’ll use
 <a href="http://subversion.apache.org/">Subversion</a>, mainly because this is the source
 control management software I use day to day. Subversion is a very popular open
 source choice for .NET.</p>
@@ -266,19 +365,18 @@ all the major source control management systems. For example here are few which
 are popular for use with the .NET framework:</p>
 
 <ul>
-<li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
+  <li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
 Foundation Server source control to Jenkins.</em></li>
-<li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
+  <li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
 system with Jenkins.</em></li>
-<li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
+  <li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
 newer is required.</em></li>
-<li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
+  <li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
 Visual SourceSafe.</em></li>
 </ul>
 
-
-<p><span class='pullquote-right' data-pullquote='Visual SourceSafe, seriously?'>
-Visual SourceSafe, seriously? Maybe you&#8217;re being forced to use it at gunpoint? If not do yourself a favour
+<p><span class="pullquote-right" data-pullquote="Visual SourceSafe, seriously?">
+Visual SourceSafe, seriously? Maybe you’re being forced to use it at gunpoint? If not do yourself a favour
 and check out Subversion.
 <a href="http://www.visualsvn.com/server/download/">VisualSVNServer</a> is a very easy to
 install, administer and use on Windows best of all its free! There is also a
@@ -287,7 +385,7 @@ great Subversion Plugin
 that I highly recommend.
 </span></p>
 
-<p>I have created a Subversion repository on GoogleCode that we&#8217;ll use to demo the
+<p>I have created a Subversion repository on GoogleCode that we’ll use to demo the
 build process from Jenkins. Lets setup our Job to grab the source code from
 this repository. This is done in the Source Code Management section of the
 configuration page.</p>
@@ -295,30 +393,29 @@ configuration page.</p>
 <p><img src="/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
 
 <ol>
-<li>Select the Subversion radio button.</li>
-<li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
+  <li>Select the Subversion radio button.</li>
+  <li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
 </ol>
 
+<h2 id="subversion-authentication">Subversion Authentication</h2>
 
-<h2>Subversion Authentication</h2>
-
-<p>Unlike the demo repository used here, it&#8217;s more likely your source code
-repository requires authentication (if it doesn&#8217;t, you may want to think about
+<p>Unlike the demo repository used here, it’s more likely your source code
+repository requires authentication (if it doesn’t, you may want to think about
 securing it). If your repository does require authentication Jenkins will
 display and error message and ask for you to supply login credentials.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
 
-<p>Click the &#8220;enter credential&#8221; link. You will now be shown the Subversion
+<p>Click the “enter credential” link. You will now be shown the Subversion
 Authentication page.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
 
-<p>Enter your authentication details and then click the &#8220;OK&#8221; button.</p>
+<p>Enter your authentication details and then click the “OK” button.</p>
 
 <p>Subversion is now configured and we can move onto Build Triggers.</p>
 
-<h2>Build Triggers</h2>
+<h2 id="build-triggers">Build Triggers</h2>
 
 <p>We want to trigger a build every time our source code changes; we achieve this
 by creating a “Build Trigger” which polls our source code repository. When a
@@ -327,11 +424,10 @@ change is detected a new build is triggered.</p>
 <p><img src="/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
 
 <ol>
-<li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
-<li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
 minutes.</li>
 </ol>
-
 
 <p>As you can see from the help (which is available by clicking the
 <img src="/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
@@ -345,23 +441,25 @@ detected. This is done via the “Add build step” button under the Build secti
 <p><img src="/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
 
 <ol>
-<li><p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p></li>
-<li><p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p></li>
+  <li>
+    <p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p>
+  </li>
+  <li>
+    <p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p>
+  </li>
 </ol>
-
 
 <p><img src="/images/jenkins-net/ch04/build.png" alt="" /></p>
 
 <ol>
-<li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
-<li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
-<li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
 </ol>
-
 
 <p>Congratulations your first Jenkins Job is setup.</p>
 
-<p>In my next post we&#8217;ll build it!</p>
+<p>In my next post we’ll build it!</p>
 </div>
   
   
@@ -390,7 +488,7 @@ detected. This is done via the “Add build step” button under the Build secti
   
 
 
-<time datetime="2012-10-09T20:35:00+01:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2012-10-09T20:35:00-07:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
         
       </p>
     
@@ -400,31 +498,35 @@ detected. This is done via the “Add build step” button under the Build secti
   <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
 <p>There are some important settings, that we need to configure before we get
 started building our first project.</p>
 
-<h2>Manage</h2>
+<h2 id="manage">Manage</h2>
 
-<p>On the main Jenkins menu, click the &#8216;Manage Jenkins&#8217; link.</p>
+<p>On the main Jenkins menu, click the ‘Manage Jenkins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
 
-<p>You will now see the Manage Jenkins page. Click the &#8216;Configure System&#8217; link to
+<p>You will now see the Manage Jenkins page. Click the ‘Configure System’ link to
 get to the main configuration page.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
 
-<h2>MSBuild</h2>
+<h2 id="msbuild">MSBuild</h2>
 
 <p>We need to setup MSBuild to carry out the compilation and build of your .NET
 solutions. We can use any version of MSBuild you have installed on the Jenkins
@@ -434,20 +536,19 @@ and use any version of the .NET Framework.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
 
-<p>Click the &#8216;Add MSBuild&#8217; button.</p>
+<p>Click the ‘Add MSBuild’ button.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
 
 <p>Set the name and path to MSBuild:</p>
 
 <ol>
-<li>Name: v3.5</li>
-<li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
-<li>Click the &#8216;Save&#8217; button</li>
+  <li>Name: v3.5</li>
+  <li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the ‘Save’ button</li>
 </ol>
 
-
-<p>In my next post we&#8217;ll actually get to setup our first job!</p>
+<p>In my next post we’ll actually get to setup our first job!</p>
 </div>
   
   
@@ -476,7 +577,7 @@ and use any version of the .NET Framework.</p>
   
 
 
-<time datetime="2012-09-20T18:43:00+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+<time datetime="2012-09-20T18:43:00-07:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
         
       </p>
     
@@ -486,25 +587,29 @@ and use any version of the .NET Framework.</p>
   <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
-<h2>Plugins</h2>
+<h2 id="plugins">Plugins</h2>
 
 <p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
 Thankfully Jenkins makes is very easy to find and install plugins. On the main
-Jenkins menu click the &#8216;Manage Jenkins&#8217; link.</p>
+Jenkins menu click the ‘Manage Jenkins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
 
-<p>You will now see the Manage Jenkins page. Click the &#8216;Manage Plugins&#8217; link.</p>
+<p>You will now see the Manage Jenkins page. Click the ‘Manage Plugins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
 
@@ -520,104 +625,99 @@ growing by the day.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
 
-<h2>Required Plugins</h2>
+<h2 id="required-plugins">Required Plugins</h2>
 
 <p>Without these required Plugins you will not be able to build and test .NET
 solutions. So you must at least install these Plugins for the rest of this
 guide to work.</p>
 
-<h3>Build Plugins</h3>
+<h3 id="build-plugins">Build Plugins</h3>
 
 <p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
 solution.</p>
 
 <ul>
-<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+  <li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
 projects.</em></li>
 </ul>
 
+<h3 id="testing-plugins">Testing Plugins</h3>
 
-<h3>Testing Plugins</h3>
-
-<p>You&#8217;ll need one of these depending on your chosen test framework.</p>
+<p>You’ll need one of these depending on your chosen test framework.</p>
 
 <ul>
-<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+  <li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
 XML reports so it can be integrated with Jenkins JUnit features.</em></li>
-<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
-<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+  <li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+  <li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
 of an execution of a testing tool in Jenkins.</em></li>
-<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+  <li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
 test results.</em></li>
 </ul>
 
-
 <p>Tick the check box next to each of the required Plugins and then click the
-&#8216;Download now and install after restart&#8217; button.</p>
+‘Download now and install after restart’ button.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
 
-<h3>Optional Plugins</h3>
+<h3 id="optional-plugins">Optional Plugins</h3>
 
 <p>These Plugins are optional but still recommend ranging from genuine
 productivity tools to just plain fun.</p>
 
-<h3>Jenkins Enhancements</h3>
+<h3 id="jenkins-enhancements">Jenkins Enhancements</h3>
 
 <ul>
-<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
-successful builds. <strong>Who doesn&#8217;t want Green Balls!</strong></em></li>
-<li><strong>Copy project link plugin</strong> - <em>This plugin adds the &#8220;Copy project&#8221; link into
+  <li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn’t want Green Balls!</strong></em></li>
+  <li><strong>Copy project link plugin</strong> - <em>This plugin adds the “Copy project” link into
 left side panel in the main project page.</em></li>
-<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+  <li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
 a highly visible manner. This is ideal for displaying on a screen on the
 office wall as a form of Extreme Feedback Device.</em></li>
 </ul>
 
-
-<h3>Authentication</h3>
+<h3 id="authentication">Authentication</h3>
 
 <ul>
-<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+  <li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
 authenticates the username and the password through Active Directory.</em></li>
 </ul>
 
-
-<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+<blockquote>
+  <p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
 guessing most of you already login via Active Directory so this Plugin saves
-you having to remember yet another password.</p></blockquote>
+you having to remember yet another password.</p>
+</blockquote>
 
-<h3>Code Analysis</h3>
+<h3 id="code-analysis">Code Analysis</h3>
 
 <ul>
-<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+  <li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
 tasks and generates a trend report.</em></li>
-<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+  <li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
 warnings in the console log or in log files.</em></li>
 </ul>
 
-
-<h3>Build Tools</h3>
+<h3 id="build-tools">Build Tools</h3>
 
 <ul>
-<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+  <li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
 build step.</em></li>
-<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+  <li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
 </ul>
 
-
-<h3>Fun, Fun, Fun</h3>
+<h3 id="fun-fun-fun">Fun, Fun, Fun</h3>
 
 <ul>
-<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
-Jenkins the butler) and a random Chuck Norris &#8216;The Programmer&#8217; fact on each
+  <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
 build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
-<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+  <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
 where users get points on improving the builds. Although this is indeed a fun
 plugin it can help when first introducing Jenkins to your team, a little
 healthy competition never did anyone any harm.</em></li>
 </ul>
-
 </div>
   
   
@@ -646,7 +746,7 @@ healthy competition never did anyone any harm.</em></li>
   
 
 
-<time datetime="2012-09-17T21:58:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+<time datetime="2012-09-17T21:58:00-07:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
         
       </p>
     
@@ -656,38 +756,44 @@ healthy competition never did anyone any harm.</em></li>
   <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 
 <p>This is the first in a series of posts which I’ll be writing on using Jenkins
 to build .NET solutions. These posts will be as detailed as possible, probably
 too detailed in places.</p>
 
-<h2>Installing Jenkins</h2>
+<h2 id="installing-jenkins">Installing Jenkins</h2>
 
-<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as &#8216;Hudson&#8217; but when Oracle bought Sun there
-was a fall out between the then &#8216;Hudson&#8217; developers and Oracle so they decided
-to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
+<blockquote>
+  <p><strong>NOTE:</strong> Jenkins used to be known as ‘Hudson’ but when Oracle bought Sun there
+was a fall out between the then ‘Hudson’ developers and Oracle so they decided
+to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p>
+</blockquote>
 
-<p>I&#8217;m going to install and setup Jenkins on a freshly minted Windows 7 virtual
+<p>I’m going to install and setup Jenkins on a freshly minted Windows 7 virtual
 machine although this process should work fine on other versions of Windows.</p>
 
 <p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
 
 <p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
 
-<h3>Download</h3>
+<h3 id="download">Download</h3>
 
-<p>Rather than the generic .war file we&#8217;ll download the Windows native package,
+<p>Rather than the generic .war file we’ll download the Windows native package,
 which saves as a few steps during installation. The latest windows package is
 available here:</p>
 
@@ -695,7 +801,7 @@ available here:</p>
 
 <p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
 
-<p>I&#8217;m using Internet Explorer here, which by default blocks the installer from
+<p>I’m using Internet Explorer here, which by default blocks the installer from
 downloading. Notice the warning message shown at the top of the browser
 window.</p>
 
@@ -735,9 +841,9 @@ extract the files to the default location.</p>
 
 <p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
 
-<p>Phew! That&#8217;s the download complete.</p>
+<p>Phew! That’s the download complete.</p>
 
-<h3>Setup</h3>
+<h3 id="setup">Setup</h3>
 
 <p>Finally we can run the Setup program. Double click setup to run the program.</p>
 
@@ -805,7 +911,7 @@ message upon completion. Click the Finish button.</p>
   
 
 
-<time datetime="2012-09-06T22:10:00+01:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
+<time datetime="2012-09-06T22:10:00-07:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
         
       </p>
     
@@ -813,115 +919,109 @@ message upon completion. Click the Finish button.</p>
 
 
   <div class="entry-content"><p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
-as well as the great content, I&#8217;m picking up lots of vim tips. I&#8217;m having to
+as well as the great content, I’m picking up lots of vim tips. I’m having to
 pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
-damn fast. Any way I&#8217;m going to start writing these vim gems down in the vain
-hope I&#8217;ll remember some of them.</p>
+damn fast. Any way I’m going to start writing these vim gems down in the vain
+hope I’ll remember some of them.</p>
 
-<h2>Quickly creating a project structure</h2>
+<h2 id="quickly-creating-a-project-structure">Quickly creating a project structure</h2>
 
-<p>It&#8217;s possible to setup a new project without leaving vim. Lets create a new dir
+<p>It’s possible to setup a new project without leaving vim. Lets create a new dir
 for a quick demo:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir demo
-</span><span class='line'>cd demo
-</span><span class='line'>vim</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">mkdir demo
+</span><span class="line">cd demo
+</span><span class="line">vim</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>From the vim command prompt we can create a new user model in the models dir
 using the vim command <code>:n models/user.rb</code></p>
 
-<p><img src="/images/vim-tip-1/new-file.png"></p>
+<p><img src="/images/vim-tip-1/new-file.png" /></p>
 
 <p>Lets break this command down:</p>
 
 <ul>
-<li><strong>:n</strong>             - n is short for new as in file</li>
-<li><strong>models/user.rb</strong> - the directory and name of our new file</li>
+  <li><strong>:n</strong>             - n is short for new as in file</li>
+  <li><strong>models/user.rb</strong> - the directory and name of our new file</li>
 </ul>
-
 
 <p>This creates the new file in a vim buffer but when we go to write this file we
 get an error <code>E212: Can't open file for writing</code>, this is because the directory
 models does not exist.</p>
 
-<p><img src="/images/vim-tip-1/write-error.png"></p>
+<p><img src="/images/vim-tip-1/write-error.png" /></p>
 
 <p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
 
-<p><img src="/images/vim-tip-1/mkdir-command.png"></p>
+<p><img src="/images/vim-tip-1/mkdir-command.png" /></p>
 
 <p>Now the directory has been created we can write the new file from vim.</p>
 
 <p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
 
 <ul>
-<li><strong>:!</strong>    - Execute {command} with the shell</li>
-<li><strong>mkdir</strong> - Make a directory shell command</li>
-<li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
+  <li><strong>:!</strong>    - Execute {command} with the shell</li>
+  <li><strong>mkdir</strong> - Make a directory shell command</li>
+  <li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
 </ul>
-
 
 <p>The full vim help text for <code>%:h</code>:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:h   Head of the file name (the last component and any separators
-</span><span class='line'>  removed).  Cannot be used with :e, :r or :t.
-</span><span class='line'>  Can be repeated to remove several components at the end.
-</span><span class='line'>  When the file name ends in a path separator, only the path
-</span><span class='line'>  separator is removed.  Thus ":p:h" on a directory name results
-</span><span class='line'>  on the directory name itself (without trailing slash).
-</span><span class='line'>  When the file name is an absolute path (starts with "/" for
-</span><span class='line'>  Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
-</span><span class='line'>  part is not removed.  When there is no head (path is relative
-</span><span class='line'>  to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:h	Head of the file name (the last component and any separators
+</span><span class="line">	removed).  Cannot be used with :e, :r or :t.
+</span><span class="line">	Can be repeated to remove several components at the end.
+</span><span class="line">	When the file name ends in a path separator, only the path
+</span><span class="line">	separator is removed.  Thus ":p:h" on a directory name results
+</span><span class="line">	on the directory name itself (without trailing slash).
+</span><span class="line">	When the file name is an absolute path (starts with "/" for
+</span><span class="line">	Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
+</span><span class="line">	part is not removed.  When there is no head (path is relative
+</span><span class="line">	to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h2>Deeper folder structure</h2>
+<h2 id="deeper-folder-structure">Deeper folder structure</h2>
 
 <p>You can create deeper folder structures using the same technique with one extra
 switch on the mkdir command.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:n specs/models/user_spec.rb
-</span><span class='line'>:!mkdir -p %:h
-</span><span class='line'>:w</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:n specs/models/user_spec.rb
+</span><span class="line">:!mkdir -p %:h
+</span><span class="line">:w</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>The <code>-p</code> switch will create the intermediate directories for you. If you don&#8217;t
+<p>The <code>-p</code> switch will create the intermediate directories for you. If you don’t
 use this switch the command will fail.</p>
 
 <p>The full command line help for the <code>mkdir -p</code> switch:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>-p   Create intermediate directories as required.  If this option is not
-</span><span class='line'>specified, the full path prefix of each operand must already exist.  On the
-</span><span class='line'>other hand, with this option specified, no error will be reported if a
-</span><span class='line'>directory given as an operand already exists.  Intermediate directories are
-</span><span class='line'>created with permission bits of rwxrwxrwx (0777) as modified by the current
-</span><span class='line'>umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">-p	Create intermediate directories as required.  If this option is not
+</span><span class="line">specified, the full path prefix of each operand must already exist.  On the
+</span><span class="line">other hand, with this option specified, no error will be reported if a
+</span><span class="line">directory given as an operand already exists.  Intermediate directories are
+</span><span class="line">created with permission bits of rwxrwxrwx (0777) as modified by the current
+</span><span class="line">umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>I think that&#8217;s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
+<p>I think that’s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
 </div>
   
   
@@ -950,59 +1050,48 @@ use this switch the command will fail.</p>
   
 
 
-<time datetime="2012-08-31T21:21:00+01:00" pubdate data-updated="true">Aug 31<span>st</span>, 2012</time>
+<time datetime="2012-08-31T21:21:00-07:00" pubdate data-updated="true">Aug 31<span>st</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h1>Trying out Octopress</h1>
-
+  <div class="entry-content"><h1 id="trying-out-octopress">Trying out Octopress</h1>
 <p><a href="http://octopress.org/">Octopress</a> for the win!</p>
 
-<p>Bloggin&#8217; from vim, yay.</p>
+<p>Bloggin’ from vim, yay.</p>
 
 <p>Updated the theme to <a href="https://github.com/amelandri/darkstripes">darkstripes</a></p>
 
 <p>Imported my old worpress posts using <a href="https://github.com/thomasf/exitwp">exitwp</a></p>
 
-<h2>Code</h2>
+<h2 id="code">Code</h2>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>ruby, ruby, ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">puts</span> <span class="s1">&#39;hello world!&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><figcaption><span>ruby, ruby, ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s1">&#39;hello world!&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
+<h2 id="images">Images</h2>
+<p>### I’m Old Gregg!
+<img src="/images/old-gregg.jpeg" title="I'm old Gregg" /></p>
 
-
-<h2>Images</h2>
-
-<h3>I&#8217;m Old Gregg!</h3>
-
-<p><img src="/images/old-gregg.jpeg" title="I'm old Gregg" ></p>
-
-<h2>Quotes</h2>
-
-<h3>Block quote</h3>
-
+<h2 id="quotes">Quotes</h2>
+<p>### Block quote</p>
 <blockquote><p>You ever drunk Baileys from a shoe?</p><footer><strong>Old Gregg</strong> <cite>The Mighty Boosh</cite></footer></blockquote>
 
-
-<h3>Pull quote</h3>
-
-<p><span class='pullquote-right' data-pullquote='half man half fish'>
-Old Gregg&#8217;s anatomy a species classification is a topic of debate. Some say
-he&#8217;s half man half fish, others say it&#8217;s more of a 70/30 split.
+<h3 id="pull-quote">Pull quote</h3>
+<p><span class="pullquote-right" data-pullquote="half man half fish">
+Old Gregg’s anatomy a species classification is a topic of debate. Some say
+he’s half man half fish, others say it’s more of a 70/30 split.
 </span></p>
 
-<h2>Video</h2>
-
-<iframe width="640" height="510" src="http://www.youtube.com/embed/5Enans8ABSM " frameborder="0" allowfullscreen></iframe>
-
+<h2 id="video">Video</h2>
+<iframe width="640" height="510" src="http://www.youtube.com/embed/5Enans8ABSM " frameborder="0" allowfullscreen=""></iframe>
 
 <p>That pretty much covers everything I want to do with this blog so I think
 Octopress is a go, go, go!</p>
 
-<p>I wonder if I can blog from my ipad? Hmmm&#8230;</p>
+<p>I wonder if I can blog from my ipad? Hmmm…</p>
 </div>
   
   
@@ -1015,7 +1104,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
+      <h1 class="entry-title"><a href="/2011/08/18/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
     
     
       <p class="meta">
@@ -1031,64 +1120,56 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+<time datetime="2011-08-18T17:04:35-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
+  <div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating my first plugin.</p>
 
-<h4>Introduction</h4>
-
-<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what&#8217;s not to like? Though I must confess I don&#8217;t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
+<h4 id="introduction">Introduction</h4>
+<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what’s not to like? Though I must confess I don’t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
 
 <p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
 
-<h4>What&#8217;s da big idea</h4>
+<h4 id="whats-da-big-idea">What’s da big idea</h4>
+<p>The idea for my first plugin is rather ambitious considering I’ve no idea how to write a plugin. I’d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
 
-<p>The idea for my first plugin is rather ambitious considering I&#8217;ve no idea how to write a plugin. I&#8217;d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
+<p>I’m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
 
-<p>I&#8217;m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
-
-<h4>Install Redcar</h4>
-
+<h4 id="install-redcar">Install Redcar</h4>
 <p>I first followed the install instructions:</p>
 
 <p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
 
-<p>All good no problems there (I&#8217;m running on a Mac OSX 10.7.1)</p>
+<p>All good no problems there (I’m running on a Mac OSX 10.7.1)</p>
 
-<h4>Plugin Guides</h4>
-
+<h4 id="plugin-guides">Plugin Guides</h4>
 <p>I then read the plugin guides I found here:</p>
 
 <ul>
-<li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
-<li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
+  <li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
+  <li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
 </ul>
 
-
-<h4>Plugin.rb</h4>
-
-<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin&#8217;s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
+<h4 id="pluginrb">Plugin.rb</h4>
+<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin’s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
 
 <p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
-</span><span class='line'>  <span class="no">RefreshBrowser</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
+</span><span class="line">  <span class="no">RefreshBrowser</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
 
-<h4>Browser refresh script</h4>
-
+<h4 id="browser-refresh-script">Browser refresh script</h4>
 <p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
 
 <p>I managed to find a script to refresh the browser here:</p>
@@ -1097,34 +1178,30 @@ Octopress is a go, go, go!</p>
 
 <p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
 
-<h4>Storage</h4>
+<h4 id="storage">Storage</h4>
+<p>Redcar’s storage mechanism allows you to easily store configuration data into a yaml file.</p>
 
-<p>Redcar&#8217;s storage mechanism allows you to easily store configuration data into a yaml file.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">storage</span>
+</span><span class="line">  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@storage</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">storage</span>
-</span><span class='line'>  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Here I am using this mechanism to store the ‘keyword’ used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It’s also possible to setup a nice edit page but for now this will do.</p>
 
-
-<p>Here I am using this mechanism to store the &#8216;keyword&#8217; used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It&#8217;s also possible to setup a nice edit page but for now this will do.</p>
-
-<h4>Source</h4>
-
+<h4 id="source">Source</h4>
 <p>You can find the source for this plugin here:</p>
 
 <p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
 
-<h4>Was it easy?</h4>
-
-<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I&#8217;ve spent more time fussing over this blog post than developing the plugin.</p>
+<h4 id="was-it-easy">Was it easy?</h4>
+<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I’ve spent more time fussing over this blog post than developing the plugin.</p>
 
 <p>So what you waiting for? Go give it a try!</p>
 </div>
@@ -1155,93 +1232,24 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-07-20T20:19:55+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2011</time>
+<time datetime="2011-07-20T12:19:55-07:00" pubdate data-updated="true">Jul 20<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h4>Fortress</h4>
+  <div class="entry-content"><h4 id="fortress">Fortress</h4>
 
 <p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
 
-<h4>curl to the rescue!</h4>
+<h4 id="curl-to-the-rescue">curl to the rescue!</h4>
 
-<p>You can upload files using curl directly into Sharepoint via it&#8217;s HTTP PUT interface.</p>
+<p>You can upload files using curl directly into Sharepoint via it’s HTTP PUT interface.</p>
 
 <p><code>curl --ntlm --user username:password --upload-file myfile.xls https://sharepointserver.com/sites/mysite/myfile.xls</code></p>
 
 <p>Told you, easy when you know how.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>Authentication Settings</h4>
-
-<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
-
-<p>Config File: /etc/httpd/conf.d/shib.conf</p>
-
-<p><code> ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  require valid-user
-</code></p>
-
-<p>The &#8217;<code>ShibUseHeaders On</code>&#8217; setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
-
-<h4>Simple Authorisation</h4>
-
-<p>If you don&#8217;t need a complex authorisation system and you don&#8217;t mind users seeing a standard Shibboleth authorisation error page:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
-
-<p>You can implement this via your Shibboleth settings using the require statement:</p>
-
-<p><code> ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  **require grouper_groups ~ MySecurityGroup**
-</code></p>
-
-<p>Here we require the custom grouper_groups attribute matches on the regular expression after the &#8217;<code>~</code>&#8217;. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
-
-<h5>Top Tip</h5>
-
-<p>When playing with your Shib settings don&#8217;t forget to restart httpd to see the affect.
-<code>sudo /sbin/service httpd restart</code></p>
 </div>
   
   
@@ -1264,6 +1272,10 @@ Octopress is a go, go, go!</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -1277,10 +1289,6 @@ Octopress is a go, go, go!</p>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -1374,7 +1382,7 @@ Octopress is a go, go, go!</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

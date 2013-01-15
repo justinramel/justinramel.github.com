@@ -9,11 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Jenkins.NET
-Jenkins.NET Plugins
-Setup Jenkins.NET
-Setting up your first job
-Your first build Plugins To compile .NET &hellip;">
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,7 +95,7 @@ Your first build Plugins To compile .NET &hellip;">
   
 
 
-<time datetime="2012-09-20T18:43:00+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+<time datetime="2012-09-20T18:43:00-07:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
         
       </p>
     
@@ -109,25 +105,29 @@ Your first build Plugins To compile .NET &hellip;">
 <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
-<h2>Plugins</h2>
+<h2 id="plugins">Plugins</h2>
 
 <p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
 Thankfully Jenkins makes is very easy to find and install plugins. On the main
-Jenkins menu click the &#8216;Manage Jenkins&#8217; link.</p>
+Jenkins menu click the ‘Manage Jenkins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
 
-<p>You will now see the Manage Jenkins page. Click the &#8216;Manage Plugins&#8217; link.</p>
+<p>You will now see the Manage Jenkins page. Click the ‘Manage Plugins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
 
@@ -143,104 +143,99 @@ growing by the day.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
 
-<h2>Required Plugins</h2>
+<h2 id="required-plugins">Required Plugins</h2>
 
 <p>Without these required Plugins you will not be able to build and test .NET
 solutions. So you must at least install these Plugins for the rest of this
 guide to work.</p>
 
-<h3>Build Plugins</h3>
+<h3 id="build-plugins">Build Plugins</h3>
 
 <p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
 solution.</p>
 
 <ul>
-<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+  <li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
 projects.</em></li>
 </ul>
 
+<h3 id="testing-plugins">Testing Plugins</h3>
 
-<h3>Testing Plugins</h3>
-
-<p>You&#8217;ll need one of these depending on your chosen test framework.</p>
+<p>You’ll need one of these depending on your chosen test framework.</p>
 
 <ul>
-<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+  <li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
 XML reports so it can be integrated with Jenkins JUnit features.</em></li>
-<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
-<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+  <li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+  <li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
 of an execution of a testing tool in Jenkins.</em></li>
-<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+  <li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
 test results.</em></li>
 </ul>
 
-
 <p>Tick the check box next to each of the required Plugins and then click the
-&#8216;Download now and install after restart&#8217; button.</p>
+‘Download now and install after restart’ button.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
 
-<h3>Optional Plugins</h3>
+<h3 id="optional-plugins">Optional Plugins</h3>
 
 <p>These Plugins are optional but still recommend ranging from genuine
 productivity tools to just plain fun.</p>
 
-<h3>Jenkins Enhancements</h3>
+<h3 id="jenkins-enhancements">Jenkins Enhancements</h3>
 
 <ul>
-<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
-successful builds. <strong>Who doesn&#8217;t want Green Balls!</strong></em></li>
-<li><strong>Copy project link plugin</strong> - <em>This plugin adds the &#8220;Copy project&#8221; link into
+  <li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn’t want Green Balls!</strong></em></li>
+  <li><strong>Copy project link plugin</strong> - <em>This plugin adds the “Copy project” link into
 left side panel in the main project page.</em></li>
-<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+  <li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
 a highly visible manner. This is ideal for displaying on a screen on the
 office wall as a form of Extreme Feedback Device.</em></li>
 </ul>
 
-
-<h3>Authentication</h3>
+<h3 id="authentication">Authentication</h3>
 
 <ul>
-<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+  <li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
 authenticates the username and the password through Active Directory.</em></li>
 </ul>
 
-
-<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+<blockquote>
+  <p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
 guessing most of you already login via Active Directory so this Plugin saves
-you having to remember yet another password.</p></blockquote>
+you having to remember yet another password.</p>
+</blockquote>
 
-<h3>Code Analysis</h3>
+<h3 id="code-analysis">Code Analysis</h3>
 
 <ul>
-<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+  <li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
 tasks and generates a trend report.</em></li>
-<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+  <li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
 warnings in the console log or in log files.</em></li>
 </ul>
 
-
-<h3>Build Tools</h3>
+<h3 id="build-tools">Build Tools</h3>
 
 <ul>
-<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+  <li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
 build step.</em></li>
-<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+  <li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
 </ul>
 
-
-<h3>Fun, Fun, Fun</h3>
+<h3 id="fun-fun-fun">Fun, Fun, Fun</h3>
 
 <ul>
-<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
-Jenkins the butler) and a random Chuck Norris &#8216;The Programmer&#8217; fact on each
+  <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
 build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
-<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+  <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
 where users get points on improving the builds. Although this is indeed a fun
 plugin it can help when first introducing Jenkins to your team, a little
 healthy competition never did anyone any harm.</em></li>
 </ul>
-
 </div>
 
 
@@ -263,7 +258,7 @@ healthy competition never did anyone any harm.</em></li>
   
 
 
-<time datetime="2012-09-20T18:43:00+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+<time datetime="2012-09-20T18:43:00-07:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
       
 
 <span class="categories">
@@ -312,6 +307,10 @@ healthy competition never did anyone any harm.</em></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -325,10 +324,6 @@ healthy competition never did anyone any harm.</em></li>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -423,7 +418,7 @@ healthy competition never did anyone any harm.</em></li>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="In anticipation of posting about a new topic I&#8217;m going to wrap up my Watir Automated testing posts with a few more top tips. TOP TIP - How do I &hellip;">
+  <meta name="description" content="In anticipation of posting about a new topic I’m going to wrap up my Watir Automated testing posts with a few more top tips. TOP TIP - How do I run a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,24 +95,24 @@
   
 
 
-<time datetime="2006-12-05T14:42:36+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
+<time datetime="2006-12-05T06:42:36-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>In anticipation of posting about a new topic I&#8217;m going to wrap up my Watir Automated testing posts with a few more top tips.</p>
+<div class="entry-content"><p>In anticipation of posting about a new topic I’m going to wrap up my Watir Automated testing posts with a few more top tips.</p>
 
 <p><strong>TOP TIP - How do I run a single test?</strong></p>
 
-<p>So you have lots of tests in your test suite but only want to run one? No need to create an ad-hoc test case, simply pass in the <strong>&#8211;name</strong> parameter when running the test:</p>
+<p>So you have lots of tests in your test suite but only want to run one? No need to create an ad-hoc test case, simply pass in the <strong>–name</strong> parameter when running the test:</p>
 
 <p><code>ruby test_mytestcase.rb --name test_just_this_method</code></p>
 
 <p><strong>TOP TIP - How do I run the test in background mode?</strong></p>
 
-<p>Running the test so you can see what is going on in the browser is sometimes useful but most of the time you&#8217;ll want to run the tests in the background and just see the results. This is easily done by passing the <strong>-b</strong> parameter on the command line:</p>
+<p>Running the test so you can see what is going on in the browser is sometimes useful but most of the time you’ll want to run the tests in the background and just see the results. This is easily done by passing the <strong>-b</strong> parameter on the command line:</p>
 
 <p><code>ruby test_mytestcase.rb -b</code></p>
 
@@ -121,23 +121,23 @@
 <p>I have a couple of helper methods which I use in most of my test cases:
 `
 def should_find(find_me)
-  assert(@ie.contains_text(find_me), &#8221;<em>\n</em>\n<em>\nText not found: #{find_me}\n</em>\n<em>\n</em>&#8221;)
+  assert(@ie.contains_text(find_me), “<em>\n</em>\n<em>\nText not found: #{find_me}\n</em>\n<em>\n</em>”)
 end</p>
 
 <p>def should_not_find(find_me)
-  assert_nil(@ie.contains_text(find_me), &#8221;<em>\n</em>\n<em>\nFound text which should not be present: #{find_me}\n</em>\n<em>\n</em>&#8221;)
+  assert_nil(@ie.contains_text(find_me), “<em>\n</em>\n<em>\nFound text which should not be present: #{find_me}\n</em>\n<em>\n</em>”)
 end
-<code>
+`
 No clever code here it just means I can write tests which are easier to read:
-</code>
-should_not_find(&#8220;Portal Runtime Error&#8221;)
-should_find(&#8220;Success&#8221;)
+`
+should_not_find(“Portal Runtime Error”)
+should_find(“Success”)
 `
 <strong>FIN</strong>
-Well I&#8217;m running out of content about testing as you can probably tell! So I guess thats a wrap. I&#8217;ll no doubt re-visit automated testing again at some point but for now thats my lot.</p>
+Well I’m running out of content about testing as you can probably tell! So I guess thats a wrap. I’ll no doubt re-visit automated testing again at some point but for now thats my lot.</p>
 
 <p><strong>NEXT TIME</strong>
-I&#8217;ve been working on creating web services for Enterprise Portal and calling those web services from Microsoft .Net. I&#8217;ve taken lots of notes, so expect a series of EP web services posts real soon.</p>
+I’ve been working on creating web services for Enterprise Portal and calling those web services from Microsoft .Net. I’ve taken lots of notes, so expect a series of EP web services posts real soon.</p>
 </div>
 
 
@@ -160,7 +160,7 @@ I&#8217;ve been working on creating web services for Enterprise Portal and calli
   
 
 
-<time datetime="2006-12-05T14:42:36+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
+<time datetime="2006-12-05T06:42:36-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -209,6 +209,10 @@ I&#8217;ve been working on creating web services for Enterprise Portal and calli
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -222,10 +226,6 @@ I&#8217;ve been working on creating web services for Enterprise Portal and calli
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -320,7 +320,7 @@ I&#8217;ve been working on creating web services for Enterprise Portal and calli
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

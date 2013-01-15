@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2006-07-20T11:20:14+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
+<time datetime="2006-07-20T03:20:14-07:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
         
       </p>
     
@@ -106,7 +106,7 @@
 
 <p>By the way setting up the server was a lot easier than I thought it would be! Here’s what I did:</p>
 
-<h3>CruiseControl.Net Setup</h3>
+<h3 id="cruisecontrolnet-setup">CruiseControl.Net Setup</h3>
 
 <p>Download and run CruiseControl.Net setup
 <a href="http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198">
@@ -118,19 +118,19 @@ http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198
 
 <p><strong>NOTE:</strong> After setup if your server has .Net 1.1 and 2.0 as mine did you may need to change the ccnet website to use .Net 2.0.  This can be done through the IIS control panel, get the properties of the ccnet site  and  change via the ASP.NET tab.</p>
 
-<h3>Subversion Client</h3>
+<h3 id="subversion-client">Subversion Client</h3>
 
 <p>Your server will need the subversion console client on the server to allow CruiseControl to checkout your source.</p>
 
 <p><a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></p>
 
-<h3>.Net 2 SDK</h3>
+<h3 id="net-2-sdk">.Net 2 SDK</h3>
 
 <p>To allow us to build .Net 2  projects without the need for Visual Studio we need to download and install .Net 2 SDK onto  the server</p>
 
 <p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en</a></p>
 
-<h3>Setup MSBuild</h3>
+<h3 id="setup-msbuild">Setup MSBuild</h3>
 
 <p>To use MSBuild with CC.Net we need the logger dll -ThoughtWorks.CruiseControl.MsBuild.dll from:</p>
 
@@ -139,7 +139,7 @@ http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198
 <p>Download and copy to:
 C:\Program Files\CruiseControl.NET\webdashboard\bin\</p>
 
-<h3>Directory structure</h3>
+<h3 id="directory-structure">Directory structure</h3>
 
 <p>Setup your directory structure:</p>
 
@@ -149,7 +149,7 @@ C:\CI\Myproject\logs</p>
 
 <p>Using your subversion client checkout source to C:\CI\MyProject\build</p>
 
-<h3>ccnet.config</h3>
+<h3 id="ccnetconfig">ccnet.config</h3>
 
 <p>Add the project config to ccnet.confg:</p>
 
@@ -189,7 +189,7 @@ C:\CI\Myproject\logs</p>
 &lt;/cruisecontrol&gt;
 </code></pre>
 
-<h3>CC Tray</h3>
+<h3 id="cc-tray">CC Tray</h3>
 
 <p>You will also want to install the CC Tray monitoring software on your pc:</p>
 
@@ -197,7 +197,7 @@ C:\CI\Myproject\logs</p>
 
 <p>It will allow you to keep an eye on the server from the comfort of your own pc.</p>
 
-<p>That&#8217;s it we&#8217;re down!</p>
+<p>That’s it we’re down!</p>
 </div>
 
 
@@ -220,7 +220,7 @@ C:\CI\Myproject\logs</p>
   
 
 
-<time datetime="2006-07-20T11:20:14+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
+<time datetime="2006-07-20T03:20:14-07:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -269,6 +269,10 @@ C:\CI\Myproject\logs</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -282,10 +286,6 @@ C:\CI\Myproject\logs</p>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -380,7 +380,7 @@ C:\CI\Myproject\logs</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

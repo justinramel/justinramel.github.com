@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .net | just ram]]></title>
   <link href="http://justinramel.com//categories/-net/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2012-10-25T23:39:11+01:00</updated>
+  <updated>2013-01-14T20:31:22-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -14,9 +14,80 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Jenkins.NET Breaking the build]]></title>
+    <link href="http://justinramel.com/2013/01/14/breaking-the-build/"/>
+    <updated>2013-01-14T17:38:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/14/breaking-the-build</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build)
+7. Diagnosing and fixing a broken build
+8. Monitoring your build
+9. Running your tests
+10. Code Analysis
+
+---
+</p>
+
+<p>Lets break the build to see how Jenkins reacts. I’ll add a DLL to the project
+then “forget” to add it to source control; unfortunately I see this problem a
+lot when new developers join the team.</p>
+
+<h3 id="i-see-red-projects">I see red projects</h3>
+
+<p><img src="/images/jenkins-net/ch06/red-ball.png" alt="" /></p>
+
+<p>As you can see Jenkins now shows a red ball next to the Demo project. Also
+notice the slightly cloudy weather icon indicating all is not well with our
+project.</p>
+
+<h3 id="hows-the-weather">How’s the weather?</h3>
+
+<p>Jenkins uses a weather metaphor to show at a glance how a project is doing.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-1.png" alt="" /></td>
+      <td>No recent builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-2.png" alt="" /></td>
+      <td>1 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-3.png" alt="" /></td>
+      <td>2 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-4.png" alt="" /></td>
+      <td>3 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-5.png" alt="" /></td>
+      <td>4 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-6.png" alt="" /></td>
+      <td>5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Obviously we want our projects to stay sunny and avoid the bad weather so next
+time we’ll discuss how to diagnose and fix a broken build.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Jenkins.NET Your first build]]></title>
     <link href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
-    <updated>2012-10-24T21:11:00+01:00</updated>
+    <updated>2012-10-24T21:11:00-07:00</updated>
     <id>http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
@@ -25,6 +96,11 @@
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build)
+7. Diagnosing and fixing a broken build
+8. Monitoring your build
+9. Running your tests
+10. Code Analysis
 
 ---
 </p>
@@ -32,7 +108,7 @@
 <p>From the Project Demo page we created last time we can activate a Build at
 will.</p>
 
-<h3>Build Now</h3>
+<h3 id="build-now">Build Now</h3>
 
 <p><img src="/images/jenkins-net/ch05/build-now.png" alt="" /></p>
 
@@ -40,7 +116,7 @@ will.</p>
 
 <p>This tells Jenkins to build the Job we have just defined.</p>
 
-<h3>Build History</h3>
+<h3 id="build-history">Build History</h3>
 
 <p><img src="/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
 
@@ -52,7 +128,7 @@ should have your first successful build.</p>
 <p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
 you to the build page for the Demo Job.</p>
 
-<h3>Console Output</h3>
+<h3 id="console-output">Console Output</h3>
 
 <p>This page allows us to access all the information relevant to the build we just
 ran. The area we are interested in is the Console Output this shows all the
@@ -70,29 +146,26 @@ Everything you need to fix the problem will usually be shown on this page.</p>
 <p>As you can see this was a successful build and we can see that:</p>
 
 <ul>
-<li>Jenkins created a workspace for the Job</li>
-<li>Ran a Subversion check out
-
-<ul>
-<li>Listed of all files updated</li>
+  <li>Jenkins created a workspace for the Job</li>
+  <li>Ran a Subversion check out
+    <ul>
+      <li>Listed of all files updated</li>
+    </ul>
+  </li>
+  <li>Ran MSBuild
+    <ul>
+      <li>Shows all output from MSBuild</li>
+    </ul>
+  </li>
+  <li>Shows Success message</li>
 </ul>
-</li>
-<li>Ran MSBuild
-
-<ul>
-<li>Shows all output from MSBuild</li>
-</ul>
-</li>
-<li>Shows Success message</li>
-</ul>
-
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
     <link href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
-    <updated>2012-10-20T21:14:00+01:00</updated>
+    <updated>2012-10-20T21:14:00-07:00</updated>
     <id>http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
@@ -101,15 +174,20 @@ Everything you need to fix the problem will usually be shown on this page.</p>
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build)
+7. Diagnosing and fixing a broken build
+8. Monitoring your build
+9. Running your tests
+10. Code Analysis
 
 ---
 </p>
 
 <p>In Jenkins the definition of a build process is called a Job. Jobs are created
-using the main menu on the Jenkins home page. We'll create a basic Job that
+using the main menu on the Jenkins home page. We’ll create a basic Job that
 will checkout our source and build the solution.</p>
 
-<p>From the main Jenkins menu, Click the 'New Job' link.</p>
+<p>From the main Jenkins menu, Click the ‘New Job’ link.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
 
@@ -118,23 +196,22 @@ will checkout our source and build the solution.</p>
 <p><img src="/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
 
 <ol>
-<li>Set Job name to Demo.</li>
-<li>Select the 'Build a free-style software project' radio button.</li>
-<li>Click the 'OK' button.</li>
+  <li>Set Job name to Demo.</li>
+  <li>Select the ‘Build a free-style software project’ radio button.</li>
+  <li>Click the ‘OK’ button.</li>
 </ol>
-
 
 <p>Jenkins will now create the Job workspace on disk and redirect you to the job
 configuration page.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
 
-<p>Next we're going to checkout our solution from source control and build it.  So
+<p>Next we’re going to checkout our solution from source control and build it.  So
 we first need to give Jenkins details of our source control server.</p>
 
-<h2>Source Control</h2>
+<h2 id="source-control">Source Control</h2>
 
-<p>For the purpose of this demo we'll use
+<p>For the purpose of this demo we’ll use
 <a href="http://subversion.apache.org/">Subversion</a>, mainly because this is the source
 control management software I use day to day. Subversion is a very popular open
 source choice for .NET.</p>
@@ -144,28 +221,19 @@ all the major source control management systems. For example here are few which
 are popular for use with the .NET framework:</p>
 
 <ul>
-<li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
+  <li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
 Foundation Server source control to Jenkins.</em></li>
-<li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
+  <li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
 system with Jenkins.</em></li>
-<li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
+  <li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
 newer is required.</em></li>
-<li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
+  <li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
 Visual SourceSafe.</em></li>
 </ul>
 
+<p>Surround your pullquote like this {" text to be quoted "}</p>
 
-<p><span class='pullquote-right' data-pullquote='Visual SourceSafe, seriously?'>
-Visual SourceSafe, seriously? Maybe you're being forced to use it at gunpoint? If not do yourself a favour
-and check out Subversion.
-<a href="http://www.visualsvn.com/server/download/">VisualSVNServer</a> is a very easy to
-install, administer and use on Windows best of all its free! There is also a
-great Subversion Plugin
-<a href="http://www.visualsvn.com/visualsvn/download/">VisualSVN</a> for Visual Studio
-that I highly recommend.
-</span></p>
-
-<p>I have created a Subversion repository on GoogleCode that we'll use to demo the
+<p>I have created a Subversion repository on GoogleCode that we’ll use to demo the
 build process from Jenkins. Lets setup our Job to grab the source code from
 this repository. This is done in the Source Code Management section of the
 configuration page.</p>
@@ -173,30 +241,29 @@ configuration page.</p>
 <p><img src="/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
 
 <ol>
-<li>Select the Subversion radio button.</li>
-<li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
+  <li>Select the Subversion radio button.</li>
+  <li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
 </ol>
 
+<h2 id="subversion-authentication">Subversion Authentication</h2>
 
-<h2>Subversion Authentication</h2>
-
-<p>Unlike the demo repository used here, it's more likely your source code
-repository requires authentication (if it doesn't, you may want to think about
+<p>Unlike the demo repository used here, it’s more likely your source code
+repository requires authentication (if it doesn’t, you may want to think about
 securing it). If your repository does require authentication Jenkins will
 display and error message and ask for you to supply login credentials.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
 
-<p>Click the "enter credential" link. You will now be shown the Subversion
+<p>Click the “enter credential” link. You will now be shown the Subversion
 Authentication page.</p>
 
 <p><img src="/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
 
-<p>Enter your authentication details and then click the "OK" button.</p>
+<p>Enter your authentication details and then click the “OK” button.</p>
 
 <p>Subversion is now configured and we can move onto Build Triggers.</p>
 
-<h2>Build Triggers</h2>
+<h2 id="build-triggers">Build Triggers</h2>
 
 <p>We want to trigger a build every time our source code changes; we achieve this
 by creating a “Build Trigger” which polls our source code repository. When a
@@ -205,11 +272,10 @@ change is detected a new build is triggered.</p>
 <p><img src="/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
 
 <ol>
-<li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
-<li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
 minutes.</li>
 </ol>
-
 
 <p>As you can see from the help (which is available by clicking the
 <img src="/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
@@ -223,30 +289,32 @@ detected. This is done via the “Add build step” button under the Build secti
 <p><img src="/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
 
 <ol>
-<li><p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p></li>
-<li><p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p></li>
+  <li>
+    <p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p>
+  </li>
+  <li>
+    <p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p>
+  </li>
 </ol>
-
 
 <p><img src="/images/jenkins-net/ch04/build.png" alt="" /></p>
 
 <ol>
-<li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
-<li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
-<li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
 </ol>
-
 
 <p>Congratulations your first Jenkins Job is setup.</p>
 
-<p>In my next post we'll build it!</p>
+<p>In my next post we’ll build it!</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
     <link href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/"/>
-    <updated>2012-10-09T20:35:00+01:00</updated>
+    <updated>2012-10-09T20:35:00-07:00</updated>
     <id>http://justinramel.com/2012/10/09/setup-jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
@@ -255,6 +323,11 @@ detected. This is done via the “Add build step” button under the Build secti
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build)
+7. Diagnosing and fixing a broken build
+8. Monitoring your build
+9. Running your tests
+10. Code Analysis
 
 ---
 </p>
@@ -262,18 +335,18 @@ detected. This is done via the “Add build step” button under the Build secti
 <p>There are some important settings, that we need to configure before we get
 started building our first project.</p>
 
-<h2>Manage</h2>
+<h2 id="manage">Manage</h2>
 
-<p>On the main Jenkins menu, click the 'Manage Jenkins' link.</p>
+<p>On the main Jenkins menu, click the ‘Manage Jenkins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
 
-<p>You will now see the Manage Jenkins page. Click the 'Configure System' link to
+<p>You will now see the Manage Jenkins page. Click the ‘Configure System’ link to
 get to the main configuration page.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
 
-<h2>MSBuild</h2>
+<h2 id="msbuild">MSBuild</h2>
 
 <p>We need to setup MSBuild to carry out the compilation and build of your .NET
 solutions. We can use any version of MSBuild you have installed on the Jenkins
@@ -283,27 +356,26 @@ and use any version of the .NET Framework.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
 
-<p>Click the 'Add MSBuild' button.</p>
+<p>Click the ‘Add MSBuild’ button.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
 
 <p>Set the name and path to MSBuild:</p>
 
 <ol>
-<li>Name: v3.5</li>
-<li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
-<li>Click the 'Save' button</li>
+  <li>Name: v3.5</li>
+  <li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the ‘Save’ button</li>
 </ol>
 
-
-<p>In my next post we'll actually get to setup our first job!</p>
+<p>In my next post we’ll actually get to setup our first job!</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
     <link href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/"/>
-    <updated>2012-09-20T18:43:00+01:00</updated>
+    <updated>2012-09-20T18:43:00-07:00</updated>
     <id>http://justinramel.com/2012/09/20/jenkins-dot-net-plugins</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
@@ -312,19 +384,23 @@ and use any version of the .NET Framework.</p>
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build)
+7. Diagnosing and fixing a broken build
+8. Monitoring your build
+9. Running your tests
+10. Code Analysis
 
 ---
-</p>
 
-<h2>Plugins</h2>
+## Plugins</p>
 
 <p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
 Thankfully Jenkins makes is very easy to find and install plugins. On the main
-Jenkins menu click the 'Manage Jenkins' link.</p>
+Jenkins menu click the ‘Manage Jenkins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
 
-<p>You will now see the Manage Jenkins page. Click the 'Manage Plugins' link.</p>
+<p>You will now see the Manage Jenkins page. Click the ‘Manage Plugins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
 
@@ -340,234 +416,99 @@ growing by the day.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
 
-<h2>Required Plugins</h2>
+<h2 id="required-plugins">Required Plugins</h2>
 
 <p>Without these required Plugins you will not be able to build and test .NET
 solutions. So you must at least install these Plugins for the rest of this
 guide to work.</p>
 
-<h3>Build Plugins</h3>
+<h3 id="build-plugins">Build Plugins</h3>
 
 <p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
 solution.</p>
 
 <ul>
-<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+  <li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
 projects.</em></li>
 </ul>
 
+<h3 id="testing-plugins">Testing Plugins</h3>
 
-<h3>Testing Plugins</h3>
-
-<p>You'll need one of these depending on your chosen test framework.</p>
+<p>You’ll need one of these depending on your chosen test framework.</p>
 
 <ul>
-<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+  <li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
 XML reports so it can be integrated with Jenkins JUnit features.</em></li>
-<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
-<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+  <li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+  <li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
 of an execution of a testing tool in Jenkins.</em></li>
-<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+  <li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
 test results.</em></li>
 </ul>
 
-
 <p>Tick the check box next to each of the required Plugins and then click the
-'Download now and install after restart' button.</p>
+‘Download now and install after restart’ button.</p>
 
 <p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
 
-<h3>Optional Plugins</h3>
+<h3 id="optional-plugins">Optional Plugins</h3>
 
 <p>These Plugins are optional but still recommend ranging from genuine
 productivity tools to just plain fun.</p>
 
-<h3>Jenkins Enhancements</h3>
+<h3 id="jenkins-enhancements">Jenkins Enhancements</h3>
 
 <ul>
-<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
-successful builds. <strong>Who doesn't want Green Balls!</strong></em></li>
-<li><strong>Copy project link plugin</strong> - <em>This plugin adds the "Copy project" link into
+  <li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn’t want Green Balls!</strong></em></li>
+  <li><strong>Copy project link plugin</strong> - <em>This plugin adds the “Copy project” link into
 left side panel in the main project page.</em></li>
-<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+  <li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
 a highly visible manner. This is ideal for displaying on a screen on the
 office wall as a form of Extreme Feedback Device.</em></li>
 </ul>
 
-
-<h3>Authentication</h3>
+<h3 id="authentication">Authentication</h3>
 
 <ul>
-<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+  <li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
 authenticates the username and the password through Active Directory.</em></li>
 </ul>
 
-
-<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+<blockquote>
+  <p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
 guessing most of you already login via Active Directory so this Plugin saves
-you having to remember yet another password.</p></blockquote>
+you having to remember yet another password.</p>
+</blockquote>
 
-<h3>Code Analysis</h3>
+<h3 id="code-analysis">Code Analysis</h3>
 
 <ul>
-<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+  <li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
 tasks and generates a trend report.</em></li>
-<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+  <li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
 warnings in the console log or in log files.</em></li>
 </ul>
 
-
-<h3>Build Tools</h3>
+<h3 id="build-tools">Build Tools</h3>
 
 <ul>
-<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+  <li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
 build step.</em></li>
-<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+  <li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
 </ul>
 
-
-<h3>Fun, Fun, Fun</h3>
+<h3 id="fun-fun-fun">Fun, Fun, Fun</h3>
 
 <ul>
-<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
-Jenkins the butler) and a random Chuck Norris 'The Programmer' fact on each
+  <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
 build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
-<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+  <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
 where users get points on improving the builds. Although this is indeed a fun
 plugin it can help when first introducing Jenkins to your team, a little
 healthy competition never did anyone any harm.</em></li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jenkins.NET]]></title>
-    <link href="http://justinramel.com/2012/09/17/jenkins-dot-net/"/>
-    <updated>2012-09-17T21:58:00+01:00</updated>
-    <id>http://justinramel.com/2012/09/17/jenkins-dot-net</id>
-    <content type="html"><![CDATA[<p>This post is part of a series:
-
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-
----
-</p>
-
-<h2>Introduction</h2>
-
-<p>This is the first in a series of posts which I’ll be writing on using Jenkins
-to build .NET solutions. These posts will be as detailed as possible, probably
-too detailed in places.</p>
-
-<h2>Installing Jenkins</h2>
-
-<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as 'Hudson' but when Oracle bought Sun there
-was a fall out between the then 'Hudson' developers and Oracle so they decided
-to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
-
-<p>I'm going to install and setup Jenkins on a freshly minted Windows 7 virtual
-machine although this process should work fine on other versions of Windows.</p>
-
-<p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
-
-<p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
-
-<h3>Download</h3>
-
-<p>Rather than the generic .war file we'll download the Windows native package,
-which saves as a few steps during installation. The latest windows package is
-available here:</p>
-
-<p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
-
-<p>I'm using Internet Explorer here, which by default blocks the installer from
-downloading. Notice the warning message shown at the top of the browser
-window.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
-
-<p>Click the message bar to get the download options context menu.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
-
-<p>Select the Download File… menu option. You will now see the File Download
-dialog.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
-
-<p>Click the Save button to download the installation zip file to your download
-folder. You will now see the Save As dialog again click the Save button to
-actually download the file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
-
-<p>In a short while you will see the Download complete dialog. Click the Open
-button to open the zipped installation file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
-
-<p>Internet Explorer Security may kick in and ask if you want to allow this
-operation. Click the Allow button to open the zip file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
-
-<p>Once the zip file is open, Click Extract all files from the menu.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
-
-<p>You will now see the Extract zip file dialog, Click the Extract button to
-extract the files to the default location.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
-
-<p>Phew! That's the download complete.</p>
-
-<h3>Setup</h3>
-
-<p>Finally we can run the Setup program. Double click setup to run the program.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
-
-<p>Windows will show a Security Warning to make sure you trust the publisher of
-this software. Click Run to begin the installation.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
-
-<p>You will now see the Jenkins installation wizard. Click the Next button.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
-
-<p>The wizard allows you to change the installation folder. Click Next to accept
-the default folder.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
-
-<p>You are now at the final page of the setup wizard. Click the Install button
-and the installation will begin.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
-
-<p>On Windows 7 the User Account Control may kick in to ask permission to run the
-installation. Click the Yes button to continue.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
-
-<p>The installation wizard will now copy Jenkins onto your machine and display a
-message upon completion. Click the Finish button.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
-
-<p>The install wizard will now open the Jenkins web page.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
-
-<p>Congratulation Jenkins is now installed on your machine!</p>
 ]]></content>
   </entry>
   

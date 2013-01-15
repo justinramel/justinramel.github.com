@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into &hellip;">
+  <meta name="description" content="Setup folder structure: Download and put the asp.net mvc dll’s in mvc folder and spark dll’s in spark folder. Create a new asp.net application not a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +82,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/">HOWTO: Add svn:externals in windows using tortoisesvn</a></h1>
+      <h1 class="entry-title"><a href="/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/">Setup ASP.NET MVC with Spark View Engine in 5 minutes or less</a></h1>
     
     
       <p class="meta">
@@ -98,37 +98,234 @@
   
 
 
-<time datetime="2009-06-04T01:00:25+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2009</time>
+<time datetime="2009-06-08T07:33:21-07:00" pubdate data-updated="true">Jun 8<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into their own repository and include them in the other projects using an svn:external. The advantage this gives you is any changes you make to the external repository can be updated easily across all projects. Any hoose this is who to do it.</p>
+  <div class="entry-content"><p>Setup folder structure:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb.png" alt="image" /></a></p>
+
+<p>Download and put the <a href="http://www.asp.net/mvc/download/">asp.net mvc</a> dll’s in mvc folder and <a href="http://sparkviewengine.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=27109">spark</a> dll’s in spark folder. </p>
+
+<p>Create a new asp.net application not a <strong>mvc</strong> application just a standard asp.net application. This means you will not get the mvc helpers for creating controllers and views but that’s not a massive loss and has the advantage that you don’t need the asp.net mvc installed if you open the solution on another machine.</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image1.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb1.png" alt="add new project" /></a>Change content of Default.aspx to: <!-- Placeholder do not delete! --></p>
+
+<p>The default.aspx placeholder is required to allow the asp.net routing to work. </p>
+
+<p>Delete the code behind files for Default.aspx (Default.aspx.cs, Default.aspx.designer.cs) they are not needed.</p>
+
+<p>Add references to the Spark.dll and Spark.Web.Mvc.dll located in the libs folder.</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/vs_add_ref.png"><img src="http://justinram.files.wordpress.com/2009/06/vs_add_ref_thumb.png" alt="vs_add_ref" /></a></p>
+
+<p>Add references to asp.net mvc System.Web.Routing.dll, System.Web.Abstractions.dll, System.Web.Mvc.dll</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image2.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb2.png" alt="image" /></a></p>
+
+<p>Add spark to the web.config:</p>
+
+<p>&lt;/sectionGroup&gt;    <br />
+&lt;section name=&#8221;spark&#8221; type=&#8221;Spark.Configuration.SparkSectionHandler, Spark&#8221;/&gt;     <br />
+&lt;/configSections&gt;</p>
+
+<spark>      
+<compilation debug="true" />       
+</spark>
+
+<p>Debug true shows compilation errors when rendering views.</p>
+
+<p>Add routing to httpModules section of web.config:</p>
+
+<add name="UrlRoutingModule" type="System.Web.Routing.UrlRoutingModule, System.Web.Routing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+
+<p>Add a application.cs which creates the routes and registers the spark view engine:</p>
+
+<p>using System.Collections.Generic;    <br />
+using System.Web.Mvc;     <br />
+using System.Web.Routing;     <br />
+using Spark.Web.Mvc; </p>
+
+<p>namespace Web    <br />
+{     <br />
+public class Application     <br />
+{     <br />
+public void RegisterRoutes(IList<routebase> routes)       
+{       
+routes.Add(new Route(       
+&#8220;{controller}/{action}/{id}&#8221;,       
+new RouteValueDictionary(new {controller = &#8220;home&#8221;, action = &#8220;index&#8221;, id = &#8220;&#8221;}),       
+new MvcRouteHandler()));       
+} </routebase></p>
+
+<p>public void RegisterViewEngine(IList<iviewengine> engines)      
+{       
+SparkEngineStarter.RegisterViewEngine(engines);       
+}       
+}       
+}</iviewengine></p>
+
+<p>Add a global.asax with the following code behind.</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image3.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb3.png" alt="image" /></a></p>
+
+<p>using System;    <br />
+using System.Web;     <br />
+using System.Web.Mvc;     <br />
+using System.Web.Routing; </p>
+
+<p>namespace Web    <br />
+{     <br />
+public class Global : HttpApplication     <br />
+{     <br />
+protected void Application_Start(object sender, EventArgs e)     <br />
+{     <br />
+var app = new Application();     <br />
+app.RegisterRoutes(RouteTable.Routes);     <br />
+app.RegisterViewEngine(ViewEngines.Engines);     <br />
+} </p>
+
+<p>protected void Application_BeginRequest(object sender, EventArgs e)    <br />
+{     <br />
+string path = Request.AppRelativeCurrentExecutionFilePath;     <br />
+if (string.Equals(path, “~/default.aspx”, StringComparison.InvariantCultureIgnoreCase) ||     <br />
+string.Equals(path, “~/”))     <br />
+{     <br />
+Context.RewritePath(“~/Home”);     <br />
+}     <br />
+}     <br />
+}     <br />
+}</p>
+
+<p>Create content, controllers and view folders in the root of the asp.net project:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image4.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb4.png" alt="image" /></a></p>
+
+<p>Create a shared folder in the views folder with a _global.spark file this will be used to share come code with all views.</p>
+
+<use namespace="System.Collections.Generic" />
+
+<use namespace="System.Web.Mvc.Html" />
+
+<p>Create a layouts folder in the views folder with a file called application.spark which will be used for the layout of the application very much like a master page.</p>
+
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”</a>&gt;     <br />
+&lt;html xmlns=”<a href="http://www.w3.org/1999/xhtml&quot;">http://www.w3.org/1999/xhtml”</a>&gt;       </p>
+
+<head>       
+<title>Sample</title>       
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />       
+</head>
+<body>       
+<h1>Header</h1>       
+** <use content="view" />        
+** <h1>Footer</h1>       
+</body>
+<p>&lt;/html&gt;</p>
+
+<p>The use content view tag highlighted above is replaced by the current view returned by asp.net mvc.</p>
+
+<p>Add a HomeController.cs under the controllers folder with the following content:</p>
+
+<p>using System.Web.Mvc; </p>
+
+<p>namespace Web.controllers    <br />
+{     <br />
+public class HomeController : Controller     <br />
+{     <br />
+public ActionResult Index()     <br />
+{     <br />
+return View();     <br />
+}     <br />
+}     <br />
+}</p>
+
+<p>Under the views folder create a home\index.spark with the following content:</p>
+
+<p>Hello spark.</p>
+
+<p>Run the project and you should get:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image5.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb5.png" alt="image" /></a></p>
+
+<p>You can download this sample solution <a href="http://fppuvw.bay.livefilestore.com/y1puB8Efa8gk4G6CzMEi40m1JxymO-5kxvTnYWbZ3uh1YZD71y8xOd58vSLWuNpPG06X9y7MgTOntrkvH82-jAqoMWnN9ranxJ6/sparksetup.zip?download">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/03/howto-add-svnexternals-in-windows-using-tortoisesvn/">HOWTO: Add svn:externals in windows using tortoisesvn</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-03T17:00:25-07:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into their own repository and include them in the other projects using an svn:external. The advantage this gives you is any changes you make to the external repository can be updated easily across all projects. Any hoose this is who to do it. </p>
 
 <ol>
-<li><p>Go to the root of the folder you want to add the externals too.</p></li>
-<li><p>Right click on the root folder of the project you want to add the external repository to and select <em>T_ortoiseSVN –> </em>P_roperties.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_settings3.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_settings3_thumb.png" alt="tortoise_settings[3]" /></a> <strong>Note:</strong> This folder has to be a checked out subversion repository or you’ll not get the context menu!</p></li>
-<li><p>You will now see the subversion properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties1_thumb.png" alt="tortoise_properties[1]" /></a></p></li>
-<li><p>Click the _N_ew.. button. You will now see the Add properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1_thumb.png" alt="tortoise_add_properties[1]" /></a></p></li>
-<li><p>Select svn:externals from the property name drop down list.</p></li>
-<li><p>Enter the name you want to give to the external folder followed by the path to your tools repository in property value text area.      <br/>
-In the example above: tools svn://server/tools/trunk       <br/>
-<strong>Note:</strong> You can add more external repositories by simply adding more lines to the property value text area.</p></li>
-<li><p>Click Ok to add the property will now be listed in the properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties21.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties21_thumb.png" alt="tortoise_properties2[1]" /></a></p></li>
-<li><p>Right click on the root folder and select SVN Update from the menu. Subversion will now pull down the files from the external repository and your done.</p></li>
+  <li>
+    <p>Go to the root of the folder you want to add the externals too. </p>
+  </li>
+  <li>
+    <p>Right click on the root folder of the project you want to add the external repository to and select _T_ortoiseSVN –&gt; _P_roperties.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_settings3.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_settings3_thumb.png" alt="tortoise_settings[3]" /></a> <strong>Note:</strong> This folder has to be a checked out subversion repository or you’ll not get the context menu!</p>
+  </li>
+  <li>
+    <p>You will now see the subversion properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties1_thumb.png" alt="tortoise_properties[1]" /></a></p>
+  </li>
+  <li>
+    <p>Click the _N_ew.. button. You will now see the Add properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1_thumb.png" alt="tortoise_add_properties[1]" /></a></p>
+  </li>
+  <li>
+    <p>Select svn:externals from the property name drop down list. </p>
+  </li>
+  <li>
+    <p>Enter the name you want to give to the external folder followed by the path to your tools repository in property value text area.      <br />
+In the example above: tools svn://server/tools/trunk       <br />
+<strong>Note:</strong> You can add more external repositories by simply adding more lines to the property value text area. </p>
+  </li>
+  <li>
+    <p>Click Ok to add the property will now be listed in the properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties21.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties21_thumb.png" alt="tortoise_properties2[1]" /></a></p>
+  </li>
+  <li>
+    <p>Right click on the root folder and select SVN Update from the menu. Subversion will now pull down the files from the external repository and your done. </p>
+  </li>
 </ol>
 
+<p>Once you check this change in other people checking out from the repository will automatically get the externals folder. Also any changes to the external repository will be updated in this repository on any update. So in this case if I add a new tool or update one of the tools all repositories using this external repository will get the changes on their next update. </p>
 
-<p>Once you check this change in other people checking out from the repository will automatically get the externals folder. Also any changes to the external repository will be updated in this repository on any update. So in this case if I add a new tool or update one of the tools all repositories using this external repository will get the changes on their next update.</p>
-
-<h3>Gotchas</h3>
+<h3 id="gotchas">Gotchas</h3>
 
 <ul>
-<li>Don&#8217;t forget to give the folder name before the repository address and not just the repository address or you will get an error along the lines of: Error parsing svn:externals property on …<img src="http://justinram.files.wordpress.com/2009/06/tortoise_error1_thumb.png" alt="tortoise_error[1]" /></li>
+  <li>Don’t forget to give the folder name before the repository address and not just the repository address or you will get an error along the lines of: Error parsing svn:externals property on …<img src="http://justinram.files.wordpress.com/2009/06/tortoise_error1_thumb.png" alt="tortoise_error[1]" /></li>
 </ul>
-
 </div>
   
   
@@ -157,7 +354,7 @@ In the example above: tools svn://server/tools/trunk       <br/>
   
 
 
-<time datetime="2009-05-20T17:58:51+01:00" pubdate data-updated="true">May 20<span>th</span>, 2009</time>
+<time datetime="2009-05-20T09:58:51-07:00" pubdate data-updated="true">May 20<span>th</span>, 2009</time>
         
       </p>
     
@@ -166,7 +363,7 @@ In the example above: tools svn://server/tools/trunk       <br/>
 
   <div class="entry-content"><p>Assuming you have an SQL Server 2005 running reporting services you can run Report builder as a ClickOnce app using the following url:</p>
 
-<p>http://<_servername_>/reportserver/reportbuilder/reportbuilder.application</p>
+<p>http://<_servername_>/reportserver/reportbuilder/reportbuilder.application</_servername_></p>
 </div>
   
   
@@ -195,69 +392,105 @@ In the example above: tools svn://server/tools/trunk       <br/>
   
 
 
-<time datetime="2009-04-30T19:29:37+01:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
+<time datetime="2009-04-30T11:29:37-07:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>A few notes I’ve compiled while starting to play with <a href="http://blog.jpboodhoo.com/">JP Boodhoo&#8217;s</a> BDD framework (<a href="http://github.com/developwithpassion">http://github.com/developwithpassion</a>). At first sight the syntax looks quite alien but try it for a while you eyes soon adjust.</p>
+  <div class="entry-content"><p>A few notes I’ve compiled while starting to play with <a href="http://blog.jpboodhoo.com/">JP Boodhoo’s</a> BDD framework (<a href="http://github.com/developwithpassion">http://github.com/developwithpassion</a>). At first sight the syntax looks quite alien but try it for a while you eyes soon adjust. </p>
 
-<h2>JP blog posts</h2>
-
-<ul>
-<li><p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart1.aspx">How I’m Currently Writing My BDD Style Tests – Part 1</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart2.aspx">How I’m Currently Writing My BDD Style Tests – Part 2</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/TestExamplesWithMBUnitAndJpboodhoobdd.aspx">Test examples with MBUnit and jpboodhoo.bdd</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/SlightAdditionToJpboodhoobdd.aspx">Slight addition to jpboodhoo.bdd</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/UsingJpboodhoobddWithTestDrivenNet.aspx">Using jpboodhoo.bdd with TestDriven.Net</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/MoreNewConventionsForHowIOrganizeMyTests.aspx">More new conventions for how I organize my tests!!</a></p></li>
-</ul>
-
-
-<h2>Base classes</h2>
+<h2 id="jp-blog-posts">JP blog posts</h2>
 
 <ul>
-<li><p>observations_for_a_static_sut – For testing a static class or a quick inline test</p></li>
-<li><p>observations_for_a_sut_with_a_contract – For testing against the interface of a class</p>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart1.aspx">How I’m Currently Writing My BDD Style Tests – Part 1</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart2.aspx">How I’m Currently Writing My BDD Style Tests – Part 2</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/TestExamplesWithMBUnitAndJpboodhoobdd.aspx">Test examples with MBUnit and jpboodhoo.bdd</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/SlightAdditionToJpboodhoobdd.aspx">Slight addition to jpboodhoo.bdd</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/UsingJpboodhoobddWithTestDrivenNet.aspx">Using jpboodhoo.bdd with TestDriven.Net</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/MoreNewConventionsForHowIOrganizeMyTests.aspx">More new conventions for how I organize my tests!!</a></p>
+  </li>
+</ul>
+
+<h2 id="base-classes">Base classes</h2>
 
 <ul>
-<li><p>sut is automatically created</p></li>
-<li><p>No more broken test when you add a new dependency to a class! YAY</p></li>
-<li><p>Automatic creation of sut can be over ridden</p></li>
-</ul>
-</li>
-<li><p>observations_for_a_sut_without_a_contract – For testing against a concrete class</p></li>
+  <li>
+    <p>observations_for_a_static_sut – For testing a static class or a quick inline test</p>
+  </li>
+  <li>
+    <p>observations_for_a_sut_with_a_contract – For testing against the interface of a class </p>
+
+    <ul>
+      <li>
+        <p>sut is automatically created </p>
+      </li>
+      <li>
+        <p>No more broken test when you add a new dependency to a class! YAY</p>
+      </li>
+      <li>
+        <p>Automatic creation of sut can be over ridden</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>observations_for_a_sut_without_a_contract – For testing against a concrete class</p>
+  </li>
 </ul>
 
-
-<h2>Delegate call order</h2>
+<h2 id="delegate-call-order">Delegate call order</h2>
 
 <ul>
-<li><p>context</p>
+  <li>
+    <p>context</p>
 
-<ul>
-<li><p>Can define a context block in the concerns base class which will be run before a context block in the inheriting class</p></li>
-<li><p>Can call method provide_a_basic_sut_constructor_argument</p></li>
+    <ul>
+      <li>
+        <p>Can define a context block in the concerns base class which will be run before a context block in the inheriting class</p>
+      </li>
+      <li>
+        <p>Can call method provide_a_basic_sut_constructor_argument</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>after_sut_has_been_initialized</p>
+  </li>
+  <li>
+    <p>because</p>
+  </li>
+  <li>
+    <p>it</p>
+  </li>
+  <li>
+    <p>after_each_observation</p>
+  </li>
 </ul>
-</li>
-<li><p>after_sut_has_been_initialized</p></li>
-<li><p>because</p></li>
-<li><p>it</p></li>
-<li><p>after_each_observation</p></li>
-</ul>
 
-
-<h2>Exceptions</h2>
+<h2 id="exceptions">Exceptions</h2>
 
 <p>When you want to <strike>test</strike> spec? for an exception use the doing method:</p>
 
-<blockquote><p>because b = () =>      <br/>
-doing(() => sut.MethodWhichThrows());</p>
+<blockquote>
 
-<p>it should_throw_exception = () =>     <br/>
-exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);</p></blockquote>
+  <p>because b = () =&gt;      <br />
+doing(() =&gt; sut.MethodWhichThrows()); </p>
+
+  <p>it should_throw_exception = () =&gt;     <br />
+exception_thrown_by_the_sut.Message.should_contain(“MY EXCEPTION”); </p>
+</blockquote>
 </div>
   
   
@@ -286,7 +519,7 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
   
 
 
-<time datetime="2009-01-23T16:38:12+00:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
+<time datetime="2009-01-23T08:38:12-08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
         
       </p>
     
@@ -307,37 +540,50 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
 
 <p>To fix the exception add a new line to your active record facility config:</p>
 
-<p><facility id="activerecord.facility" isweb="true" type="Castle.Facilities.ActiveRecordIntegration.ActiveRecordFacility, Castle.Facilities.ActiveRecordIntegration"></p>
+<facility id="activerecord.facility" isweb="true" type="Castle.Facilities.ActiveRecordIntegration.ActiveRecordFacility, Castle.Facilities.ActiveRecordIntegration">
+    
+<assemblies>
 
-<p><assemblies></p>
+    
+<item>Nu.Core</item>
 
-<p><item>Nu.Core</item></p>
+    
+</assemblies>
 
-<p></assemblies></p>
+    
+<config>
 
-<p><config></p>
+    
+<add value="false" key="cache.use_query_cache" />
 
-<p><add value="false" key="cache.use_query_cache" /></p>
+    
+<add value="ReadCommitted" key="connection.isolation" />
 
-<p><add value="ReadCommitted" key="connection.isolation" /></p>
+    
+<add value="false" key="show_sql" />
 
-<p><add value="false" key="show_sql" /></p>
+    
+<add value="NHibernate.Dialect.SQLiteDialect" key="dialect" />
 
-<p><add value="NHibernate.Dialect.SQLiteDialect" key="dialect" /></p>
+    
+<add value="NHibernate.Driver.SQLite20Driver" key="connection.driver_class" />
 
-<p><add value="NHibernate.Driver.SQLite20Driver" key="connection.driver_class" /></p>
+    
+<add value="true=1;false=0" key="query.substitutions" />
 
-<p><add value="true=1;false=0" key="query.substitutions" /></p>
+    
+<add value="#{ConnectionString}" key="connection.connection_string" />
 
-<p><add value="#{ConnectionString}" key="connection.connection_string" /></p>
+    
+<add value="NHibernate.Connection.DriverConnectionProvider" key="connection.provider" />
 
-<p><add value="NHibernate.Connection.DriverConnectionProvider" key="connection.provider" /></p>
+    
+** <add value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" key="proxyfactory.factory_class" />
+      
+** </config>
 
-<p>** <add value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" key="proxyfactory.factory_class" /></p>
-
-<p>** </config></p>
-
-<p></facility></p>
+    
+</facility>
 
 <p>Then add a reference in your project to NHibernate.ByteCode.Castle.dll.</p>
 </div>
@@ -368,22 +614,22 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
   
 
 
-<time datetime="2009-01-09T14:28:01+00:00" pubdate data-updated="true">Jan 9<span>th</span>, 2009</time>
+<time datetime="2009-01-09T06:28:01-08:00" pubdate data-updated="true">Jan 9<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h5>The problem</h5>
+  <div class="entry-content"><h5 id="the-problem">The problem</h5>
 
 <p>I am calling a web service from a controller and the web service throws a WebException with different exception messages, one when the remote server is unavailable and another when the remote server times out. I’d like to show a rescue view based on the exception type <strong>and</strong> message not just it’s type.</p>
 
-<p>The standard Monorail Rescue attribute only takes an exception type so there didn’t seem to be an easy way to solve my problem. I could have a generic rescue view which shows an error for all WebExceptions but I’d like to be a bit more specific. I could send all WebExceptions to the same rescue view and then handle the different messages in the view but I didn’t want the logic in my rescue view.</p>
+<p>The standard Monorail Rescue attribute only takes an exception type so there didn’t seem to be an easy way to solve my problem. I could have a generic rescue view which shows an error for all WebExceptions but I’d like to be a bit more specific. I could send all WebExceptions to the same rescue view and then handle the different messages in the view but I didn’t want the logic in my rescue view. </p>
 
 <p>I noticed in the trunk (revision 5407) the Rescue attribute takes a rescue controller which I’d never seen before. I started digging around the web and source and came up with the following solution which works although I not sure its the best solution!</p>
 
-<h5>My solution</h5>
+<h5 id="my-solution">My solution</h5>
 
 <p>I changed my base controller to use a rescue controller instead of rescue views:</p>
 
@@ -396,35 +642,44 @@ public class ApplicationController : SmartDispatcherController
 <pre><code>[Layout("default")]
 public class RescueController : SmartDispatcherController, IRescueController
 {
-    public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
-    {
-        SetRescueView("generalerror");
-        if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "Unable to connect to the remote server") SetRescueView("webexception_cannot_connect");
-        if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "The operation has timed out") SetRescueView("webexception_portal_timeout");
+	public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
+	{
+		SetRescueView("generalerror");
+		if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "Unable to connect to the remote server") SetRescueView("webexception_cannot_connect");
+		if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "The operation has timed out") SetRescueView("webexception_portal_timeout");
 
-    }
+	}
 
-    private void SetRescueView(string viewname)
-    {
-        RenderSharedView(Path.Combine("rescues", viewname));
-    }
+	private void SetRescueView(string viewname)
+	{
+		RenderSharedView(Path.Combine("rescues", viewname));
+	}
 }
 </code></pre>
 
 <p>The Rescue method simply checks the exception type and message and if it gets a match it sets the relevant rescue view. Notice I’m using a little helper method to set the rescue view this tells Monorail look in the standard folder Views\rescues for the view otherwise it would be looking for these views in Views\Rescue which could get confusing.</p>
 
-<h5>Gotchas!</h5>
+<h5 id="gotchas">Gotchas!</h5>
 
 <ul>
-<li><p>Make sure your custom rescue controller inherits from SmartDispatcherController otherwise your custom controller will not get called. See Castle Project Users list for <a href="http://groups.google.co.uk/group/castle-project-users/browse_thread/thread/caab15edb9714ccc/5d8e5a96c309b42e">more detail</a></p></li>
-<li><p>Add the Layout attribute to the Rescue controller if you want to use your standard layout on the rescue pages.</p></li>
-<li><p>If your using the Windsor container remember to add the Rescue controller to your container otherwise your custom rescue controller will not be found and called. This one had me scratching my head for a while!</p></li>
-<li><p>Make sure your rescue views exist in the Views\rescues folder otherwise you will get the standard ASP.NET error page and it will look like none of this has worked.</p></li>
-<li><p>This works with the trunk (revision 5407) not sure when the IRescueController functionality was added so it may not work with earlier revisions.</p></li>
+  <li>
+    <p>Make sure your custom rescue controller inherits from SmartDispatcherController otherwise your custom controller will not get called. See Castle Project Users list for <a href="http://groups.google.co.uk/group/castle-project-users/browse_thread/thread/caab15edb9714ccc/5d8e5a96c309b42e">more detail</a></p>
+  </li>
+  <li>
+    <p>Add the Layout attribute to the Rescue controller if you want to use your standard layout on the rescue pages.</p>
+  </li>
+  <li>
+    <p>If your using the Windsor container remember to add the Rescue controller to your container otherwise your custom rescue controller will not be found and called. This one had me scratching my head for a while!</p>
+  </li>
+  <li>
+    <p>Make sure your rescue views exist in the Views\rescues folder otherwise you will get the standard ASP.NET error page and it will look like none of this has worked.</p>
+  </li>
+  <li>
+    <p>This works with the trunk (revision 5407) not sure when the IRescueController functionality was added so it may not work with earlier revisions.</p>
+  </li>
 </ul>
 
-
-<h5>A better solution?</h5>
+<h5 id="a-better-solution">A better solution?</h5>
 
 <p>I thought a better solution would be to add a sub string message to the Rescue attribute which could be used to match the exception type and message. E.g:</p>
 
@@ -435,13 +690,13 @@ Rescue("web_exception_timeout", typeof(WebException), "The operation has timed o
 <p>I couldn’t see an easy way to extend the standard Monorail rescue functionality so I ended up creating a builder which allowed me to define a map of exceptions to rescue views.</p>
 
 <pre><code>builder.Map&lt;WebException&gt;()
-    .WithMessageContaining("Unable to connect to the remote server")
-    .OrMessageContaining("The remote server returned an error: (403) Forbidden.")
-    .ToRescue("webexception_cannot_connect");
+	.WithMessageContaining("Unable to connect to the remote server")
+	.OrMessageContaining("The remote server returned an error: (403) Forbidden.")
+	.ToRescue("webexception_cannot_connect");
 
 builder.Map&lt;WebException&gt;()
-    .WithMessageContaining("The operation has timed out")
-    .ToRescue("webexception_portal_timeout");
+	.WithMessageContaining("The operation has timed out")
+	.ToRescue("webexception_portal_timeout");
 </code></pre>
 
 <p>My final rescue controller simply uses the map to select the correct rescue view, no more if statements needed.</p>
@@ -449,22 +704,22 @@ builder.Map&lt;WebException&gt;()
 <pre><code>[Layout("default")]
 public class RescueController : SmartDispatcherController, IRescueController
 {
-    private readonly IExceptionToRescueMapper _mapper;
+	private readonly IExceptionToRescueMapper _mapper;
 
-    public RescueController(IExceptionToRescueMapper mapper)
-    {
-        _mapper = mapper;
-    }
+	public RescueController(IExceptionToRescueMapper mapper)
+	{
+		_mapper = mapper;
+	}
 
-    public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
-    {
-        SetRescueView(_mapper.GetRescueFor(exception));
-    }
+	public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
+	{
+		SetRescueView(_mapper.GetRescueFor(exception));
+	}
 
-    private void SetRescueView(string viewname)
-    {
-        RenderSharedView(Path.Combine("rescues", viewname));
-    }
+	private void SetRescueView(string viewname)
+	{
+		RenderSharedView(Path.Combine("rescues", viewname));
+	}
 }
 </code></pre>
 
@@ -497,19 +752,19 @@ public class RescueController : SmartDispatcherController, IRescueController
   
 
 
-<time datetime="2008-01-03T21:52:00+00:00" pubdate data-updated="true">Jan 3<span>rd</span>, 2008</time>
+<time datetime="2008-01-03T13:52:00-08:00" pubdate data-updated="true">Jan 3<span>rd</span>, 2008</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve been reading through the new Head First book <a href="http://www.amazon.com/gp/product/0596514824?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596514824">Head First C#</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596514824" alt="" />
-which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> just before Christmas. I&#8217;ve been a fan of the Head Fist books ever since reading their best selling <a href="http://www.amazon.com/gp/product/0596007124?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596007124">Head First Design Patterns</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596007124" alt="" /> book. This particular book is aimed at beginners / hobbyists so I&#8217;m not exactly the target audience but hey it covers C# 3 so its got to be worth at least a skim.</p>
+  <div class="entry-content"><p>I’ve been reading through the new Head First book <a href="http://www.amazon.com/gp/product/0596514824?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596514824">Head First C#</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596514824" alt="" />
+which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> just before Christmas. I’ve been a fan of the Head Fist books ever since reading their best selling <a href="http://www.amazon.com/gp/product/0596007124?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596007124">Head First Design Patterns</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596007124" alt="" /> book. This particular book is aimed at beginners / hobbyists so I’m not exactly the target audience but hey it covers C# 3 so its got to be worth at least a skim.</p>
 
-<p>I was pleased to see they&#8217;ve added a new feature to the head first series namely lab sections. There are 3 lab sections in the book which are basically specifications for mini games, the idea being the reader creates the games using their newly acquired C# skills. I though this was a great idea and having a lot of spare time in front of my laptop over the Christmas (due to a very <a href="http://justin.ramel.googlepages.com/ankle.jpg">sore ankle</a>) I did the first of the labs &#8220;A day at the races&#8221;.</p>
+<p>I was pleased to see they’ve added a new feature to the head first series namely lab sections. There are 3 lab sections in the book which are basically specifications for mini games, the idea being the reader creates the games using their newly acquired C# skills. I though this was a great idea and having a lot of spare time in front of my laptop over the Christmas (due to a very <a href="http://justin.ramel.googlepages.com/ankle.jpg">sore ankle</a>) I did the first of the labs “A day at the races”.</p>
 
-<p>I used the lab as an exercise in <a href="http://behaviour-driven.org/">Behaviour Driven Development (BDD)</a> which I&#8217;d recently read about <a href="http://dannorth.net/introducing-bdd">here</a> and <a href="http://codebetter.com/blogs/david_laribee/archive/2007/12/17/approaching-bdd.aspx">here</a>. I also got to try out a Test Data Builder I&#8217;d read about <a href="http://nat.truemesh.com/archives/000714.html">here</a>. Now I&#8217;m not convinced I hit the nail on the head with the BDD as my solution wasn&#8217;t created in a test behaviour first manor. This was mainly due to the fact the book provides you with the shell of a solution to keep things nice and simple for beginners. Never the less it was a good fun doing the lab it&#8217;s a great way to try out new techniques.</p>
+<p>I used the lab as an exercise in <a href="http://behaviour-driven.org/">Behaviour Driven Development (BDD)</a> which I’d recently read about <a href="http://dannorth.net/introducing-bdd">here</a> and <a href="http://codebetter.com/blogs/david_laribee/archive/2007/12/17/approaching-bdd.aspx">here</a>. I also got to try out a Test Data Builder I’d read about <a href="http://nat.truemesh.com/archives/000714.html">here</a>. Now I’m not convinced I hit the nail on the head with the BDD as my solution wasn’t created in a test behaviour first manor. This was mainly due to the fact the book provides you with the shell of a solution to keep things nice and simple for beginners. Never the less it was a good fun doing the lab it’s a great way to try out new techniques.</p>
 
 <p>All in all the BDD experience was pretty good not sure about the code duplication in the context setup but you got to love the way the descriptive contexts and method names combine to read like a sentence:</p>
 
@@ -517,7 +772,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
 
 <p>Also the Test Data Builder is a really flexible way to create test data using a fluent interface which again is really easy to read:</p>
 
-<p><code>myGuy = new GuyBuilder().WithName("Joe").AndCash(50).Build();</code></p>
+<p><code>myGuy = new GuyBuilder().WithName("Joe").AndCash(50).Build(); </code></p>
 
 <p>You can download the solution <a href="http://justin.ramel.googlepages.com/lab01.zip">here</a>.</p>
 </div>
@@ -548,7 +803,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
   
 
 
-<time datetime="2007-10-10T14:37:22+01:00" pubdate data-updated="true">Oct 10<span>th</span>, 2007</time>
+<time datetime="2007-10-10T06:37:22-07:00" pubdate data-updated="true">Oct 10<span>th</span>, 2007</time>
         
       </p>
     
@@ -585,7 +840,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
   
 
 
-<time datetime="2007-06-18T18:03:34+01:00" pubdate data-updated="true">Jun 18<span>th</span>, 2007</time>
+<time datetime="2007-06-18T10:03:34-07:00" pubdate data-updated="true">Jun 18<span>th</span>, 2007</time>
         
       </p>
     
@@ -598,7 +853,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
 
 <p>My source location is slightly different from the instructions so I have to hand edit the registry entries listed at the end of the page. So to save me doing that again here they are:</p>
 
-<p><code>Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SOFTWARE\Castle] "vs8templatelocation"="C:\\source\\Castle\\Tools\\VSNetWizards\\CastleTemplates\\VS8" [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\castle] @="C:\\source\\Castle\\build\\net-2.0\\debug"</code></p>
+<p><code>Windows Registry Editor Version 5.00 [HKEY_LOCAL_MACHINE\SOFTWARE\Castle] "vs8templatelocation"="C:\\source\\Castle\\Tools\\VSNetWizards\\CastleTemplates\\VS8" [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\castle] @="C:\\source\\Castle\\build\\net-2.0\\debug" </code></p>
 </div>
   
   
@@ -627,70 +882,18 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
   
 
 
-<time datetime="2007-06-12T23:45:58+01:00" pubdate data-updated="true">Jun 12<span>th</span>, 2007</time>
+<time datetime="2007-06-12T15:45:58-07:00" pubdate data-updated="true">Jun 12<span>th</span>, 2007</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve just setup my profile on the SAP Wiki:</p>
+  <div class="entry-content"><p>I’ve just setup my profile on the SAP Wiki:</p>
 
 <p><a href="https://wiki.sdn.sap.com/wiki/display/profile/Justin+Ramel">https://wiki.sdn.sap.com/wiki/display/profile/Justin+Ramel</a></p>
 
-<p>This is my first Wiki experience and I must say I&#8217;m impressed!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/05/30/monaco-f1-grand-prix-2007/">Monaco F1 Grand Prix 2007</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-05-30T10:12:16+01:00" pubdate data-updated="true">May 30<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was lucky enough to be at the Monaco F1 Grand Prix this year after a friend (John &#8220;Diddy&#8221; Donaldson) won a trip aboard a luxury yacht for the weekend. After nail biting coin toss I was invited along to literally the trip of a life time. So here are the photos, videos and links:</p>
-
-<p><strong>PHOTOS</strong>
-<a href="http://www.flickr.com/photos/justinpics/sets/72157600282065312/">http://www.flickr.com/photos/justinpics/sets/72157600282065312/</a>
-<a href="http://www.flickr.com/photos/justinpics/sets/72157600286256602/">http://www.flickr.com/photos/justinpics/sets/72157600286256602/</a></p>
-
-<p><strong>VIDEOS</strong>
-<a href="http://www.youtube.com/view_play_list?p=B39BC24DE3FD196F">http://www.youtube.com/view_play_list?p=B39BC24DE3FD196F</a></p>
-
-<p><strong>LINKS - In case you want to hire the yacht</strong>
-<a href="http://www.luxuryachts.net/yacht.asp?y=starofthesea">http://www.luxuryachts.net/yacht.asp?y=starofthesea</a></p>
-
-<p><a href="http://www.cnconnect.com/charter/yachtdetail.aspx?id=3929">http://www.cnconnect.com/charter/yachtdetail.aspx?id=3929</a></p>
-
-<p><a href="http://www.csoyachts.com/view_yacht.php?ref_bat=0327018">http://www.csoyachts.com/view_yacht.php?ref_bat=0327018</a></p>
-
-<p>The only downside of the trip was the day after the race when depression sets in as you realise your not really a millionaire!</p>
+<p>This is my first Wiki experience and I must say I’m impressed!</p>
 </div>
   
   
@@ -715,6 +918,10 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -728,10 +935,6 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -825,7 +1028,7 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

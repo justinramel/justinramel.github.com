@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’ve decided to move my &#8220;toy&#8221; MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. &hellip;">
+  <meta name="description" content="I’ve decided to move my “toy” MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,22 +95,22 @@
   
 
 
-<time datetime="2006-06-29T14:34:23+01:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
+<time datetime="2006-06-29T06:34:23-07:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I’ve decided to move my &#8220;toy&#8221; MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly Formhelper!</p>
+<div class="entry-content"><p>I’ve decided to move my “toy” MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly Formhelper!</p>
 
 <p>Moving to the latest build broke a few things in my solution:</p>
 
-<h3>The Build</h3>
+<h3 id="the-build">The Build</h3>
 
 <p><strong>Nunit framework</strong></p>
 
-<p>My web test project was using Nunit version 2.2.0.0. Which is used by Castle.MonoRail.TestSupport I believe although don&#8217;t quote me on that I could be wrong. Any who it now requires the latest version of the nunit.framework.dll (2.2.8.0). I change the reference and all was well.</p>
+<p>My web test project was using Nunit version 2.2.0.0. Which is used by Castle.MonoRail.TestSupport I believe although don’t quote me on that I could be wrong. Any who it now requires the latest version of the nunit.framework.dll (2.2.8.0). I change the reference and all was well.</p>
 
 <p><strong>DataBindAttribute</strong>
 Next up was the DataBindAttribute which appears to have changs slightly. I did have:</p>
@@ -121,7 +121,7 @@ Next up was the DataBindAttribute which appears to have changs slightly. I did h
 
 <p><code>public void LoginSubmit([DataBind("student")] Student student)</code></p>
 
-<h3>The Tests</h3>
+<h3 id="the-tests">The Tests</h3>
 
 <p>Ok now my solution builds but all of my ActiveRecord unit tests fail. I get the following error:</p>
 
@@ -131,16 +131,16 @@ Next up was the DataBindAttribute which appears to have changs slightly. I did h
 
 <p>`protected virtual void InitFramework()
 {
-  IConfigurationSource source = ConfigurationManager.GetSection(&#8220;activerecord&#8221;) as IConfigurationSource;</p>
+  IConfigurationSource source = ConfigurationManager.GetSection(“activerecord”) as IConfigurationSource;</p>
 
-<p>  ActiveRecordStarter.Initialize(source);</p>
+<p>ActiveRecordStarter.Initialize(source);</p>
 
-<p>  ActiveRecordStarter.Initialize( source, typeof(Student), typeof(LoginAudit) );
+<p>ActiveRecordStarter.Initialize( source, typeof(Student), typeof(LoginAudit) );
 }`</p>
 
 <p>I guess there is now no need for the first <strong>ActiveRecordStarter.Initialize(source);</strong> call so I remove it and all is well!</p>
 
-<h3>The Run</h3>
+<h3 id="the-run">The Run</h3>
 
 <p>Ok now my solution builds and passes the test but all is not well at run time I get the following error:</p>
 
@@ -149,23 +149,17 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
 
 <p>This is a breaking change mentioned in the release notes and you must update your web.config. But don’t get your httpModules and your httpHandlers mixed up as I did. Simply add the httpModules to your web.config:</p>
 
-<p>`&lt;system.web>
-  <httpHandlers></p>
-
-<pre><code>    &lt;add verb="*" path="*.aspx" type="Castle.MonoRail.Framework.MonoRailHttpHandlerFactory, Castle.MonoRail.Framework"  /&gt;
-</code></pre>
-
-<p>  </httpHandlers>
-  <httpModules></p>
-
-<pre><code>    &lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" /&gt;
-&lt;/httpModules&gt;
-</code></pre>
-
-<p>&lt;/system.web>
+<p>`<system.web /></p>
+<httphandlers>
+		<add verb="*" path="*.aspx" type="Castle.MonoRail.Framework.MonoRailHttpHandlerFactory, Castle.MonoRail.Framework" />
+  </httphandlers>
+<httpmodules>
+		<add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" />
+	</httpmodules>
+<p>&lt;/system.web&gt;
 `</p>
 
-<h3>The End</h3>
+<h3 id="the-end">The End</h3>
 
 <p>That’s it we’re down! Now I get to play with the latest version.</p>
 </div>
@@ -190,7 +184,7 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
   
 
 
-<time datetime="2006-06-29T14:34:23+01:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
+<time datetime="2006-06-29T06:34:23-07:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -239,6 +233,10 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -252,10 +250,6 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -350,7 +344,7 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

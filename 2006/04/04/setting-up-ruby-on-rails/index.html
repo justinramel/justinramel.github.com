@@ -9,8 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I&#8217;m going to give Ruby on Rails (RoR) a try on my Windows XP machine. Here&#8217;s how I&#8217;ve set it up&#8230; Install Ruby
-Using the Ruby &hellip;">
+  <meta name="description" content="I’m going to give Ruby on Rails (RoR) a try on my Windows XP machine. Here’s how I’ve set it up… Install Ruby
+Using the Ruby One Click Installer Ruby &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,44 +96,49 @@ Using the Ruby &hellip;">
   
 
 
-<time datetime="2006-04-04T11:26:22+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T03:26:22-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I&#8217;m going to give Ruby on Rails (RoR) a try on my Windows XP machine.  Here&#8217;s how I&#8217;ve set it up&#8230;</p>
+<div class="entry-content"><p>I’m going to give Ruby on Rails (RoR) a try on my Windows XP machine.  Here’s how I’ve set it up…</p>
 
 <ol>
-<li><p>Install Ruby
-Using the <a href="http://rubyforge.org/projects/rubyinstaller/">Ruby One Click Installer Ruby One Click Installer</a> (v184-16 release candidate 1)</p></li>
-<li><p>Setup proxy</p></li>
+  <li>
+    <p>Install Ruby
+Using the <a href="http://rubyforge.org/projects/rubyinstaller/">Ruby One Click Installer Ruby One Click Installer</a> (v184-16 release candidate 1)</p>
+  </li>
+  <li>
+    <p>Setup proxy</p>
+  </li>
 </ol>
-
 
 <pre><code>set HTTP_PROXY=http://wwwcache:8080
 </code></pre>
 
 <ol>
-<li>GEM install Ruby on Rails</li>
+  <li>GEM install Ruby on Rails</li>
 </ol>
-
 
 <pre><code>gem install rails --include-dependencies
 </code></pre>
 
 <ol>
-<li><p>Install RadRails
-I also downloaded and installed the latest <a href="http://www.radrails.org/">RadRails</a> (v0.6.1)</p></li>
-<li><p>Database
-I&#8217;m going to try rails with our dev MS-SQL server so no database to install. No doubt lots of configuring to do though!</p></li>
+  <li>
+    <p>Install RadRails
+I also downloaded and installed the latest <a href="http://www.radrails.org/">RadRails</a> (v0.6.1) </p>
+  </li>
+  <li>
+    <p>Database
+I’m going to try rails with our dev MS-SQL server so no database to install. No doubt lots of configuring to do though!</p>
+  </li>
 </ol>
 
+<h4 id="note">NOTE:</h4>
 
-<h4>NOTE:</h4>
-
-<p>There appears to be a problem with the WEBrick web server in this setup.  I couldn&#8217;t find the answer on google but I did find a work around. If you run the WEBrick server using the standard ruby script\server you will get the following error:</p>
+<p>There appears to be a problem with the WEBrick web server in this setup.  I couldn’t find the answer on google but I did find a work around. If you run the WEBrick server using the standard ruby script\server you will get the following error:</p>
 
 <pre><code>ruby script\server
 =&gt; Booting WEBrick...
@@ -158,12 +163,12 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
         from script/server:3
 </code></pre>
 
-<p>There appears to be some problem binding to the port 3000, netstat shows nothing running on port 3000 so I&#8217;ve no idea what is causing it. Any hoose a work around is simply to run on another port:</p>
+<p>There appears to be some problem binding to the port 3000, netstat shows nothing running on port 3000 so I’ve no idea what is causing it. Any hoose a work around is simply to run on another port:</p>
 
 <pre><code>ruby script\server --port=8000
 </code></pre>
 
-<p>If I do find out what is causing the problem I&#8217;ll update this post.</p>
+<p>If I do find out what is causing the problem I’ll update this post.</p>
 </div>
 
 
@@ -186,7 +191,7 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   
 
 
-<time datetime="2006-04-04T11:26:22+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T03:26:22-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -235,6 +240,10 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -248,10 +257,6 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -346,7 +351,7 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

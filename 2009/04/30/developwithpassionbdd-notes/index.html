@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="A few notes I’ve compiled while starting to play with JP Boodhoo&#8217;s BDD framework (http://github.com/developwithpassion). At first sight the &hellip;">
+  <meta name="description" content="A few notes I’ve compiled while starting to play with JP Boodhoo’s BDD framework (http://github.com/developwithpassion). At first sight the syntax &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,69 +95,105 @@
   
 
 
-<time datetime="2009-04-30T19:29:37+01:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
+<time datetime="2009-04-30T11:29:37-07:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>A few notes I’ve compiled while starting to play with <a href="http://blog.jpboodhoo.com/">JP Boodhoo&#8217;s</a> BDD framework (<a href="http://github.com/developwithpassion">http://github.com/developwithpassion</a>). At first sight the syntax looks quite alien but try it for a while you eyes soon adjust.</p>
+<div class="entry-content"><p>A few notes I’ve compiled while starting to play with <a href="http://blog.jpboodhoo.com/">JP Boodhoo’s</a> BDD framework (<a href="http://github.com/developwithpassion">http://github.com/developwithpassion</a>). At first sight the syntax looks quite alien but try it for a while you eyes soon adjust. </p>
 
-<h2>JP blog posts</h2>
-
-<ul>
-<li><p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart1.aspx">How I’m Currently Writing My BDD Style Tests – Part 1</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart2.aspx">How I’m Currently Writing My BDD Style Tests – Part 2</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/TestExamplesWithMBUnitAndJpboodhoobdd.aspx">Test examples with MBUnit and jpboodhoo.bdd</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/SlightAdditionToJpboodhoobdd.aspx">Slight addition to jpboodhoo.bdd</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/UsingJpboodhoobddWithTestDrivenNet.aspx">Using jpboodhoo.bdd with TestDriven.Net</a></p></li>
-<li><p><a href="http://blog.jpboodhoo.com/MoreNewConventionsForHowIOrganizeMyTests.aspx">More new conventions for how I organize my tests!!</a></p></li>
-</ul>
-
-
-<h2>Base classes</h2>
+<h2 id="jp-blog-posts">JP blog posts</h2>
 
 <ul>
-<li><p>observations_for_a_static_sut – For testing a static class or a quick inline test</p></li>
-<li><p>observations_for_a_sut_with_a_contract – For testing against the interface of a class</p>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart1.aspx">How I’m Currently Writing My BDD Style Tests – Part 1</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart2.aspx">How I’m Currently Writing My BDD Style Tests – Part 2</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/TestExamplesWithMBUnitAndJpboodhoobdd.aspx">Test examples with MBUnit and jpboodhoo.bdd</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/SlightAdditionToJpboodhoobdd.aspx">Slight addition to jpboodhoo.bdd</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/UsingJpboodhoobddWithTestDrivenNet.aspx">Using jpboodhoo.bdd with TestDriven.Net</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/MoreNewConventionsForHowIOrganizeMyTests.aspx">More new conventions for how I organize my tests!!</a></p>
+  </li>
+</ul>
+
+<h2 id="base-classes">Base classes</h2>
 
 <ul>
-<li><p>sut is automatically created</p></li>
-<li><p>No more broken test when you add a new dependency to a class! YAY</p></li>
-<li><p>Automatic creation of sut can be over ridden</p></li>
-</ul>
-</li>
-<li><p>observations_for_a_sut_without_a_contract – For testing against a concrete class</p></li>
+  <li>
+    <p>observations_for_a_static_sut – For testing a static class or a quick inline test</p>
+  </li>
+  <li>
+    <p>observations_for_a_sut_with_a_contract – For testing against the interface of a class </p>
+
+    <ul>
+      <li>
+        <p>sut is automatically created </p>
+      </li>
+      <li>
+        <p>No more broken test when you add a new dependency to a class! YAY</p>
+      </li>
+      <li>
+        <p>Automatic creation of sut can be over ridden</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>observations_for_a_sut_without_a_contract – For testing against a concrete class</p>
+  </li>
 </ul>
 
-
-<h2>Delegate call order</h2>
+<h2 id="delegate-call-order">Delegate call order</h2>
 
 <ul>
-<li><p>context</p>
+  <li>
+    <p>context</p>
 
-<ul>
-<li><p>Can define a context block in the concerns base class which will be run before a context block in the inheriting class</p></li>
-<li><p>Can call method provide_a_basic_sut_constructor_argument</p></li>
+    <ul>
+      <li>
+        <p>Can define a context block in the concerns base class which will be run before a context block in the inheriting class</p>
+      </li>
+      <li>
+        <p>Can call method provide_a_basic_sut_constructor_argument</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>after_sut_has_been_initialized</p>
+  </li>
+  <li>
+    <p>because</p>
+  </li>
+  <li>
+    <p>it</p>
+  </li>
+  <li>
+    <p>after_each_observation</p>
+  </li>
 </ul>
-</li>
-<li><p>after_sut_has_been_initialized</p></li>
-<li><p>because</p></li>
-<li><p>it</p></li>
-<li><p>after_each_observation</p></li>
-</ul>
 
-
-<h2>Exceptions</h2>
+<h2 id="exceptions">Exceptions</h2>
 
 <p>When you want to <strike>test</strike> spec? for an exception use the doing method:</p>
 
-<blockquote><p>because b = () =>      <br/>
-doing(() => sut.MethodWhichThrows());</p>
+<blockquote>
 
-<p>it should_throw_exception = () =>     <br/>
-exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);</p></blockquote>
+  <p>because b = () =&gt;      <br />
+doing(() =&gt; sut.MethodWhichThrows()); </p>
+
+  <p>it should_throw_exception = () =&gt;     <br />
+exception_thrown_by_the_sut.Message.should_contain(“MY EXCEPTION”); </p>
+</blockquote>
 </div>
 
 
@@ -180,7 +216,7 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
   
 
 
-<time datetime="2009-04-30T19:29:37+01:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
+<time datetime="2009-04-30T11:29:37-07:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
       
 
 <span class="categories">
@@ -229,6 +265,10 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -242,10 +282,6 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -340,7 +376,7 @@ exception_thrown_by_the_sut.Message.should_contain(&#8220;MY EXCEPTION&#8221;);<
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

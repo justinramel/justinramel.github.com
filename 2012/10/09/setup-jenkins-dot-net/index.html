@@ -9,11 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Jenkins.NET
-Jenkins.NET Plugins
-Setup Jenkins.NET
-Setting up your first job
-Your first build There are some important &hellip;">
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,7 +95,7 @@ Your first build There are some important &hellip;">
   
 
 
-<time datetime="2012-10-09T20:35:00+01:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2012-10-09T20:35:00-07:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
         
       </p>
     
@@ -109,31 +105,35 @@ Your first build There are some important &hellip;">
 <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
 <p>There are some important settings, that we need to configure before we get
 started building our first project.</p>
 
-<h2>Manage</h2>
+<h2 id="manage">Manage</h2>
 
-<p>On the main Jenkins menu, click the &#8216;Manage Jenkins&#8217; link.</p>
+<p>On the main Jenkins menu, click the ‘Manage Jenkins’ link.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
 
-<p>You will now see the Manage Jenkins page. Click the &#8216;Configure System&#8217; link to
+<p>You will now see the Manage Jenkins page. Click the ‘Configure System’ link to
 get to the main configuration page.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
 
-<h2>MSBuild</h2>
+<h2 id="msbuild">MSBuild</h2>
 
 <p>We need to setup MSBuild to carry out the compilation and build of your .NET
 solutions. We can use any version of MSBuild you have installed on the Jenkins
@@ -143,20 +143,19 @@ and use any version of the .NET Framework.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
 
-<p>Click the &#8216;Add MSBuild&#8217; button.</p>
+<p>Click the ‘Add MSBuild’ button.</p>
 
 <p><img src="/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
 
 <p>Set the name and path to MSBuild:</p>
 
 <ol>
-<li>Name: v3.5</li>
-<li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
-<li>Click the &#8216;Save&#8217; button</li>
+  <li>Name: v3.5</li>
+  <li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the ‘Save’ button</li>
 </ol>
 
-
-<p>In my next post we&#8217;ll actually get to setup our first job!</p>
+<p>In my next post we’ll actually get to setup our first job!</p>
 </div>
 
 
@@ -179,7 +178,7 @@ and use any version of the .NET Framework.</p>
   
 
 
-<time datetime="2012-10-09T20:35:00+01:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2012-10-09T20:35:00-07:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
       
 
 <span class="categories">
@@ -228,6 +227,10 @@ and use any version of the .NET Framework.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -241,10 +244,6 @@ and use any version of the .NET Framework.</p>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -339,7 +338,7 @@ and use any version of the .NET Framework.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Getting &#8216;Zombie State&#8217; errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb: ActiveRecord::Base. &hellip;">
+  <meta name="description" content="Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb: ActiveRecord::Base.connection. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,17 +95,18 @@
   
 
 
-<time datetime="2006-04-04T14:28:44+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T06:28:44-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Getting &#8216;Zombie State&#8217; errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
+<div class="entry-content"><p>Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
 
 <pre><code>ActiveRecord::Base.connection.instance_variable_get("@connection")["AutoCommit"] = false
 </code></pre>
+
 </div>
 
 
@@ -128,7 +129,7 @@
   
 
 
-<time datetime="2006-04-04T14:28:44+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T06:28:44-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -177,6 +178,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -190,10 +195,6 @@
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -288,7 +289,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

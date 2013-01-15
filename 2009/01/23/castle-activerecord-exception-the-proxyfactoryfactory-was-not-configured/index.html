@@ -96,7 +96,7 @@ Initialize ' &hellip;">
   
 
 
-<time datetime="2009-01-23T16:38:12+00:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
+<time datetime="2009-01-23T08:38:12-08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
         
       </p>
     
@@ -117,37 +117,50 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
 
 <p>To fix the exception add a new line to your active record facility config:</p>
 
-<p><facility id="activerecord.facility" isweb="true" type="Castle.Facilities.ActiveRecordIntegration.ActiveRecordFacility, Castle.Facilities.ActiveRecordIntegration"></p>
+<facility id="activerecord.facility" isweb="true" type="Castle.Facilities.ActiveRecordIntegration.ActiveRecordFacility, Castle.Facilities.ActiveRecordIntegration">
+    
+<assemblies>
 
-<p><assemblies></p>
+    
+<item>Nu.Core</item>
 
-<p><item>Nu.Core</item></p>
+    
+</assemblies>
 
-<p></assemblies></p>
+    
+<config>
 
-<p><config></p>
+    
+<add value="false" key="cache.use_query_cache" />
 
-<p><add value="false" key="cache.use_query_cache" /></p>
+    
+<add value="ReadCommitted" key="connection.isolation" />
 
-<p><add value="ReadCommitted" key="connection.isolation" /></p>
+    
+<add value="false" key="show_sql" />
 
-<p><add value="false" key="show_sql" /></p>
+    
+<add value="NHibernate.Dialect.SQLiteDialect" key="dialect" />
 
-<p><add value="NHibernate.Dialect.SQLiteDialect" key="dialect" /></p>
+    
+<add value="NHibernate.Driver.SQLite20Driver" key="connection.driver_class" />
 
-<p><add value="NHibernate.Driver.SQLite20Driver" key="connection.driver_class" /></p>
+    
+<add value="true=1;false=0" key="query.substitutions" />
 
-<p><add value="true=1;false=0" key="query.substitutions" /></p>
+    
+<add value="#{ConnectionString}" key="connection.connection_string" />
 
-<p><add value="#{ConnectionString}" key="connection.connection_string" /></p>
+    
+<add value="NHibernate.Connection.DriverConnectionProvider" key="connection.provider" />
 
-<p><add value="NHibernate.Connection.DriverConnectionProvider" key="connection.provider" /></p>
+    
+** <add value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" key="proxyfactory.factory_class" />
+      
+** </config>
 
-<p>** <add value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" key="proxyfactory.factory_class" /></p>
-
-<p>** </config></p>
-
-<p></facility></p>
+    
+</facility>
 
 <p>Then add a reference in your project to NHibernate.ByteCode.Castle.dll.</p>
 </div>
@@ -172,7 +185,7 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
   
 
 
-<time datetime="2009-01-23T16:38:12+00:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
+<time datetime="2009-01-23T08:38:12-08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
       
 
 <span class="categories">
@@ -221,6 +234,10 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -234,10 +251,6 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -332,7 +345,7 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

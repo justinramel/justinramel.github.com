@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2006-07-27T10:21:34+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
+<time datetime="2006-07-27T02:21:34-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
         
       </p>
     
@@ -118,19 +118,16 @@ ActiveRecordStarter.CreateSchemaFromFile("schema.sql");
 
 <p>Your schema.sql file should contain scripts in the standard MS SQL format:</p>
 
-<p>`if exists (select * from dbo.sysobjects where id = object_id(N&#8217;[dbo].[Application_Status]&#8217;) and OBJECTPROPERTY(id, N&#8217;IsUserTable&#8217;) = 1)
+<p><code>if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Application_Status]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[Application_Status]
-GO&#8220;
-CREATE TABLE [dbo].[Application_Status] (</p>
-
-<pre><code>[ID] [int] NOT NULL ,
-[Title] [varchar] (50) NOT NULL ,
-[Description] [text] NULL
-</code></pre>
-
-<p>) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO</code><code>
+CREATE TABLE [dbo].[Application_Status] (
+	[ID] [int] NOT NULL ,
+	[Title] [varchar] (50) NOT NULL ,
+	[Description] [text] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-`</p>
+</code></p>
 </div>
 
 
@@ -153,7 +150,7 @@ GO
   
 
 
-<time datetime="2006-07-27T10:21:34+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
+<time datetime="2006-07-27T02:21:34-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -202,6 +199,10 @@ GO
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -215,10 +216,6 @@ GO
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -313,7 +310,7 @@ GO
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="As a small thank you to the Redcar team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of &hellip;">
+  <meta name="description" content="As a small thank you to the Redcar team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/2011/08/19/my-first-redcar-plugin/">
+  <link rel="canonical" href="http://justinramel.com/2011/08/18/my-first-redcar-plugin/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -95,64 +95,56 @@
   
 
 
-<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+<time datetime="2011-08-18T17:04:35-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
+<div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating my first plugin.</p>
 
-<h4>Introduction</h4>
-
-<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what&#8217;s not to like? Though I must confess I don&#8217;t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
+<h4 id="introduction">Introduction</h4>
+<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what’s not to like? Though I must confess I don’t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
 
 <p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
 
-<h4>What&#8217;s da big idea</h4>
+<h4 id="whats-da-big-idea">What’s da big idea</h4>
+<p>The idea for my first plugin is rather ambitious considering I’ve no idea how to write a plugin. I’d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
 
-<p>The idea for my first plugin is rather ambitious considering I&#8217;ve no idea how to write a plugin. I&#8217;d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
+<p>I’m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
 
-<p>I&#8217;m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
-
-<h4>Install Redcar</h4>
-
+<h4 id="install-redcar">Install Redcar</h4>
 <p>I first followed the install instructions:</p>
 
 <p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
 
-<p>All good no problems there (I&#8217;m running on a Mac OSX 10.7.1)</p>
+<p>All good no problems there (I’m running on a Mac OSX 10.7.1)</p>
 
-<h4>Plugin Guides</h4>
-
+<h4 id="plugin-guides">Plugin Guides</h4>
 <p>I then read the plugin guides I found here:</p>
 
 <ul>
-<li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
-<li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
+  <li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
+  <li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
 </ul>
 
-
-<h4>Plugin.rb</h4>
-
-<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin&#8217;s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
+<h4 id="pluginrb">Plugin.rb</h4>
+<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin’s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
 
 <p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
-</span><span class='line'>  <span class="no">RefreshBrowser</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
+</span><span class="line">  <span class="no">RefreshBrowser</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
 
-<h4>Browser refresh script</h4>
-
+<h4 id="browser-refresh-script">Browser refresh script</h4>
 <p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
 
 <p>I managed to find a script to refresh the browser here:</p>
@@ -161,34 +153,30 @@
 
 <p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
 
-<h4>Storage</h4>
+<h4 id="storage">Storage</h4>
+<p>Redcar’s storage mechanism allows you to easily store configuration data into a yaml file.</p>
 
-<p>Redcar&#8217;s storage mechanism allows you to easily store configuration data into a yaml file.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">storage</span>
+</span><span class="line">  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@storage</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">storage</span>
-</span><span class='line'>  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<p>Here I am using this mechanism to store the ‘keyword’ used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It’s also possible to setup a nice edit page but for now this will do.</p>
 
-
-<p>Here I am using this mechanism to store the &#8216;keyword&#8217; used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It&#8217;s also possible to setup a nice edit page but for now this will do.</p>
-
-<h4>Source</h4>
-
+<h4 id="source">Source</h4>
 <p>You can find the source for this plugin here:</p>
 
 <p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
 
-<h4>Was it easy?</h4>
-
-<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I&#8217;ve spent more time fussing over this blog post than developing the plugin.</p>
+<h4 id="was-it-easy">Was it easy?</h4>
+<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I’ve spent more time fussing over this blog post than developing the plugin.</p>
 
 <p>So what you waiting for? Go give it a try!</p>
 </div>
@@ -213,7 +201,7 @@
   
 
 
-<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+<time datetime="2011-08-18T17:04:35-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2011</time>
       
 
 <span class="categories">
@@ -227,7 +215,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2011/08/19/my-first-redcar-plugin/" data-via="justinramel" data-counturl="http://justinramel.com/2011/08/19/my-first-redcar-plugin/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2011/08/18/my-first-redcar-plugin/" data-via="justinramel" data-counturl="http://justinramel.com/2011/08/18/my-first-redcar-plugin/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -256,6 +244,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -269,10 +261,6 @@
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -367,7 +355,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

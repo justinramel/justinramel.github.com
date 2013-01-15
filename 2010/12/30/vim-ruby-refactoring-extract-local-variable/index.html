@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>vim-ruby-refactoring - Rename Local Variable - just ram</title>
+  <title>vim-ruby-refactoring - Extract Local Variable - just ram</title>
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. IMPORTANT: As well as installing the vim-ruby-refactoring plugin, you &hellip;">
+  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Extract Local Variable Extracts a visual selection into a local &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/">
+  <link rel="canonical" href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-local-variable/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">vim-ruby-refactoring - Rename Local Variable</h1>
+      <h1 class="entry-title">vim-ruby-refactoring - Extract Local Variable</h1>
     
     
       <p class="meta">
@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2010-12-31T00:59:58+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
+<time datetime="2010-12-30T16:27:45-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -104,26 +104,26 @@
 
 <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+<h4 id="extract-local-variable">Extract Local Variable</h4>
 
-<h4>Rename Local Variable</h4>
+<p>Extracts a visual selection into a local variable. </p>
 
-<p>Renames the selected local variable.</p>
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/introduceExplainingVariable.html">http://www.refactoring.com/catalog/introduceExplainingVariable.html</a></p>
 
-<h4>Example</h4>
+<h4 id="example">Example</h4>
 
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/renamevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_before_thumb.png" alt="RenameVar_Before" /></a>    <br/>
-Visually select the local variable you wish to rename    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rrlv      <br/>
-</strong>You will now see a prompt to enter the new variable name: <br/>
-Rename to: is_mac_os</p>
+<p>Before refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractvar_before1.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_before_thumb1.png" alt="ExtractVar_Before" /></a>    <br />
+Visually select the value you wish to extract    <br />
+Hit your **<leader-key>** then type **relv        
+**You will now see a prompt to enter the variable name:   
+Variable name: mac_os</leader-key></p>
 
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/renamevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_after_thumb.png" alt="RenameVar_After" /></a>    <br/>
-The local variable <em><strong>mac_os</strong></em> has been renamed to <strong><em>is_mac_os</em></strong> in both locations within the method.</p>
+<p>After refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractvar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_after_thumb.png" alt="ExtractVar_After" /></a>    <br />
+The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been extracted into a local variable <strong><em>mac_os</em></strong>.</p>
 
-<p><strong>rrlv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>L</strong>ocal <strong>V</strong>ariable.</p>
+<p><strong>relv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>ocal <strong>V</strong>ariable.</p>
 </div>
 
 
@@ -146,7 +146,7 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
   
 
 
-<time datetime="2010-12-31T00:59:58+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
+<time datetime="2010-12-30T16:27:45-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
       
 
 <span class="categories">
@@ -160,7 +160,7 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/" data-via="justinramel" data-counturl="http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-local-variable/" data-via="justinramel" data-counturl="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-local-variable/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -171,10 +171,10 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2010/12/31/vim-ruby-refactoring-extract-local-variable/" title="Previous Post: vim-ruby-refactoring - Extract Local Variable">&laquo; vim-ruby-refactoring - Extract Local Variable</a>
+        <a class="basic-alignment left" href="/2010/12/30/vim-ruby-refactoring-extract-to-let/" title="Previous Post: vim-ruby-refactoring - Extract to Let">&laquo; vim-ruby-refactoring - Extract to Let</a>
       
       
-        <a class="basic-alignment right" href="/2010/12/31/vim-ruby-refactoring-rename-instance-variable/" title="Next Post: vim-ruby-refactoring - Rename Instance Variable">vim-ruby-refactoring - Rename Instance Variable &raquo;</a>
+        <a class="basic-alignment right" href="/2010/12/30/vim-ruby-refactoring-rename-local-variable/" title="Next Post: vim-ruby-refactoring - Rename Local Variable">vim-ruby-refactoring - Rename Local Variable &raquo;</a>
       
     </p>
   </footer>
@@ -187,6 +187,10 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
     
       <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
@@ -202,10 +206,6 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -300,7 +300,7 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

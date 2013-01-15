@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-method/">
+  <link rel="canonical" href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-method/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2010-12-31T01:32:57+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
+<time datetime="2010-12-30T17:32:57-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -106,23 +106,23 @@
 
 <p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
 
-<h4>Extract Method</h4>
+<h4 id="extract-method">Extract Method</h4>
 
 <p>Extracts a selection into a method and places it above the current method.</p>
 
 <p>The refactoring: <a href="http://www.refactoring.com/catalog/extractMethod.html">http://www.refactoring.com/catalog/extractMethod.html</a></p>
 
-<h4>Example</h4>
+<h4 id="example">Example</h4>
 
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br/>
-Visually select lines you wish to extract    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rem     <br/>
-</strong>You will now see a prompt to enter the new method name: <br/>
-Method name: print_details</p>
+<p>Before refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br />
+Visually select lines you wish to extract    <br />
+Hit your **<leader-key>** then type **rem       
+**You will now see a prompt to enter the new method name:   
+Method name: print_details</leader-key></p>
 
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br/>
+<p>After refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br />
 A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
 
 <p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
@@ -148,7 +148,7 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
   
 
 
-<time datetime="2010-12-31T01:32:57+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
+<time datetime="2010-12-30T17:32:57-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
       
 
 <span class="categories">
@@ -162,7 +162,7 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-method/" data-via="justinramel" data-counturl="http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-method/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-method/" data-via="justinramel" data-counturl="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-method/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -173,7 +173,7 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2010/12/31/vim-ruby-refactoring-rename-instance-variable/" title="Previous Post: vim-ruby-refactoring - Rename Instance Variable">&laquo; vim-ruby-refactoring - Rename Instance Variable</a>
+        <a class="basic-alignment left" href="/2010/12/30/vim-ruby-refactoring-rename-instance-variable/" title="Previous Post: vim-ruby-refactoring - Rename Instance Variable">&laquo; vim-ruby-refactoring - Rename Instance Variable</a>
       
       
         <a class="basic-alignment right" href="/2011/01/11/rails-new-app-workflow/" title="Next Post: Rails new app workflow">Rails new app workflow &raquo;</a>
@@ -191,6 +191,10 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -204,10 +208,6 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -302,7 +302,7 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

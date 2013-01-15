@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Resharper | just ram]]></title>
   <link href="http://justinramel.com//categories/resharper/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2012-10-25T23:39:11+01:00</updated>
+  <updated>2013-01-14T20:31:22-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Resharper format settings]]></title>
     <link href="http://justinramel.com/2009/06/10/resharper-format-settings/"/>
-    <updated>2009-06-10T18:15:59+01:00</updated>
+    <updated>2009-06-10T10:15:59-07:00</updated>
     <id>http://justinramel.com/2009/06/10/resharper-format-settings</id>
     <content type="html"><![CDATA[<p>I can never remember these so thought it best to write them down. Start with the settings from:</p>
 
@@ -24,59 +24,62 @@
 
 <p>Plus a few extras…</p>
 
-<p>Go to menu Resharper –> Options –> Languages –> C# –> Formatting Style</p>
+<p>Go to menu Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Formatting Style</p>
 
 <ul>
-<li><p>Braces Layout –> All set to (BSD style)</p></li>
-<li><p>Braces Layout –> Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p></li>
-<li><p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p></li>
-<li></li>
+  <li>
+    <p>Braces Layout –&gt; All set to (BSD style)</p>
+  </li>
+  <li>
+    <p>Braces Layout –&gt; Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p>
+  </li>
+  <li>
+    <p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p>
+  </li>
+  <li></li>
 </ul>
 
-
-<p>Other –> Align Multiline Constructs – Call arguments = Off</p>
+<p>Other –&gt; Align Multiline Constructs – Call arguments = Off</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>Other –> Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
+<p>Other –&gt; Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p>Other –&gt; Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
 
-<p>Other –> Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
-
-<h2>Regions</h2>
+<h2 id="regions">Regions</h2>
 
 <p>Stop Resharper adding regions to interface implementations and nested classes:</p>
 
-<p>Go to menu: Resharper –> Options –> Languages –> C# –> Type Members Layout</p>
+<p>Go to menu: Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Type Members Layout</p>
 
 <p>Un-tick Use Default Patterns and you get a text area full of xml. Scroll to the bottom and delete the section:</p>
 
-<p><Group>   <br/>
-<ImplementsInterface Immediate="true" Region="${ImplementsInterface} Members"/>    <br/>
-</Group></p>
+<group>     
+<implementsinterface immediate="true" region="${ImplementsInterface} Members" />      
+</group>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image10.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb10.png" alt="image" /></a></p>
 
 <p>Also delete the section:</p>
 
-<p><Group>   <br/>
-<Name Region="Nested type: ${Name}"/>    <br/>
-</Group></p>
+<group>     
+<name region="Nested type: ${Name}" />      
+</group>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image11.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb11.png" alt="image" /></a></p>
 
 <p>Finally click Ok.</p>
 
-<h2>Code Cleanup</h2>
+<h2 id="code-cleanup">Code Cleanup</h2>
 
-<p>Go to menu Resharper –> Options –> Tools –> Code Cleanup</p>
+<p>Go to menu Resharper –&gt; Options –&gt; Tools –&gt; Code Cleanup</p>
 
 <p>Add a new profile with the following settings:</p>
 

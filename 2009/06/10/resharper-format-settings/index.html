@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2009-06-10T18:15:59+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
+<time datetime="2009-06-10T10:15:59-07:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
         
       </p>
     
@@ -108,59 +108,62 @@
 
 <p>Plus a few extras…</p>
 
-<p>Go to menu Resharper –> Options –> Languages –> C# –> Formatting Style</p>
+<p>Go to menu Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Formatting Style</p>
 
 <ul>
-<li><p>Braces Layout –> All set to (BSD style)</p></li>
-<li><p>Braces Layout –> Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p></li>
-<li><p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p></li>
-<li></li>
+  <li>
+    <p>Braces Layout –&gt; All set to (BSD style)</p>
+  </li>
+  <li>
+    <p>Braces Layout –&gt; Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p>
+  </li>
+  <li>
+    <p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p>
+  </li>
+  <li></li>
 </ul>
 
-
-<p>Other –> Align Multiline Constructs – Call arguments = Off</p>
+<p>Other –&gt; Align Multiline Constructs – Call arguments = Off</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>Other –> Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
+<p>Other –&gt; Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p>Other –&gt; Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
 
-<p>Other –> Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
-
-<h2>Regions</h2>
+<h2 id="regions">Regions</h2>
 
 <p>Stop Resharper adding regions to interface implementations and nested classes:</p>
 
-<p>Go to menu: Resharper –> Options –> Languages –> C# –> Type Members Layout</p>
+<p>Go to menu: Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Type Members Layout</p>
 
 <p>Un-tick Use Default Patterns and you get a text area full of xml. Scroll to the bottom and delete the section:</p>
 
-<p><Group>   <br/>
-<ImplementsInterface Immediate="true" Region="${ImplementsInterface} Members"/>    <br/>
-</Group></p>
+<group>     
+<implementsinterface immediate="true" region="${ImplementsInterface} Members" />      
+</group>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image10.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb10.png" alt="image" /></a></p>
 
 <p>Also delete the section:</p>
 
-<p><Group>   <br/>
-<Name Region="Nested type: ${Name}"/>    <br/>
-</Group></p>
+<group>     
+<name region="Nested type: ${Name}" />      
+</group>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image11.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb11.png" alt="image" /></a></p>
 
 <p>Finally click Ok.</p>
 
-<h2>Code Cleanup</h2>
+<h2 id="code-cleanup">Code Cleanup</h2>
 
-<p>Go to menu Resharper –> Options –> Tools –> Code Cleanup</p>
+<p>Go to menu Resharper –&gt; Options –&gt; Tools –&gt; Code Cleanup</p>
 
 <p>Add a new profile with the following settings:</p>
 
@@ -189,7 +192,7 @@
   
 
 
-<time datetime="2009-06-10T18:15:59+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
+<time datetime="2009-06-10T10:15:59-07:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
       
 
 <span class="categories">
@@ -217,7 +220,7 @@
         <a class="basic-alignment left" href="/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/" title="Previous Post: Setup ASP.NET MVC with Spark View Engine in 5 minutes or less">&laquo; Setup ASP.NET MVC with Spark View Engine in 5 minutes or less</a>
       
       
-        <a class="basic-alignment right" href="/2009/06/18/fubumvc-resources/" title="Next Post: FubuMVC – Resources">FubuMVC – Resources &raquo;</a>
+        <a class="basic-alignment right" href="/2009/06/17/fubumvc-resources/" title="Next Post: FubuMVC – Resources">FubuMVC – Resources &raquo;</a>
       
     </p>
   </footer>
@@ -238,6 +241,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -251,10 +258,6 @@
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -349,7 +352,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

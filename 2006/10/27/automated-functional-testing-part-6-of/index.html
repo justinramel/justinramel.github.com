@@ -95,48 +95,44 @@
   
 
 
-<time datetime="2006-10-27T11:58:26+01:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
+<time datetime="2006-10-27T03:58:26-07:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there.</p>
+<div class="entry-content"><p>Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there.  </p>
 
-<p><strong>TOP TIP - How to navigate the portal</strong><br/>
-So how do you navigate around the portal using the menu? Simple you don&#8217;t! I found there are lots of problems using the portal menus due to the number of frames used so I simply jump directly to the URL of the PAR file I am testing. Here is a typical test:<br/>
-`def test_typical</p>
+<p><strong>TOP TIP - How to navigate the portal</strong><br />
+So how do you navigate around the portal using the menu? Simple you don’t! I found there are lots of problems using the portal menus due to the number of frames used so I simply jump directly to the URL of the PAR file I am testing. Here is a typical test:<br />
+`def test_typical<br />
+# My Helper method which logs in using the given user id and password<br />
+logon(“myuserid”, “mypassword”)   </p>
 
-<h1>My Helper method which logs in using the given user id and password</h1>
+<h1 id="go-directly-to-the-url-of-the-par-i-want-to-test">Go directly to the URL of the PAR I want to test</h1>
+<p>@ie.goto(‘http://portal:50000/irj/servlet/prt/portal/prtroot/uk.ac.ncl.testing.ISRPageProcessor’)  </p>
 
-<p>logon(&#8220;myuserid&#8221;, &#8220;mypassword&#8221;)</p>
+<h1 id="do-tests-here">do tests here</h1>
+<p>end`<br />
+Ok that’s fine but how do you find the direct URL of the PAR file you want to test? Ahh thats were my next top tip comes in.  </p>
 
-<h1>Go directly to the URL of the PAR I want to test</h1>
+<p><strong>TOP TIP - How to find the direct URL of a PAR file</strong><br />
+Open up the SAP Netweaver Developer Studio  </p>
 
-<p>@ie.goto(&#8216;http://portal:50000/irj/servlet/prt/portal/prtroot/uk.ac.ncl.testing.ISRPageProcessor&#8217;)</p>
+<p>Open your project  </p>
 
-<h1>do tests here</h1>
-
-<p>end`<br/>
-Ok that&#8217;s fine but how do you find the direct URL of the PAR file you want to test? Ahh thats were my next top tip comes in.</p>
-
-<p><strong>TOP TIP - How to find the direct URL of a PAR file</strong><br/>
-Open up the SAP Netweaver Developer Studio</p>
-
-<p>Open your project</p>
-
-<p>Open the file:<br/>
+<p>Open the file:<br />
 <code>MyPortalProject  
 dist  
 PORTAL-INF  
-Portalapp.xml</code><br/>
-You should now see a &#8220;Run…&#8221; button for each portal component in your project</p>
+Portalapp.xml</code><br />
+You should now see a “Run…” button for each portal component in your project  </p>
 
-<p>Click the &#8220;Run…&#8221; button and the dev studio will open up a new browser window with the URL of your PAR file. Now simply use this URL in your test scripts.</p>
+<p>Click the “Run…” button and the dev studio will open up a new browser window with the URL of your PAR file. Now simply use this URL in your test scripts.  </p>
 
-<p><strong>COMING UP IN PART SEVEN</strong><br/>
-Short and sweet but at least I&#8217;m posting more often. Next time&#8230; You guessed it more top tips!</p>
+<p><strong>COMING UP IN PART SEVEN</strong><br />
+Short and sweet but at least I’m posting more often. Next time… You guessed it more top tips!</p>
 </div>
 
 
@@ -159,7 +155,7 @@ Short and sweet but at least I&#8217;m posting more often. Next time&#8230; You 
   
 
 
-<time datetime="2006-10-27T11:58:26+01:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
+<time datetime="2006-10-27T03:58:26-07:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
       
 
 <span class="categories">
@@ -208,6 +204,10 @@ Short and sweet but at least I&#8217;m posting more often. Next time&#8230; You 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -221,10 +221,6 @@ Short and sweet but at least I&#8217;m posting more often. Next time&#8230; You 
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -319,7 +315,7 @@ Short and sweet but at least I&#8217;m posting more often. Next time&#8230; You 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

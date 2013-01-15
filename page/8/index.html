@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="What if you don&#8217;t wish to run all the unit tests in your test case? You can tell ruby to run only one test method by passing in the name of the &hellip;">
+  <meta name="description" content="Its a good idea to keep your test cases seperate from your production code: myproject lib/ workomatic.rb test/ test_workomatic.rb When you have your &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,59 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2006/03/30/ruby-unit-testing-setting-up-your-project-folder-for-testing/">Ruby unit testing - Setting up your project folder for testing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-03-30T13:22:01-08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Its a good idea to keep your test cases seperate from your production code:</p>
+
+<pre><code>  myproject
+      lib/
+          workomatic.rb
+      test/
+          test_workomatic.rb
+</code></pre>
+
+<p>When you have your project setup in this way add the following line to the top of your test cases:</p>
+
+<p>Inside test_workomatic.rb</p>
+
+<pre><code>  $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
+  require workomatic.rb
+</code></pre>
+
+<p>Now when you run this test case the workomatic.rb file and all supporting files in the lib folder will be picked up.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2006/03/30/ruby-unit-tests-run-only-one-test-method/">Ruby unit tests - run only one test method</a></h1>
     
     
@@ -98,19 +151,20 @@
   
 
 
-<time datetime="2006-03-30T22:04:37+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
+<time datetime="2006-03-30T13:04:37-08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>What if you don&#8217;t wish to run all the unit tests in your test case?</p>
+  <div class="entry-content"><p>What if you don’t wish to run all the unit tests in your test case?</p>
 
 <p>You can tell ruby to run only one test method by passing in the name of the test:</p>
 
 <pre><code>  ruby test_mytestcase.rb --name test_just_this_method
 </code></pre>
+
 </div>
   
   
@@ -139,7 +193,7 @@
   
 
 
-<time datetime="2006-03-28T14:58:23+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2006</time>
+<time datetime="2006-03-28T05:58:23-08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2006</time>
         
       </p>
     
@@ -183,7 +237,7 @@
   
 
 
-<time datetime="2006-03-22T14:49:29+00:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2006</time>
+<time datetime="2006-03-22T06:49:29-08:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2006</time>
         
       </p>
     
@@ -235,7 +289,7 @@
   
 
 
-<time datetime="2006-03-20T12:30:50+00:00" pubdate data-updated="true">Mar 20<span>th</span>, 2006</time>
+<time datetime="2006-03-20T04:30:50-08:00" pubdate data-updated="true">Mar 20<span>th</span>, 2006</time>
         
       </p>
     
@@ -259,13 +313,13 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
 
 <p>Fire up the developer studio and you should now have the subversion perspective available.</p>
 
-<p>Menu: Window => Open Perspective => Other…</p>
+<p>Menu: Window =&gt; Open Perspective =&gt; Other…</p>
 
 <p>Select SVN Repository Exploring from the dialog.</p>
 
 <p>Right click on the SVN Repository windows to add a new repository:</p>
 
-<p>Menu: New => Repository Location…</p>
+<p>Menu: New =&gt; Repository Location…</p>
 
 <p>You will now see the following dialog:</p>
 
@@ -304,7 +358,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-03-16T16:29:10+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2006</time>
+<time datetime="2006-03-16T08:29:10-08:00" pubdate data-updated="true">Mar 16<span>th</span>, 2006</time>
         
       </p>
     
@@ -313,7 +367,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
 
   <div class="entry-content"><p>Before installing the studio you must first install the Java SDK:</p>
 
-<p>j2sdk-1_4_2_06-windows-i586-p.exe</p>
+<p>j2sdk-1<em>4</em>2_06-windows-i586-p.exe</p>
 
 <p>Just accept the defaults.</p>
 
@@ -358,14 +412,14 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-03-01T18:17:40+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2006</time>
+<time datetime="2006-03-01T10:17:40-08:00" pubdate data-updated="true">Mar 1<span>st</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Can&#8217;t remember that HTMLB syntax? Look no further&#8230;</p>
+  <div class="entry-content"><p>Can’t remember that HTMLB syntax? Look no further…</p>
 
 <p><a href="http://help.sap.com/saphelp_nw04/helpdata/en/9f/fd4e41bbd1f423e10000000a155106/frameset.htm">SAP Portal Developer Guide</a></p>
 </div>
@@ -396,14 +450,14 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-02-28T17:07:03+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
+<time datetime="2006-02-28T09:07:03-08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve defected from <a href="http://juststuffwhatidone.blogspot.com/">blogger.com</a>, so far I&#8217;m impressed. Categories, stats, lots of nice skins and the import feature just saved me a boat load of time!</p>
+  <div class="entry-content"><p>I’ve defected from <a href="http://juststuffwhatidone.blogspot.com/">blogger.com</a>, so far I’m impressed. Categories, stats, lots of nice skins and the import feature just saved me a boat load of time!</p>
 </div>
   
   
@@ -432,7 +486,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-02-28T12:57:00+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
+<time datetime="2006-02-28T04:57:00-08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
         
       </p>
     
@@ -508,7 +562,7 @@ end&lt;/code&gt;
   
 
 
-<time datetime="2006-02-27T14:52:00+00:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
+<time datetime="2006-02-27T06:52:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
         
       </p>
     
@@ -521,61 +575,7 @@ end&lt;/code&gt;
 
 <pre><code>site:rubyforge.org "[Wtr-general]" your search
 </code></pre>
-</div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/02/27/installing-watir-via-the-gem-utility/">Installing Watir via the gem utility</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-02-27T10:57:00+00:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The install should be as simple as dropping into dos, cd to your Ruby folder and run the command:
-<code>gem install watir</code></p>
-
-<p>Unfortunately it wasn’t that simple for me, we work via a proxy here so I had to tell the gem utility about it.</p>
-
-<p><strong>Running gem install when you are behind a proxy</strong></p>
-
-<p>Set the HTTP_PROXY environment variable.</p>
-
-<p>Example:
-<code>set HTTP_PROXY=http://mycache:8080</code></p>
-
-<p>You can now run:
-<code>gem install watir</code></p>
-
-<p>Or you can pass the proxy information as a parameter to gem via the -p switch:</p>
-
-<p><code>gem install watir -p http://mycache:8080</code></p>
-
-<p>Gem will now go off download and install the latest Watir package, version 1.4.1 in my case.  Be patient this can take some time depending on server load.</p>
 </div>
   
   
@@ -600,6 +600,10 @@ end&lt;/code&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -613,10 +617,6 @@ end&lt;/code&gt;
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -710,7 +710,7 @@ end&lt;/code&gt;
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

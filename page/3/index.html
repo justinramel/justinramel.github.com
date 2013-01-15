@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Convert Post Conditional Converts a post conditional expression to a &hellip;">
+  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Extract Constant Extracts a selection into a constant which is placed &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,63 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-constant/">vim-ruby-refactoring - Extract Constant</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-30T15:04:56-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4 id="extract-constant">Extract Constant</h4>
+
+<p>Extracts a selection into a constant which is placed at the top of the current module or class.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html">http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html</a></p>
+
+<h4 id="example">Example</h4>
+
+<p>Before refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_before_thumb.png" alt="ExtractConstant_Before" /></a> <br />
+Visually select the value you wish to extract    <br />
+Hit your **<leader-key>** then type **rec        
+**You will now see a prompt to enter the constant name:   
+Constant name: Gravitational_Constant</leader-key></p>
+
+<p>After refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_after_thumb.png" alt="ExtractConstant_After" /></a>    <br />
+The value <strong><em>9.81</em></strong> has been extracted into a constant <strong><em>GRAVITATIONAL_CONSTANT</em></strong> which is placed at the top of the module.</p>
+
+<p><strong>rec</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>C</strong>onstant.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">vim-ruby-refactoring - Convert Post Conditional</a></h1>
     
     
@@ -98,7 +155,7 @@
   
 
 
-<time datetime="2010-12-30T22:37:07+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-30T14:37:07-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -107,22 +164,22 @@
 
   <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
-<h4>Convert Post Conditional</h4>
+<h4 id="convert-post-conditional">Convert Post Conditional</h4>
 
 <p>Converts a post conditional expression to a conditional expression.</p>
 
-<h4>Example</h4>
+<h4 id="example">Example</h4>
 
 <p>Before refactoring:</p>
 
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before_thumb.png" alt="ConvertPostConditional_Before" /></a>     <br/>
-Move the cursor onto the line which contains the post conditional expression     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rcpc      <br/>
-</strong></p>
+<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before_thumb.png" alt="ConvertPostConditional_Before" /></a>     <br />
+Move the cursor onto the line which contains the post conditional expression     <br />
+Hit your **<leader-key>** then type **rcpc        
+**</leader-key></p>
 
 <p>After refactoring:</p>
 
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after_thumb.png" alt="ConvertPostConditional_After" /></a>     <br/>
+<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after_thumb.png" alt="ConvertPostConditional_After" /></a>     <br />
 The post conditional expression is split across 3 lines and converted into a standard if expression.</p>
 
 <p><strong>rcpc</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>C</strong>onvert <strong>P</strong>ost <strong>C</strong>onditional.</p>
@@ -154,7 +211,7 @@ The post conditional expression is split across 3 lines and converted into a sta
   
 
 
-<time datetime="2010-12-30T21:37:59+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-30T13:37:59-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -163,24 +220,24 @@ The post conditional expression is split across 3 lines and converted into a sta
 
   <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
-<h4>Inline Temp</h4>
+<h4 id="inline-temp">Inline Temp</h4>
 
 <p>Replaces a temporary variable with a direct call to the method or formula.</p>
 
 <p>The refactoring: <a href="http://www.refactoring.com/catalog/inlineTemp.html">http://www.refactoring.com/catalog/inlineTemp.html</a></p>
 
-<h4>Example</h4>
+<h4 id="example">Example</h4>
 
 <p>Before refactoring:</p>
 
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_before.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_before_thumb.png" alt="InlineTemp_Before" /></a>     <br/>
-Move the cursor onto the temp variable (in this case base_price)     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rit      <br/>
-</strong></p>
+<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_before.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_before_thumb.png" alt="InlineTemp_Before" /></a>     <br />
+Move the cursor onto the temp variable (in this case base_price)     <br />
+Hit your **<leader-key>** then type **rit        
+**</leader-key></p>
 
 <p>After refactoring:</p>
 
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_after.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_after_thumb.png" alt="InlineTemp_After" /></a>     <br/>
+<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_after.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_after_thumb.png" alt="InlineTemp_After" /></a>     <br />
 The temp variable base_price has been replace with a direct call to the method and we’ve saved a line of code.</p>
 
 <p><strong>rit</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>I</strong>nline <strong>T</strong>emp.</p>
@@ -212,7 +269,7 @@ The temp variable base_price has been replace with a direct call to the method a
   
 
 
-<time datetime="2010-12-30T17:10:35+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-30T09:10:35-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -221,28 +278,28 @@ The temp variable base_price has been replace with a direct call to the method a
 
   <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
 
-<h4>Add Parameter</h4>
+<h4 id="add-parameter">Add Parameter</h4>
 
 <p>Simply adds a parameter (or many separated with commas) to a method.</p>
 
 <p>The refactoring: <a href="http://www.refactoring.com/catalog/addParameter.html">http://www.refactoring.com/catalog/addParameter.html</a></p>
 
-<h4>Example</h4>
+<h4 id="example">Example</h4>
 
-<p>Before refactoring:<a href="http://justinram.files.wordpress.com/2010/12/addparameter_before.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_before_thumb.png" alt="AddParameter_Before" /></a>     <br/>
-Move your cursor onto the method where you wish to add the parameter     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rap      <br/>
-</strong>You will now see a prompt to enter the parameter name:     <br/>
-Parameter name: <strong>date</strong></p>
+<p>Before refactoring:<a href="http://justinram.files.wordpress.com/2010/12/addparameter_before.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_before_thumb.png" alt="AddParameter_Before" /></a>     <br />
+Move your cursor onto the method where you wish to add the parameter     <br />
+Hit your **<leader-key>** then type **rap        
+**You will now see a prompt to enter the parameter name:       
+Parameter name: **date**</leader-key></p>
 
 <p>After refactoring:</p>
 
-<p><a href="http://justinram.files.wordpress.com/2010/12/addparameter_after.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_after_thumb.png" alt="AddParameter_After" /></a>     <br/>
+<p><a href="http://justinram.files.wordpress.com/2010/12/addparameter_after.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_after_thumb.png" alt="AddParameter_After" /></a>     <br />
 The contact method now has a date parameter added.</p>
 
 <p><strong>rap</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>A</strong>dd <strong>P</strong>arameter.</p>
 
-<p>The default <strong><leader-key></strong> in vim is the ‘\’ key but you can remap this to any key you like.</p>
+<p>The default **<leader-key>** in vim is the ‘\’ key but you can remap this to any key you like.</leader-key></p>
 </div>
   
   
@@ -271,29 +328,46 @@ The contact method now has a date parameter added.</p>
   
 
 
-<time datetime="2010-12-30T15:33:32+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-30T07:33:32-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve written a series of posts documenting the excellent <a href="http://www.vim.org/">vim</a> plugin <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a>. As you may have guessed from the name, its a <a href="http://www.ruby-lang.org/">Ruby</a> refactoring plugin for <a href="http://www.vim.org/">vim</a>.</p>
+  <div class="entry-content"><p>I’ve written a series of posts documenting the excellent <a href="http://www.vim.org/">vim</a> plugin <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a>. As you may have guessed from the name, its a <a href="http://www.ruby-lang.org/">Ruby</a> refactoring plugin for <a href="http://www.vim.org/">vim</a>. </p>
 
 <ol>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-add-parameter-2/">Add Parameter</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-inline-temp/">Inline Temp</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">Convert Post Conditional</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-constant/">Extract Constant</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-to-let/">Extract to Let</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/">Extract Local Variable</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/">Rename Local Variable</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">Rename Instance Variable</a></p></li>
-<li><p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-method/">Extract Method</a></p></li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-add-parameter-2/">Add Parameter</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-inline-temp/">Inline Temp</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">Convert Post Conditional</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-constant/">Extract Constant</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-to-let/">Extract to Let</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/">Extract Local Variable</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/">Rename Local Variable</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">Rename Instance Variable</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-method/">Extract Method</a></p>
+  </li>
 </ol>
 
-
-<p><strong>IMPORTANT:</strong> When installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, make sure you also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin otherwise some of these refactoring&#8217;s will not work.</p>
+<p><strong>IMPORTANT:</strong> When installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, make sure you also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin otherwise some of these refactoring’s will not work.</p>
 </div>
   
   
@@ -322,7 +396,7 @@ The contact method now has a date parameter added.</p>
   
 
 
-<time datetime="2009-08-03T18:02:24+01:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2009</time>
+<time datetime="2009-08-03T10:02:24-07:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2009</time>
         
       </p>
     
@@ -331,38 +405,41 @@ The contact method now has a date parameter added.</p>
 
   <div class="entry-content"><p>The latest <em>Alpha</em> version of <a href="http://www.nservicebus.com/">nServiceBus</a> uses the <a href="http://code.google.com/p/topshelf/">TopShelf</a> project as part of its new hosting feature. This new Host feature makes it super easy to setup a console/windows service for your clients/servers. So here’s how <em>I think</em> it works and what you can do with it…</p>
 
-<h2>Get nServiceBus</h2>
+<h2 id="get-nservicebus">Get nServiceBus</h2>
 
 <p>First you’ll need to get the latest build which includes the new Host feature either:</p>
 
 <ul>
-<li><p>Check out the source and build it yourself from the <a href="http://subversion.tigris.org/">subversion</a> repository:       <br/>
-<a href="https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/">https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/</a>       <br/>
-OR</p></li>
-<li><p>Download a demo solution I hacked out of the nServiceBus samples (FullDuplex/RequestResponse): <a href="http://cid-d7d57b78b0ddedf5.skydrive.live.com/browse.aspx/.Public/blog/nServiceBus">nServiceBus Host Demo</a></p></li>
+  <li>
+    <p>Check out the source and build it yourself from the <a href="http://subversion.tigris.org/">subversion</a> repository:       <br />
+<a href="https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/">https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/</a>       <br />
+OR </p>
+  </li>
+  <li>
+    <p>Download a demo solution I hacked out of the nServiceBus samples (FullDuplex/RequestResponse): <a href="http://cid-d7d57b78b0ddedf5.skydrive.live.com/browse.aspx/.Public/blog/nServiceBus">nServiceBus Host Demo</a></p>
+  </li>
 </ul>
-
 
 <p>Either way take a look at the FullDuplex/RequestResponse sample project which consists of a Client, Server and Messages project:</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/08/image.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb.png" alt="image" /></a></p>
 
-<h2>Run the sample</h2>
+<h2 id="run-the-sample">Run the sample</h2>
 
 <p><strong>Note:</strong> To get the Server to run successfully in my demo solution I had to change the app.config slightly by replacing the UnicastBusConfig setting with:</p>
 
-<p><UnicastBusConfig DistributorControlAddress="" DistributorDataAddress="">    <br/>
-<MessageEndpointMappings>     <br/>
-</MessageEndpointMappings>     <br/>
-</UnicastBusConfig></p>
+<unicastbusconfig distributorcontroladdress="" distributordataaddress="">      
+<messageendpointmappings>       
+</messageendpointmappings>       
+</unicastbusconfig>
 
 <p>Ok simply hit F5 to run the sample and two console windows should appear one for the Client and one for the Server:</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/08/image1.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb1.png" alt="image" /></a></p>
 
-<p>So everything is running ok our Client can send messages to the Server and receive a response. But what’s just happened?</p>
+<p>So everything is running ok our Client can send messages to the Server and receive a response. But what’s just happened? </p>
 
-<h2>Multiple startup projects</h2>
+<h2 id="multiple-startup-projects">Multiple startup projects</h2>
 
 <p>First the solution is set to start both the Client and the Server projects. This is set in the solution property pages you can view this setting by right clicking on the solution and selecting Set St_a_rtUp Projects…</p>
 
@@ -370,17 +447,17 @@ OR</p></li>
 
 <p>As you can see the solution is set to start multiple projects namely the Client and the Server.</p>
 
-<p>Now the Server and Client projects are both Class Library’s so how come they are running as console apps when we F5 (debug) the solution?</p>
+<p>Now the Server and Client projects are both Class Library’s so how come they are running as console apps when we F5 (debug) the solution? </p>
 
-<h2>Debug settings</h2>
+<h2 id="debug-settings">Debug settings</h2>
 
 <p>If we take a look at the Debug settings for the Client (Right click the Client project and select P_r_operties, then Debug from the tab):</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/08/image3.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb3.png" alt="image" /></a></p>
 
-<p>Notice the Start Action is set to Start e_x_ternal program NServiceBus.Host.exe from the Client projects debug\bin directory. When we hit F5 to debug the application visual studio runs this exe and that’s how we get the console windows.</p>
+<p>Notice the Start Action is set to Start e_x_ternal program NServiceBus.Host.exe from the Client projects debug\bin directory. When we hit F5 to debug the application visual studio runs this exe and that’s how we get the console windows. </p>
 
-<h2>Reference NServiceBus.Host.exe</h2>
+<h2 id="reference-nservicebushostexe">Reference NServiceBus.Host.exe</h2>
 
 <p>NServiceBus.Host.exe ends up in the debug\bin because its referenced by the project for example in the Client:</p>
 
@@ -388,75 +465,75 @@ OR</p></li>
 
 <p>But how does it know where to get its configuration?</p>
 
-<h2>Configuration</h2>
+<h2 id="configuration">Configuration</h2>
 
-<p>NServiceBus.Host.exe scans its current directory for any dlls. For each dll it finds it searches for a class which implements the interface IConfigureThisEndpoint. If the search is successful the Host knows to use the app.config for this dll so in the case of the Client – Client.dll.config is used to configure nServiceBus.</p>
+<p>NServiceBus.Host.exe scans its current directory for any dlls. For each dll it finds it searches for a class which implements the interface IConfigureThisEndpoint. If the search is successful the Host knows to use the app.config for this dll so in the case of the Client – Client.dll.config is used to configure nServiceBus. </p>
 
-<h2>Client</h2>
+<h2 id="client">Client</h2>
 
 <p>If we take a look at the Client project we’ll find the class EndpointConfig which implements the IConfigureThisEndpoint. This is simply a marker interface which has no actual implementation. Notice there are other interfaces used to configure the client which do require implementations:</p>
 
-<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
-As.aClient, <br/>
-ISpecify.ToUseXmlSerialization,     <br/>
-ISpecify.XmlSerializationNamespace,     <br/>
-IWantCustomInitialization,     <br/>
-ISpecify.ToRun<ClientEndpoint>     <br/>
-{     <br/>
-public string Namespace     <br/>
-{     <br/>
-get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
-}</p>
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br />
+As.aClient, <br />
+ISpecify.ToUseXmlSerialization,     <br />
+ISpecify.XmlSerializationNamespace,     <br />
+IWantCustomInitialization,     <br />
+ISpecify.ToRun<clientendpoint>       
+{       
+public string Namespace       
+{       
+get { return &#8220;[http://www.UdiDahan.com&#8221;;](http://www.UdiDahan.com&#8221;;) }       
+} </clientendpoint></p>
 
-<p>public void Init(Configure configure)    <br/>
-{     <br/>
-configure.RijndaelEncryptionService();     <br/>
-}     <br/>
-}</p>
+<p>public void Init(Configure configure)    <br />
+{     <br />
+configure.RijndaelEncryptionService();     <br />
+}     <br />
+} </p>
 
-<p>Of particular interest, the interface used to configure the dll as a client (As.aClient) and another to specify which code to actually run (ISpecify.ToRun<ClientEndpoint>). The ClientEndPoint class contains the code which is runs when the Host starts and stops.</p>
+<p>Of particular interest, the interface used to configure the dll as a client (As.aClient) and another to specify which code to actually run (ISpecify.ToRun<clientendpoint>). The ClientEndPoint class contains the code which is runs when the Host starts and stops.</clientendpoint></p>
 
 <p>Note there are lots more interfaces which can be used to specify configuration options:</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/08/image5.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb5.png" alt="image" /></a></p>
 
-<h2>Server</h2>
+<h2 id="server">Server</h2>
 
 <p>The Server project works in pretty much the same way as the Client it has an EndpointConfig class:</p>
 
-<p>public class EndpointConfig:IConfigureThisEndpoint,    <br/>
-As.aServer,     <br/>
-ISpecify.ToUseXmlSerialization,</p>
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br />
+As.aServer,     <br />
+ISpecify.ToUseXmlSerialization,       </p>
 
-<p>ISpecify.XmlSerializationNamespace,     <br/>
-IWantCustomInitialization     <br/>
-{     <br/>
-public string Namespace     <br/>
-{     <br/>
-get { return &#8221;<a href="http://www.UdiDahan.com%22;">http://www.UdiDahan.com&#8221;;</a> }     <br/>
-}</p>
+<p>ISpecify.XmlSerializationNamespace,     <br />
+IWantCustomInitialization     <br />
+{     <br />
+public string Namespace     <br />
+{     <br />
+get { return “<a href="http://www.UdiDahan.com&quot;;">http://www.UdiDahan.com”;</a> }     <br />
+} </p>
 
-<p>public void Init(Configure configure)    <br/>
-{     <br/>
-configure.RijndaelEncryptionService();     <br/>
-}     <br/>
-}</p>
+<p>public void Init(Configure configure)    <br />
+{     <br />
+configure.RijndaelEncryptionService();     <br />
+}     <br />
+} </p>
 
 <p>Here the interfaces are used to configure the dll as a server (As.aServer) and IWantCustomInitialization which allows you to specify additional configuration via the Init method. The Server project also contains the RequestDataMessageHandler class which the bus knows to use when a RequestDataMessage arrives.</p>
 
 <p>All this makes it very easy to create Client and Server applications for nServiceBus which are a doddle to debug in visual studio.</p>
 
-<p>But wait there&#8217;s more…</p>
+<p>But wait there’s more…</p>
 
-<h2>Run from console</h2>
+<h2 id="run-from-console">Run from console</h2>
 
-<p>You can run the Client or Server from outside Visual Studio from the command line. Open a command prompt, cd to the relevant bin folder and type:</p>
+<p>You can run the Client or Server from outside Visual Studio from the command line. Open a command prompt, cd to the relevant bin folder and type: </p>
 
 <p>NServiceBus.Host.exe</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/08/image6.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb6.png" alt="image" /></a></p>
 
-<h2>Install as a Windows Service</h2>
+<h2 id="install-as-a-windows-service">Install as a Windows Service</h2>
 
 <p>We can install the Server as a Windows Service no extra code or configuration required! Open a command prompt, cd to the relevant bin folder and type:</p>
 
@@ -472,7 +549,7 @@ configure.RijndaelEncryptionService();     <br/>
 
 <p><a href="http://justinram.files.wordpress.com/2009/08/image11.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb11.png" alt="image" /></a></p>
 
-<h2>Uninstall service</h2>
+<h2 id="uninstall-service">Uninstall service</h2>
 
 <p>Finally you can also uninstall the service:</p>
 
@@ -513,41 +590,40 @@ configure.RijndaelEncryptionService();     <br/>
   
 
 
-<time datetime="2009-06-25T22:43:12+01:00" pubdate data-updated="true">Jun 25<span>th</span>, 2009</time>
+<time datetime="2009-06-25T14:43:12-07:00" pubdate data-updated="true">Jun 25<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h4>**</h4>
-
+  <div class="entry-content"><h4 id="section">**</h4>
 <p>UPDATE:** Please read <a href="http://gusgus.wordpress.com/">Guu</a>’s comment below for a far better solution to this problem!</p>
 
 <p>I’ve been using the <a href="http://docs.jquery.com/Plugins/Validation">jQuery Validation Plugin</a> and needed to change a validation message dynamically based on the user input. I had a quick search but couldn’t find an easy solution. Unfortunately the messages are not changeable after the initial construction of the validator object. I managed to get around the problem by removing the validator an then re-adding with a new message:</p>
 
-<h2>Create validator</h2>
+<h2 id="create-validator">Create validator</h2>
 
-<p>$(&#8220;#Enquiry&#8221;).validate({   <br/>
-rules: {    <br/>
-EnquiryText: { required: true }    <br/>
-},    <br/>
-messages: {    <br/>
-EnquiryText: &#8220;Enquiry must contain an entry.&#8221;    <br/>
-}    <br/>
+<p>$(“#Enquiry”).validate({   <br />
+rules: {    <br />
+EnquiryText: { required: true }    <br />
+},    <br />
+messages: {    <br />
+EnquiryText: “Enquiry must contain an entry.”    <br />
+}    <br />
 });</p>
 
-<h2>Dynamically change message</h2>
+<h2 id="dynamically-change-message">Dynamically change message</h2>
 
-<p>function setEnquiryValidationTo(message) {   <br/>
-$(&#8220;#EnquiryText&#8221;).rules(&#8220;remove&#8221;);    <br/>
-$(&#8220;#EnquiryText&#8221;).rules(&#8220;add&#8221;, {    <br/>
-required: true,    <br/>
-messages: {    <br/>
-required: message    <br/>
-}    <br/>
-});    <br/>
-}</p>
+<p>function setEnquiryValidationTo(message) {   <br />
+$(“#EnquiryText”).rules(“remove”);    <br />
+$(“#EnquiryText”).rules(“add”, {    <br />
+required: true,    <br />
+messages: {    <br />
+required: message    <br />
+}    <br />
+});    <br />
+} </p>
 
 <p>There may be a better/easier way to do this but I couldn’t find one via Google.</p>
 </div>
@@ -578,7 +654,7 @@ required: message    <br/>
   
 
 
-<time datetime="2009-06-19T16:55:24+01:00" pubdate data-updated="true">Jun 19<span>th</span>, 2009</time>
+<time datetime="2009-06-19T08:55:24-07:00" pubdate data-updated="true">Jun 19<span>th</span>, 2009</time>
         
       </p>
     
@@ -587,25 +663,32 @@ required: message    <br/>
 
   <div class="entry-content"><p>To build <a href="http://fubumvc.pbworks.com/">FubuMVC</a> you need to install ruby, rake etc. Unfortunately for me the firewall at work will not allow me to get the rake gem (I’ve downloaded gems before using the HTTP_PROXY setting before but no luck this time). Any hoose I remember reading <a href="http://www.stephenbalkum.com/Default.aspx">Stephen Balkum</a> post on packaging up <a href="http://docs.rubyrake.org/index.html">Rake</a> as an executable.  I followed Stephens guide and created a portable rake package which got around my firewall problem <strong>but</strong> <a href="http://fubumvc.pbworks.com/">FubuMVC</a> required another gem <a href="http://rubyforge.org/frs/download.php/11376/rubyzip-0.9.1.zip">rubyzip</a> to allow a build.</p>
 
-<h2>Adding another gem</h2>
+<h2 id="adding-another-gem">Adding another gem</h2>
 
 <p>Luckily using <a href="http://www.stephenbalkum.com/archive/2009/06/09/when-all-you-need-is-a-rake.aspx">Stephen’s guide</a> its really easy to add extra gems, you just need to have them installed before you build your exe. So we follow the first part of the process outlined in <a href="http://www.stephenbalkum.com/archive/2009/06/09/when-all-you-need-is-a-rake.aspx">Stephen’s guide</a> then do the following:</p>
 
 <p><strong>NOTE:</strong> In this case we need rubyzip but it could be any old gem.</p>
 
 <ul>
-<li><p>Download <a href="http://rubyforge.org/frs/download.php/11376/rubyzip-0.9.1.zip">rubyzip</a> and extract to contents to c:\rubywork\zip</p></li>
-<li><p>To install rubyzip, at a command prompt in c:\rubywork\zip, run ..\ruby\bin\ruby install.rb</p></li>
-<li><p>Download <a href="http://www.zlib.net/zlib123-dll.zip">zlib</a> and extract the zlib1.dll to C:\rubywork\ruby\lib\ruby\1.8\i386-mswin32</p></li>
-<li><p>Rename zlib1.dll to zlib.dll (rubyzip required this extra dll other gems may not)</p></li>
+  <li>
+    <p>Download <a href="http://rubyforge.org/frs/download.php/11376/rubyzip-0.9.1.zip">rubyzip</a> and extract to contents to c:\rubywork\zip</p>
+  </li>
+  <li>
+    <p>To install rubyzip, at a command prompt in c:\rubywork\zip, run ..\ruby\bin\ruby install.rb</p>
+  </li>
+  <li>
+    <p>Download <a href="http://www.zlib.net/zlib123-dll.zip">zlib</a> and extract the zlib1.dll to C:\rubywork\ruby\lib\ruby\1.8\i386-mswin32</p>
+  </li>
+  <li>
+    <p>Rename zlib1.dll to zlib.dll (rubyzip required this extra dll other gems may not)</p>
+  </li>
 </ul>
-
 
 <p>Now continue part two of the process from <a href="http://www.stephenbalkum.com/archive/2009/06/09/when-all-you-need-is-a-rake.aspx">Stephen’s guide</a> to compile your very own allinoneruby.exe which includes, rake and rubyzip.</p>
 
 <p>You should now have allinoneruby.exe and rake.rb file.</p>
 
-<h2>Building FubuMVC</h2>
+<h2 id="building-fubumvc">Building FubuMVC</h2>
 
 <p>We can now drop these files into to the FubuMVC project under the build support folder:</p>
 
@@ -617,21 +700,28 @@ required: message    <br/>
 
 <p>This will be called when we run the build.</p>
 
-<h2>Run the build already</h2>
+<h2 id="run-the-build-already">Run the build already</h2>
 
 <p>Drop to the command prompt and cd into the FubuMVC project root and simply type build. You should get something like:</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image16.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb16.png" alt="image" /></a></p>
 
-<h2>Download</h2>
+<h2 id="download">Download</h2>
 
-<p>Don’t want to go through all that? You can download my version of portable rake <a href="http://cid-d7d57b78b0ddedf5.skydrive.live.com/self.aspx/.Public/blog/portable|_rake/portablerake.zip">here</a> (<em>I don’t think I’m breaking any licensing agreements here, this is all open source software. If I am let me know and I’ll remove the link</em>)</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Don’t want to go through all that? You can download my version of portable rake [here](http://cid-d7d57b78b0ddedf5.skydrive.live.com/self.aspx/.Public/blog/portable</td>
+      <td><em>rake/portablerake.zip) (_I don’t think I’m breaking any licensing agreements here, this is all open source software. If I am let me know and I’ll remove the link</em>)</td>
+    </tr>
+  </tbody>
+</table>
 
 <p><strong>DISCLAIMER:</strong> I offer no guarantees I can only confirm this works on my machine!</p>
 
-<h2>One final note</h2>
+<h2 id="one-final-note">One final note</h2>
 
-<p>I’ve used this method to build some of the other open source projects out there which use rake (<em>all the </em><a href="http://blog.jpboodhoo.com/developwithpassionbdd.aspx"><em>cool kids</em></a><em> seem to be using rake</em>) and so far I’ve not had any problems. This could be pretty frictionless way to introduce rake to a team of .net developers who don’t want the overhead of installing ruby on their machines. Just add it to a tools folder check it in to source control they’ll never know!</p>
+<p>I’ve used this method to build some of the other open source projects out there which use rake (<em>all the _<a href="http://blog.jpboodhoo.com/developwithpassionbdd.aspx">_cool kids_</a></em> seem to be using rake_) and so far I’ve not had any problems. This could be pretty frictionless way to introduce rake to a team of .net developers who don’t want the overhead of installing ruby on their machines. Just add it to a tools folder check it in to source control they’ll never know!</p>
 </div>
   
   
@@ -644,7 +734,7 @@ required: message    <br/>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/06/18/fubumvc-resources/">FubuMVC – Resources</a></h1>
+      <h1 class="entry-title"><a href="/2009/06/17/fubumvc-resources/">FubuMVC – Resources</a></h1>
     
     
       <p class="meta">
@@ -660,7 +750,7 @@ required: message    <br/>
   
 
 
-<time datetime="2009-06-18T01:11:50+01:00" pubdate data-updated="true">Jun 18<span>th</span>, 2009</time>
+<time datetime="2009-06-17T17:11:50-07:00" pubdate data-updated="true">Jun 17<span>th</span>, 2009</time>
         
       </p>
     
@@ -671,69 +761,100 @@ required: message    <br/>
 
 <p>I’m looking at FubuMVC for a side project, I thought it would be useful to collect a list of resources.</p>
 
-<h2>Source</h2>
+<h2 id="source">Source</h2>
 
 <ul>
-<li><p>FubuMVC <a href="http://code.google.com/p/fubumvc/">Subversion</a> <a href="http://github.com/chadmyers/FubuMVC/tree/master">Git</a> – Framework source code</p></li>
-<li><p><a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> – Sample projects and add on’s to the main framework</p></li>
+  <li>
+    <p>FubuMVC <a href="http://code.google.com/p/fubumvc/">Subversion</a> <a href="http://github.com/chadmyers/FubuMVC/tree/master">Git</a> – Framework source code </p>
+  </li>
+  <li>
+    <p><a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> – Sample projects and add on’s to the main framework </p>
+  </li>
 </ul>
 
-
-<h2>Wiki</h2>
+<h2 id="wiki">Wiki</h2>
 
 <ul>
-<li><a href="http://fubumvc.pbworks.com/">FubuMVC Wiki</a></li>
+  <li><a href="http://fubumvc.pbworks.com/">FubuMVC Wiki</a></li>
 </ul>
 
-
-<h2>Blog posts</h2>
+<h2 id="blog-posts">Blog posts</h2>
 
 <ul>
-<li><p><a href="http://elegantcode.com/2009/01/30/setting-up-a-fubumvc-project-from-scratch/">Setting up a FubuMVC Project from Scratch</a> – Four part series by <a href="http://elegantcode.com/author/kelley/">Ryan Kelley</a> (<a href="http://elegantcode.com/2009/03/08/fubumvc-from-scratch-part-2/">Part 2</a>, <a href="http://elegantcode.com/2009/03/08/fubumvc-from-scratch-part-3-adding-view-to-project/">Part 3</a>, <a href="http://elegantcode.com/2009/03/25/fubumvc-from-scratch-part-4-persistence/">Part 4</a>) the source code for this series is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project although I would recommend you follow along with the series and type the code as you go</p></li>
-<li><p><a href="http://shashankshetty.wordpress.com/2009/04/13/simple-application-using-fubumvc/">Simple application using FubuMVC</a> – Introduction by <a href="http://shashankshetty.wordpress.com/">Shashank</a></p></li>
-<li><p><a href="http://monstersgotmy.net/post/FubuMVC-Works!.aspx">FubuMVC AltOxite Works!</a> – Guide to getting AltOxite to work (AltOxite source code is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project)</p></li>
-<li><p><a href="http://blog.fohjin.com/blog/2009/2/21/FubuMVC_Front_Controller_style_framework">FubuMVC - Front Controller style framework</a> - Overview of the framework by <a href="http://blog.fohjin.com/home">Mark Nijhof</a>. Note Mark’s blog was written in FubuMVC and the source is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project</p></li>
-<li><p><a href="http://blog.fohjin.com/home">Mark Nijhof</a> - writes up the main points from his <a href="http://blog.fohjin.com/blog/2009/5/8/Recording_My_European_VAN_talk_about_FubuMVC">European Virtual Alt.Net presentation</a></p></li>
-<li><p><a href="http://blog.fohjin.com/blog/2009/3/21/FubuMVC_Validation_Convention_based_validation">FubuMVC.Validation – Convention based validation</a> - <a href="http://blog.fohjin.com/home">Mark Nijhof</a> describes his validation add on for FubuMVC. His validation add on is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project</p></li>
-<li><p><a href="http://shashankshetty.wordpress.com/2009/05/25/switch-between-view-result-and-json-result-without-sweat-in-fubumvc/">Switch between View Result and Json Result without sweat in FubuMVC</a></p></li>
-<li><p><a href="http://codebetter.com/blogs/jeremy.miller/archive/2008/10/23/our-opinions-on-the-asp-net-mvc-introducing-the-thunderdome-principle.aspx">Our “Opinions” on the ASP.NET MVC (Introducing the Thunderdome Principle)</a> – FubuMVC evolved from a set of opinions over Asp.Net MVC. Jeremy details the “Thunderdome” principal - “All Controller methods take in one ViewModel object and return one ViewModel object”. I guess the Thunderdome name comes from the similarity to the rules of <a href="http://en.wikipedia.org/wiki/Mad_Max_Beyond_Thunderdome">Thunderdome - “Two men enter, one man leaves.”</a></p></li>
-<li><p><a href="http://www.lostechies.com/blogs/chad_myers/archive/2009/06/18/going-controller-less-in-mvc-the-way-fowler-meant-it.aspx">Going Controller-less in MVC: The Way Fowler Meant It To Be</a> – <a href="http://www.lostechies.com/blogs/chad_myers/default.aspx">Chad Myers</a> describes where <a href="http://code.google.com/p/fubumvc/">FubuMVC</a> is going</p></li>
-<li><p><a href="http://elegantcode.com/2009/06/19/whats-happening-with-fubumvc-and-wheres-ryan-been/">What’s happening with FubuMVC and Where’s Ryan been?</a> Ryan Kelley talks about recent changes to FubuMVC</p></li>
+  <li>
+    <p><a href="http://elegantcode.com/2009/01/30/setting-up-a-fubumvc-project-from-scratch/">Setting up a FubuMVC Project from Scratch</a> – Four part series by <a href="http://elegantcode.com/author/kelley/">Ryan Kelley</a> (<a href="http://elegantcode.com/2009/03/08/fubumvc-from-scratch-part-2/">Part 2</a>, <a href="http://elegantcode.com/2009/03/08/fubumvc-from-scratch-part-3-adding-view-to-project/">Part 3</a>, <a href="http://elegantcode.com/2009/03/25/fubumvc-from-scratch-part-4-persistence/">Part 4</a>) the source code for this series is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project although I would recommend you follow along with the series and type the code as you go </p>
+  </li>
+  <li>
+    <p><a href="http://shashankshetty.wordpress.com/2009/04/13/simple-application-using-fubumvc/">Simple application using FubuMVC</a> – Introduction by <a href="http://shashankshetty.wordpress.com/">Shashank</a></p>
+  </li>
+  <li>
+    <p><a href="http://monstersgotmy.net/post/FubuMVC-Works!.aspx">FubuMVC AltOxite Works!</a> – Guide to getting AltOxite to work (AltOxite source code is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project) </p>
+  </li>
+  <li>
+    <p><a href="http://blog.fohjin.com/blog/2009/2/21/FubuMVC_Front_Controller_style_framework">FubuMVC - Front Controller style framework</a> - Overview of the framework by <a href="http://blog.fohjin.com/home">Mark Nijhof</a>. Note Mark’s blog was written in FubuMVC and the source is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project </p>
+  </li>
+  <li>
+    <p><a href="http://blog.fohjin.com/home">Mark Nijhof</a> - writes up the main points from his <a href="http://blog.fohjin.com/blog/2009/5/8/Recording_My_European_VAN_talk_about_FubuMVC">European Virtual Alt.Net presentation</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.fohjin.com/blog/2009/3/21/FubuMVC_Validation_Convention_based_validation">FubuMVC.Validation – Convention based validation</a> - <a href="http://blog.fohjin.com/home">Mark Nijhof</a> describes his validation add on for FubuMVC. His validation add on is part of the <a href="http://code.google.com/p/fubumvc-contrib/">FubuMVC Contrib</a> project </p>
+  </li>
+  <li>
+    <p><a href="http://shashankshetty.wordpress.com/2009/05/25/switch-between-view-result-and-json-result-without-sweat-in-fubumvc/">Switch between View Result and Json Result without sweat in FubuMVC</a></p>
+  </li>
+  <li>
+    <p><a href="http://codebetter.com/blogs/jeremy.miller/archive/2008/10/23/our-opinions-on-the-asp-net-mvc-introducing-the-thunderdome-principle.aspx">Our “Opinions” on the ASP.NET MVC (Introducing the Thunderdome Principle)</a> – FubuMVC evolved from a set of opinions over Asp.Net MVC. Jeremy details the “Thunderdome” principal - “All Controller methods take in one ViewModel object and return one ViewModel object”. I guess the Thunderdome name comes from the similarity to the rules of <a href="http://en.wikipedia.org/wiki/Mad_Max_Beyond_Thunderdome">Thunderdome - “Two men enter, one man leaves.”</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.lostechies.com/blogs/chad_myers/archive/2009/06/18/going-controller-less-in-mvc-the-way-fowler-meant-it.aspx">Going Controller-less in MVC: The Way Fowler Meant It To Be</a> – <a href="http://www.lostechies.com/blogs/chad_myers/default.aspx">Chad Myers</a> describes where <a href="http://code.google.com/p/fubumvc/">FubuMVC</a> is going </p>
+  </li>
+  <li>
+    <p><a href="http://elegantcode.com/2009/06/19/whats-happening-with-fubumvc-and-wheres-ryan-been/">What’s happening with FubuMVC and Where’s Ryan been?</a> Ryan Kelley talks about recent changes to FubuMVC</p>
+  </li>
 </ul>
 
-
-<h2>Webcasts</h2>
+<h2 id="webcasts">Webcasts</h2>
 
 <ul>
-<li><p><a href="http://trason.net/journal/2009/4/12/altnethouston-fubumvc-session.html">FubuMVC Video from Houston ALT.NET</a></p></li>
-<li><p><a href="http://blog.fohjin.com/home">Mark Nijhof</a> presents <a href="http://vimeo.com/4534175">FubuMVC at the European Virtual Alt.Net</a></p></li>
-<li><p>Two part video (<a href="http://www.viddler.com/explore/lostechies/videos/2/">Part 1</a>, <a href="http://www.viddler.com/explore/lostechies/videos/3/">Part 2</a>) of <a href="http://codebetter.com/blogs/jeremy.miller/default.aspx">Jeremy Miller</a> and <a href="http://www.lostechies.com/blogs/chad_myers/default.aspx">Chad Myers</a> give their opinions on Asp.Net MVC at the KaizenConf (FubuMVC evolved from theses opinions)</p></li>
+  <li>
+    <p><a href="http://trason.net/journal/2009/4/12/altnethouston-fubumvc-session.html">FubuMVC Video from Houston ALT.NET</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.fohjin.com/home">Mark Nijhof</a> presents <a href="http://vimeo.com/4534175">FubuMVC at the European Virtual Alt.Net</a></p>
+  </li>
+  <li>
+    <p>Two part video (<a href="http://www.viddler.com/explore/lostechies/videos/2/">Part 1</a>, <a href="http://www.viddler.com/explore/lostechies/videos/3/">Part 2</a>) of <a href="http://codebetter.com/blogs/jeremy.miller/default.aspx">Jeremy Miller</a> and <a href="http://www.lostechies.com/blogs/chad_myers/default.aspx">Chad Myers</a> give their opinions on Asp.Net MVC at the KaizenConf (FubuMVC evolved from theses opinions) </p>
+  </li>
 </ul>
 
-
-<h2>Podcasts</h2>
+<h2 id="podcasts">Podcasts</h2>
 
 <ul>
-<li><a href="http://codebetter.com/blogs/jeremy.miller/archive/2009/01/13/chad-amp-i-talk-fubumvc-solid-on-herding-code.aspx">Chad &amp; Jeremy Talk FubuMVC / SOLID on Herding Code</a> – <a href="http://codebetter.com/blogs/jeremy.miller/default.aspx">Jeremy Miller</a> and <a href="http://www.lostechies.com/blogs/chad_myers/default.aspx">Chad Myers</a></li>
+  <li><a href="http://codebetter.com/blogs/jeremy.miller/archive/2009/01/13/chad-amp-i-talk-fubumvc-solid-on-herding-code.aspx">Chad &amp; Jeremy Talk FubuMVC / SOLID on Herding Code</a> – <a href="http://codebetter.com/blogs/jeremy.miller/default.aspx">Jeremy Miller</a> and <a href="http://www.lostechies.com/blogs/chad_myers/default.aspx">Chad Myers</a></li>
 </ul>
 
-
-<h2>Group</h2>
+<h2 id="group">Group</h2>
 
 <ul>
-<li><a href="http://groups.google.com/group/fubumvc-devel">Google Group</a></li>
+  <li><a href="http://groups.google.com/group/fubumvc-devel">Google Group</a></li>
 </ul>
 
-
-<h2>Twitters</h2>
+<h2 id="twitters">Twitters</h2>
 
 <ul>
-<li><p><a href="http://twitter.com/jeremydmiller">Jeremy Miller</a></p></li>
-<li><p><a href="http://twitter.com/chadmyers">Chad Myers</a></p></li>
-<li><p><a href="http://twitter.com/MarkNijhof">Mark Nijhof</a></p></li>
-<li><p><a href="http://www.twitter.com/ryankelley">Ryan Kelley</a></p></li>
+  <li>
+    <p><a href="http://twitter.com/jeremydmiller">Jeremy Miller</a></p>
+  </li>
+  <li>
+    <p><a href="http://twitter.com/chadmyers">Chad Myers</a></p>
+  </li>
+  <li>
+    <p><a href="http://twitter.com/MarkNijhof">Mark Nijhof</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.twitter.com/ryankelley">Ryan Kelley</a></p>
+  </li>
 </ul>
-
 </div>
   
   
@@ -762,7 +883,7 @@ required: message    <br/>
   
 
 
-<time datetime="2009-06-10T18:15:59+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
+<time datetime="2009-06-10T10:15:59-07:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
         
       </p>
     
@@ -775,252 +896,68 @@ required: message    <br/>
 
 <p>Plus a few extras…</p>
 
-<p>Go to menu Resharper –> Options –> Languages –> C# –> Formatting Style</p>
+<p>Go to menu Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Formatting Style</p>
 
 <ul>
-<li><p>Braces Layout –> All set to (BSD style)</p></li>
-<li><p>Braces Layout –> Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p></li>
-<li><p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p></li>
-<li></li>
+  <li>
+    <p>Braces Layout –&gt; All set to (BSD style)</p>
+  </li>
+  <li>
+    <p>Braces Layout –&gt; Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p>
+  </li>
+  <li>
+    <p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p>
+  </li>
+  <li></li>
 </ul>
 
-
-<p>Other –> Align Multiline Constructs – Call arguments = Off</p>
+<p>Other –&gt; Align Multiline Constructs – Call arguments = Off</p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
-
-<p>Other –> Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
+<p>Other –&gt; Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
 
 <ul>
-<li></li>
+  <li></li>
 </ul>
 
+<p>Other –&gt; Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
 
-<p>Other –> Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
-
-<h2>Regions</h2>
+<h2 id="regions">Regions</h2>
 
 <p>Stop Resharper adding regions to interface implementations and nested classes:</p>
 
-<p>Go to menu: Resharper –> Options –> Languages –> C# –> Type Members Layout</p>
+<p>Go to menu: Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Type Members Layout</p>
 
 <p>Un-tick Use Default Patterns and you get a text area full of xml. Scroll to the bottom and delete the section:</p>
 
-<p><Group>   <br/>
-<ImplementsInterface Immediate="true" Region="${ImplementsInterface} Members"/>    <br/>
-</Group></p>
+<group>     
+<implementsinterface immediate="true" region="${ImplementsInterface} Members" />      
+</group>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image10.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb10.png" alt="image" /></a></p>
 
 <p>Also delete the section:</p>
 
-<p><Group>   <br/>
-<Name Region="Nested type: ${Name}"/>    <br/>
-</Group></p>
+<group>     
+<name region="Nested type: ${Name}" />      
+</group>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image11.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb11.png" alt="image" /></a></p>
 
 <p>Finally click Ok.</p>
 
-<h2>Code Cleanup</h2>
+<h2 id="code-cleanup">Code Cleanup</h2>
 
-<p>Go to menu Resharper –> Options –> Tools –> Code Cleanup</p>
+<p>Go to menu Resharper –&gt; Options –&gt; Tools –&gt; Code Cleanup</p>
 
 <p>Add a new profile with the following settings:</p>
 
 <p><a href="http://justinram.files.wordpress.com/2009/06/image12.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb12.png" alt="image" /></a></p>
 
 <p>I didn’t realise I had fiddled with the default settings so much no wonder I can never remember them.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/">Setup ASP.NET MVC with Spark View Engine in 5 minutes or less</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-08T15:33:21+01:00" pubdate data-updated="true">Jun 8<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Setup folder structure:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb.png" alt="image" /></a></p>
-
-<p>Download and put the <a href="http://www.asp.net/mvc/download/">asp.net mvc</a> dll’s in mvc folder and <a href="http://sparkviewengine.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=27109">spark</a> dll’s in spark folder.</p>
-
-<p>Create a new asp.net application not a <strong>mvc</strong> application just a standard asp.net application. This means you will not get the mvc helpers for creating controllers and views but that’s not a massive loss and has the advantage that you don’t need the asp.net mvc installed if you open the solution on another machine.</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image1.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb1.png" alt="add new project" /></a>Change content of Default.aspx to: <!-- Placeholder do not delete! --></p>
-
-<p>The default.aspx placeholder is required to allow the asp.net routing to work.</p>
-
-<p>Delete the code behind files for Default.aspx (Default.aspx.cs, Default.aspx.designer.cs) they are not needed.</p>
-
-<p>Add references to the Spark.dll and Spark.Web.Mvc.dll located in the libs folder.</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/vs_add_ref.png"><img src="http://justinram.files.wordpress.com/2009/06/vs_add_ref_thumb.png" alt="vs_add_ref" /></a></p>
-
-<p>Add references to asp.net mvc System.Web.Routing.dll, System.Web.Abstractions.dll, System.Web.Mvc.dll</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image2.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb2.png" alt="image" /></a></p>
-
-<p>Add spark to the web.config:</p>
-
-<p></sectionGroup>    <br/>
-<section name="spark" type="Spark.Configuration.SparkSectionHandler, Spark"/>     <br/>
-</configSections></p>
-
-<p><spark>    <br/>
-<compilation debug="true" />     <br/>
-</spark></p>
-
-<p>Debug true shows compilation errors when rendering views.</p>
-
-<p>Add routing to httpModules section of web.config:</p>
-
-<p><add name="UrlRoutingModule" type="System.Web.Routing.UrlRoutingModule, System.Web.Routing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/></p>
-
-<p>Add a application.cs which creates the routes and registers the spark view engine:</p>
-
-<p>using System.Collections.Generic;    <br/>
-using System.Web.Mvc;     <br/>
-using System.Web.Routing;     <br/>
-using Spark.Web.Mvc;</p>
-
-<p>namespace Web    <br/>
-{     <br/>
-public class Application     <br/>
-{     <br/>
-public void RegisterRoutes(IList<RouteBase> routes)     <br/>
-{     <br/>
-routes.Add(new Route(     <br/>
-&#8220;{controller}/{action}/{id}&#8221;,     <br/>
-new RouteValueDictionary(new {controller = &#8220;home&#8221;, action = &#8220;index&#8221;, id = &#8220;&#8221;}),     <br/>
-new MvcRouteHandler()));     <br/>
-}</p>
-
-<p>public void RegisterViewEngine(IList<IViewEngine> engines)    <br/>
-{     <br/>
-SparkEngineStarter.RegisterViewEngine(engines);     <br/>
-}     <br/>
-}     <br/>
-}</p>
-
-<p>Add a global.asax with the following code behind.</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image3.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb3.png" alt="image" /></a></p>
-
-<p>using System;    <br/>
-using System.Web;     <br/>
-using System.Web.Mvc;     <br/>
-using System.Web.Routing;</p>
-
-<p>namespace Web    <br/>
-{     <br/>
-public class Global : HttpApplication     <br/>
-{     <br/>
-protected void Application_Start(object sender, EventArgs e)     <br/>
-{     <br/>
-var app = new Application();     <br/>
-app.RegisterRoutes(RouteTable.Routes);     <br/>
-app.RegisterViewEngine(ViewEngines.Engines);     <br/>
-}</p>
-
-<p>protected void Application_BeginRequest(object sender, EventArgs e)    <br/>
-{     <br/>
-string path = Request.AppRelativeCurrentExecutionFilePath;     <br/>
-if (string.Equals(path, &#8220;~/default.aspx&#8221;, StringComparison.InvariantCultureIgnoreCase) ||     <br/>
-string.Equals(path, &#8220;~/&#8221;))     <br/>
-{     <br/>
-Context.RewritePath(&#8220;~/Home&#8221;);     <br/>
-}     <br/>
-}     <br/>
-}     <br/>
-}</p>
-
-<p>Create content, controllers and view folders in the root of the asp.net project:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image4.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb4.png" alt="image" /></a></p>
-
-<p>Create a shared folder in the views folder with a _global.spark file this will be used to share come code with all views.</p>
-
-<p><use namespace="System.Collections.Generic"/>    <br/>
-<use namespace="System.Web.Mvc.Html"/></p>
-
-<p>Create a layouts folder in the views folder with a file called application.spark which will be used for the layout of the application very much like a master page.</p>
-
-<p>&lt;!DOCTYPE html PUBLIC &#8220;-//W3C//DTD XHTML 1.0 Transitional//EN&#8221; &#8221;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" title="">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&#8221;</a>>     <br/>
-<html xmlns="[http://www.w3.org/1999/xhtml"](http://www.w3.org/1999/xhtml")></p>
-
-<p><head>     <br/>
-<title>Sample</title>     <br/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />     <br/>
-</head>     <br/>
-<body></p>
-
-<h1>Header</h1>
-
-
-<p>     <br/>
-<strong> <use content="view"/>      <br/>
-</strong> <h1>Footer</h1>     <br/>
-</body>     <br/>
-</html></p>
-
-<p>The use content view tag highlighted above is replaced by the current view returned by asp.net mvc.</p>
-
-<p>Add a HomeController.cs under the controllers folder with the following content:</p>
-
-<p>using System.Web.Mvc;</p>
-
-<p>namespace Web.controllers    <br/>
-{     <br/>
-public class HomeController : Controller     <br/>
-{     <br/>
-public ActionResult Index()     <br/>
-{     <br/>
-return View();     <br/>
-}     <br/>
-}     <br/>
-}</p>
-
-<p>Under the views folder create a home\index.spark with the following content:</p>
-
-<p>Hello spark.</p>
-
-
-<p>Run the project and you should get:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image5.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb5.png" alt="image" /></a></p>
-
-<p>You can download this sample solution <a href="http://fppuvw.bay.livefilestore.com/y1puB8Efa8gk4G6CzMEi40m1JxymO-5kxvTnYWbZ3uh1YZD71y8xOd58vSLWuNpPG06X9y7MgTOntrkvH82-jAqoMWnN9ranxJ6/sparksetup.zip?download">here</a>.</p>
 </div>
   
   
@@ -1045,6 +982,10 @@ return View();     <br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -1058,10 +999,6 @@ return View();     <br/>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -1155,7 +1092,7 @@ return View();     <br/>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

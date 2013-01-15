@@ -95,46 +95,46 @@
   
 
 
-<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+<time datetime="2011-07-16T15:14:52-07:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h4>Authentication Settings</h4>
+<div class="entry-content"><h4 id="authentication-settings">Authentication Settings</h4>
 
 <p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
 
 <p>Config File: /etc/httpd/conf.d/shib.conf</p>
 
-<p><code> ShibUseHeaders On
+<p><code>  ShibUseHeaders On
   AuthType shibboleth
   ShibRequestSetting requireSession 1
   require valid-user
 </code></p>
 
-<p>The &#8217;<code>ShibUseHeaders On</code>&#8217; setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
+<p>The ‘<code>ShibUseHeaders On</code>’ setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
 
-<h4>Simple Authorisation</h4>
+<h4 id="simple-authorisation">Simple Authorisation</h4>
 
-<p>If you don&#8217;t need a complex authorisation system and you don&#8217;t mind users seeing a standard Shibboleth authorisation error page:</p>
+<p>If you don’t need a complex authorisation system and you don’t mind users seeing a standard Shibboleth authorisation error page:</p>
 
 <p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
 
 <p>You can implement this via your Shibboleth settings using the require statement:</p>
 
-<p><code> ShibUseHeaders On
+<p><code>  ShibUseHeaders On
   AuthType shibboleth
   ShibRequestSetting requireSession 1
   **require grouper_groups ~ MySecurityGroup**
 </code></p>
 
-<p>Here we require the custom grouper_groups attribute matches on the regular expression after the &#8217;<code>~</code>&#8217;. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
+<p>Here we require the custom grouper_groups attribute matches on the regular expression after the ‘<code>~</code>’. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
 
-<h5>Top Tip</h5>
+<h5 id="top-tip">Top Tip</h5>
 
-<p>When playing with your Shib settings don&#8217;t forget to restart httpd to see the affect.
+<p>When playing with your Shib settings don’t forget to restart httpd to see the affect.
 <code>sudo /sbin/service httpd restart</code></p>
 </div>
 
@@ -158,7 +158,7 @@
   
 
 
-<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+<time datetime="2011-07-16T15:14:52-07:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
       
 
 <span class="categories">
@@ -201,6 +201,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -214,10 +218,6 @@
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -312,7 +312,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

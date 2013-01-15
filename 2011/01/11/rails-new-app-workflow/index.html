@@ -95,7 +95,7 @@
   
 
 
-<time datetime="2011-01-11T14:58:47+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+<time datetime="2011-01-11T06:58:47-08:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
         
       </p>
     
@@ -104,49 +104,49 @@
 
 <div class="entry-content"><p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
 
-<h4>Create app</h4>
+<h4 id="create-app">Create app</h4>
 
-<p>rails new <app_name></p>
+<p>rails new <app_name /></p>
 
-<p>cd <app_name></p>
+<p>cd <app_name /></p>
 
-<h4>git</h4>
+<h4 id="git">git</h4>
 
 <p>git init</p>
 
 <p>git add .</p>
 
-<p>git commit –m &#8216;Initial commit&#8217;</p>
+<p>git commit –m ‘Initial commit’</p>
 
 <p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
 
-<h4>rvm and gemsets</h4>
+<h4 id="rvm-and-gemsets">rvm and gemsets</h4>
 
-<p>rvm gemset create <app_name></p>
+<p>rvm gemset create <app_name /></p>
 
-<p>echo &#8216;rvm use 1.9.2@<app_name>&#8217; >> .rvmrc</p>
+<p>echo ‘rvm use 1.9.2@<app_name>&#8217; &gt;&gt; .rvmrc</app_name></p>
 
-<p>echo &#8216;.rvmrc&#8217; >> .gitignore</p>
+<p>echo ‘.rvmrc’ » .gitignore</p>
 
-<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created.</p>
+<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created. </p>
 
 <p>Change in and out of the directory to get rvm to kick in:</p>
 
 <p>cd ..</p>
 
-<p>cd <app_name></p>
+<p>cd <app_name /></p>
 
-<h4>Gemfile</h4>
+<h4 id="gemfile">Gemfile</h4>
 
 <p>Edit ./Gemfile and add the following lines.</p>
 
-<p>gem &#8216;haml&#8217;</p>
+<p>gem ‘haml’</p>
 
 <p>group :test do</p>
 
-<p>gem &#8216;rspec&#8217;</p>
+<p>gem ‘rspec’</p>
 
-<p>gem &#8216;rspec-rails&#8217;</p>
+<p>gem ‘rspec-rails’</p>
 
 <p>end</p>
 
@@ -156,7 +156,7 @@
 
 <p>bundle install</p>
 
-<h4>rspec</h4>
+<h4 id="rspec">rspec</h4>
 
 <p>Generate the rspec files:</p>
 
@@ -183,7 +183,7 @@
   
 
 
-<time datetime="2011-01-11T14:58:47+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+<time datetime="2011-01-11T06:58:47-08:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
       
 
 <span class="categories">
@@ -208,7 +208,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2010/12/31/vim-ruby-refactoring-extract-method/" title="Previous Post: vim-ruby-refactoring - Extract Method">&laquo; vim-ruby-refactoring - Extract Method</a>
+        <a class="basic-alignment left" href="/2010/12/30/vim-ruby-refactoring-extract-method/" title="Previous Post: vim-ruby-refactoring - Extract Method">&laquo; vim-ruby-refactoring - Extract Method</a>
       
       
         <a class="basic-alignment right" href="/2011/07/12/setup-git-repo/" title="Next Post: SETUP GIT REPO">SETUP GIT REPO &raquo;</a>
@@ -226,6 +226,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -239,10 +243,6 @@
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -337,7 +337,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

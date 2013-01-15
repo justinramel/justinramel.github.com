@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Ok last time I promised some hints and tips so lets begin. I&#8217;m going to keep the hints and tips posts fairly short in the hope it will &hellip;">
+  <meta name="description" content="Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there. TOP TIP - How to navigate the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,72 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2006/10/27/automated-functional-testing-part-6-of/">SAP Enterprise Portal - Automated Functional Testing - Part 6 of &#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-27T03:58:26-07:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there.  </p>
+
+<p><strong>TOP TIP - How to navigate the portal</strong><br />
+So how do you navigate around the portal using the menu? Simple you don’t! I found there are lots of problems using the portal menus due to the number of frames used so I simply jump directly to the URL of the PAR file I am testing. Here is a typical test:<br />
+`def test_typical<br />
+# My Helper method which logs in using the given user id and password<br />
+logon(“myuserid”, “mypassword”)   </p>
+
+<h1 id="go-directly-to-the-url-of-the-par-i-want-to-test">Go directly to the URL of the PAR I want to test</h1>
+<p>@ie.goto(‘http://portal:50000/irj/servlet/prt/portal/prtroot/uk.ac.ncl.testing.ISRPageProcessor’)  </p>
+
+<h1 id="do-tests-here">do tests here</h1>
+<p>end`<br />
+Ok that’s fine but how do you find the direct URL of the PAR file you want to test? Ahh thats were my next top tip comes in.  </p>
+
+<p><strong>TOP TIP - How to find the direct URL of a PAR file</strong><br />
+Open up the SAP Netweaver Developer Studio  </p>
+
+<p>Open your project  </p>
+
+<p>Open the file:<br />
+<code>MyPortalProject  
+dist  
+PORTAL-INF  
+Portalapp.xml</code><br />
+You should now see a “Run…” button for each portal component in your project  </p>
+
+<p>Click the “Run…” button and the dev studio will open up a new browser window with the URL of your PAR file. Now simply use this URL in your test scripts.  </p>
+
+<p><strong>COMING UP IN PART SEVEN</strong><br />
+Short and sweet but at least I’m posting more often. Next time… You guessed it more top tips!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of/">SAP Enterprise Portal - Automated Functional Testing - Part 5 of &#8230;</a></h1>
     
     
@@ -98,34 +164,34 @@
   
 
 
-<time datetime="2006-10-18T12:13:13+01:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
+<time datetime="2006-10-18T04:13:13-07:00" pubdate data-updated="true">Oct 18<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Ok last time I promised some hints and tips so lets begin. I&#8217;m going to keep the hints and tips posts fairly short in the hope it will encourage me to post more often. I received a comment on my last post asking how I find the ID/Name attributes of my forms so I though that would be a good place to start.</p>
+  <div class="entry-content"><p>Ok last time I promised some hints and tips so lets begin. I’m going to keep the hints and tips posts fairly short in the hope it will encourage me to post more often. I received a comment on my last post asking how I find the ID/Name attributes of my forms so I though that would be a good place to start.  </p>
 
-<p><strong>TOP TIP - How to find ID/Name attributes of a form<br/>
-</strong>To save me having to sifting through the html code of a page for the ID/Name of a control I use the <a href="http://www.mozilla.com/firefox/">FireFox</a> browser with the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> extension installed. The <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> is a great time saver not only for finding out form details but it has lots of other features too, I strongly recommend you check it out.</p>
+<p>**TOP TIP - How to find ID/Name attributes of a form<br />
+**To save me having to sifting through the html code of a page for the ID/Name of a control I use the <a href="http://www.mozilla.com/firefox/">FireFox</a> browser with the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> extension installed. The <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> is a great time saver not only for finding out form details but it has lots of other features too, I strongly recommend you check it out.  </p>
 
-<p>When you have the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> installed under the <strong>Forms menu</strong> you have the <strong>Display Form Details</strong> option, simply select this option and the page will be highlighted with yellow tags showing the ID/Name attributes of each item on the form.</p>
+<p>When you have the <a href="https://addons.mozilla.org/firefox/60/">Web Developer Toolbar</a> installed under the <strong>Forms menu</strong> you have the <strong>Display Form Details</strong> option, simply select this option and the page will be highlighted with yellow tags showing the ID/Name attributes of each item on the form.  </p>
 
-<p><strong>NOTE:</strong> Forms items which are created using HTMLB do not get a static ID/Name attribute these attributes appear to be generated each time the page is created. If this is the case how do we write tests against HTMLB forms? That&#8217;s were the next top tip comes in&#8230;</p>
+<p><strong>NOTE:</strong> Forms items which are created using HTMLB do not get a static ID/Name attribute these attributes appear to be generated each time the page is created. If this is the case how do we write tests against HTMLB forms? That’s were the next top tip comes in…  </p>
 
-<p><strong>TOP TIP - Writing Watir test against HTMLB forms</strong><br/>
-As I mentioned above HTMLB forms do not have a static ID/Name attribute, they are generated each time the page is created so you will find your HTMLB form controls will have an ID/Name of something along the lines of &#8220;htmlb_18528_htmlb_9998_3&#8221; if you then reload the page the ID/Name attributes will have changed i.e. &#8220;htmlb_18328_htmlb_9991_1&#8221;. This means the following Watir test code would not work as each time the page reloaded the <em>:id</em> attribute would be different.</p>
+<p><strong>TOP TIP - Writing Watir test against HTMLB forms</strong><br />
+As I mentioned above HTMLB forms do not have a static ID/Name attribute, they are generated each time the page is created so you will find your HTMLB form controls will have an ID/Name of something along the lines of “htmlb<em>18528_htmlb</em>9998<em>3” if you then reload the page the ID/Name attributes will have changed i.e. “htmlb</em>18328<em>htmlb</em>9991<em>1”. This means the following Watir test code would not work as each time the page reloaded the _:id</em> attribute would be different.  </p>
 
-<p><code>@ie.text_field(:id, 'htmlb_18528_htmlb_9998_3').set('test me')</code></p>
+<p><code>@ie.text_field(:id, 'htmlb_18528_htmlb_9998_3').set('test me')</code>  </p>
 
-<p>So how do we get around this? Well the best way I have found is to use Watir&#8217;s <em>:index</em> parameter when accessing form controls. The <em>:index</em> parameter works by sequentially counting form controls from left to right top to bottom. So to set the text of the second control on the page we use the following code:</p>
+<p>So how do we get around this? Well the best way I have found is to use Watir’s <em>:index</em> parameter when accessing form controls. The <em>:index</em> parameter works by sequentially counting form controls from left to right top to bottom. So to set the text of the second control on the page we use the following code:  </p>
 
-<p><code>@ie.text_field(:index, 2).set('test me')</code></p>
+<p><code>@ie.text_field(:index, 2).set('test me')</code>  </p>
 
-<p>This is not an ideal solution due to the fact if you change the layout of the page your index&#8217;s will also change and break your tests. However I&#8217;ve been using this method for a while now and it&#8217;s never been a major problem, besides I&#8217;m not sure how else it could be done!</p>
+<p>This is not an ideal solution due to the fact if you change the layout of the page your index’s will also change and break your tests. However I’ve been using this method for a while now and it’s never been a major problem, besides I’m not sure how else it could be done!  </p>
 
-<p><strong>COMING UP IN PART SIX</strong><br/>
+<p><strong>COMING UP IN PART SIX</strong><br />
 Well that post turned out to be slightly longer than I planned, so much for keeping these tips short. Next time more of the same.</p>
 </div>
   
@@ -155,24 +221,25 @@ Well that post turned out to be slightly longer than I planned, so much for keep
   
 
 
-<time datetime="2006-10-17T10:15:33+01:00" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+<time datetime="2006-10-17T02:15:33-07:00" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I&#8217;ve written a series of posts about Automated Functional testing the SAP Portal using Watir:</p>
+  <div class="entry-content"><p>I was recently invited to start a blog on the SAP Software Developers Network (SDN). So I’ve written a series of posts about Automated Functional testing the SAP Portal using Watir:  </p>
 
-<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/u/251690007">SDN Blog</a></p>
+<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/u/251690007">SDN Blog</a>  </p>
 
-<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4050">Introduction</a><br/>
-<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4103">Automated Functional Testing - Part 1 of &#8230;</a><br/>
-<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4138">Automated Functional Testing - Part 2 of &#8230;</a><br/>
-<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4236">Automated Functional Testing - Part 3 of &#8230;</a><br/>
-<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4426">Automated Functional Testing - Part 4 of &#8230;</a></p>
+<p><a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4050">Introduction</a><br />
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4103">Automated Functional Testing - Part 1 of …</a><br />
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4138">Automated Functional Testing - Part 2 of …</a><br />
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4236">Automated Functional Testing - Part 3 of …</a><br />
+<a href="https://www.sdn.sap.com/irj/sdn/weblogs?blog=/pub/wlg/4426">Automated Functional Testing - Part 4 of …</a>  </p>
 
-<p>IMHO worth a look if your interested in testing your SAP Portal. I&#8217;ll start posting the rest of the series on here from now.</p>
+<p>IMHO worth a look if your interested in testing your SAP Portal. I’ll start posting the rest of the series on here from now.  </p>
+
 </div>
   
   
@@ -201,7 +268,7 @@ Well that post turned out to be slightly longer than I planned, so much for keep
   
 
 
-<time datetime="2006-07-27T10:21:34+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
+<time datetime="2006-07-27T02:21:34-07:00" pubdate data-updated="true">Jul 27<span>th</span>, 2006</time>
         
       </p>
     
@@ -224,19 +291,16 @@ ActiveRecordStarter.CreateSchemaFromFile("schema.sql");
 
 <p>Your schema.sql file should contain scripts in the standard MS SQL format:</p>
 
-<p>`if exists (select * from dbo.sysobjects where id = object_id(N&#8217;[dbo].[Application_Status]&#8217;) and OBJECTPROPERTY(id, N&#8217;IsUserTable&#8217;) = 1)
+<p><code>if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Application_Status]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [dbo].[Application_Status]
-GO&#8220;
-CREATE TABLE [dbo].[Application_Status] (</p>
-
-<pre><code>[ID] [int] NOT NULL ,
-[Title] [varchar] (50) NOT NULL ,
-[Description] [text] NULL
-</code></pre>
-
-<p>) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO</code><code>
+CREATE TABLE [dbo].[Application_Status] (
+	[ID] [int] NOT NULL ,
+	[Title] [varchar] (50) NOT NULL ,
+	[Description] [text] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-`</p>
+</code></p>
 </div>
   
   
@@ -265,7 +329,7 @@ GO
   
 
 
-<time datetime="2006-07-20T11:20:14+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
+<time datetime="2006-07-20T03:20:14-07:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
         
       </p>
     
@@ -276,7 +340,7 @@ GO
 
 <p>By the way setting up the server was a lot easier than I thought it would be! Here’s what I did:</p>
 
-<h3>CruiseControl.Net Setup</h3>
+<h3 id="cruisecontrolnet-setup">CruiseControl.Net Setup</h3>
 
 <p>Download and run CruiseControl.Net setup
 <a href="http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198">
@@ -288,19 +352,19 @@ http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198
 
 <p><strong>NOTE:</strong> After setup if your server has .Net 1.1 and 2.0 as mine did you may need to change the ccnet website to use .Net 2.0.  This can be done through the IIS control panel, get the properties of the ccnet site  and  change via the ASP.NET tab.</p>
 
-<h3>Subversion Client</h3>
+<h3 id="subversion-client">Subversion Client</h3>
 
 <p>Your server will need the subversion console client on the server to allow CruiseControl to checkout your source.</p>
 
 <p><a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></p>
 
-<h3>.Net 2 SDK</h3>
+<h3 id="net-2-sdk">.Net 2 SDK</h3>
 
 <p>To allow us to build .Net 2  projects without the need for Visual Studio we need to download and install .Net 2 SDK onto  the server</p>
 
 <p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en</a></p>
 
-<h3>Setup MSBuild</h3>
+<h3 id="setup-msbuild">Setup MSBuild</h3>
 
 <p>To use MSBuild with CC.Net we need the logger dll -ThoughtWorks.CruiseControl.MsBuild.dll from:</p>
 
@@ -309,7 +373,7 @@ http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198
 <p>Download and copy to:
 C:\Program Files\CruiseControl.NET\webdashboard\bin\</p>
 
-<h3>Directory structure</h3>
+<h3 id="directory-structure">Directory structure</h3>
 
 <p>Setup your directory structure:</p>
 
@@ -319,7 +383,7 @@ C:\CI\Myproject\logs</p>
 
 <p>Using your subversion client checkout source to C:\CI\MyProject\build</p>
 
-<h3>ccnet.config</h3>
+<h3 id="ccnetconfig">ccnet.config</h3>
 
 <p>Add the project config to ccnet.confg:</p>
 
@@ -359,7 +423,7 @@ C:\CI\Myproject\logs</p>
 &lt;/cruisecontrol&gt;
 </code></pre>
 
-<h3>CC Tray</h3>
+<h3 id="cc-tray">CC Tray</h3>
 
 <p>You will also want to install the CC Tray monitoring software on your pc:</p>
 
@@ -367,7 +431,7 @@ C:\CI\Myproject\logs</p>
 
 <p>It will allow you to keep an eye on the server from the comfort of your own pc.</p>
 
-<p>That&#8217;s it we&#8217;re down!</p>
+<p>That’s it we’re down!</p>
 </div>
   
   
@@ -396,22 +460,22 @@ C:\CI\Myproject\logs</p>
   
 
 
-<time datetime="2006-06-29T14:34:23+01:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
+<time datetime="2006-06-29T06:34:23-07:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve decided to move my &#8220;toy&#8221; MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly Formhelper!</p>
+  <div class="entry-content"><p>I’ve decided to move my “toy” MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly Formhelper!</p>
 
 <p>Moving to the latest build broke a few things in my solution:</p>
 
-<h3>The Build</h3>
+<h3 id="the-build">The Build</h3>
 
 <p><strong>Nunit framework</strong></p>
 
-<p>My web test project was using Nunit version 2.2.0.0. Which is used by Castle.MonoRail.TestSupport I believe although don&#8217;t quote me on that I could be wrong. Any who it now requires the latest version of the nunit.framework.dll (2.2.8.0). I change the reference and all was well.</p>
+<p>My web test project was using Nunit version 2.2.0.0. Which is used by Castle.MonoRail.TestSupport I believe although don’t quote me on that I could be wrong. Any who it now requires the latest version of the nunit.framework.dll (2.2.8.0). I change the reference and all was well.</p>
 
 <p><strong>DataBindAttribute</strong>
 Next up was the DataBindAttribute which appears to have changs slightly. I did have:</p>
@@ -422,7 +486,7 @@ Next up was the DataBindAttribute which appears to have changs slightly. I did h
 
 <p><code>public void LoginSubmit([DataBind("student")] Student student)</code></p>
 
-<h3>The Tests</h3>
+<h3 id="the-tests">The Tests</h3>
 
 <p>Ok now my solution builds but all of my ActiveRecord unit tests fail. I get the following error:</p>
 
@@ -432,16 +496,16 @@ Next up was the DataBindAttribute which appears to have changs slightly. I did h
 
 <p>`protected virtual void InitFramework()
 {
-  IConfigurationSource source = ConfigurationManager.GetSection(&#8220;activerecord&#8221;) as IConfigurationSource;</p>
+  IConfigurationSource source = ConfigurationManager.GetSection(“activerecord”) as IConfigurationSource;</p>
 
-<p>  ActiveRecordStarter.Initialize(source);</p>
+<p>ActiveRecordStarter.Initialize(source);</p>
 
-<p>  ActiveRecordStarter.Initialize( source, typeof(Student), typeof(LoginAudit) );
+<p>ActiveRecordStarter.Initialize( source, typeof(Student), typeof(LoginAudit) );
 }`</p>
 
 <p>I guess there is now no need for the first <strong>ActiveRecordStarter.Initialize(source);</strong> call so I remove it and all is well!</p>
 
-<h3>The Run</h3>
+<h3 id="the-run">The Run</h3>
 
 <p>Ok now my solution builds and passes the test but all is not well at run time I get the following error:</p>
 
@@ -450,23 +514,17 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
 
 <p>This is a breaking change mentioned in the release notes and you must update your web.config. But don’t get your httpModules and your httpHandlers mixed up as I did. Simply add the httpModules to your web.config:</p>
 
-<p>`&lt;system.web>
-  <httpHandlers></p>
-
-<pre><code>    &lt;add verb="*" path="*.aspx" type="Castle.MonoRail.Framework.MonoRailHttpHandlerFactory, Castle.MonoRail.Framework"  /&gt;
-</code></pre>
-
-<p>  </httpHandlers>
-  <httpModules></p>
-
-<pre><code>    &lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" /&gt;
-&lt;/httpModules&gt;
-</code></pre>
-
-<p>&lt;/system.web>
+<p>`<system.web /></p>
+<httphandlers>
+		<add verb="*" path="*.aspx" type="Castle.MonoRail.Framework.MonoRailHttpHandlerFactory, Castle.MonoRail.Framework" />
+  </httphandlers>
+<httpmodules>
+		<add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" />
+	</httpmodules>
+<p>&lt;/system.web&gt;
 `</p>
 
-<h3>The End</h3>
+<h3 id="the-end">The End</h3>
 
 <p>That’s it we’re down! Now I get to play with the latest version.</p>
 </div>
@@ -497,14 +555,14 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
   
 
 
-<time datetime="2006-06-22T12:08:05+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
+<time datetime="2006-06-22T04:08:05-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;m using the recommended view engine <a href="http://www.castleproject.org/index.php/MonoRail:View_Engines_Book#NVelocity_View_Engine">NVelocity</a>.</p>
+  <div class="entry-content"><p>I’m using the recommended view engine <a href="http://www.castleproject.org/index.php/MonoRail:View_Engines_Book#NVelocity_View_Engine">NVelocity</a>.</p>
 
 <p>The following objects are available to the view code:
 • context (IRailsEngineContext)
@@ -520,88 +578,58 @@ Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule
  &lt;img src="$siteRoot/images/someimage.gif" /&gt;
 </code></p>
 
-<p><strong>Notation (variable name): </strong></p>
+<p>**Notation (variable name): **</p>
 
 <p>$ [ ! ][ { ][ a..z, A..Z ][ a..z, A..Z, 0..9, -, _ ][ } ]</p>
 
 <p>Examples:</p>
 
 <ul>
-<li><p>Normal notation: $mud-Slinger_9</p></li>
-<li><p>Silent notation: $!mud-Slinger_9</p></li>
-<li><p>Formal notation: ${mud-Slinger_9}</p></li>
+  <li>
+    <p>Normal notation: $mud-Slinger_9</p>
+  </li>
+  <li>
+    <p>Silent notation: $!mud-Slinger_9</p>
+  </li>
+  <li>
+    <p>Formal notation: ${mud-Slinger_9}</p>
+  </li>
 </ul>
 
-
 <p><strong>Loops</strong>
-`#foreach($i in $items)</p>
-
-<h1>each (this is optional since its the default section)</h1>
-
-<pre><code>   text which appears for each item
-</code></pre>
-
-<h1>before</h1>
-
-<pre><code>   text which appears before each item
-</code></pre>
-
-<h1>after</h1>
-
-<pre><code>   text which appears after each item
-</code></pre>
-
-<h1>between</h1>
-
-<pre><code>   text which appears between each two items
-</code></pre>
-
-<h1>odd</h1>
-
-<pre><code>   text which appears for every other item, including the first
-</code></pre>
-
-<h1>even</h1>
-
-<pre><code>   text which appears for every other item, starting with the second
-</code></pre>
-
-<h1>nodata</h1>
-
-<pre><code>   Content rendered if $items evaluated to null or empty
-</code></pre>
-
-<h1>beforeall</h1>
-
-<pre><code>   text which appears before the loop, only if there are items
-   matching condition
-</code></pre>
-
-<h1>afterall</h1>
-
-<pre><code>   text which appears after the loop, only of there are items
-   matching condition
-</code></pre>
-
-<h1>end</h1>
-
-<p>`</p>
+<code>#foreach($i in $items)
+#each (this is optional since its the default section)
+       text which appears for each item
+#before
+       text which appears before each item
+#after
+       text which appears after each item
+#between
+       text which appears between each two items
+#odd
+       text which appears for every other item, including the first
+#even
+       text which appears for every other item, starting with the second
+#nodata
+       Content rendered if $items evaluated to null or empty
+#beforeall
+       text which appears before the loop, only if there are items
+       matching condition
+#afterall
+       text which appears after the loop, only of there are items
+       matching condition
+#end
+</code></p>
 
 <p><strong>Binary expressions</strong>
-`#if($order.Status == &#8220;Undefined&#8221;)
-  Sorry, but we don&#8217;t know this order.</p>
-
-<h1>elseif($order.Status == &#8220;Created&#8221;)</h1>
-
-<p>  Your order is being processed. Hold on!</p>
-
-<h1>elseif($order.Status == &#8220;Dispatched&#8221;)</h1>
-
-<p>  Your order has been dispatched through UPS. Cross your fingers!</p>
-
-<h1>end</h1>
-
-<p>`</p>
+<code>#if($order.Status == "Undefined")
+  Sorry, but we don't know this order.
+#elseif($order.Status == "Created")
+  Your order is being processed. Hold on!
+#elseif($order.Status == "Dispatched")
+  Your order has been dispatched through UPS. Cross your fingers!
+#end
+</code></p>
 
 <p><strong>IDictonary Parameters</strong>
 Calling a helper with IDictonary Paramaters:
@@ -634,7 +662,7 @@ Calling a helper with IDictonary Paramaters:
   
 
 
-<time datetime="2006-06-22T11:46:48+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
+<time datetime="2006-06-22T03:46:48-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
         
       </p>
     
@@ -644,7 +672,7 @@ Calling a helper with IDictonary Paramaters:
   <div class="entry-content"><p>I’m taking a look at a .net implementation of Ruby on Rails called <a href="http://www.castleproject.org/index.php/MonoRail">Monorail</a>.  It’s part of the <a href="http://www.castleproject.org/index.php/Main_Page">Castle</a> project.  So far it looks pretty good!</p>
 
 <p><strong>Community</strong>
-<a href="http://thread.gmane.org/gmane.comp.windows.dotnet.castleproject.devel">Mail List</a> - Although I haven&#8217;t been able to get signed up on this yet! There is an archive though.
+<a href="http://thread.gmane.org/gmane.comp.windows.dotnet.castleproject.devel">Mail List</a> - Although I haven’t been able to get signed up on this yet! There is an archive though.
 <a href="http://forum.castleproject.org/viewforum.php?f=5">Forum</a> - Just lurking at the moment.</p>
 
 <p><strong>Source</strong>
@@ -680,7 +708,7 @@ Calling a helper with IDictonary Paramaters:
   
 
 
-<time datetime="2006-06-07T12:15:08+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2006</time>
+<time datetime="2006-06-07T04:15:08-07:00" pubdate data-updated="true">Jun 7<span>th</span>, 2006</time>
         
       </p>
     
@@ -718,7 +746,7 @@ Calling a helper with IDictonary Paramaters:
   
 
 
-<time datetime="2006-06-06T14:44:35+01:00" pubdate data-updated="true">Jun 6<span>th</span>, 2006</time>
+<time datetime="2006-06-06T06:44:35-07:00" pubdate data-updated="true">Jun 6<span>th</span>, 2006</time>
         
       </p>
     
@@ -728,48 +756,6 @@ Calling a helper with IDictonary Paramaters:
   <div class="entry-content"><p>http://YOUR SERVER NAME:50000/irj/servlet/prt/portal/prtroot/com.sap.km.cm.docs/documents/</p>
 
 <p>documents\portalResource\USER.R3_DATASOURCE.[user id]</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/05/08/sap-netwweaver-developer-studio-compile-error/">SAP NetWeaver developer Studio – Compile Error</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-05-08T11:41:58+01:00" pubdate data-updated="true">May 8<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Was getting weird error when trying to compile a project today:</p>
-
-<p><code>The project was not built due to "Problems encountered while copying resources.". Fix the problem, then try refreshing this project and rebuilding it since it may be inconsistent.</code></p>
-
-<p>After a quick Google it appears this has happened to others and a re-install fixed the problem.  I managed to fix the problem by:</p>
-
-<p>Highlighting the project in the Enterprise Portal perspective then doing a File => Refresh from the menu.</p>
 </div>
   
   
@@ -794,6 +780,10 @@ Calling a helper with IDictonary Paramaters:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -807,10 +797,6 @@ Calling a helper with IDictonary Paramaters:
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -904,7 +890,7 @@ Calling a helper with IDictonary Paramaters:
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

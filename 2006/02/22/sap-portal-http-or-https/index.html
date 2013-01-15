@@ -9,7 +9,9 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Want to tell if your iView is running over HTTP or HTTPS? Try this: WARNING: Untested code ahead! HttpServletRequest servletRequest = &hellip;">
+  <meta name="description" content="Want to tell if your iView is running over HTTP or HTTPS? Try this: WARNING: Untested code ahead!
+`
+HttpServletRequest servletRequest = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,7 +97,7 @@
   
 
 
-<time datetime="2006-02-22T11:36:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+<time datetime="2006-02-22T03:36:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
         
       </p>
     
@@ -107,12 +109,12 @@
 <p>Try this:</p>
 
 <p>WARNING: Untested code ahead!
-<code>
+`
 HttpServletRequest servletRequest = componentRequest.getServletRequest();
 String requestURL = servletRequest.getRequestURL().toString();
-String protocol = requestURL.substring(0, requestURL.indexOf(":"));</code></p>
+String protocol = requestURL.substring(0, requestURL.indexOf(“:”));`</p>
 
-<p>if(protocol.equals(&#8220;http&#8221;))
+<p>if(protocol.equals(“http”))
 {
 // do HTTP stuff
 }
@@ -142,7 +144,7 @@ else
   
 
 
-<time datetime="2006-02-22T11:36:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+<time datetime="2006-02-22T03:36:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
       
 
 <span class="categories">
@@ -191,6 +193,10 @@ else
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -204,10 +210,6 @@ else
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -302,7 +304,7 @@ else
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

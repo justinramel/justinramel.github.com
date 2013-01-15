@@ -9,11 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Jenkins.NET
-Jenkins.NET Plugins
-Setup Jenkins.NET
-Setting up your first job
-Your first build From the Project Demo &hellip;">
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,7 +95,7 @@ Your first build From the Project Demo &hellip;">
   
 
 
-<time datetime="2012-10-24T21:11:00+01:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+<time datetime="2012-10-24T21:11:00-07:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
         
       </p>
     
@@ -109,20 +105,24 @@ Your first build From the Project Demo &hellip;">
 <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
 <p>From the Project Demo page we created last time we can activate a Build at
 will.</p>
 
-<h3>Build Now</h3>
+<h3 id="build-now">Build Now</h3>
 
 <p><img src="/images/jenkins-net/ch05/build-now.png" alt="" /></p>
 
@@ -130,7 +130,7 @@ will.</p>
 
 <p>This tells Jenkins to build the Job we have just defined.</p>
 
-<h3>Build History</h3>
+<h3 id="build-history">Build History</h3>
 
 <p><img src="/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
 
@@ -142,7 +142,7 @@ should have your first successful build.</p>
 <p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
 you to the build page for the Demo Job.</p>
 
-<h3>Console Output</h3>
+<h3 id="console-output">Console Output</h3>
 
 <p>This page allows us to access all the information relevant to the build we just
 ran. The area we are interested in is the Console Output this shows all the
@@ -160,22 +160,19 @@ Everything you need to fix the problem will usually be shown on this page.</p>
 <p>As you can see this was a successful build and we can see that:</p>
 
 <ul>
-<li>Jenkins created a workspace for the Job</li>
-<li>Ran a Subversion check out
-
-<ul>
-<li>Listed of all files updated</li>
+  <li>Jenkins created a workspace for the Job</li>
+  <li>Ran a Subversion check out
+    <ul>
+      <li>Listed of all files updated</li>
+    </ul>
+  </li>
+  <li>Ran MSBuild
+    <ul>
+      <li>Shows all output from MSBuild</li>
+    </ul>
+  </li>
+  <li>Shows Success message</li>
 </ul>
-</li>
-<li>Ran MSBuild
-
-<ul>
-<li>Shows all output from MSBuild</li>
-</ul>
-</li>
-<li>Shows Success message</li>
-</ul>
-
 </div>
 
 
@@ -198,7 +195,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   
 
 
-<time datetime="2012-10-24T21:11:00+01:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+<time datetime="2012-10-24T21:11:00-07:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
       
 
 <span class="categories">
@@ -226,6 +223,8 @@ Everything you need to fix the problem will usually be shown on this page.</p>
         <a class="basic-alignment left" href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/" title="Previous Post: Jenkins.NET Setting up your first job">&laquo; Jenkins.NET Setting up your first job</a>
       
       
+        <a class="basic-alignment right" href="/2013/01/14/breaking-the-build/" title="Next Post: Jenkins.NET Breaking the build">Jenkins.NET Breaking the build &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -245,6 +244,10 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -258,10 +261,6 @@ Everything you need to fix the problem will usually be shown on this page.</p>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -356,7 +355,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

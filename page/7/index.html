@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Dir["**/.svn"].each do |folder| File.rename(folder, folder.sub('.svn', '_svn'))
-end ">
+  <meta name="description" content="Was getting weird error when trying to compile a project today: The project was not built due to "Problems encountered while copying resources.". Fix &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,48 @@ end ">
       
   <header>
     
+      <h1 class="entry-title"><a href="/2006/05/08/sap-netwweaver-developer-studio-compile-error/">SAP NetWeaver developer Studio – Compile Error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-08T03:41:58-07:00" pubdate data-updated="true">May 8<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Was getting weird error when trying to compile a project today:</p>
+
+<p><code>The project was not built due to "Problems encountered while copying resources.". Fix the problem, then try refreshing this project and rebuilding it since it may be inconsistent.</code></p>
+
+<p>After a quick Google it appears this has happened to others and a re-install fixed the problem.  I managed to fix the problem by:</p>
+
+<p>Highlighting the project in the Enterprise Portal perspective then doing a File =&gt; Refresh from the menu.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/">Ruby script to rename windows subversion files .svn to _svn</a></h1>
     
     
@@ -99,7 +140,7 @@ end ">
   
 
 
-<time datetime="2006-05-04T22:46:34+01:00" pubdate data-updated="true">May 4<span>th</span>, 2006</time>
+<time datetime="2006-05-04T14:46:34-07:00" pubdate data-updated="true">May 4<span>th</span>, 2006</time>
         
       </p>
     
@@ -107,9 +148,10 @@ end ">
 
 
   <div class="entry-content"><pre><code>Dir["**/.svn"].each do |folder|
-    File.rename(folder, folder.sub('.svn', '_svn'))
+	File.rename(folder, folder.sub('.svn', '_svn'))
 end
 </code></pre>
+
 </div>
   
   
@@ -138,7 +180,7 @@ end
   
 
 
-<time datetime="2006-05-03T11:46:34+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2006</time>
+<time datetime="2006-05-03T03:46:34-07:00" pubdate data-updated="true">May 3<span>rd</span>, 2006</time>
         
       </p>
     
@@ -147,7 +189,7 @@ end
 
   <div class="entry-content"><p>So you want to backup your repository?</p>
 
-<p>Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which will cause problems on restore. So you should do a &#8220;hot copy&#8221; to prevent any locking issues when the actual backup is made.  My &#8220;hot copy&#8221; is created using the following batch file:</p>
+<p>Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which will cause problems on restore. So you should do a “hot copy” to prevent any locking issues when the actual backup is made.  My “hot copy” is created using the following batch file:</p>
 
 <pre><code>REM Reset hot copy
 rmdir /S /Q c:\\svnrepos_hotcopy
@@ -190,7 +232,7 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
   
 
 
-<time datetime="2006-04-26T14:47:52+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2006</time>
+<time datetime="2006-04-26T06:47:52-07:00" pubdate data-updated="true">Apr 26<span>th</span>, 2006</time>
         
       </p>
     
@@ -199,12 +241,14 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
 
   <div class="entry-content"><p>Today I needed to compare two different versions of a source file.  One in the main trunk folder and the other in a previously tagged version folder. This is easily done in TortoiseSVN, snippet from the TortoiseSVN manual:</p>
 
-<blockquote><p><strong>Compare two revisions of a file</strong>
-If you want to compare two revisions in a file&#8217;s history, for example revisions 100 and 200 of the same file, just use TortoiseSVN => Show Log to list the revision history for that file. Pick the two revisions you want to compare then use Context Menu => Compare Revisions.</p></blockquote>
+<blockquote>
+  <p><strong>Compare two revisions of a file</strong>
+If you want to compare two revisions in a file’s history, for example revisions 100 and 200 of the same file, just use TortoiseSVN =&gt; Show Log to list the revision history for that file. Pick the two revisions you want to compare then use Context Menu =&gt; Compare Revisions.</p>
+</blockquote>
 
-<p>If you want to compare the same file in two different trees, for example the trunk and a branch, you can use the repository browser to open up both trees, select the file in both places, then use Context Menu => Compare Revisions.</p>
+<p>If you want to compare the same file in two different trees, for example the trunk and a branch, you can use the repository browser to open up both trees, select the file in both places, then use Context Menu =&gt; Compare Revisions.</p>
 
-<p>If you want to compare two trees to see what has changed, for example the trunk and a tagged release, you can use TortoiseSVN => Revision Graph Select the two nodes to compare, then use Context Menu => Compare HEAD Revisions. This will show a list of changed files, and you can then select individual files to view the changes in detail. Alternatively use Context Menu => Unified Diff of HEAD Revisions to see a summary of all differences, with minimal context.</p>
+<p>If you want to compare two trees to see what has changed, for example the trunk and a tagged release, you can use TortoiseSVN =&gt; Revision Graph Select the two nodes to compare, then use Context Menu =&gt; Compare HEAD Revisions. This will show a list of changed files, and you can then select individual files to view the changes in detail. Alternatively use Context Menu =&gt; Unified Diff of HEAD Revisions to see a summary of all differences, with minimal context.</p>
 
 <p>The process of comparing two trees is really nicely done, you get a list of all the files which have been changed between the two trees. You can then drill into this list and see the changes made to individual files. Kewl!</p>
 </div>
@@ -235,7 +279,7 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
   
 
 
-<time datetime="2006-04-07T21:39:21+01:00" pubdate data-updated="true">Apr 7<span>th</span>, 2006</time>
+<time datetime="2006-04-07T13:39:21-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2006</time>
         
       </p>
     
@@ -271,6 +315,7 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
   username: user_name
   password: your_pw_here
 </code></pre>
+
 </div>
   
   
@@ -299,17 +344,18 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
   
 
 
-<time datetime="2006-04-04T14:28:44+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T06:28:44-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Getting &#8216;Zombie State&#8217; errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
+  <div class="entry-content"><p>Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
 
 <pre><code>ActiveRecord::Base.connection.instance_variable_get("@connection")["AutoCommit"] = false
 </code></pre>
+
 </div>
   
   
@@ -338,14 +384,14 @@ If you want to compare two revisions in a file&#8217;s history, for example revi
   
 
 
-<time datetime="2006-04-04T14:05:19+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T06:05:19-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Sorry I just can&#8217;t live with plural table names, I just can&#8217;t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
+  <div class="entry-content"><p>Sorry I just can’t live with plural table names, I just can’t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
 
 <pre><code># Include your application configuration below
 ActiveRecord::Base.pluralize_table_names = false
@@ -380,44 +426,49 @@ ActiveRecord::Base.pluralize_table_names = false
   
 
 
-<time datetime="2006-04-04T11:26:22+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T03:26:22-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;m going to give Ruby on Rails (RoR) a try on my Windows XP machine.  Here&#8217;s how I&#8217;ve set it up&#8230;</p>
+  <div class="entry-content"><p>I’m going to give Ruby on Rails (RoR) a try on my Windows XP machine.  Here’s how I’ve set it up…</p>
 
 <ol>
-<li><p>Install Ruby
-Using the <a href="http://rubyforge.org/projects/rubyinstaller/">Ruby One Click Installer Ruby One Click Installer</a> (v184-16 release candidate 1)</p></li>
-<li><p>Setup proxy</p></li>
+  <li>
+    <p>Install Ruby
+Using the <a href="http://rubyforge.org/projects/rubyinstaller/">Ruby One Click Installer Ruby One Click Installer</a> (v184-16 release candidate 1)</p>
+  </li>
+  <li>
+    <p>Setup proxy</p>
+  </li>
 </ol>
-
 
 <pre><code>set HTTP_PROXY=http://wwwcache:8080
 </code></pre>
 
 <ol>
-<li>GEM install Ruby on Rails</li>
+  <li>GEM install Ruby on Rails</li>
 </ol>
-
 
 <pre><code>gem install rails --include-dependencies
 </code></pre>
 
 <ol>
-<li><p>Install RadRails
-I also downloaded and installed the latest <a href="http://www.radrails.org/">RadRails</a> (v0.6.1)</p></li>
-<li><p>Database
-I&#8217;m going to try rails with our dev MS-SQL server so no database to install. No doubt lots of configuring to do though!</p></li>
+  <li>
+    <p>Install RadRails
+I also downloaded and installed the latest <a href="http://www.radrails.org/">RadRails</a> (v0.6.1) </p>
+  </li>
+  <li>
+    <p>Database
+I’m going to try rails with our dev MS-SQL server so no database to install. No doubt lots of configuring to do though!</p>
+  </li>
 </ol>
 
+<h4 id="note">NOTE:</h4>
 
-<h4>NOTE:</h4>
-
-<p>There appears to be a problem with the WEBrick web server in this setup.  I couldn&#8217;t find the answer on google but I did find a work around. If you run the WEBrick server using the standard ruby script\server you will get the following error:</p>
+<p>There appears to be a problem with the WEBrick web server in this setup.  I couldn’t find the answer on google but I did find a work around. If you run the WEBrick server using the standard ruby script\server you will get the following error:</p>
 
 <pre><code>ruby script\server
 =&gt; Booting WEBrick...
@@ -442,12 +493,12 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
         from script/server:3
 </code></pre>
 
-<p>There appears to be some problem binding to the port 3000, netstat shows nothing running on port 3000 so I&#8217;ve no idea what is causing it. Any hoose a work around is simply to run on another port:</p>
+<p>There appears to be some problem binding to the port 3000, netstat shows nothing running on port 3000 so I’ve no idea what is causing it. Any hoose a work around is simply to run on another port:</p>
 
 <pre><code>ruby script\server --port=8000
 </code></pre>
 
-<p>If I do find out what is causing the problem I&#8217;ll update this post.</p>
+<p>If I do find out what is causing the problem I’ll update this post.</p>
 </div>
   
   
@@ -476,26 +527,26 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   
 
 
-<time datetime="2006-04-03T10:25:29+01:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2006</time>
+<time datetime="2006-04-03T02:25:29-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>We have started tagging our source when releasing to QA/porduction which means we can easily roll back to an ealier verison of the code if a problem is found in production. Here&#8217;s how we do it using TortoiseSVN.</p>
+  <div class="entry-content"><p>We have started tagging our source when releasing to QA/porduction which means we can easily roll back to an ealier verison of the code if a problem is found in production. Here’s how we do it using TortoiseSVN.</p>
 
 <p>First commit your source then open up the TortoiseSVN repository browser:</p>
 
-<p>Right click in a folder in windows to get a context menu then select TortoiseSVN => Repo-Browser.</p>
+<p>Right click in a folder in windows to get a context menu then select TortoiseSVN =&gt; Repo-Browser.</p>
 
 <p>You should now see Repository browser:</p>
 
 <p><img src="http://justinram.files.wordpress.com/2006/04/repos.thumbnail.JPG" alt="Repository Browser" /></p>
 
-<p>Find the trunk of the project you wish to tag then right click on the trunk folder and select &#8216;Copy to&#8230;&#8217; from the context menu.</p>
+<p>Find the trunk of the project you wish to tag then right click on the trunk folder and select ‘Copy to…’ from the context menu.</p>
 
-<p>You will now see the Copy to&#8230; dialog:</p>
+<p>You will now see the Copy to… dialog:</p>
 
 <p><img src="http://justinram.files.wordpress.com/2006/04/copyto.thumbnail.JPG" alt="CopyTo" /></p>
 
@@ -530,7 +581,7 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   
 
 
-<time datetime="2006-03-30T23:06:48+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
+<time datetime="2006-03-30T14:06:48-08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
         
       </p>
     
@@ -580,59 +631,6 @@ c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/30/ruby-unit-testing-setting-up-your-project-folder-for-testing/">Ruby unit testing - Setting up your project folder for testing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-30T22:22:01+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Its a good idea to keep your test cases seperate from your production code:</p>
-
-<pre><code>  myproject
-      lib/
-          workomatic.rb
-      test/
-          test_workomatic.rb
-</code></pre>
-
-<p>When you have your project setup in this way add the following line to the top of your test cases:</p>
-
-<p>Inside test_workomatic.rb</p>
-
-<pre><code>  $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-  require workomatic.rb
-</code></pre>
-
-<p>Now when you run this test case the workomatic.rb file and all supporting files in the lib folder will be picked up.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -650,6 +648,10 @@ c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -663,10 +665,6 @@ c
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -760,7 +758,7 @@ c
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -9,11 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Jenkins.NET
-Jenkins.NET Plugins
-Setup Jenkins.NET
-Setting up your first job
-Your first build Introduction This is the &hellip;">
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,7 +95,7 @@ Your first build Introduction This is the &hellip;">
   
 
 
-<time datetime="2012-09-17T21:58:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+<time datetime="2012-09-17T21:58:00-07:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
         
       </p>
     
@@ -109,38 +105,44 @@ Your first build Introduction This is the &hellip;">
 <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-<li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-<li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-<li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build">Breaking the build</a></li>
+  <li>Diagnosing and fixing a broken build</li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
 </ol>
-
 
 <hr />
 
-<h2>Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 
 <p>This is the first in a series of posts which I’ll be writing on using Jenkins
 to build .NET solutions. These posts will be as detailed as possible, probably
 too detailed in places.</p>
 
-<h2>Installing Jenkins</h2>
+<h2 id="installing-jenkins">Installing Jenkins</h2>
 
-<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as &#8216;Hudson&#8217; but when Oracle bought Sun there
-was a fall out between the then &#8216;Hudson&#8217; developers and Oracle so they decided
-to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
+<blockquote>
+  <p><strong>NOTE:</strong> Jenkins used to be known as ‘Hudson’ but when Oracle bought Sun there
+was a fall out between the then ‘Hudson’ developers and Oracle so they decided
+to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p>
+</blockquote>
 
-<p>I&#8217;m going to install and setup Jenkins on a freshly minted Windows 7 virtual
+<p>I’m going to install and setup Jenkins on a freshly minted Windows 7 virtual
 machine although this process should work fine on other versions of Windows.</p>
 
 <p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
 
 <p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
 
-<h3>Download</h3>
+<h3 id="download">Download</h3>
 
-<p>Rather than the generic .war file we&#8217;ll download the Windows native package,
+<p>Rather than the generic .war file we’ll download the Windows native package,
 which saves as a few steps during installation. The latest windows package is
 available here:</p>
 
@@ -148,7 +150,7 @@ available here:</p>
 
 <p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
 
-<p>I&#8217;m using Internet Explorer here, which by default blocks the installer from
+<p>I’m using Internet Explorer here, which by default blocks the installer from
 downloading. Notice the warning message shown at the top of the browser
 window.</p>
 
@@ -188,9 +190,9 @@ extract the files to the default location.</p>
 
 <p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
 
-<p>Phew! That&#8217;s the download complete.</p>
+<p>Phew! That’s the download complete.</p>
 
-<h3>Setup</h3>
+<h3 id="setup">Setup</h3>
 
 <p>Finally we can run the Setup program. Double click setup to run the program.</p>
 
@@ -252,7 +254,7 @@ message upon completion. Click the Finish button.</p>
   
 
 
-<time datetime="2012-09-17T21:58:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+<time datetime="2012-09-17T21:58:00-07:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
       
 
 <span class="categories">
@@ -301,6 +303,10 @@ message upon completion. Click the Finish button.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -314,10 +320,6 @@ message upon completion. Click the Finish button.</p>
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -412,7 +414,7 @@ message upon completion. Click the Finish button.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

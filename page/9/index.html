@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I am hoping to use this software to test my web developments, from what I have read it looks very promising. “WATIR stands for &#8220;Web Application &hellip;">
+  <meta name="description" content="The install should be as simple as dropping into dos, cd to your Ruby folder and run the command:
+gem install watir Unfortunately it wasn’t that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +83,61 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2006/02/27/installing-watir-via-the-gem-utility/">Installing Watir via the gem utility</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-27T02:57:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The install should be as simple as dropping into dos, cd to your Ruby folder and run the command:
+<code>gem install watir</code></p>
+
+<p>Unfortunately it wasn’t that simple for me, we work via a proxy here so I had to tell the gem utility about it.</p>
+
+<p><strong>Running gem install when you are behind a proxy</strong></p>
+
+<p>Set the HTTP_PROXY environment variable.</p>
+
+<p>Example:
+<code>set HTTP_PROXY=http://mycache:8080</code></p>
+
+<p>You can now run:
+<code>gem install watir</code></p>
+
+<p>Or you can pass the proxy information as a parameter to gem via the -p switch:</p>
+
+<p><code>gem install watir -p http://mycache:8080</code></p>
+
+<p>Gem will now go off download and install the latest Watir package, version 1.4.1 in my case.  Be patient this can take some time depending on server load.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2006/02/27/watir-testing-your-website/">Watir - Testing your website</a></h1>
     
     
@@ -98,7 +154,7 @@
   
 
 
-<time datetime="2006-02-27T10:49:00+00:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
+<time datetime="2006-02-27T02:49:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
         
       </p>
     
@@ -107,7 +163,7 @@
 
   <div class="entry-content"><p>I am hoping to use this software to test my web developments, from what I have read it looks very promising.</p>
 
-<p><em>“WATIR stands for &#8220;Web Application Testing in Ruby&#8221;. Watir
+<p><em>“WATIR stands for “Web Application Testing in Ruby”. Watir
 is a free, open-source functional testing tool for
 automating browser-based tests of web applications. It is pronounced water.”</em></p>
 
@@ -119,7 +175,7 @@ automating browser-based tests of web applications. It is pronounced water.”</
 
 <p>Using the <a href="http://rubyforge.org/frs/?group_id=104">Watir One-Click installer for windows</a> (version watir-1.4.1.exe), just run standard install accepting all defaults.</p>
 
-<p>Now onto learning what can be done with this thing&#8230;</p>
+<p>Now onto learning what can be done with this thing…</p>
 
 <p><a href="http://wtr.rubyforge.org/watir_user_guide.html">User Guide</a></p>
 
@@ -154,26 +210,26 @@ automating browser-based tests of web applications. It is pronounced water.”</
   
 
 
-<time datetime="2006-02-23T11:34:00+00:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2006</time>
+<time datetime="2006-02-23T03:34:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>So you&#8217;ve accidentally uploaded a PAR file to the portal eh?</p>
+  <div class="entry-content"><p>So you’ve accidentally uploaded a PAR file to the portal eh?</p>
 
-<p>Here&#8217;s how to get rid&#8230;</p>
+<p>Here’s how to get rid…</p>
 
-<p>(Top Menu) Java Development -> (Left Sub Menu) Tools -> Portal Archive Deployer&amp;Remover</p>
+<p>(Top Menu) Java Development -&gt; (Left Sub Menu) Tools -&gt; Portal Archive Deployer&amp;Remover</p>
 
 <p>(Main Page) Archive Remover</p>
 
-<p>Select the PAR file you wish to remove from the drop down list and click the &#8220;Clean&#8221; button</p>
+<p>Select the PAR file you wish to remove from the drop down list and click the “Clean” button</p>
 
 <p>You should now see a message along the lines of:</p>
 
-<p>INFO: Received clean-up request for application: &#8220;MyApp&#8221;
+<p>INFO: Received clean-up request for application: “MyApp”
 INFO: MyApp has been successfully removed from the PCD.</p>
 
 <p>The PAR is no more.</p>
@@ -205,7 +261,7 @@ INFO: MyApp has been successfully removed from the PCD.</p>
   
 
 
-<time datetime="2006-02-23T11:23:00+00:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2006</time>
+<time datetime="2006-02-23T03:23:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2006</time>
         
       </p>
     
@@ -214,9 +270,9 @@ INFO: MyApp has been successfully removed from the PCD.</p>
 
   <div class="entry-content"><p>To find your PAR files once they are uploaded to the portal:</p>
 
-<p>(Top Menu) Java Development -> (Left Sub Menu) Tools -> Portal Support Desk</p>
+<p>(Top Menu) Java Development -&gt; (Left Sub Menu) Tools -&gt; Portal Support Desk</p>
 
-<p>(Main Page) Portal Runtime -> (Main Page) Browse Deployment</p>
+<p>(Main Page) Portal Runtime -&gt; (Main Page) Browse Deployment</p>
 
 <p>Now move to:</p>
 
@@ -253,7 +309,7 @@ INFO: MyApp has been successfully removed from the PCD.</p>
   
 
 
-<time datetime="2006-02-22T15:53:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+<time datetime="2006-02-22T07:53:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
         
       </p>
     
@@ -269,18 +325,18 @@ INFO: MyApp has been successfully removed from the PCD.</p>
 <p><strong>Step 1: Get the portal PDK JAR files</strong>
 These JAR files can de downloaded from the portal, they live under the following portal menu:</p>
 
-<p>(Top Menu) Java Development -> (Left Sub Menu) Tools -> PDK Jars Download</p>
+<p>(Top Menu) Java Development -&gt; (Left Sub Menu) Tools -&gt; PDK Jars Download</p>
 
 <p>Download the zip file and extract the JAR files to a folder on your PC for example c:\source\sap\devlibs</p>
 
 <p><strong>Step 2: Create the library project</strong>
 In SAP Netweaver Developer Studio create a new project:</p>
 
-<p>File -> New -> Project&#8230;</p>
+<p>File -&gt; New -&gt; Project…</p>
 
 <p>You will now see a wizard dialog:</p>
 
-<p>Select Java -> Java Project</p>
+<p>Select Java -&gt; Java Project</p>
 
 <p>Click Next</p>
 
@@ -295,15 +351,15 @@ Right click your mouse on the new blank project you just created (in this case D
 <a href="http://photos1.blogger.com/blogger/752/2322/1600/devlibs.0.jpg"><img src="http://photos1.blogger.com/blogger/752/2322/320/devlibs.0.jpg" alt="" /></a>
 Select Java Build Path from the left pane.</p>
 
-<p>Select &#8220;Libaries&#8221; from the Tab.</p>
+<p>Select “Libaries” from the Tab.</p>
 
-<p>Click the &#8220;Add External JARs&#8221; button.</p>
+<p>Click the “Add External JARs” button.</p>
 
 <p>The file open dialog will now appear, select the downloaded JAR files from Step 1.</p>
 
-<p>Click the &#8220;Order and Export&#8221; tab, click the &#8220;Select all&#8221; button.</p>
+<p>Click the “Order and Export” tab, click the “Select all” button.</p>
 
-<p>Finally click the &#8220;OK&#8221; button.</p>
+<p>Finally click the “OK” button.</p>
 
 <p>You now have a library project which can be included in new portal projects!</p>
 </div>
@@ -334,7 +390,7 @@ Select Java Build Path from the left pane.</p>
   
 
 
-<time datetime="2006-02-22T12:12:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+<time datetime="2006-02-22T04:12:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
         
       </p>
     
@@ -353,7 +409,7 @@ trunk
 
 <p>Place your source in the trunk folder.</p>
 
-<p>In windows explorer right click on ProjectName folder and select TortiseSVN -> Import from the menu.</p>
+<p>In windows explorer right click on ProjectName folder and select TortiseSVN -&gt; Import from the menu.</p>
 
 <p>You will now see the import screen:</p>
 
@@ -389,7 +445,7 @@ Enter the repository/ProjectName an import message and click OK.</p>
   
 
 
-<time datetime="2006-02-22T11:36:00+00:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+<time datetime="2006-02-22T03:36:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
         
       </p>
     
@@ -401,12 +457,12 @@ Enter the repository/ProjectName an import message and click OK.</p>
 <p>Try this:</p>
 
 <p>WARNING: Untested code ahead!
-<code>
+`
 HttpServletRequest servletRequest = componentRequest.getServletRequest();
 String requestURL = servletRequest.getRequestURL().toString();
-String protocol = requestURL.substring(0, requestURL.indexOf(":"));</code></p>
+String protocol = requestURL.substring(0, requestURL.indexOf(“:”));`</p>
 
-<p>if(protocol.equals(&#8220;http&#8221;))
+<p>if(protocol.equals(“http”))
 {
 // do HTTP stuff
 }
@@ -442,7 +498,7 @@ else
   
 
 
-<time datetime="2006-02-21T17:24:00+00:00" pubdate data-updated="true">Feb 21<span>st</span>, 2006</time>
+<time datetime="2006-02-21T09:24:00-08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2006</time>
         
       </p>
     
@@ -467,7 +523,7 @@ else
 
 <p><a href="http://tortoisesvn.tigris.org/">tortoisesvn</a></p>
 
-<p>Job done we&#8217;re good to go.</p>
+<p>Job done we’re good to go.</p>
 </div>
   
   
@@ -496,7 +552,7 @@ else
   
 
 
-<time datetime="2006-02-21T17:17:00+00:00" pubdate data-updated="true">Feb 21<span>st</span>, 2006</time>
+<time datetime="2006-02-21T09:17:00-08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2006</time>
         
       </p>
     
@@ -526,6 +582,10 @@ else
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
@@ -539,10 +599,6 @@ else
     
       <li class="post">
         <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
       </li>
     
   </ul>
@@ -636,7 +692,7 @@ else
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
