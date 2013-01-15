@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Was getting weird error when trying to compile a project today: The project was not built due to "Problems encountered while copying resources.". Fix &hellip;">
+  <meta name="description" content="http://YOUR SERVER NAME:50000/irj/servlet/prt/portal/prtroot/com.sap.km.cm.docs/documents/ documents\portalResource\USER.R3_DATASOURCE.[user id]
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +77,44 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/06/06/95/">Location of XML files</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-06T06:44:35-07:00" pubdate data-updated="true">Jun 6<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>http://YOUR SERVER NAME:50000/irj/servlet/prt/portal/prtroot/com.sap.km.cm.docs/documents/</p>
+
+<p>documents\portalResource\USER.R3_DATASOURCE.[user id]</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -560,77 +599,6 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/30/ruby-iteractive-debugging/">Ruby iteractive debugging</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-30T14:06:48-08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buggy code, me? Never! If you have a problem with buggy code though your in luck ruby has a debugger baked in:</p>
-
-<p>Simply run ruby with the debug flag:</p>
-
-<pre><code>ruby –r debug test.rb
-</code></pre>
-
-<p><strong>USEFUL COMMANDS</strong></p>
-
-<p><strong>list</strong> - List the source code, pass in a number range to filter the list. For example to list the lines 1 to 9:</p>
-
-<pre><code>list 1-9
-</code></pre>
-
-<p><strong>b</strong> – Set a break point, pass a line number to break on. For example to break on line 7:</p>
-
-<pre><code>b 7
-</code></pre>
-
-<p><strong>c</strong> – Continue program until breakpoint or end of program</p>
-
-<p><strong>disp</strong> – Display the contents of a variable. For example to see the contents of the look_at_me variable:</p>
-
-<pre><code>display look_at_me
-</code></pre>
-
-<p><strong>watch</strong> – Set a watchpoint on a variable. For example to break when the variable meaning_of_life equals 42:</p>
-
-<pre><code>watch meaning_of_life=42
-c
-</code></pre>
-
-<p><strong>del</strong> – Delete a breakpoint or watchpoint. For example to delete the first breakpoint we created:</p>
-
-<pre><code>del 1
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -648,6 +616,10 @@ c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
@@ -661,10 +633,6 @@ c
     
       <li class="post">
         <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Setup folder structure: Download and put the asp.net mvc dll’s in mvc folder and spark dll’s in spark folder. Create a new asp.net application not a &hellip;">
+  <meta name="description" content="I can never remember these so thought it best to write them down. Start with the settings from: http://codebetter.com/blogs/aaron.jensen/archive/2008 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,109 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/10/resharper-format-settings/">Resharper format settings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-10T10:15:59-07:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I can never remember these so thought it best to write them down. Start with the settings from:</p>
+
+<p><a href="http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx">http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx</a></p>
+
+<p>Plus a few extras…</p>
+
+<p>Go to menu Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Formatting Style</p>
+
+<ul>
+  <li>
+    <p>Braces Layout –&gt; All set to (BSD style)</p>
+  </li>
+  <li>
+    <p>Braces Layout –&gt; Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p>
+  </li>
+  <li>
+    <p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p>
+  </li>
+  <li></li>
+</ul>
+
+<p>Other –&gt; Align Multiline Constructs – Call arguments = Off</p>
+
+<ul>
+  <li></li>
+</ul>
+
+<p>Other –&gt; Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
+
+<ul>
+  <li></li>
+</ul>
+
+<p>Other –&gt; Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
+
+<h2 id="regions">Regions</h2>
+
+<p>Stop Resharper adding regions to interface implementations and nested classes:</p>
+
+<p>Go to menu: Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Type Members Layout</p>
+
+<p>Un-tick Use Default Patterns and you get a text area full of xml. Scroll to the bottom and delete the section:</p>
+
+<group>     
+<implementsinterface immediate="true" region="${ImplementsInterface} Members" />      
+</group>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image10.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb10.png" alt="image" /></a></p>
+
+<p>Also delete the section:</p>
+
+<group>     
+<name region="Nested type: ${Name}" />      
+</group>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image11.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb11.png" alt="image" /></a></p>
+
+<p>Finally click Ok.</p>
+
+<h2 id="code-cleanup">Code Cleanup</h2>
+
+<p>Go to menu Resharper –&gt; Options –&gt; Tools –&gt; Code Cleanup</p>
+
+<p>Add a new profile with the following settings:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image12.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb12.png" alt="image" /></a></p>
+
+<p>I didn’t realise I had fiddled with the default settings so much no wonder I can never remember them.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -861,46 +964,6 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/06/12/sap-wiki-my-profile/">SAP Wiki - My Profile</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-06-12T15:45:58-07:00" pubdate data-updated="true">Jun 12<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve just setup my profile on the SAP Wiki:</p>
-
-<p><a href="https://wiki.sdn.sap.com/wiki/display/profile/Justin+Ramel">https://wiki.sdn.sap.com/wiki/display/profile/Justin+Ramel</a></p>
-
-<p>This is my first Wiki experience and I must say I’m impressed!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/5/">&larr; Older</a>
@@ -918,6 +981,10 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
@@ -931,10 +998,6 @@ which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> 
     
       <li class="post">
         <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
   </ul>

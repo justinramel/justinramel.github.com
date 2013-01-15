@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Extract Constant Extracts a selection into a constant which is placed &hellip;">
+  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Extract to Let This is an RSpec specific refactoring which will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-to-let/">vim-ruby-refactoring - Extract to Let</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-30T15:49:00-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4 id="extract-to-let">Extract to Let</h4>
+
+<p>This is an <a href="http://rspec.info/">RSpec</a> specific refactoring which will extract an initialisation line and create a let method for you.</p>
+
+<h4 id="example">Example</h4>
+
+<p>Before refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractlet_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_before_thumb.png" alt="ExtractLet_Before" /></a> <br />
+Move the cursor on to the line you wish to extract    <br />
+Hit your **<leader-key>** then type **rel **</leader-key></p>
+
+<p>After refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractlet_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_after_thumb.png" alt="ExtractLet_After" /></a>    <br />
+The let method is created above the it block, using the initialisation line - account = Account.new.</p>
+
+<p><strong>rel</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>et.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -862,109 +915,6 @@ required: message    <br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/10/resharper-format-settings/">Resharper format settings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-10T10:15:59-07:00" pubdate data-updated="true">Jun 10<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I can never remember these so thought it best to write them down. Start with the settings from:</p>
-
-<p><a href="http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx">http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx</a></p>
-
-<p>Plus a few extras…</p>
-
-<p>Go to menu Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Formatting Style</p>
-
-<ul>
-  <li>
-    <p>Braces Layout –&gt; All set to (BSD style)</p>
-  </li>
-  <li>
-    <p>Braces Layout –&gt; Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p>
-  </li>
-  <li>
-    <p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p>
-  </li>
-  <li></li>
-</ul>
-
-<p>Other –&gt; Align Multiline Constructs – Call arguments = Off</p>
-
-<ul>
-  <li></li>
-</ul>
-
-<p>Other –&gt; Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
-
-<ul>
-  <li></li>
-</ul>
-
-<p>Other –&gt; Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
-
-<h2 id="regions">Regions</h2>
-
-<p>Stop Resharper adding regions to interface implementations and nested classes:</p>
-
-<p>Go to menu: Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Type Members Layout</p>
-
-<p>Un-tick Use Default Patterns and you get a text area full of xml. Scroll to the bottom and delete the section:</p>
-
-<group>     
-<implementsinterface immediate="true" region="${ImplementsInterface} Members" />      
-</group>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image10.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb10.png" alt="image" /></a></p>
-
-<p>Also delete the section:</p>
-
-<group>     
-<name region="Nested type: ${Name}" />      
-</group>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image11.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb11.png" alt="image" /></a></p>
-
-<p>Finally click Ok.</p>
-
-<h2 id="code-cleanup">Code Cleanup</h2>
-
-<p>Go to menu Resharper –&gt; Options –&gt; Tools –&gt; Code Cleanup</p>
-
-<p>Add a new profile with the following settings:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image12.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb12.png" alt="image" /></a></p>
-
-<p>I didn’t realise I had fiddled with the default settings so much no wonder I can never remember them.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/4/">&larr; Older</a>
@@ -982,6 +932,10 @@ required: message    <br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
@@ -995,10 +949,6 @@ required: message    <br />
     
       <li class="post">
         <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
       </li>
     
   </ul>

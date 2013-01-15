@@ -396,7 +396,7 @@
     </url>
     <url>
         <loc>http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/</loc>
-        <lastmod>2012-10-20T13:53:53-07:00</lastmod>
+        <lastmod>2013-01-14T21:00:30-08:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/10/09/setup-jenkins-dot-net/</loc>
@@ -412,14 +412,18 @@
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/14/breaking-the-build/</loc>
-        <lastmod>2013-01-14T19:25:14-08:00</lastmod>
+        <lastmod>2013-01-14T21:13:09-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/</loc>
+        <lastmod>2013-01-14T22:10:03-08:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/blog/archives/</loc>
-        <lastmod>2013-01-14T19:25:14-08:00</lastmod>
+        <lastmod>2013-01-14T22:10:03-08:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/</loc>
-        <lastmod>2013-01-14T19:25:14-08:00</lastmod>
+        <lastmod>2013-01-14T22:10:03-08:00</lastmod>
     </url>
 </urlset>

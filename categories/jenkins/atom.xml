@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jenkins | just ram]]></title>
   <link href="http://justinramel.com//categories/jenkins/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-14T20:31:22-08:00</updated>
+  <updated>2013-01-14T22:19:48-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Diagnosing and fixing a broken build]]></title>
+    <link href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/"/>
+    <updated>2013-01-14T20:39:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build/)
+7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8. Monitoring your build
+9. Running your tests
+10. Code Analysis
+
+---
+</p>
+
+<p>Last time we had a failing build with Jenkin’s showing a red ball to prove it.
+The first place to look when we have a failing build is the console output. You
+can get to the console output via the main menu on the left of your project
+page.</p>
+
+<h3 id="console-output">Console output</h3>
+
+<p><img src="/images/jenkins-net/ch07/console-output.png" alt="" /></p>
+
+<p>As the screenshot shows we get all the output from our build process and there
+is a lot of it! I’ve highlighted the actual problem which is the causing the
+build to fail, our missing dll.</p>
+
+<p>This is the error your team mates will see when they check out and try to build
+your code.</p>
+
+<h3 id="console-blindness">Console “blindness”</h3>
+
+<p>When you first see the console output for your build it can be a little
+overwhelming, there is a lot of information packed into the output. Sometimes
+you look at all that information and you can’t see the wood for the trees, or
+the errors in all that output. I have seen people look at this output and they
+are blind to the errors.</p>
+
+<p>Of course once you get used to looking at this output it becomes easier. To
+help you get over this initially a simple search to find all the errors listed
+on the page can really help. Simply search for the word “error” and your
+browser will help you see again.</p>
+
+<p><img src="/images/jenkins-net/ch07/console-output-find.png" alt="" /></p>
+
+<p>You now have only a few places to concentrate your efforts in that sea of
+information.</p>
+
+<p>Next time we’ll look at the different ways to monitor our build and it’s
+failures.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Breaking the build]]></title>
@@ -25,8 +85,8 @@
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build)
-7. Diagnosing and fixing a broken build
+6. [Breaking the build](/2013/01/14/breaking-the-build/)
+7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. Monitoring your build
 9. Running your tests
 10. Code Analysis
@@ -96,8 +156,8 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build)
-7. Diagnosing and fixing a broken build
+6. [Breaking the build](/2013/01/14/breaking-the-build/)
+7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. Monitoring your build
 9. Running your tests
 10. Code Analysis
@@ -174,8 +234,8 @@ Everything you need to fix the problem will usually be shown on this page.</p>
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build)
-7. Diagnosing and fixing a broken build
+6. [Breaking the build](/2013/01/14/breaking-the-build/)
+7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. Monitoring your build
 9. Running your tests
 10. Code Analysis
@@ -323,8 +383,8 @@ detected. This is done via the “Add build step” button under the Build secti
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build)
-7. Diagnosing and fixing a broken build
+6. [Breaking the build](/2013/01/14/breaking-the-build/)
+7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. Monitoring your build
 9. Running your tests
 10. Code Analysis
@@ -369,146 +429,6 @@ and use any version of the .NET Framework.</p>
 </ol>
 
 <p>In my next post we’ll actually get to setup our first job!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
-    <link href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/"/>
-    <updated>2012-09-20T18:43:00-07:00</updated>
-    <id>http://justinramel.com/2012/09/20/jenkins-dot-net-plugins</id>
-    <content type="html"><![CDATA[<p>This post is part of a series:
-
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build)
-7. Diagnosing and fixing a broken build
-8. Monitoring your build
-9. Running your tests
-10. Code Analysis
-
----
-
-## Plugins</p>
-
-<p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
-Thankfully Jenkins makes is very easy to find and install plugins. On the main
-Jenkins menu click the ‘Manage Jenkins’ link.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
-
-<p>You will now see the Manage Jenkins page. Click the ‘Manage Plugins’ link.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
-
-<p>You will now see a list of the currently installed plugins. Click the
-Available tab to see a list of all the Jenkins plugins, which are available to
-install.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
-
-<p>As you can see Jenkins has a massive number of plugins. I encourage you to
-look through and play with the plugins they are really useful and the list is
-growing by the day.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
-
-<h2 id="required-plugins">Required Plugins</h2>
-
-<p>Without these required Plugins you will not be able to build and test .NET
-solutions. So you must at least install these Plugins for the rest of this
-guide to work.</p>
-
-<h3 id="build-plugins">Build Plugins</h3>
-
-<p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
-solution.</p>
-
-<ul>
-  <li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
-projects.</em></li>
-</ul>
-
-<h3 id="testing-plugins">Testing Plugins</h3>
-
-<p>You’ll need one of these depending on your chosen test framework.</p>
-
-<ul>
-  <li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
-XML reports so it can be integrated with Jenkins JUnit features.</em></li>
-  <li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
-  <li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
-of an execution of a testing tool in Jenkins.</em></li>
-  <li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
-test results.</em></li>
-</ul>
-
-<p>Tick the check box next to each of the required Plugins and then click the
-‘Download now and install after restart’ button.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
-
-<h3 id="optional-plugins">Optional Plugins</h3>
-
-<p>These Plugins are optional but still recommend ranging from genuine
-productivity tools to just plain fun.</p>
-
-<h3 id="jenkins-enhancements">Jenkins Enhancements</h3>
-
-<ul>
-  <li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
-successful builds. <strong>Who doesn’t want Green Balls!</strong></em></li>
-  <li><strong>Copy project link plugin</strong> - <em>This plugin adds the “Copy project” link into
-left side panel in the main project page.</em></li>
-  <li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
-a highly visible manner. This is ideal for displaying on a screen on the
-office wall as a form of Extreme Feedback Device.</em></li>
-</ul>
-
-<h3 id="authentication">Authentication</h3>
-
-<ul>
-  <li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
-authenticates the username and the password through Active Directory.</em></li>
-</ul>
-
-<blockquote>
-  <p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
-guessing most of you already login via Active Directory so this Plugin saves
-you having to remember yet another password.</p>
-</blockquote>
-
-<h3 id="code-analysis">Code Analysis</h3>
-
-<ul>
-  <li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
-tasks and generates a trend report.</em></li>
-  <li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
-warnings in the console log or in log files.</em></li>
-</ul>
-
-<h3 id="build-tools">Build Tools</h3>
-
-<ul>
-  <li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
-build step.</em></li>
-  <li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
-</ul>
-
-<h3 id="fun-fun-fun">Fun, Fun, Fun</h3>
-
-<ul>
-  <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
-Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
-build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
-  <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
-where users get points on improving the builds. Although this is indeed a fun
-plugin it can help when first introducing Jenkins to your team, a little
-healthy competition never did anyone any harm.</em></li>
-</ul>
 ]]></content>
   </entry>
   

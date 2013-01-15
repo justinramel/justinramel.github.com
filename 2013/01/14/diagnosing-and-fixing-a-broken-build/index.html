@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Subversion server + windows + backup - just ram</title>
+  <title>Diagnosing and fixing a broken build - just ram</title>
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="So you want to backup your repository? Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which &hellip;">
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/2006/05/03/subversion-server-windows-backup/">
+  <link rel="canonical" href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Subversion server + windows + backup</h1>
+      <h1 class="entry-title">Diagnosing and fixing a broken build</h1>
     
     
       <p class="meta">
@@ -95,30 +95,66 @@
   
 
 
-<time datetime="2006-05-03T03:46:34-07:00" pubdate data-updated="true">May 3<span>rd</span>, 2006</time>
+<time datetime="2013-01-14T20:39:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>So you want to backup your repository?</p>
+<div class="entry-content"><p>This post is part of a series:</p>
 
-<p>Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which will cause problems on restore. So you should do a “hot copy” to prevent any locking issues when the actual backup is made.  My “hot copy” is created using the following batch file:</p>
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
+</ol>
 
-<pre><code>REM Reset hot copy
-rmdir /S /Q c:\\svnrepos_hotcopy
-mkdir c:\\svnrepos_hotcopy
+<hr />
 
-REM Initiate SVN backup. Use svadmin hotcopy --help for details
-svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
-</code></pre>
+<p>Last time we had a failing build with Jenkin’s showing a red ball to prove it.
+The first place to look when we have a failing build is the console output. You
+can get to the console output via the main menu on the left of your project
+page.</p>
 
-<p>I run this batch file daily as a scheduled task before the actual backup.</p>
+<h3 id="console-output">Console output</h3>
 
-<p>This batch file is a modification of the batch file described over at:</p>
+<p><img src="/images/jenkins-net/ch07/console-output.png" alt="" /></p>
 
-<p><a href="http://www.blendedtechnologies.com/daily-backup-of-subversion/21">Blended Technologies</a></p>
+<p>As the screenshot shows we get all the output from our build process and there
+is a lot of it! I’ve highlighted the actual problem which is the causing the
+build to fail, our missing dll.</p>
+
+<p>This is the error your team mates will see when they check out and try to build
+your code.</p>
+
+<h3 id="console-blindness">Console “blindness”</h3>
+
+<p>When you first see the console output for your build it can be a little
+overwhelming, there is a lot of information packed into the output. Sometimes
+you look at all that information and you can’t see the wood for the trees, or
+the errors in all that output. I have seen people look at this output and they
+are blind to the errors.</p>
+
+<p>Of course once you get used to looking at this output it becomes easier. To
+help you get over this initially a simple search to find all the errors listed
+on the page can really help. Simply search for the word “error” and your
+browser will help you see again.</p>
+
+<p><img src="/images/jenkins-net/ch07/console-output-find.png" alt="" /></p>
+
+<p>You now have only a few places to concentrate your efforts in that sea of
+information.</p>
+
+<p>Next time we’ll look at the different ways to monitor our build and it’s
+failures.</p>
 </div>
 
 
@@ -141,12 +177,12 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
   
 
 
-<time datetime="2006-05-03T03:46:34-07:00" pubdate data-updated="true">May 3<span>rd</span>, 2006</time>
+<time datetime="2013-01-14T20:39:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='//categories/general/'>General</a>
+    <a class='category' href='//categories/-net/'>.net</a>, <a class='category' href='//categories/jenkins/'>jenkins</a>
   
 </span>
 
@@ -155,7 +191,7 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2006/05/03/subversion-server-windows-backup/" data-via="justinramel" data-counturl="http://justinramel.com/2006/05/03/subversion-server-windows-backup/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/" data-via="justinramel" data-counturl="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -166,10 +202,8 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/" title="Previous Post: Windows SubVersion / TortoiseSVN - Compare two versions of a file">&laquo; Windows SubVersion / TortoiseSVN - Compare two versions of a file</a>
+        <a class="basic-alignment left" href="/2013/01/14/breaking-the-build/" title="Previous Post: Jenkins.NET Breaking the build">&laquo; Jenkins.NET Breaking the build</a>
       
-      
-        <a class="basic-alignment right" href="/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/" title="Next Post: Ruby script to rename windows subversion files .svn to _svn">Ruby script to rename windows subversion files .svn to _svn &raquo;</a>
       
     </p>
   </footer>
@@ -313,8 +347,8 @@ svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://justinramel.com/2006/05/03/subversion-server-windows-backup/';
-        var disqus_url = 'http://justinramel.com/2006/05/03/subversion-server-windows-backup/';
+        var disqus_identifier = 'http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/';
+        var disqus_url = 'http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/';
         var disqus_script = 'embed.js';
       
     (function () {

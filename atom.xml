@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-14T20:31:22-08:00</updated>
+  <updated>2013-01-14T22:19:48-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Diagnosing and fixing a broken build]]></title>
+    <link href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/"/>
+    <updated>2013-01-14T20:39:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li>Monitoring your build</li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
+</ol>
+
+<hr />
+
+<p>Last time we had a failing build with Jenkin’s showing a red ball to prove it.
+The first place to look when we have a failing build is the console output. You
+can get to the console output via the main menu on the left of your project
+page.</p>
+
+<h3 id="console-output">Console output</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch07/console-output.png" alt="" /></p>
+
+<p>As the screenshot shows we get all the output from our build process and there
+is a lot of it! I’ve highlighted the actual problem which is the causing the
+build to fail, our missing dll.</p>
+
+<p>This is the error your team mates will see when they check out and try to build
+your code.</p>
+
+<h3 id="console-blindness">Console “blindness”</h3>
+
+<p>When you first see the console output for your build it can be a little
+overwhelming, there is a lot of information packed into the output. Sometimes
+you look at all that information and you can’t see the wood for the trees, or
+the errors in all that output. I have seen people look at this output and they
+are blind to the errors.</p>
+
+<p>Of course once you get used to looking at this output it becomes easier. To
+help you get over this initially a simple search to find all the errors listed
+on the page can really help. Simply search for the word “error” and your
+browser will help you see again.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch07/console-output-find.png" alt="" /></p>
+
+<p>You now have only a few places to concentrate your efforts in that sea of
+information.</p>
+
+<p>Next time we’ll look at the different ways to monitor our build and it’s
+failures.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Breaking the build]]></title>
@@ -26,8 +87,8 @@
   <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
   <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
   <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build">Breaking the build</a></li>
-  <li>Diagnosing and fixing a broken build</li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li>Monitoring your build</li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
@@ -98,8 +159,8 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
   <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
   <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build">Breaking the build</a></li>
-  <li>Diagnosing and fixing a broken build</li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li>Monitoring your build</li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
@@ -177,8 +238,8 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
   <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
   <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build">Breaking the build</a></li>
-  <li>Diagnosing and fixing a broken build</li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li>Monitoring your build</li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
@@ -335,8 +396,8 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
   <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
   <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build">Breaking the build</a></li>
-  <li>Diagnosing and fixing a broken build</li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li>Monitoring your build</li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
@@ -397,8 +458,8 @@ and use any version of the .NET Framework.</p>
   <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
   <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
   <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build">Breaking the build</a></li>
-  <li>Diagnosing and fixing a broken build</li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li>Monitoring your build</li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
@@ -517,7 +578,7 @@ build step.</em></li>
 <ul>
   <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
 Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
-build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
+build page. <strong>Every build server needs a Chuck Norris, right?</strong></em></li>
   <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
 where users get points on improving the builds. Although this is indeed a fun
 plugin it can help when first introducing Jenkins to your team, a little
@@ -539,8 +600,8 @@ healthy competition never did anyone any harm.</em></li>
   <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
   <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
   <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build">Breaking the build</a></li>
-  <li>Diagnosing and fixing a broken build</li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li>Monitoring your build</li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
@@ -1257,32 +1318,6 @@ Variable name: mac_os</leader-key></p>
 The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been extracted into a local variable <strong><em>mac_os</em></strong>.</p>
 
 <p><strong>relv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>ocal <strong>V</strong>ariable.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Extract to Let]]></title>
-    <link href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
-    <updated>2010-12-30T15:49:00-08:00</updated>
-    <id>http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4 id="extract-to-let">Extract to Let</h4>
-
-<p>This is an <a href="http://rspec.info/">RSpec</a> specific refactoring which will extract an initialisation line and create a let method for you.</p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/extractlet_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_before_thumb.png" alt="ExtractLet_Before" /></a> <br />
-Move the cursor on to the line you wish to extract    <br />
-Hit your **<leader-key>** then type **rel **</leader-key></p>
-
-<p>After refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/extractlet_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_after_thumb.png" alt="ExtractLet_After" /></a>    <br />
-The let method is created above the it block, using the initialisation line - account = Account.new.</p>
-
-<p><strong>rel</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>et.</p>
 ]]></content>
   </entry>
   
