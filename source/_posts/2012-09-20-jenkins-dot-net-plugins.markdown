@@ -103,7 +103,7 @@ productivity tools to just plain fun.
 
 * **ChuckNorris Plugin** - _Displays a picture of Chuck Norris (instead of
   Jenkins the butler) and a random Chuck Norris 'The Programmer' fact on each
-  build page. **Every build server need a Chuck Norris, right?**_
+  build page. **Every build server needs a Chuck Norris, right?**_
 * **The Continuous Integration Game plugin** - _This plugin introduces a game
   where users get points on improving the builds. Although this is indeed a fun
   plugin it can help when first introducing Jenkins to your team, a little
