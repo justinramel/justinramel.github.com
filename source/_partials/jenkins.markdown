@@ -22,6 +22,11 @@ This post is part of a series:
 3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
 4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build)
+7. Diagnosing and fixing a broken build
+8. Monitoring your build
+9. Running your tests
+10. Code Analysis
 
 {% render_partial _partials/jenkins-email.markdown %}
 >>>>>>> adding email partial

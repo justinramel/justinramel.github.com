@@ -30,6 +30,9 @@ Jenkins uses a weather metaphor to show at a glance how a project is doing.
 |![](/images/jenkins-net/ch06/weather-5.png)|4 out of the last 5 builds failed|
 |![](/images/jenkins-net/ch06/weather-6.png)|5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)|
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> breaking the build
 Obviously we want our projects to stay sunny and avoid the bad weather so next
 time we'll discuss how to diagnose and fix a broken build.
