@@ -7,7 +7,7 @@ This post is part of a series:
 5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
 6. [Breaking the build](/2013/01/14/breaking-the-build/)
 7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8. Monitoring your build
+8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
 9. Running your tests
 10. Code Analysis
 

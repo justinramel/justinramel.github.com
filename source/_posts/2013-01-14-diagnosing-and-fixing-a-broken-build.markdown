@@ -41,5 +41,8 @@ browser will help you see again.
 You now have only a few places to concentrate your efforts in that sea of
 information.
 
+To fix the problem we can simply add the missing dll and Jenkins will rebuild
+the solution and we'll be back to green balls.
+
 Next time we'll look at the different ways to monitor our build and it's
 failures.
