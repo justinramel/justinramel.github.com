@@ -82,6 +82,190 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T22:28:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
+</ol>
+
+<hr />
+
+<p>Unless you’re a glutton for punishment manually checking Jenkins after every
+build is going to become very old very quickly. Luckily Jenkins has several
+notification mechanisms to save you this manual task.</p>
+
+<h3 id="email-notification">Email Notification</h3>
+
+<p>We can setup Jenkins to send an email notification whenever a build fails this
+save us having to check the server after every build, we can trust Jenkins to
+email us on failure. Jenkins will also send a notification email when the build
+returns to a working state.</p>
+
+<p>Setting up email notification is a two-step process. First we give Jenkins
+details of the email server and second we set which email addresses to notify
+upon failure of a build.</p>
+
+<h3 id="email-server-configuration">Email Server Configuration</h3>
+
+<p>Email server configuration is done via the Configure System page. You get to
+the configuration page from the main Jenkins home page Manage Jenkins »
+Configure System. At the bottom of this page is the E-mail Notification
+section.</p>
+
+<p><img src="/images/jenkins-net/ch08/email-setup.png" alt="email setup" /></p>
+
+<p>Chances are you’ll have a local SMTP server, if not you can use something like
+the Gmail SMTP server as shown here. Make sure you tick the “Test configuration
+by sending test e-mail” check box and then click the “Test Configuration”
+button to have Jenkins send you a test email, confirming your configuration is
+OK. Once you’ve successfully received an email don’t forget to click the “Save”
+button to save your changes.</p>
+
+<h3 id="project-notification-email">Project Notification Email</h3>
+
+<p>Once you have the email server configured you can specify per project who to
+notify when a build fails. This is accessed via each Jobs configuration page,
+for our Demo job we click Jenkins » Demo » Configure. At the bottom of this
+page under the Post-Build Actions section is the E-mail Notification area.</p>
+
+<p><img src="/images/jenkins-net/ch08/email-notification.png" alt="email notification" /></p>
+
+<ul>
+  <li>Tick the “E-mail Notification” checkbox.</li>
+  <li>Enter a space-separated list of email address to notify when a build fails.</li>
+  <li>Tick the “Send e-mail for every unstable build” checkbox.</li>
+</ul>
+
+<p>If you really want to annoy the person who broke the build you can send them
+another email by ticking the “Send separate e-mails to individuals who broke
+the build” checkbox.</p>
+
+<p>Finally don’t forget to click the “Save” button.</p>
+
+<p>Unfortunately the only way to test this is working is to break the build,
+follow the instructions in section 6. <a href="/2013/01/14/breaking-the-build/">Breaking the
+build</a> to test email notification is working.</p>
+
+<h3 id="your-constant-reminder">Your constant reminder</h3>
+
+<p>Email notification is great but I also like to have a constant reminder of the
+current build status. The best way I have found to do this on Windows is by
+using the Hudson Tray Tracker (read Jenkins Tray Tracker), which is available
+to download from
+<a href="http://code.google.com/p/hudson-tray-tracker/">http://code.google.com/p/hudson-tray-tracker/</a>.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-1.png" alt="tray tracker 1" /></p>
+
+<p>Once you download and install Hudson Tray Tracker you get a tray notification
+icon showing a constant reminder of the current build status. Initially the
+tray icon will be grey until you point it at a Jenkins build server.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-2.png" alt="tray tracker 2" /></p>
+
+<ul>
+  <li>
+    <p>Right click on the tray icon to access the context menu.</p>
+  </li>
+  <li>
+    <p>Click Settings to configure the software.</p>
+  </li>
+</ul>
+
+<p><img src="/images/jenkins-net/ch08/tray-3.png" alt="tray tracker 3" /></p>
+
+<ul>
+  <li>Click the “Add server” button.</li>
+</ul>
+
+<p><img src="/images/jenkins-net/ch08/tray-4.png" alt="tray tracker 4" /></p>
+
+<ul>
+  <li>
+    <p>Enter the URL and port of your Jenkins server.</p>
+  </li>
+  <li>
+    <p>Click the “OK” button.</p>
+  </li>
+</ul>
+
+<p>You will now see a list of projects on the Jenkins server.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-5.png" alt="tray tracker 5" /></p>
+
+<p>Tick the Projects you would like to monitor. Here there is only our demo
+project but in reality you may have lots of Projects to monitor.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-6.png" alt="tray tracker 6" /></p>
+
+<p>Once you have a server and projects setup, the tray icon will turn green to
+indicate a good build. That is assuming you have a working build. When the
+build breaks the icon will turn red and show a build failed message.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-7.png" alt="tray tracker 7" /></p>
+
+<p>You can also use the software to open Jenkins on the build page of a Job by
+double clicking on the tray icon to open the list window.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-8.png" alt="tray tracker 8" /></p>
+
+<p>Then double click on the Job your interested in. In this case double clicking
+on the Demo line will open up Jenkins on the Demo job page.</p>
+
+<h3 id="the-teams-constant-reminder">The teams constant reminder</h3>
+
+<p>A large screen in the development room can be a great way to give everyone on
+the team a highly visible, constant reminder of the current build status.</p>
+
+<p>Jenkins has a Radiator View plugin that is designed specifically for this
+purpose.</p>
+
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin</a></p>
+
+<p><img src="/images/jenkins-net/ch08/team.png" alt="team" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></h1>
     
     
@@ -115,7 +299,7 @@
   <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
   <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li>Monitoring your build</li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
 </ol>
@@ -155,6 +339,9 @@ browser will help you see again.</p>
 
 <p>You now have only a few places to concentrate your efforts in that sea of
 information.</p>
+
+<p>To fix the problem we can simply add the missing dll and Jenkins will rebuild
+the solution and we’ll be back to green balls.</p>
 
 <p>Next time we’ll look at the different ways to monitor our build and it’s
 failures.</p>
@@ -203,7 +390,7 @@ failures.</p>
   <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
   <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li>Monitoring your build</li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
 </ol>
@@ -302,7 +489,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
   <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li>Monitoring your build</li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
 </ol>
@@ -408,7 +595,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
   <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li>Monitoring your build</li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
 </ol>
@@ -593,7 +780,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
   <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li>Monitoring your build</li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
 </ol>
@@ -682,7 +869,7 @@ and use any version of the .NET Framework.</p>
   <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
   <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li>Monitoring your build</li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
 </ol>
@@ -851,7 +1038,7 @@ healthy competition never did anyone any harm.</em></li>
   <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
   <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li>Monitoring your build</li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li>Running your tests</li>
   <li>Code Analysis</li>
 </ol>
@@ -1187,118 +1374,6 @@ Octopress is a go, go, go!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/08/18/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-18T17:04:35-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating my first plugin.</p>
-
-<h4 id="introduction">Introduction</h4>
-<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what’s not to like? Though I must confess I don’t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
-
-<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
-
-<h4 id="whats-da-big-idea">What’s da big idea</h4>
-<p>The idea for my first plugin is rather ambitious considering I’ve no idea how to write a plugin. I’d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
-
-<p>I’m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
-
-<h4 id="install-redcar">Install Redcar</h4>
-<p>I first followed the install instructions:</p>
-
-<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
-
-<p>All good no problems there (I’m running on a Mac OSX 10.7.1)</p>
-
-<h4 id="plugin-guides">Plugin Guides</h4>
-<p>I then read the plugin guides I found here:</p>
-
-<ul>
-  <li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
-  <li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
-</ul>
-
-<h4 id="pluginrb">Plugin.rb</h4>
-<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin’s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
-
-<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
-</span><span class="line">  <span class="no">RefreshBrowser</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
-
-<h4 id="browser-refresh-script">Browser refresh script</h4>
-<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
-
-<p>I managed to find a script to refresh the browser here:</p>
-
-<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
-
-<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
-
-<h4 id="storage">Storage</h4>
-<p>Redcar’s storage mechanism allows you to easily store configuration data into a yaml file.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">storage</span>
-</span><span class="line">  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@storage</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Here I am using this mechanism to store the ‘keyword’ used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It’s also possible to setup a nice edit page but for now this will do.</p>
-
-<h4 id="source">Source</h4>
-<p>You can find the source for this plugin here:</p>
-
-<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
-
-<h4 id="was-it-easy">Was it easy?</h4>
-<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I’ve spent more time fussing over this blog post than developing the plugin.</p>
-
-<p>So what you waiting for? Go give it a try!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1314,6 +1389,10 @@ Octopress is a go, go, go!</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
@@ -1327,10 +1406,6 @@ Octopress is a go, go, go!</p>
     
       <li class="post">
         <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
   </ul>

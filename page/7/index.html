@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="http://YOUR SERVER NAME:50000/irj/servlet/prt/portal/prtroot/com.sap.km.cm.docs/documents/ documents\portalResource\USER.R3_DATASOURCE.[user id]
-">
+  <meta name="description" content="Good write up of the TortoiseSVN ASP.NET Hack here Basically involves creating an environment variable SVN_ASP_DOT_NET_HACK with the value of 1. When &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +76,44 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/">Subversion, TortoiseSVN and the _SVN ASP.NET Hack</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-07T04:15:08-07:00" pubdate data-updated="true">Jun 7<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Good write up of the TortoiseSVN ASP.NET Hack <a href="http://www.codefez.com/Home/tabid/36/ctl/ArticleView/mid/364/articleId/191/Subversion-and-the-ASP-NET-Hack.aspx">here</a></p>
+
+<p>Basically involves creating an environment variable SVN_ASP_DOT_NET_HACK with the value of 1. When TortoiseSVN finds this variable it looks for _svn folder instead of .svn</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -545,60 +582,6 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/04/03/tagging-in-subversion/">Tagging in subversion</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-04-03T02:25:29-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>We have started tagging our source when releasing to QA/porduction which means we can easily roll back to an ealier verison of the code if a problem is found in production. Here’s how we do it using TortoiseSVN.</p>
-
-<p>First commit your source then open up the TortoiseSVN repository browser:</p>
-
-<p>Right click in a folder in windows to get a context menu then select TortoiseSVN =&gt; Repo-Browser.</p>
-
-<p>You should now see Repository browser:</p>
-
-<p><img src="http://justinram.files.wordpress.com/2006/04/repos.thumbnail.JPG" alt="Repository Browser" /></p>
-
-<p>Find the trunk of the project you wish to tag then right click on the trunk folder and select ‘Copy to…’ from the context menu.</p>
-
-<p>You will now see the Copy to… dialog:</p>
-
-<p><img src="http://justinram.files.wordpress.com/2006/04/copyto.thumbnail.JPG" alt="CopyTo" /></p>
-
-<p>Enter the path to your tagged copy, along the lines of svn://server/project/tags/Version2.00</p>
-
-<p>You now have tagged version of your project which you can revert to anytime.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -616,6 +599,10 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
@@ -629,10 +616,6 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
     
       <li class="post">
         <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
   </ul>

@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Monitoring your build - just ram</title>
+  <meta name="author" content="Justin Ramel">
+
+  
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://justinramel.com/2013/01/14/monitoring-your-build/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35853047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">just ram</a></h1>
+  
+    <h2>stuff I should remember</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:justinramel.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Monitoring your build</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T22:28:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li>Running your tests</li>
+  <li>Code Analysis</li>
+</ol>
+
+<hr />
+
+<p>Unless you’re a glutton for punishment manually checking Jenkins after every
+build is going to become very old very quickly. Luckily Jenkins has several
+notification mechanisms to save you this manual task.</p>
+
+<h3 id="email-notification">Email Notification</h3>
+
+<p>We can setup Jenkins to send an email notification whenever a build fails this
+save us having to check the server after every build, we can trust Jenkins to
+email us on failure. Jenkins will also send a notification email when the build
+returns to a working state.</p>
+
+<p>Setting up email notification is a two-step process. First we give Jenkins
+details of the email server and second we set which email addresses to notify
+upon failure of a build.</p>
+
+<h3 id="email-server-configuration">Email Server Configuration</h3>
+
+<p>Email server configuration is done via the Configure System page. You get to
+the configuration page from the main Jenkins home page Manage Jenkins »
+Configure System. At the bottom of this page is the E-mail Notification
+section.</p>
+
+<p><img src="/images/jenkins-net/ch08/email-setup.png" alt="email setup" /></p>
+
+<p>Chances are you’ll have a local SMTP server, if not you can use something like
+the Gmail SMTP server as shown here. Make sure you tick the “Test configuration
+by sending test e-mail” check box and then click the “Test Configuration”
+button to have Jenkins send you a test email, confirming your configuration is
+OK. Once you’ve successfully received an email don’t forget to click the “Save”
+button to save your changes.</p>
+
+<h3 id="project-notification-email">Project Notification Email</h3>
+
+<p>Once you have the email server configured you can specify per project who to
+notify when a build fails. This is accessed via each Jobs configuration page,
+for our Demo job we click Jenkins » Demo » Configure. At the bottom of this
+page under the Post-Build Actions section is the E-mail Notification area.</p>
+
+<p><img src="/images/jenkins-net/ch08/email-notification.png" alt="email notification" /></p>
+
+<ul>
+  <li>Tick the “E-mail Notification” checkbox.</li>
+  <li>Enter a space-separated list of email address to notify when a build fails.</li>
+  <li>Tick the “Send e-mail for every unstable build” checkbox.</li>
+</ul>
+
+<p>If you really want to annoy the person who broke the build you can send them
+another email by ticking the “Send separate e-mails to individuals who broke
+the build” checkbox.</p>
+
+<p>Finally don’t forget to click the “Save” button.</p>
+
+<p>Unfortunately the only way to test this is working is to break the build,
+follow the instructions in section 6. <a href="/2013/01/14/breaking-the-build/">Breaking the
+build</a> to test email notification is working.</p>
+
+<h3 id="your-constant-reminder">Your constant reminder</h3>
+
+<p>Email notification is great but I also like to have a constant reminder of the
+current build status. The best way I have found to do this on Windows is by
+using the Hudson Tray Tracker (read Jenkins Tray Tracker), which is available
+to download from
+<a href="http://code.google.com/p/hudson-tray-tracker/">http://code.google.com/p/hudson-tray-tracker/</a>.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-1.png" alt="tray tracker 1" /></p>
+
+<p>Once you download and install Hudson Tray Tracker you get a tray notification
+icon showing a constant reminder of the current build status. Initially the
+tray icon will be grey until you point it at a Jenkins build server.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-2.png" alt="tray tracker 2" /></p>
+
+<ul>
+  <li>
+    <p>Right click on the tray icon to access the context menu.</p>
+  </li>
+  <li>
+    <p>Click Settings to configure the software.</p>
+  </li>
+</ul>
+
+<p><img src="/images/jenkins-net/ch08/tray-3.png" alt="tray tracker 3" /></p>
+
+<ul>
+  <li>Click the “Add server” button.</li>
+</ul>
+
+<p><img src="/images/jenkins-net/ch08/tray-4.png" alt="tray tracker 4" /></p>
+
+<ul>
+  <li>
+    <p>Enter the URL and port of your Jenkins server.</p>
+  </li>
+  <li>
+    <p>Click the “OK” button.</p>
+  </li>
+</ul>
+
+<p>You will now see a list of projects on the Jenkins server.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-5.png" alt="tray tracker 5" /></p>
+
+<p>Tick the Projects you would like to monitor. Here there is only our demo
+project but in reality you may have lots of Projects to monitor.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-6.png" alt="tray tracker 6" /></p>
+
+<p>Once you have a server and projects setup, the tray icon will turn green to
+indicate a good build. That is assuming you have a working build. When the
+build breaks the icon will turn red and show a build failed message.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-7.png" alt="tray tracker 7" /></p>
+
+<p>You can also use the software to open Jenkins on the build page of a Job by
+double clicking on the tray icon to open the list window.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-8.png" alt="tray tracker 8" /></p>
+
+<p>Then double click on the Job your interested in. In this case double clicking
+on the Demo line will open up Jenkins on the Demo job page.</p>
+
+<h3 id="the-teams-constant-reminder">The teams constant reminder</h3>
+
+<p>A large screen in the development room can be a great way to give everyone on
+the team a highly visible, constant reminder of the current build status.</p>
+
+<p>Jenkins has a Radiator View plugin that is designed specifically for this
+purpose.</p>
+
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin</a></p>
+
+<p><img src="/images/jenkins-net/ch08/team.png" alt="team" /></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Justin Ramel</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T22:28:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='//categories/-net/'>.net</a>, <a class='category' href='//categories/jenkins/'>jenkins</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2013/01/14/monitoring-your-build/" data-via="justinramel" data-counturl="http://justinramel.com/2013/01/14/monitoring-your-build/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/01/14/diagnosing-and-fixing-a-broken-build/" title="Previous Post: Diagnosing and fixing a broken build">&laquo; Diagnosing and fixing a broken build</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/justinramel">@justinramel</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'justinramel',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Strava</h1>
+  <br />
+  <iframe height='160' width='272' frameborder='0' allowtransparency='true' scrolling='no' src='http://app.strava.com/athletes/1108047/activity-summary/38bbd39fbf5da9f3bf5e3845fb2f4592704e5de4'></iframe>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("justinramel", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/justinramel" class="twitter-follow-button" data-show-count="false">Follow @justinramel</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:njr11">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "njr11"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108885363809433432894?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Justin Ramel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'justinramel';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://justinramel.com/2013/01/14/monitoring-your-build/';
+        var disqus_url = 'http://justinramel.com/2013/01/14/monitoring-your-build/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

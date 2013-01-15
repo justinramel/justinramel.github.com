@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Buggy code, me? Never! If you have a problem with buggy code though your in luck ruby has a debugger baked in: Simply run ruby with the debug flag: &hellip;">
+  <meta name="description" content="We have started tagging our source when releasing to QA/porduction which means we can easily roll back to an ealier verison of the code if a problem &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/04/03/tagging-in-subversion/">Tagging in subversion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-04-03T02:25:29-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>We have started tagging our source when releasing to QA/porduction which means we can easily roll back to an ealier verison of the code if a problem is found in production. Here’s how we do it using TortoiseSVN.</p>
+
+<p>First commit your source then open up the TortoiseSVN repository browser:</p>
+
+<p>Right click in a folder in windows to get a context menu then select TortoiseSVN =&gt; Repo-Browser.</p>
+
+<p>You should now see Repository browser:</p>
+
+<p><img src="http://justinram.files.wordpress.com/2006/04/repos.thumbnail.JPG" alt="Repository Browser" /></p>
+
+<p>Find the trunk of the project you wish to tag then right click on the trunk folder and select ‘Copy to…’ from the context menu.</p>
+
+<p>You will now see the Copy to… dialog:</p>
+
+<p><img src="http://justinram.files.wordpress.com/2006/04/copyto.thumbnail.JPG" alt="CopyTo" /></p>
+
+<p>Enter the path to your tagged copy, along the lines of svn://server/project/tags/Version2.00</p>
+
+<p>You now have tagged version of your project which you can revert to anytime.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -536,82 +590,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/02/28/functionally-testing-sap-enterprise-portal-using-watir/">Functionally testing SAP Enterprise Portal using Watir</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-02-28T04:57:00-08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It’s taken about a day but I’ve managed to get some functional tests running using Watir. It’s not been as easy as it could have been mainly due to the way the SAP Enterprise Portal uses iFrames and the anti cross site scripting in Internet Explorer. I got there in the end though! I can now logon to the portal and functionally test iViews using a fairly simple Watir (Ruby) script:</p>
-
-<pre><code>&lt;code&gt;def logon
-$ie.goto($html_root)
-
-if $ie.contains_text("Log Off")
-logoff()
-end
-
-$ie.text_field(:id, 'logonuidfield').set($user_id)
-$ie.text_field(:id, 'logonpassfield').set($password)
-$ie.button(:name, 'uidPasswordLogon').click
-end&lt;/code&gt;
-</code></pre>
-
-<p>A couple of things to note:</p>
-
-<p><strong>Talk to the iView directly</strong>
-Due to the use of iFrames and IE anti cross site scripting accessing an iView which is embedded in a portal page is not possible with the current (1.4.1) version of Watir.  Simply get the url of the iView and access it directly.</p>
-
-<p><strong>Problem with HTMLB Text Fields</strong>
-ID’s and Names of HTMLB Text Field controls appear to be generated on execution, so I had to write a little script which would find a text field using the title property:</p>
-
-<pre><code>&lt;code&gt;def find_text_field_by_title(my_title)
-found_text_field = nil
-
-$ie.text_fields.each do |tf|
-if tf.title == my_title then
-found_text_field = tf
-break
-end
-end
-
-raise "No text field found with title = " +
-my_title if found_text_field.nil?
-
-return found_text_field
-end&lt;/code&gt;
-</code></pre>
-
-<p><strong>NOTE: I’m sure my Ruby/Watir scripts leave a lot to be desired, I don’t really know who to code in Ruby but they do seem to work!</strong></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/9/">&larr; Older</a>
@@ -629,6 +607,10 @@ end&lt;/code&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
@@ -642,10 +624,6 @@ end&lt;/code&gt;
     
       <li class="post">
         <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a>
       </li>
     
   </ul>
