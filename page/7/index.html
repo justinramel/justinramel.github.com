@@ -9,10 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’m using the recommended view engine NVelocity. The following objects are available to the view code:
-• context (IRailsEngineContext)
-• request
-• &hellip;">
+  <meta name="description" content="I’ve decided to move my “toy” MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +76,101 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/06/29/monorail-e28093-moving-from-beta5-to-latest-build/">Castle Monorail – Moving from Beta5 to latest build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-29T06:34:23-07:00" pubdate data-updated="true">Jun 29<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve decided to move my “toy” MonoRail project from the Beta 5 version to the latest build so I can have a play with the new features. Mostly Formhelper!</p>
+
+<p>Moving to the latest build broke a few things in my solution:</p>
+
+<h3 id="the-build">The Build</h3>
+
+<p><strong>Nunit framework</strong></p>
+
+<p>My web test project was using Nunit version 2.2.0.0. Which is used by Castle.MonoRail.TestSupport I believe although don’t quote me on that I could be wrong. Any who it now requires the latest version of the nunit.framework.dll (2.2.8.0). I change the reference and all was well.</p>
+
+<p><strong>DataBindAttribute</strong>
+Next up was the DataBindAttribute which appears to have changs slightly. I did have:</p>
+
+<p><code>public void LoginSubmit([DataBind(Prefix = "student")] Student student)</code></p>
+
+<p>It appears the <strong>Prefix</strong> parameter is now explicit, a simple change:</p>
+
+<p><code>public void LoginSubmit([DataBind("student")] Student student)</code></p>
+
+<h3 id="the-tests">The Tests</h3>
+
+<p>Ok now my solution builds but all of my ActiveRecord unit tests fail. I get the following error:</p>
+
+<p><code>TestFixture failed: You can't invoke ActiveRecordStarter.Initialize more than once</code></p>
+
+<p>Turns out to be a problem in the InitFramework method of my AbstractModelTestCase class. Initalialze is being called twice:</p>
+
+<p>`protected virtual void InitFramework()
+{
+  IConfigurationSource source = ConfigurationManager.GetSection(“activerecord”) as IConfigurationSource;</p>
+
+<p>ActiveRecordStarter.Initialize(source);</p>
+
+<p>ActiveRecordStarter.Initialize( source, typeof(Student), typeof(LoginAudit) );
+}`</p>
+
+<p>I guess there is now no need for the first <strong>ActiveRecordStarter.Initialize(source);</strong> call so I remove it and all is well!</p>
+
+<h3 id="the-run">The Run</h3>
+
+<p>Ok now my solution builds and passes the test but all is not well at run time I get the following error:</p>
+
+<p><code>Looks like you forgot to register the http module Castle.MonoRail.Framework.EngineContextModule
+Add '&lt;add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" /&gt;' to the &lt;httpModules&gt; section on your web.config</code></p>
+
+<p>This is a breaking change mentioned in the release notes and you must update your web.config. But don’t get your httpModules and your httpHandlers mixed up as I did. Simply add the httpModules to your web.config:</p>
+
+<p>`<system.web /></p>
+<httphandlers>
+		<add verb="*" path="*.aspx" type="Castle.MonoRail.Framework.MonoRailHttpHandlerFactory, Castle.MonoRail.Framework" />
+  </httphandlers>
+<httpmodules>
+		<add name="monorail" type="Castle.MonoRail.Framework.EngineContextModule, Castle.MonoRail.Framework" />
+	</httpmodules>
+<p>&lt;/system.web&gt;
+`</p>
+
+<h3 id="the-end">The End</h3>
+
+<p>That’s it we’re down! Now I get to play with the latest version.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -555,46 +647,6 @@ If you want to compare two revisions in a file’s history, for example revision
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/04/04/migrations-zombie-state-and-ms-sql/">Migrations &#8216;Zombie State&#8217; and MS SQL</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-04-04T06:28:44-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
-
-<pre><code>ActiveRecord::Base.connection.instance_variable_get("@connection")["AutoCommit"] = false
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -612,6 +664,10 @@ If you want to compare two revisions in a file’s history, for example revision
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/security/">Security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
@@ -625,10 +681,6 @@ If you want to compare two revisions in a file’s history, for example revision
     
       <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
   </ul>

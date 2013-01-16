@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="**
-UPDATE:** Please read Guu’s comment below for a far better solution to this problem! I’ve been using the jQuery Validation Plugin and needed to &hellip;">
+  <meta name="description" content="The latest Alpha version of nServiceBus uses the TopShelf project as part of its new hosting feature. This new Host feature makes it super easy to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +76,200 @@ UPDATE:** Please read Guu’s comment below for a far better solution to this pr
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/08/03/how-the-new-host-feature-works-in-nservicebus/">How the new Host feature works in nServiceBus</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-03T10:02:24-07:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The latest <em>Alpha</em> version of <a href="http://www.nservicebus.com/">nServiceBus</a> uses the <a href="http://code.google.com/p/topshelf/">TopShelf</a> project as part of its new hosting feature. This new Host feature makes it super easy to setup a console/windows service for your clients/servers. So here’s how <em>I think</em> it works and what you can do with it…</p>
+
+<h2 id="get-nservicebus">Get nServiceBus</h2>
+
+<p>First you’ll need to get the latest build which includes the new Host feature either:</p>
+
+<ul>
+  <li>
+    <p>Check out the source and build it yourself from the <a href="http://subversion.tigris.org/">subversion</a> repository:       <br />
+<a href="https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/">https://nservicebus.svn.sourceforge.net/svnroot/nservicebus/trunk/</a>       <br />
+OR </p>
+  </li>
+  <li>
+    <p>Download a demo solution I hacked out of the nServiceBus samples (FullDuplex/RequestResponse): <a href="http://cid-d7d57b78b0ddedf5.skydrive.live.com/browse.aspx/.Public/blog/nServiceBus">nServiceBus Host Demo</a></p>
+  </li>
+</ul>
+
+<p>Either way take a look at the FullDuplex/RequestResponse sample project which consists of a Client, Server and Messages project:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb.png" alt="image" /></a></p>
+
+<h2 id="run-the-sample">Run the sample</h2>
+
+<p><strong>Note:</strong> To get the Server to run successfully in my demo solution I had to change the app.config slightly by replacing the UnicastBusConfig setting with:</p>
+
+<unicastbusconfig distributorcontroladdress="" distributordataaddress="">      
+<messageendpointmappings>       
+</messageendpointmappings>       
+</unicastbusconfig>
+
+<p>Ok simply hit F5 to run the sample and two console windows should appear one for the Client and one for the Server:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image1.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb1.png" alt="image" /></a></p>
+
+<p>So everything is running ok our Client can send messages to the Server and receive a response. But what’s just happened? </p>
+
+<h2 id="multiple-startup-projects">Multiple startup projects</h2>
+
+<p>First the solution is set to start both the Client and the Server projects. This is set in the solution property pages you can view this setting by right clicking on the solution and selecting Set St_a_rtUp Projects…</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image2.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb2.png" alt="image" /></a></p>
+
+<p>As you can see the solution is set to start multiple projects namely the Client and the Server.</p>
+
+<p>Now the Server and Client projects are both Class Library’s so how come they are running as console apps when we F5 (debug) the solution? </p>
+
+<h2 id="debug-settings">Debug settings</h2>
+
+<p>If we take a look at the Debug settings for the Client (Right click the Client project and select P_r_operties, then Debug from the tab):</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image3.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb3.png" alt="image" /></a></p>
+
+<p>Notice the Start Action is set to Start e_x_ternal program NServiceBus.Host.exe from the Client projects debug\bin directory. When we hit F5 to debug the application visual studio runs this exe and that’s how we get the console windows. </p>
+
+<h2 id="reference-nservicebushostexe">Reference NServiceBus.Host.exe</h2>
+
+<p>NServiceBus.Host.exe ends up in the debug\bin because its referenced by the project for example in the Client:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image4.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb4.png" alt="image" /></a></p>
+
+<p>But how does it know where to get its configuration?</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>NServiceBus.Host.exe scans its current directory for any dlls. For each dll it finds it searches for a class which implements the interface IConfigureThisEndpoint. If the search is successful the Host knows to use the app.config for this dll so in the case of the Client – Client.dll.config is used to configure nServiceBus. </p>
+
+<h2 id="client">Client</h2>
+
+<p>If we take a look at the Client project we’ll find the class EndpointConfig which implements the IConfigureThisEndpoint. This is simply a marker interface which has no actual implementation. Notice there are other interfaces used to configure the client which do require implementations:</p>
+
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br />
+As.aClient, <br />
+ISpecify.ToUseXmlSerialization,     <br />
+ISpecify.XmlSerializationNamespace,     <br />
+IWantCustomInitialization,     <br />
+ISpecify.ToRun<clientendpoint>       
+{       
+public string Namespace       
+{       
+get { return &#8220;[http://www.UdiDahan.com&#8221;;](http://www.UdiDahan.com&#8221;;) }       
+} </clientendpoint></p>
+
+<p>public void Init(Configure configure)    <br />
+{     <br />
+configure.RijndaelEncryptionService();     <br />
+}     <br />
+} </p>
+
+<p>Of particular interest, the interface used to configure the dll as a client (As.aClient) and another to specify which code to actually run (ISpecify.ToRun<clientendpoint>). The ClientEndPoint class contains the code which is runs when the Host starts and stops.</clientendpoint></p>
+
+<p>Note there are lots more interfaces which can be used to specify configuration options:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image5.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb5.png" alt="image" /></a></p>
+
+<h2 id="server">Server</h2>
+
+<p>The Server project works in pretty much the same way as the Client it has an EndpointConfig class:</p>
+
+<p>public class EndpointConfig:IConfigureThisEndpoint,    <br />
+As.aServer,     <br />
+ISpecify.ToUseXmlSerialization,       </p>
+
+<p>ISpecify.XmlSerializationNamespace,     <br />
+IWantCustomInitialization     <br />
+{     <br />
+public string Namespace     <br />
+{     <br />
+get { return “<a href="http://www.UdiDahan.com&quot;;">http://www.UdiDahan.com”;</a> }     <br />
+} </p>
+
+<p>public void Init(Configure configure)    <br />
+{     <br />
+configure.RijndaelEncryptionService();     <br />
+}     <br />
+} </p>
+
+<p>Here the interfaces are used to configure the dll as a server (As.aServer) and IWantCustomInitialization which allows you to specify additional configuration via the Init method. The Server project also contains the RequestDataMessageHandler class which the bus knows to use when a RequestDataMessage arrives.</p>
+
+<p>All this makes it very easy to create Client and Server applications for nServiceBus which are a doddle to debug in visual studio.</p>
+
+<p>But wait there’s more…</p>
+
+<h2 id="run-from-console">Run from console</h2>
+
+<p>You can run the Client or Server from outside Visual Studio from the command line. Open a command prompt, cd to the relevant bin folder and type: </p>
+
+<p>NServiceBus.Host.exe</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image6.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb6.png" alt="image" /></a></p>
+
+<h2 id="install-as-a-windows-service">Install as a Windows Service</h2>
+
+<p>We can install the Server as a Windows Service no extra code or configuration required! Open a command prompt, cd to the relevant bin folder and type:</p>
+
+<p>NServiceBus.Host.exe /install</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image7.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb7.png" alt="image" /></a></p>
+
+<p>You’ll then be prompted to supply some authentication details for the service:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image8.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb8.png" alt="image" /></a></p>
+
+<p>Enter some relevant user details and hit ok and your service will be installed and ready to start:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image11.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb11.png" alt="image" /></a></p>
+
+<h2 id="uninstall-service">Uninstall service</h2>
+
+<p>Finally you can also uninstall the service:</p>
+
+<p>NServiceBus.Host.exe /uninstall</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/08/image10.png"><img src="http://justinram.files.wordpress.com/2009/08/image_thumb10.png" alt="image" /></a></p>
+
+<p><strong>Note:</strong> The service will not disappear from this Services management console until you reboot your machine, this is standard for a windows service.</p>
+
+<p>That’s as much as I have puzzled out for now, if I’ve made and glaring errors please let me know.</p>
+
+<p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fjustinram.wordpress.com%2f2009%2f08%2f03%2fhow-the-new-host-feature-works-in-nservicebus%2f&amp;bgcolor=FF3300" alt="kick it on DotNetKicks.com" /></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -990,144 +1183,6 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/01/09/monorail-custom-rescue-controller-irescuecontroller/">MonoRail custom rescue controller (IRescueController)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-09T06:28:01-08:00" pubdate data-updated="true">Jan 9<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5 id="the-problem">The problem</h5>
-
-<p>I am calling a web service from a controller and the web service throws a WebException with different exception messages, one when the remote server is unavailable and another when the remote server times out. I’d like to show a rescue view based on the exception type <strong>and</strong> message not just it’s type.</p>
-
-<p>The standard Monorail Rescue attribute only takes an exception type so there didn’t seem to be an easy way to solve my problem. I could have a generic rescue view which shows an error for all WebExceptions but I’d like to be a bit more specific. I could send all WebExceptions to the same rescue view and then handle the different messages in the view but I didn’t want the logic in my rescue view. </p>
-
-<p>I noticed in the trunk (revision 5407) the Rescue attribute takes a rescue controller which I’d never seen before. I started digging around the web and source and came up with the following solution which works although I not sure its the best solution!</p>
-
-<h5 id="my-solution">My solution</h5>
-
-<p>I changed my base controller to use a rescue controller instead of rescue views:</p>
-
-<pre><code>[Rescue(typeof(RescueController))]
-public class ApplicationController : SmartDispatcherController
-</code></pre>
-
-<p>I then created a RescueController:</p>
-
-<pre><code>[Layout("default")]
-public class RescueController : SmartDispatcherController, IRescueController
-{
-	public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
-	{
-		SetRescueView("generalerror");
-		if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "Unable to connect to the remote server") SetRescueView("webexception_cannot_connect");
-		if (exception.GetType() == typeof(WebException) &amp;&amp; exception.Message == "The operation has timed out") SetRescueView("webexception_portal_timeout");
-
-	}
-
-	private void SetRescueView(string viewname)
-	{
-		RenderSharedView(Path.Combine("rescues", viewname));
-	}
-}
-</code></pre>
-
-<p>The Rescue method simply checks the exception type and message and if it gets a match it sets the relevant rescue view. Notice I’m using a little helper method to set the rescue view this tells Monorail look in the standard folder Views\rescues for the view otherwise it would be looking for these views in Views\Rescue which could get confusing.</p>
-
-<h5 id="gotchas">Gotchas!</h5>
-
-<ul>
-  <li>
-    <p>Make sure your custom rescue controller inherits from SmartDispatcherController otherwise your custom controller will not get called. See Castle Project Users list for <a href="http://groups.google.co.uk/group/castle-project-users/browse_thread/thread/caab15edb9714ccc/5d8e5a96c309b42e">more detail</a></p>
-  </li>
-  <li>
-    <p>Add the Layout attribute to the Rescue controller if you want to use your standard layout on the rescue pages.</p>
-  </li>
-  <li>
-    <p>If your using the Windsor container remember to add the Rescue controller to your container otherwise your custom rescue controller will not be found and called. This one had me scratching my head for a while!</p>
-  </li>
-  <li>
-    <p>Make sure your rescue views exist in the Views\rescues folder otherwise you will get the standard ASP.NET error page and it will look like none of this has worked.</p>
-  </li>
-  <li>
-    <p>This works with the trunk (revision 5407) not sure when the IRescueController functionality was added so it may not work with earlier revisions.</p>
-  </li>
-</ul>
-
-<h5 id="a-better-solution">A better solution?</h5>
-
-<p>I thought a better solution would be to add a sub string message to the Rescue attribute which could be used to match the exception type and message. E.g:</p>
-
-<pre><code>Rescue("web_exception_unable_to_connect", typeof(WebException), "Unable to connect to remote server")
-Rescue("web_exception_timeout", typeof(WebException), "The operation has timed out")
-</code></pre>
-
-<p>I couldn’t see an easy way to extend the standard Monorail rescue functionality so I ended up creating a builder which allowed me to define a map of exceptions to rescue views.</p>
-
-<pre><code>builder.Map&lt;WebException&gt;()
-	.WithMessageContaining("Unable to connect to the remote server")
-	.OrMessageContaining("The remote server returned an error: (403) Forbidden.")
-	.ToRescue("webexception_cannot_connect");
-
-builder.Map&lt;WebException&gt;()
-	.WithMessageContaining("The operation has timed out")
-	.ToRescue("webexception_portal_timeout");
-</code></pre>
-
-<p>My final rescue controller simply uses the map to select the correct rescue view, no more if statements needed.</p>
-
-<pre><code>[Layout("default")]
-public class RescueController : SmartDispatcherController, IRescueController
-{
-	private readonly IExceptionToRescueMapper _mapper;
-
-	public RescueController(IExceptionToRescueMapper mapper)
-	{
-		_mapper = mapper;
-	}
-
-	public void Rescue(Exception exception, IController controller, IControllerContext controllerContext)
-	{
-		SetRescueView(_mapper.GetRescueFor(exception));
-	}
-
-	private void SetRescueView(string viewname)
-	{
-		RenderSharedView(Path.Combine("rescues", viewname));
-	}
-}
-</code></pre>
-
-<p>If you know of a better way I’d love to hear it…</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/5/">&larr; Older</a>
@@ -1145,6 +1200,10 @@ public class RescueController : SmartDispatcherController, IRescueController
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/security/">Security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
@@ -1158,10 +1217,6 @@ public class RescueController : SmartDispatcherController, IRescueController
     
       <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
   </ul>

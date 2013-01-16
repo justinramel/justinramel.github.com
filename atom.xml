@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T22:03:26-08:00</updated>
+  <updated>2013-01-15T22:48:49-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,123 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Security]]></title>
+    <link href="http://justinramel.com/2013/01/15/security/"/>
+    <updated>2013-01-15T22:06:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+</ol>
+
+<hr />
+
+<p>By default Jenkins is wide open to anyone who stumbles across your web server,
+depending on your circumstances you may want to enable Jenkins security and
+force developers and even guests to login.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Jenkins security is configured from the main Jenkins configuration page which
+is accessed via Jenkins » Manage Jenkins » Configure System.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-1.png" alt="security 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-2.png" alt="security 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Jenkins’s own
+user database” radio button.</p>
+
+<p>Un-tick the “Allow users to sign up” check box otherwise anyone hitting the
+site will be able to sign up for an account (if your enabling security my guess
+is you don’t want that).</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-3.png" alt="security 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button. This option will give you the most flexibility over the security for
+Jenkins. I usually give Anonymous users Read access that allows me to share the
+build information with managers and stake holders if they are interested.  As I
+trust my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<h3 id="add-administrator">Add Administrator</h3>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<h3 id="first-user-sign-up">First user sign up</h3>
+
+<p>If this is the first time you’ve setup a user on the server Jenkins will
+immediately ask for your user credentials.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-4.png" alt="security 4" /></p>
+
+<ul>
+  <li>Enter your user credentials.</li>
+  <li>Click the “Sign up” button.</li>
+</ul>
+
+<p>You should see a success message from Jenkins saying you are now logged in.</p>
+
+<h3 id="adding-users">Adding Users</h3>
+
+<p>You’ll want to add more users to the servers this is done via the Manage Users
+page. You can access this page via Jenkins » Manage Jenkins » Manage Users.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-5.png" alt="security 5" /></p>
+
+<h3 id="create-user">Create User</h3>
+
+<p>Click the Create User link to add another user.</p>
+
+<p>You will now see the Sign up page.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-6.png" alt="security 6" /></p>
+
+<p>Enter the credentials for the new user. Make sure you remember the username, as
+you’ll probably want to give the new user more than read only access to the
+server.</p>
+
+<h3 id="authorization-1">Authorization</h3>
+
+<p>After creating the user you’ll want to give them an authorization level. This
+is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-7.png" alt="security 7" /></p>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Code analysis]]></title>
@@ -31,6 +148,7 @@
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -166,6 +284,7 @@ graph.</p>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -316,6 +435,7 @@ to see in our projects.</p>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -473,6 +593,7 @@ purpose.</p>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -537,6 +658,7 @@ failures.</p>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -609,6 +731,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -688,6 +811,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -846,6 +970,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -908,6 +1033,7 @@ and use any version of the .NET Framework.</p>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -1050,6 +1176,7 @@ healthy competition never did anyone any harm.</em></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -1641,38 +1768,6 @@ git clone git@yourserver.com:myrepo
 <p>Generate the rspec files:</p>
 
 <p>rails g rspec:install</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
-    <link href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-method/"/>
-    <updated>2010-12-30T17:32:57-08:00</updated>
-    <id>http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-method</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4 id="extract-method">Extract Method</h4>
-
-<p>Extracts a selection into a method and places it above the current method.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/extractMethod.html">http://www.refactoring.com/catalog/extractMethod.html</a></p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br />
-Visually select lines you wish to extract    <br />
-Hit your **<leader-key>** then type **rem       
-**You will now see a prompt to enter the new method name:   
-Method name: print_details</leader-key></p>
-
-<p>After refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br />
-A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
-
-<p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
 ]]></content>
   </entry>
   

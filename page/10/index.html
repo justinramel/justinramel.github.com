@@ -9,9 +9,10 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Want to tell if your iView is running over HTTP or HTTPS? Try this: WARNING: Untested code ahead!
-`
-HttpServletRequest servletRequest = &hellip;">
+  <meta name="description" content="NOTE: You must have TortoiseSVN installed for these instructions to work! First create your Project folder structure: ProjectName
+branches
+tags
+trunk &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +79,61 @@ HttpServletRequest servletRequest = &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp/">Add a new project to Subversion server in Windows XP</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-22T04:12:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>NOTE: You must have <a href="http://tortoisesvn.tigris.org/">TortoiseSVN</a> installed for these instructions to work!</p>
+
+<p>First create your Project folder structure:</p>
+
+<pre><code>ProjectName
+branches
+tags
+trunk
+</code></pre>
+
+<p>Place your source in the trunk folder.</p>
+
+<p>In windows explorer right click on ProjectName folder and select TortiseSVN -&gt; Import from the menu.</p>
+
+<p>You will now see the import screen:</p>
+
+<p><a href="http://photos1.blogger.com/blogger/752/2322/1600/svnimport.jpg"><img src="http://photos1.blogger.com/blogger/752/2322/320/svnimport.jpg" alt="" /></a>
+Enter the repository/ProjectName an import message and click OK.</p>
+
+<p>You have now created the project in Subversion but you must still check out the source you just imported.  This can be done via TortoiseSVN or directly in eclipse using the <a href="http://subclipse.tigris.org/">subclipse</a> add in.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -237,6 +293,10 @@ else
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/security/">Security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
@@ -250,10 +310,6 @@ else
     
       <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
   </ul>

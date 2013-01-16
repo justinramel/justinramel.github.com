@@ -82,6 +82,150 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/01/15/security/">Security</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T22:06:00-08:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+</ol>
+
+<hr />
+
+<p>By default Jenkins is wide open to anyone who stumbles across your web server,
+depending on your circumstances you may want to enable Jenkins security and
+force developers and even guests to login.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Jenkins security is configured from the main Jenkins configuration page which
+is accessed via Jenkins » Manage Jenkins » Configure System.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-1.png" alt="security 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="/images/jenkins-net/ch11/security-2.png" alt="security 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Jenkins’s own
+user database” radio button.</p>
+
+<p>Un-tick the “Allow users to sign up” check box otherwise anyone hitting the
+site will be able to sign up for an account (if your enabling security my guess
+is you don’t want that).</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch11/security-3.png" alt="security 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button. This option will give you the most flexibility over the security for
+Jenkins. I usually give Anonymous users Read access that allows me to share the
+build information with managers and stake holders if they are interested.  As I
+trust my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<h3 id="add-administrator">Add Administrator</h3>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<h3 id="first-user-sign-up">First user sign up</h3>
+
+<p>If this is the first time you’ve setup a user on the server Jenkins will
+immediately ask for your user credentials.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-4.png" alt="security 4" /></p>
+
+<ul>
+  <li>Enter your user credentials.</li>
+  <li>Click the “Sign up” button.</li>
+</ul>
+
+<p>You should see a success message from Jenkins saying you are now logged in.</p>
+
+<h3 id="adding-users">Adding Users</h3>
+
+<p>You’ll want to add more users to the servers this is done via the Manage Users
+page. You can access this page via Jenkins » Manage Jenkins » Manage Users.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-5.png" alt="security 5" /></p>
+
+<h3 id="create-user">Create User</h3>
+
+<p>Click the Create User link to add another user.</p>
+
+<p>You will now see the Sign up page.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-6.png" alt="security 6" /></p>
+
+<p>Enter the credentials for the new user. Make sure you remember the username, as
+you’ll probably want to give the new user more than read only access to the
+server.</p>
+
+<h3 id="authorization-1">Authorization</h3>
+
+<p>After creating the user you’ll want to give them an authorization level. This
+is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-7.png" alt="security 7" /></p>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/01/15/code-analysis/">Code analysis</a></h1>
     
     
@@ -118,6 +262,7 @@
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -280,6 +425,7 @@ graph.</p>
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -457,6 +603,7 @@ to see in our projects.</p>
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -641,6 +788,7 @@ purpose.</p>
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -732,6 +880,7 @@ failures.</p>
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -831,6 +980,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -937,6 +1087,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -1122,6 +1273,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -1211,6 +1363,7 @@ and use any version of the .NET Framework.</p>
   <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
 </ol>
 
 <hr />
@@ -1339,171 +1492,6 @@ healthy competition never did anyone any harm.</em></li>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-17T21:58:00-07:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-</ol>
-
-<hr />
-
-<h2 id="introduction">Introduction</h2>
-
-<p>This is the first in a series of posts which I’ll be writing on using Jenkins
-to build .NET solutions. These posts will be as detailed as possible, probably
-too detailed in places.</p>
-
-<h2 id="installing-jenkins">Installing Jenkins</h2>
-
-<blockquote>
-  <p><strong>NOTE:</strong> Jenkins used to be known as ‘Hudson’ but when Oracle bought Sun there
-was a fall out between the then ‘Hudson’ developers and Oracle so they decided
-to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p>
-</blockquote>
-
-<p>I’m going to install and setup Jenkins on a freshly minted Windows 7 virtual
-machine although this process should work fine on other versions of Windows.</p>
-
-<p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
-
-<p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
-
-<h3 id="download">Download</h3>
-
-<p>Rather than the generic .war file we’ll download the Windows native package,
-which saves as a few steps during installation. The latest windows package is
-available here:</p>
-
-<p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
-
-<p>I’m using Internet Explorer here, which by default blocks the installer from
-downloading. Notice the warning message shown at the top of the browser
-window.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
-
-<p>Click the message bar to get the download options context menu.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
-
-<p>Select the Download File… menu option. You will now see the File Download
-dialog.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
-
-<p>Click the Save button to download the installation zip file to your download
-folder. You will now see the Save As dialog again click the Save button to
-actually download the file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
-
-<p>In a short while you will see the Download complete dialog. Click the Open
-button to open the zipped installation file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
-
-<p>Internet Explorer Security may kick in and ask if you want to allow this
-operation. Click the Allow button to open the zip file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
-
-<p>Once the zip file is open, Click Extract all files from the menu.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
-
-<p>You will now see the Extract zip file dialog, Click the Extract button to
-extract the files to the default location.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
-
-<p>Phew! That’s the download complete.</p>
-
-<h3 id="setup">Setup</h3>
-
-<p>Finally we can run the Setup program. Double click setup to run the program.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
-
-<p>Windows will show a Security Warning to make sure you trust the publisher of
-this software. Click Run to begin the installation.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
-
-<p>You will now see the Jenkins installation wizard. Click the Next button.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
-
-<p>The wizard allows you to change the installation folder. Click Next to accept
-the default folder.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
-
-<p>You are now at the final page of the setup wizard. Click the Install button
-and the installation will begin.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
-
-<p>On Windows 7 the User Account Control may kick in to ask permission to run the
-installation. Click the Yes button to continue.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
-
-<p>The installation wizard will now copy Jenkins onto your machine and display a
-message upon completion. Click the Finish button.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
-
-<p>The install wizard will now open the Jenkins web page.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
-
-<p>Congratulation Jenkins is now installed on your machine!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1519,6 +1507,10 @@ message upon completion. Click the Finish button.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/security/">Security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
@@ -1532,10 +1524,6 @@ message upon completion. Click the Finish button.</p>
     
       <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
   </ul>

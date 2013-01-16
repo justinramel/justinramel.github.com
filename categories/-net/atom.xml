@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .net | just ram]]></title>
   <link href="http://justinramel.com//categories/-net/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T22:03:26-08:00</updated>
+  <updated>2013-01-15T22:48:49-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,122 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Security]]></title>
+    <link href="http://justinramel.com/2013/01/15/security/"/>
+    <updated>2013-01-15T22:06:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+11. [Security](/2013/01/15/security/)
+
+---
+</p>
+
+<p>By default Jenkins is wide open to anyone who stumbles across your web server,
+depending on your circumstances you may want to enable Jenkins security and
+force developers and even guests to login.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Jenkins security is configured from the main Jenkins configuration page which
+is accessed via Jenkins » Manage Jenkins » Configure System.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-1.png" alt="security 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="/images/jenkins-net/ch11/security-2.png" alt="security 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Jenkins’s own
+user database” radio button.</p>
+
+<p>Un-tick the “Allow users to sign up” check box otherwise anyone hitting the
+site will be able to sign up for an account (if your enabling security my guess
+is you don’t want that).</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch11/security-3.png" alt="security 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button. This option will give you the most flexibility over the security for
+Jenkins. I usually give Anonymous users Read access that allows me to share the
+build information with managers and stake holders if they are interested.  As I
+trust my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<h3 id="add-administrator">Add Administrator</h3>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<h3 id="first-user-sign-up">First user sign up</h3>
+
+<p>If this is the first time you’ve setup a user on the server Jenkins will
+immediately ask for your user credentials.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-4.png" alt="security 4" /></p>
+
+<ul>
+  <li>Enter your user credentials.</li>
+  <li>Click the “Sign up” button.</li>
+</ul>
+
+<p>You should see a success message from Jenkins saying you are now logged in.</p>
+
+<h3 id="adding-users">Adding Users</h3>
+
+<p>You’ll want to add more users to the servers this is done via the Manage Users
+page. You can access this page via Jenkins » Manage Jenkins » Manage Users.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-5.png" alt="security 5" /></p>
+
+<h3 id="create-user">Create User</h3>
+
+<p>Click the Create User link to add another user.</p>
+
+<p>You will now see the Sign up page.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-6.png" alt="security 6" /></p>
+
+<p>Enter the credentials for the new user. Make sure you remember the username, as
+you’ll probably want to give the new user more than read only access to the
+server.</p>
+
+<h3 id="authorization-1">Authorization</h3>
+
+<p>After creating the user you’ll want to give them an authorization level. This
+is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-7.png" alt="security 7" /></p>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Code analysis]]></title>
@@ -30,7 +146,7 @@
 8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
-
+11. [Security](/2013/01/15/security/)
 
 ---
 </p>
@@ -165,7 +281,7 @@ graph.</p>
 8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
-
+11. [Security](/2013/01/15/security/)
 
 ---
 </p>
@@ -315,7 +431,7 @@ to see in our projects.</p>
 8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
-
+11. [Security](/2013/01/15/security/)
 
 ---
 </p>
@@ -472,7 +588,7 @@ purpose.</p>
 8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
-
+11. [Security](/2013/01/15/security/)
 
 ---
 </p>
@@ -516,78 +632,6 @@ the solution and we’ll be back to green balls.</p>
 
 <p>Next time we’ll look at the different ways to monitor our build and it’s
 failures.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jenkins.NET Breaking the build]]></title>
-    <link href="http://justinramel.com/2013/01/14/breaking-the-build/"/>
-    <updated>2013-01-14T17:38:00-08:00</updated>
-    <id>http://justinramel.com/2013/01/14/breaking-the-build</id>
-    <content type="html"><![CDATA[<p>This post is part of a series:
-
-1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6.  [Breaking the build](/2013/01/14/breaking-the-build/)
-7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9.  [Running your tests](/2013/01/15/running-your-tests/)
-10. [Code Analysis](/2013/01/15/code-analysis/)
-
-
----
-</p>
-
-<p>Lets break the build to see how Jenkins reacts. I’ll add a DLL to the project
-then “forget” to add it to source control; unfortunately I see this problem a
-lot when new developers join the team.</p>
-
-<h3 id="i-see-red-projects">I see red projects</h3>
-
-<p><img src="/images/jenkins-net/ch06/red-ball.png" alt="" /></p>
-
-<p>As you can see Jenkins now shows a red ball next to the Demo project. Also
-notice the slightly cloudy weather icon indicating all is not well with our
-project.</p>
-
-<h3 id="hows-the-weather">How’s the weather?</h3>
-
-<p>Jenkins uses a weather metaphor to show at a glance how a project is doing.</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-1.png" alt="" /></td>
-      <td>No recent builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-2.png" alt="" /></td>
-      <td>1 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-3.png" alt="" /></td>
-      <td>2 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-4.png" alt="" /></td>
-      <td>3 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-5.png" alt="" /></td>
-      <td>4 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-6.png" alt="" /></td>
-      <td>5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Obviously we want our projects to stay sunny and avoid the bad weather so next
-time we’ll discuss how to diagnose and fix a broken build.</p>
 ]]></content>
   </entry>
   

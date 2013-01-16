@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Sorry I just can’t live with plural table names, I just can’t get my head around it! Luckily it is easily turned off. In RadRails there is a simple &hellip;">
+  <meta name="description" content="Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb: ActiveRecord::Base.connection. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/04/04/migrations-zombie-state-and-ms-sql/">Migrations &#8216;Zombie State&#8217; and MS SQL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-04-04T06:28:44-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
+
+<pre><code>ActiveRecord::Base.connection.instance_variable_get("@connection")["AutoCommit"] = false
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -605,60 +645,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/16/installing-sap-netweaver-developer-studio/">Installing SAP Netweaver Developer studio</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-16T08:29:10-08:00" pubdate data-updated="true">Mar 16<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Before installing the studio you must first install the Java SDK:</p>
-
-<p>j2sdk-1<em>4</em>2_06-windows-i586-p.exe</p>
-
-<p>Just accept the defaults.</p>
-
-<p>Now install Netweaver Depeloper studio (SP13 in my case)</p>
-
-<p>NWDS_SP13\J2EE-RUNT-CD\IDE\JDTsetup.exe</p>
-
-<p>Install all components.</p>
-
-<p>You will be asked for the location of the Java SDK which if you accepted the default should be:</p>
-
-<p>C:\j2sdk1.4.2_06</p>
-
-<p>Next enter your proxy settings, wwwcache:8080 in my case.</p>
-
-<p>Now sit back, relax and wait for the long install to finish!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/9/">&larr; Older</a>
@@ -676,6 +662,10 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/security/">Security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
@@ -689,10 +679,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
     
       <li class="post">
         <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
       </li>
     
   </ul>
