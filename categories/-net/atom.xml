@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .net | just ram]]></title>
   <link href="http://justinramel.com//categories/-net/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T21:16:06-08:00</updated>
+  <updated>2013-01-15T22:03:26-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -14,22 +14,158 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Code analysis]]></title>
+    <link href="http://justinramel.com/2013/01/15/code-analysis/"/>
+    <updated>2013-01-15T21:18:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/code-analysis</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+
+
+---
+</p>
+
+<p>Jenkins can run a series of code analysis tools after each build, this will
+help you monitor the health of your solution.</p>
+
+<h3 id="compiler-warnings">Compiler Warnings</h3>
+
+<p>Ideally your solution will have no compiler warnings and you can have your
+solution fail to build if the any warnings appear. I know in the real world
+this isn’t always possible, so we can utilize Jenkins to make sure the number
+of warnings do not get out of hand.</p>
+
+<p>This is accessed via the Jobs configuration page, for our Demo job we click
+Jenkins » Demo » Configure. You’ll find the “Scan for compiler warnings” at the
+bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure">Configure</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-1.png" alt="code 1" /></p>
+
+<ul>
+  <li>Tick the “Scan for compiler warnings”</li>
+  <li>Click the “Add” button under the “Scan console log” area</li>
+  <li>Select MSBuild from the Parser drop down list</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>Now when you carry out a build, you’ll get a compiler warnings section as part
+of your build report.</p>
+
+<h3 id="warnings-report">Warnings report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-2.png" alt="code 2" /></p>
+
+<p>Here we have no compiler warnings so I’ll commit a warning to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-3.png" alt="code 3" /></p>
+
+<p>We now have 2 compiler warnings and we can drill down for more details by
+clicking the 2 warnings link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-4.png" alt="code 4" /></p>
+
+<p>We can continue drilling and find the actual source file and line number
+causing the warning.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-5.png" alt="code 5" /></p>
+
+<h3 id="trending">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us a Compiler Warnings
+Trend graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-6.png" alt="code 6" /></p>
+
+<p>Your mission is to reverse this trend and keep your compiler warnings low or
+preferably non-existent.</p>
+
+<h3 id="tasks-and-to-dos">Tasks and To-dos</h3>
+
+<p>Another sign of Technical Debt is lots of To-dos, hack, and fix-me comments in
+your code. Lets use Jenkins to monitor these type of comments.  For our Demo
+job we click Jenkins » Demo » Configure. You’ll find the “Scan workspace for
+open tasks” at the bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure-1">Configure</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-7.png" alt="code 7" /></p>
+
+<ul>
+  <li>Tick the “Scan workspace for open tasks” check box</li>
+  <li>In the “Files to scan” textbox enter: <em>*/</em>.cs which scans all C Sharp files
+for these comments.</li>
+  <li>In the “Tasks tags” High priority textbox enter: HACK, FIXME</li>
+  <li>In the “Tasks tags” Normal priority textbox enter: TODO, TO-DO</li>
+  <li>Tick the “Ignore case” check box</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>These task tags can be anything you or your team use to indicate work that
+needs to be carried out in your source. When we carry out a build, we’ll get a
+compiler warnings section as part of our build report.</p>
+
+<h3 id="task-scanner-report">Task Scanner Report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-8.png" alt="code 8" /></p>
+
+<p>Here we have no tasks, I’ll commit a few To-dos and Hack comments to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-9.png" alt="code 9" /></p>
+
+<p>We now have 3 open tasks and we can drill down for more details by clicking the
+3 open tasks link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-10.png" alt="code 10" /></p>
+
+<p>As you can see depending on the priority of the open task we get different
+color bars to indicate they severity.</p>
+
+<p>We can continue drilling and find the actual source file and line number of the
+tasks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-11.png" alt="code 11" /></p>
+
+<h3 id="trending-1">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us an Open Tasks Trend
+graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-12.png" alt="code 12" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Running your tests]]></title>
     <link href="http://justinramel.com/2013/01/15/running-your-tests/"/>
     <updated>2013-01-15T20:19:00-08:00</updated>
     <id>http://justinramel.com/2013/01/15/running-your-tests</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build/)
-7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. [Running your tests](/2013/01/15/running-your-tests/)
-10. Code Analysis
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+
 
 ---
 </p>
@@ -169,16 +305,17 @@ to see in our projects.</p>
     <id>http://justinramel.com/2013/01/14/monitoring-your-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build/)
-7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. [Running your tests](/2013/01/15/running-your-tests/)
-10. Code Analysis
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+
 
 ---
 </p>
@@ -325,16 +462,17 @@ purpose.</p>
     <id>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build/)
-7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. [Running your tests](/2013/01/15/running-your-tests/)
-10. Code Analysis
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+
 
 ---
 </p>
@@ -388,16 +526,17 @@ failures.</p>
     <id>http://justinramel.com/2013/01/14/breaking-the-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:
 
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build/)
-7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. [Running your tests](/2013/01/15/running-your-tests/)
-10. Code Analysis
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+
 
 ---
 </p>
@@ -449,84 +588,6 @@ project.</p>
 
 <p>Obviously we want our projects to stay sunny and avoid the bad weather so next
 time we’ll discuss how to diagnose and fix a broken build.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jenkins.NET Your first build]]></title>
-    <link href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
-    <updated>2012-10-24T21:11:00-07:00</updated>
-    <id>http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build</id>
-    <content type="html"><![CDATA[<p>This post is part of a series:
-
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build/)
-7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. [Running your tests](/2013/01/15/running-your-tests/)
-10. Code Analysis
-
----
-</p>
-
-<p>From the Project Demo page we created last time we can activate a Build at
-will.</p>
-
-<h3 id="build-now">Build Now</h3>
-
-<p><img src="/images/jenkins-net/ch05/build-now.png" alt="" /></p>
-
-<p>Click the “Build Now” link.</p>
-
-<p>This tells Jenkins to build the Job we have just defined.</p>
-
-<h3 id="build-history">Build History</h3>
-
-<p><img src="/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
-
-<p>The Build History will show the Job running. Once the build is complete you
-should have your first successful build.</p>
-
-<p><img src="/images/jenkins-net/ch05/build-history-2.png" alt="" /></p>
-
-<p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
-you to the build page for the Demo Job.</p>
-
-<h3 id="console-output">Console Output</h3>
-
-<p>This page allows us to access all the information relevant to the build we just
-ran. The area we are interested in is the Console Output this shows all the
-programs that ran during the build.</p>
-
-<p><img src="/images/jenkins-net/ch05/console-output-1.png" alt="" /></p>
-
-<p>Click the “Console Output” link.</p>
-
-<p><img src="/images/jenkins-net/ch05/console-output-2.png" alt="" /></p>
-
-<p>This is the place to come whenever you are trying to debug a failing build.
-Everything you need to fix the problem will usually be shown on this page.</p>
-
-<p>As you can see this was a successful build and we can see that:</p>
-
-<ul>
-  <li>Jenkins created a workspace for the Job</li>
-  <li>Ran a Subversion check out
-    <ul>
-      <li>Listed of all files updated</li>
-    </ul>
-  </li>
-  <li>Ran MSBuild
-    <ul>
-      <li>Shows all output from MSBuild</li>
-    </ul>
-  </li>
-  <li>Shows Success message</li>
-</ul>
 ]]></content>
   </entry>
   

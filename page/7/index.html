@@ -9,7 +9,10 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’m taking a look at a .net implementation of Ruby on Rails called Monorail. It’s part of the Castle project. So far it looks pretty good! Community &hellip;">
+  <meta name="description" content="I’m using the recommended view engine NVelocity. The following objects are available to the view code:
+• context (IRailsEngineContext)
+• request
+• &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +79,113 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/06/22/monorail-nvelocity-view-engine/">Castle Monorail - NVelocity View Engine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-22T04:08:05-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’m using the recommended view engine <a href="http://www.castleproject.org/index.php/MonoRail:View_Engines_Book#NVelocity_View_Engine">NVelocity</a>.</p>
+
+<p>The following objects are available to the view code:
+• context (IRailsEngineContext)
+• request
+• response
+• session
+• All entries in the request (if any)
+• All entries in the Flash (if any)
+• All entries in the PropertyBag (if any)</p>
+
+<p>Also, a siteRoot string is added so you can build url definitions like:
+<code>$siteRoot/home/index.rails
+ &lt;img src="$siteRoot/images/someimage.gif" /&gt;
+</code></p>
+
+<p>**Notation (variable name): **</p>
+
+<p>$ [ ! ][ { ][ a..z, A..Z ][ a..z, A..Z, 0..9, -, _ ][ } ]</p>
+
+<p>Examples:</p>
+
+<ul>
+  <li>
+    <p>Normal notation: $mud-Slinger_9</p>
+  </li>
+  <li>
+    <p>Silent notation: $!mud-Slinger_9</p>
+  </li>
+  <li>
+    <p>Formal notation: ${mud-Slinger_9}</p>
+  </li>
+</ul>
+
+<p><strong>Loops</strong>
+<code>#foreach($i in $items)
+#each (this is optional since its the default section)
+       text which appears for each item
+#before
+       text which appears before each item
+#after
+       text which appears after each item
+#between
+       text which appears between each two items
+#odd
+       text which appears for every other item, including the first
+#even
+       text which appears for every other item, starting with the second
+#nodata
+       Content rendered if $items evaluated to null or empty
+#beforeall
+       text which appears before the loop, only if there are items
+       matching condition
+#afterall
+       text which appears after the loop, only of there are items
+       matching condition
+#end
+</code></p>
+
+<p><strong>Binary expressions</strong>
+<code>#if($order.Status == "Undefined")
+  Sorry, but we don't know this order.
+#elseif($order.Status == "Created")
+  Your order is being processed. Hold on!
+#elseif($order.Status == "Dispatched")
+  Your order has been dispatched through UPS. Cross your fingers!
+#end
+</code></p>
+
+<p><strong>IDictonary Parameters</strong>
+Calling a helper with IDictonary Paramaters:
+<code>$HtmlHelper.SubmitButton("Login", $DictHelper.CreateDict("id=btnLogin"))</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -485,48 +595,6 @@ If you want to compare two revisions in a file’s history, for example revision
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/04/04/pluralize-table-names-no-thanks/">Pluralize table names - no thanks!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-04-04T06:05:19-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sorry I just can’t live with plural table names, I just can’t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
-
-<pre><code># Include your application configuration below
-ActiveRecord::Base.pluralize_table_names = false
-</code></pre>
-
-<p>I may live to regret not embracing plural table names but I doubt it!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -544,6 +612,10 @@ ActiveRecord::Base.pluralize_table_names = false
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/code-analysis/">Code analysis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
@@ -557,10 +629,6 @@ ActiveRecord::Base.pluralize_table_names = false
     
       <li class="post">
         <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
   </ul>

@@ -9,7 +9,9 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="We used subversion (or svn for short) server running on windows as our version control server as it integrates very nicely with eclipse. We found a &hellip;">
+  <meta name="description" content="Want to tell if your iView is running over HTTP or HTTPS? Try this: WARNING: Untested code ahead!
+`
+HttpServletRequest servletRequest = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +78,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/02/22/sap-portal-http-or-https/">SAP Portal HTTP or HTTPS?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-22T03:36:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Want to tell if your iView is running over HTTP or HTTPS?</p>
+
+<p>Try this:</p>
+
+<p>WARNING: Untested code ahead!
+`
+HttpServletRequest servletRequest = componentRequest.getServletRequest();
+String requestURL = servletRequest.getRequestURL().toString();
+String protocol = requestURL.substring(0, requestURL.indexOf(“:”));`</p>
+
+<p>if(protocol.equals(“http”))
+{
+// do HTTP stuff
+}
+else
+{
+// do HTTPS stuff
+}</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -182,6 +237,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/code-analysis/">Code analysis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
@@ -195,10 +254,6 @@
     
       <li class="post">
         <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
   </ul>

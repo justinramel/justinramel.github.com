@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T21:16:06-08:00</updated>
+  <updated>2013-01-15T22:03:26-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,141 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Code analysis]]></title>
+    <link href="http://justinramel.com/2013/01/15/code-analysis/"/>
+    <updated>2013-01-15T21:18:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/code-analysis</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+</ol>
+
+<hr />
+
+<p>Jenkins can run a series of code analysis tools after each build, this will
+help you monitor the health of your solution.</p>
+
+<h3 id="compiler-warnings">Compiler Warnings</h3>
+
+<p>Ideally your solution will have no compiler warnings and you can have your
+solution fail to build if the any warnings appear. I know in the real world
+this isn’t always possible, so we can utilize Jenkins to make sure the number
+of warnings do not get out of hand.</p>
+
+<p>This is accessed via the Jobs configuration page, for our Demo job we click
+Jenkins » Demo » Configure. You’ll find the “Scan for compiler warnings” at the
+bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure">Configure</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-1.png" alt="code 1" /></p>
+
+<ul>
+  <li>Tick the “Scan for compiler warnings”</li>
+  <li>Click the “Add” button under the “Scan console log” area</li>
+  <li>Select MSBuild from the Parser drop down list</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>Now when you carry out a build, you’ll get a compiler warnings section as part
+of your build report.</p>
+
+<h3 id="warnings-report">Warnings report</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-2.png" alt="code 2" /></p>
+
+<p>Here we have no compiler warnings so I’ll commit a warning to show the
+information Jenkins tracks.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-3.png" alt="code 3" /></p>
+
+<p>We now have 2 compiler warnings and we can drill down for more details by
+clicking the 2 warnings link.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-4.png" alt="code 4" /></p>
+
+<p>We can continue drilling and find the actual source file and line number
+causing the warning.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-5.png" alt="code 5" /></p>
+
+<h3 id="trending">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us a Compiler Warnings
+Trend graph.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-6.png" alt="code 6" /></p>
+
+<p>Your mission is to reverse this trend and keep your compiler warnings low or
+preferably non-existent.</p>
+
+<h3 id="tasks-and-to-dos">Tasks and To-dos</h3>
+
+<p>Another sign of Technical Debt is lots of To-dos, hack, and fix-me comments in
+your code. Lets use Jenkins to monitor these type of comments.  For our Demo
+job we click Jenkins » Demo » Configure. You’ll find the “Scan workspace for
+open tasks” at the bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure-1">Configure</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-7.png" alt="code 7" /></p>
+
+<ul>
+  <li>Tick the “Scan workspace for open tasks” check box</li>
+  <li>In the “Files to scan” textbox enter: <em>*/</em>.cs which scans all C Sharp files
+for these comments.</li>
+  <li>In the “Tasks tags” High priority textbox enter: HACK, FIXME</li>
+  <li>In the “Tasks tags” Normal priority textbox enter: TODO, TO-DO</li>
+  <li>Tick the “Ignore case” check box</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>These task tags can be anything you or your team use to indicate work that
+needs to be carried out in your source. When we carry out a build, we’ll get a
+compiler warnings section as part of our build report.</p>
+
+<h3 id="task-scanner-report">Task Scanner Report</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-8.png" alt="code 8" /></p>
+
+<p>Here we have no tasks, I’ll commit a few To-dos and Hack comments to show the
+information Jenkins tracks.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-9.png" alt="code 9" /></p>
+
+<p>We now have 3 open tasks and we can drill down for more details by clicking the
+3 open tasks link.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-10.png" alt="code 10" /></p>
+
+<p>As you can see depending on the priority of the open task we get different
+color bars to indicate they severity.</p>
+
+<p>We can continue drilling and find the actual source file and line number of the
+tasks.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-11.png" alt="code 11" /></p>
+
+<h3 id="trending-1">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us an Open Tasks Trend
+graph.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-12.png" alt="code 12" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Running your tests]]></title>
@@ -30,7 +165,7 @@
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -180,7 +315,7 @@ to see in our projects.</p>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -337,7 +472,7 @@ purpose.</p>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -401,7 +536,7 @@ failures.</p>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -473,7 +608,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -552,7 +687,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -710,7 +845,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -772,7 +907,7 @@ and use any version of the .NET Framework.</p>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -914,7 +1049,7 @@ healthy competition never did anyone any harm.</em></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li>Code Analysis</li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
 </ol>
 
 <hr />
@@ -1538,36 +1673,6 @@ Method name: print_details</leader-key></p>
 A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
 
 <p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Instance Variable]]></title>
-    <link href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-rename-instance-variable/"/>
-    <updated>2010-12-30T17:14:03-08:00</updated>
-    <id>http://justinramel.com/2010/12/30/vim-ruby-refactoring-rename-instance-variable</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4 id="rename-instance-variable">Rename Instance Variable</h4>
-
-<p>Renames the selected instance variable. </p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br />
-Visually select the instance variable you wish to rename    <br />
-Hit your **<leader-key>** then type **rriv        
-**You will now see a prompt to enter the new variable name:   
-Rename to: new_name</leader-key></p>
-
-<p>After refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br />
-The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
-
-<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
 ]]></content>
   </entry>
   

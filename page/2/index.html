@@ -9,8 +9,9 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Trying out Octopress
-Octopress for the win! Bloggin’ from vim, yay. Updated the theme to darkstripes Imported my old worpress posts using exitwp Code &hellip;">
+  <meta name="description" content="I just subscribed to Destroy All Software
+as well as the great content, I’m picking up lots of vim tips. I’m having to
+pause the video a lot, Gary is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,145 @@ Octopress for the win! Bloggin’ from vim, yay. Updated the theme to darkstripe
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-06T22:10:00-07:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
+as well as the great content, I’m picking up lots of vim tips. I’m having to
+pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
+damn fast. Any way I’m going to start writing these vim gems down in the vain
+hope I’ll remember some of them.</p>
+
+<h2 id="quickly-creating-a-project-structure">Quickly creating a project structure</h2>
+
+<p>It’s possible to setup a new project without leaving vim. Lets create a new dir
+for a quick demo:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">mkdir demo
+</span><span class="line">cd demo
+</span><span class="line">vim</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>From the vim command prompt we can create a new user model in the models dir
+using the vim command <code>:n models/user.rb</code></p>
+
+<p><img src="/images/vim-tip-1/new-file.png" /></p>
+
+<p>Lets break this command down:</p>
+
+<ul>
+  <li><strong>:n</strong>             - n is short for new as in file</li>
+  <li><strong>models/user.rb</strong> - the directory and name of our new file</li>
+</ul>
+
+<p>This creates the new file in a vim buffer but when we go to write this file we
+get an error <code>E212: Can't open file for writing</code>, this is because the directory
+models does not exist.</p>
+
+<p><img src="/images/vim-tip-1/write-error.png" /></p>
+
+<p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
+
+<p><img src="/images/vim-tip-1/mkdir-command.png" /></p>
+
+<p>Now the directory has been created we can write the new file from vim.</p>
+
+<p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
+
+<ul>
+  <li><strong>:!</strong>    - Execute {command} with the shell</li>
+  <li><strong>mkdir</strong> - Make a directory shell command</li>
+  <li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
+</ul>
+
+<p>The full vim help text for <code>%:h</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:h	Head of the file name (the last component and any separators
+</span><span class="line">	removed).  Cannot be used with :e, :r or :t.
+</span><span class="line">	Can be repeated to remove several components at the end.
+</span><span class="line">	When the file name ends in a path separator, only the path
+</span><span class="line">	separator is removed.  Thus ":p:h" on a directory name results
+</span><span class="line">	on the directory name itself (without trailing slash).
+</span><span class="line">	When the file name is an absolute path (starts with "/" for
+</span><span class="line">	Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
+</span><span class="line">	part is not removed.  When there is no head (path is relative
+</span><span class="line">	to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="deeper-folder-structure">Deeper folder structure</h2>
+
+<p>You can create deeper folder structures using the same technique with one extra
+switch on the mkdir command.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:n specs/models/user_spec.rb
+</span><span class="line">:!mkdir -p %:h
+</span><span class="line">:w</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>-p</code> switch will create the intermediate directories for you. If you don’t
+use this switch the command will fail.</p>
+
+<p>The full command line help for the <code>mkdir -p</code> switch:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">-p	Create intermediate directories as required.  If this option is not
+</span><span class="line">specified, the full path prefix of each operand must already exist.  On the
+</span><span class="line">other hand, with this option specified, no error will be reported if a
+</span><span class="line">directory given as an operand already exists.  Intermediate directories are
+</span><span class="line">created with permission bits of rwxrwxrwx (0777) as modified by the current
+</span><span class="line">umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I think that’s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -715,63 +855,6 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-rename-instance-variable/">vim-ruby-refactoring - Rename Instance Variable</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T17:14:03-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4 id="rename-instance-variable">Rename Instance Variable</h4>
-
-<p>Renames the selected instance variable. </p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br />
-Visually select the instance variable you wish to rename    <br />
-Hit your **<leader-key>** then type **rriv        
-**You will now see a prompt to enter the new variable name:   
-Rename to: new_name</leader-key></p>
-
-<p>After refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br />
-The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
-
-<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/3/">&larr; Older</a>
@@ -789,6 +872,10 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/code-analysis/">Code analysis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
@@ -802,10 +889,6 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
     
       <li class="post">
         <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
       </li>
     
   </ul>
