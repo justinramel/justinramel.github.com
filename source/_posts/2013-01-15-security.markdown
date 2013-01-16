@@ -1,0 +1,94 @@
+---
+layout: post
+title: "Security"
+date: 2013-01-15 22:06
+comments: true
+categories: jenkins .net
+---
+{% render_partial _partials/jenkins.markdown %}
+
+By default Jenkins is wide open to anyone who stumbles across your web server,
+depending on your circumstances you may want to enable Jenkins security and
+force developers and even guests to login.
+
+###Configuration
+
+Jenkins security is configured from the main Jenkins configuration page which
+is accessed via Jenkins » Manage Jenkins » Configure System.
+
+![security 1](/images/jenkins-net/ch11/security-1.png)
+
+Tick the "Enable security" check box to open up the security area.
+
+###Access Control
+
+![security 2](/images/jenkins-net/ch11/security-2.png)
+
+Under the Access Control - Security Realm section select the "Jenkins's own
+user database" radio button.
+
+Un-tick the "Allow users to sign up" check box otherwise anyone hitting the
+site will be able to sign up for an account (if your enabling security my guess
+is you don't want that).
+
+###Authorization
+
+![security 3](/images/jenkins-net/ch11/security-3.png)
+
+Under the Authorization section select the "Matrix-based security" radio
+button. This option will give you the most flexibility over the security for
+Jenkins. I usually give Anonymous users Read access that allows me to share the
+build information with managers and stake holders if they are interested.  As I
+trust my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.
+
+###Add Administrator
+
+* Enter your username in the "User/group to add" text box.
+* Click the "Add" button.
+* Tick the Administer check box in the Overall area of the matrix.
+* Finally click the "Save" button.
+
+###First user sign up
+
+If this is the first time you've setup a user on the server Jenkins will
+immediately ask for your user credentials.
+
+![security 4](/images/jenkins-net/ch11/security-4.png)
+
+* Enter your user credentials.
+* Click the "Sign up" button.
+
+You should see a success message from Jenkins saying you are now logged in.
+
+###Adding Users
+
+You'll want to add more users to the servers this is done via the Manage Users
+page. You can access this page via Jenkins » Manage Jenkins » Manage Users.
+
+![security 5](/images/jenkins-net/ch11/security-5.png)
+
+###Create User
+
+Click the Create User link to add another user.
+
+You will now see the Sign up page.
+
+![security 6](/images/jenkins-net/ch11/security-6.png)
+
+Enter the credentials for the new user. Make sure you remember the username, as
+you'll probably want to give the new user more than read only access to the
+server.
+
+###Authorization
+
+After creating the user you'll want to give them an authorization level. This
+is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.
+
+![security 7](/images/jenkins-net/ch11/security-7.png)
+
+* Enter your username in the "User/group to add" text box.
+* Click the "Add" button.
+* Tick the Administer check box in the Overall area of the matrix.
+* Finally click the "Save" button.
