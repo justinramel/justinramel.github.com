@@ -7,7 +7,7 @@ categories: jenkins .net
 ---
 {% render_partial _partials/jenkins.markdown %}
 
-For my final post on using Jenkins with .net, here's how to do all that in 5
+For my final post on using Jenkins with .net, here's how to set it all up in 5
 minutes!
 
 ###Install
