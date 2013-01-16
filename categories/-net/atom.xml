@@ -4,7 +4,7 @@
   <title><![CDATA[Category: .net | just ram]]></title>
   <link href="http://justinramel.com//categories/-net/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-14T23:16:20-08:00</updated>
+  <updated>2013-01-15T21:16:06-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,155 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Running your tests]]></title>
+    <link href="http://justinramel.com/2013/01/15/running-your-tests/"/>
+    <updated>2013-01-15T20:19:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/running-your-tests</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6. [Breaking the build](/2013/01/14/breaking-the-build/)
+7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9. [Running your tests](/2013/01/15/running-your-tests/)
+10. Code Analysis
+
+---
+</p>
+
+<p>After building your solution the next task you’ll want to automate is the
+running of your tests. Jenkins comes with a multitude of test plugins so
+whatever test framework you’re using chances are you’ll be covered. To show how
+easy it is to add tests to a build we’ll add NUnit to our demo solution and
+have Jenkins run the tests every time we commit a change to the source
+repository.</p>
+
+<h3 id="test-project-structure">Test Project Structure</h3>
+
+<p>Structure of the demo project is:</p>
+
+<p>Tools\NUnit\bin contains the NUnit framework and runner.</p>
+
+<p>The DemoTest project references the nunit.framework.dll from this folder. This
+enables the solution to be checked out and run with out any pre-installation
+requirements. This work great for Jenkins but its also a great way to setup
+your solutions, if you need to move to a new machine or if you have a new
+starter you just check out the solution and its ready to build and run your
+tests.</p>
+
+<h3 id="execute-any-test-runner">Execute any test runner</h3>
+
+<p>The build step “Execute Windows batch command” works with any test runner that
+has a command line runner. We will use this method to run the NUnit command
+line test runner in the Demo project.</p>
+
+<p>Use the Demo » Configure link to access the configuration page, under the
+Build section click the “Add build step” button.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-1.png" alt="test 1" /></p>
+
+<p>Select the “Execute Windows batch command” to add a new build step.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-2.png" alt="test 2" /></p>
+
+<p>Under the “Execute Windows batch command” section enter the command:</p>
+
+<ul>
+  <li>
+    <p>Tools\nunit\bin\nunit-console.exe src\DemoTests\bin\Debug\DemoTests.dll</p>
+  </li>
+  <li>
+    <p>Click the “Save” button</p>
+  </li>
+</ul>
+
+<p>This command is telling Jenkins the location of the NUnit test runner
+(Tools\nunit\bin\nunit-console.exe) and the location of the test DLL to run
+against (src\DemoTests\bin\Debug\DemoTests.dll).</p>
+
+<p>This command will now execute the NUnit test runner after every solution build.</p>
+
+<h3 id="failing-tests">Failing Tests</h3>
+
+<p>When a test fails Jenkins will fail the build and show a red ball for the
+status of the project.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-3.png" alt="test 3" /></p>
+
+<p>Now we know the build has failed but we don’t want to start digging through the
+console output to find the details of the failing test. Lets introduce another
+Jenkins plugin which will show details of exactly which test failed and why.</p>
+
+<h3 id="plugin-setup">Plugin Setup</h3>
+
+<p>Use the Demo » Configure link to access the Demo jobs configuration page,
+under the Post-Build Actions section.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-4.png" alt="test 4" /></p>
+
+<ul>
+  <li>
+    <p>Tick the “Publish NUnit test result report” check box.</p>
+  </li>
+  <li>
+    <p>Enter the output of the NUnit test runner: TestResult.xml</p>
+  </li>
+  <li>
+    <p>Click the “Save” button.</p>
+  </li>
+</ul>
+
+<p>Run a build again to see the NUnit test report.</p>
+
+<ul>
+  <li>Click the Demo » Build Now link.</li>
+</ul>
+
+<p>Of course the build has failed again but that’s what we want. This allows us to
+see NUnit test report. To view the report click on the failed build in the
+Build History.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-5.png" alt="test 5" /></p>
+
+<p>We now have a Test Result area that is showing 1 failure in the
+DemoTests.ProgramTests.Add namespace. That’s certainly easier than digging
+through the console output. The benefits don’t end there, if you click on the
+Test Result link we will get a more detailed report.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-6.png" alt="test 6" /></p>
+
+<p>Here we get a pretty report showing the full details of the failure. We can
+drill down for even more detail using the link DemoTests.ProgramTests.Add.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-7.png" alt="test 7" /></p>
+
+<p>This gives the error message from the test, a stack trace, the filename of the
+failing test and even the line number. You can’t ask for much more than that
+but there is one more benefit we can eke out of our test runner and that is our
+test history.</p>
+
+<h3 id="test-history">Test History</h3>
+
+<p>Once you setup the Unit plugin, Jenkins will track all your test results. This
+is a great way to keep an eye on the general health of your project. I’ve added
+a few more tests and commits to the demo project to show how the test history
+works.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-8.png" alt="test 8" /></p>
+
+<p>As you can see the Demo home page now has a “Test Result Trend” graph showing
+the initial failing test, followed by anther commit to fix the failure then
+another 4 tests that were added. The graph shows at a glance that our Demo
+project is getting healthier on every commit. This is the type of graph we want
+to see in our projects.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Monitoring your build]]></title>
@@ -28,7 +177,7 @@
 6. [Breaking the build](/2013/01/14/breaking-the-build/)
 7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. Running your tests
+9. [Running your tests](/2013/01/15/running-your-tests/)
 10. Code Analysis
 
 ---
@@ -184,7 +333,7 @@ purpose.</p>
 6. [Breaking the build](/2013/01/14/breaking-the-build/)
 7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. Running your tests
+9. [Running your tests](/2013/01/15/running-your-tests/)
 10. Code Analysis
 
 ---
@@ -247,7 +396,7 @@ failures.</p>
 6. [Breaking the build](/2013/01/14/breaking-the-build/)
 7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. Running your tests
+9. [Running your tests](/2013/01/15/running-your-tests/)
 10. Code Analysis
 
 ---
@@ -318,7 +467,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
 6. [Breaking the build](/2013/01/14/breaking-the-build/)
 7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. Running your tests
+9. [Running your tests](/2013/01/15/running-your-tests/)
 10. Code Analysis
 
 ---
@@ -378,155 +527,6 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   </li>
   <li>Shows Success message</li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
-    <link href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
-    <updated>2012-10-20T21:14:00-07:00</updated>
-    <id>http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
-    <content type="html"><![CDATA[<p>This post is part of a series:
-
-1. [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2. [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3. [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4. [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5. [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6. [Breaking the build](/2013/01/14/breaking-the-build/)
-7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. Running your tests
-10. Code Analysis
-
----
-</p>
-
-<p>In Jenkins the definition of a build process is called a Job. Jobs are created
-using the main menu on the Jenkins home page. We’ll create a basic Job that
-will checkout our source and build the solution.</p>
-
-<p>From the main Jenkins menu, Click the ‘New Job’ link.</p>
-
-<p><img src="/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
-
-<p>You now see the New Job configuration page.</p>
-
-<p><img src="/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
-
-<ol>
-  <li>Set Job name to Demo.</li>
-  <li>Select the ‘Build a free-style software project’ radio button.</li>
-  <li>Click the ‘OK’ button.</li>
-</ol>
-
-<p>Jenkins will now create the Job workspace on disk and redirect you to the job
-configuration page.</p>
-
-<p><img src="/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
-
-<p>Next we’re going to checkout our solution from source control and build it.  So
-we first need to give Jenkins details of our source control server.</p>
-
-<h2 id="source-control">Source Control</h2>
-
-<p>For the purpose of this demo we’ll use
-<a href="http://subversion.apache.org/">Subversion</a>, mainly because this is the source
-control management software I use day to day. Subversion is a very popular open
-source choice for .NET.</p>
-
-<p>Jenkins supports Subversion right out of the box but it also has support for
-all the major source control management systems. For example here are few which
-are popular for use with the .NET framework:</p>
-
-<ul>
-  <li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
-Foundation Server source control to Jenkins.</em></li>
-  <li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
-system with Jenkins.</em></li>
-  <li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
-newer is required.</em></li>
-  <li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
-Visual SourceSafe.</em></li>
-</ul>
-
-<p>Surround your pullquote like this {" text to be quoted "}</p>
-
-<p>I have created a Subversion repository on GoogleCode that we’ll use to demo the
-build process from Jenkins. Lets setup our Job to grab the source code from
-this repository. This is done in the Source Code Management section of the
-configuration page.</p>
-
-<p><img src="/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
-
-<ol>
-  <li>Select the Subversion radio button.</li>
-  <li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
-</ol>
-
-<h2 id="subversion-authentication">Subversion Authentication</h2>
-
-<p>Unlike the demo repository used here, it’s more likely your source code
-repository requires authentication (if it doesn’t, you may want to think about
-securing it). If your repository does require authentication Jenkins will
-display and error message and ask for you to supply login credentials.</p>
-
-<p><img src="/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
-
-<p>Click the “enter credential” link. You will now be shown the Subversion
-Authentication page.</p>
-
-<p><img src="/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
-
-<p>Enter your authentication details and then click the “OK” button.</p>
-
-<p>Subversion is now configured and we can move onto Build Triggers.</p>
-
-<h2 id="build-triggers">Build Triggers</h2>
-
-<p>We want to trigger a build every time our source code changes; we achieve this
-by creating a “Build Trigger” which polls our source code repository. When a
-change is detected a new build is triggered.</p>
-
-<p><img src="/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
-
-<ol>
-  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
-  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
-minutes.</li>
-</ol>
-
-<p>As you can see from the help (which is available by clicking the
-<img src="/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
-in how often we check the source code repository for changes. Checking every 5
-minutes is my default as I tend make lots of small commits and I want to know
-quickly if I’ve introduced a problem.</p>
-
-<p>Finally we just need to tell Jenkins how to build the solution when changes are
-detected. This is done via the “Add build step” button under the Build section.</p>
-
-<p><img src="/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
-
-<ol>
-  <li>
-    <p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p>
-  </li>
-  <li>
-    <p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p>
-  </li>
-</ol>
-
-<p><img src="/images/jenkins-net/ch04/build.png" alt="" /></p>
-
-<ol>
-  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
-  <li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
-  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
-</ol>
-
-<p>Congratulations your first Jenkins Job is setup.</p>
-
-<p>In my next post we’ll build it!</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-14T23:16:20-08:00</updated>
+  <updated>2013-01-15T21:16:06-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,156 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Running your tests]]></title>
+    <link href="http://justinramel.com/2013/01/15/running-your-tests/"/>
+    <updated>2013-01-15T20:19:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/running-your-tests</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li>Code Analysis</li>
+</ol>
+
+<hr />
+
+<p>After building your solution the next task you’ll want to automate is the
+running of your tests. Jenkins comes with a multitude of test plugins so
+whatever test framework you’re using chances are you’ll be covered. To show how
+easy it is to add tests to a build we’ll add NUnit to our demo solution and
+have Jenkins run the tests every time we commit a change to the source
+repository.</p>
+
+<h3 id="test-project-structure">Test Project Structure</h3>
+
+<p>Structure of the demo project is:</p>
+
+<p>Tools\NUnit\bin contains the NUnit framework and runner.</p>
+
+<p>The DemoTest project references the nunit.framework.dll from this folder. This
+enables the solution to be checked out and run with out any pre-installation
+requirements. This work great for Jenkins but its also a great way to setup
+your solutions, if you need to move to a new machine or if you have a new
+starter you just check out the solution and its ready to build and run your
+tests.</p>
+
+<h3 id="execute-any-test-runner">Execute any test runner</h3>
+
+<p>The build step “Execute Windows batch command” works with any test runner that
+has a command line runner. We will use this method to run the NUnit command
+line test runner in the Demo project.</p>
+
+<p>Use the Demo » Configure link to access the configuration page, under the
+Build section click the “Add build step” button.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-1.png" alt="test 1" /></p>
+
+<p>Select the “Execute Windows batch command” to add a new build step.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-2.png" alt="test 2" /></p>
+
+<p>Under the “Execute Windows batch command” section enter the command:</p>
+
+<ul>
+  <li>
+    <p>Tools\nunit\bin\nunit-console.exe src\DemoTests\bin\Debug\DemoTests.dll</p>
+  </li>
+  <li>
+    <p>Click the “Save” button</p>
+  </li>
+</ul>
+
+<p>This command is telling Jenkins the location of the NUnit test runner
+(Tools\nunit\bin\nunit-console.exe) and the location of the test DLL to run
+against (src\DemoTests\bin\Debug\DemoTests.dll).</p>
+
+<p>This command will now execute the NUnit test runner after every solution build.</p>
+
+<h3 id="failing-tests">Failing Tests</h3>
+
+<p>When a test fails Jenkins will fail the build and show a red ball for the
+status of the project.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-3.png" alt="test 3" /></p>
+
+<p>Now we know the build has failed but we don’t want to start digging through the
+console output to find the details of the failing test. Lets introduce another
+Jenkins plugin which will show details of exactly which test failed and why.</p>
+
+<h3 id="plugin-setup">Plugin Setup</h3>
+
+<p>Use the Demo » Configure link to access the Demo jobs configuration page,
+under the Post-Build Actions section.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-4.png" alt="test 4" /></p>
+
+<ul>
+  <li>
+    <p>Tick the “Publish NUnit test result report” check box.</p>
+  </li>
+  <li>
+    <p>Enter the output of the NUnit test runner: TestResult.xml</p>
+  </li>
+  <li>
+    <p>Click the “Save” button.</p>
+  </li>
+</ul>
+
+<p>Run a build again to see the NUnit test report.</p>
+
+<ul>
+  <li>Click the Demo » Build Now link.</li>
+</ul>
+
+<p>Of course the build has failed again but that’s what we want. This allows us to
+see NUnit test report. To view the report click on the failed build in the
+Build History.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-5.png" alt="test 5" /></p>
+
+<p>We now have a Test Result area that is showing 1 failure in the
+DemoTests.ProgramTests.Add namespace. That’s certainly easier than digging
+through the console output. The benefits don’t end there, if you click on the
+Test Result link we will get a more detailed report.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-6.png" alt="test 6" /></p>
+
+<p>Here we get a pretty report showing the full details of the failure. We can
+drill down for even more detail using the link DemoTests.ProgramTests.Add.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-7.png" alt="test 7" /></p>
+
+<p>This gives the error message from the test, a stack trace, the filename of the
+failing test and even the line number. You can’t ask for much more than that
+but there is one more benefit we can eke out of our test runner and that is our
+test history.</p>
+
+<h3 id="test-history">Test History</h3>
+
+<p>Once you setup the Unit plugin, Jenkins will track all your test results. This
+is a great way to keep an eye on the general health of your project. I’ve added
+a few more tests and commits to the demo project to show how the test history
+works.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-8.png" alt="test 8" /></p>
+
+<p>As you can see the Demo home page now has a “Test Result Trend” graph showing
+the initial failing test, followed by anther commit to fix the failure then
+another 4 tests that were added. The graph shows at a glance that our Demo
+project is getting healthier on every commit. This is the type of graph we want
+to see in our projects.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Monitoring your build]]></title>
@@ -29,7 +179,7 @@
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -186,7 +336,7 @@ purpose.</p>
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -250,7 +400,7 @@ failures.</p>
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -322,7 +472,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -401,7 +551,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -559,7 +709,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -621,7 +771,7 @@ and use any version of the .NET Framework.</p>
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -763,7 +913,7 @@ healthy competition never did anyone any harm.</em></li>
   <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
   <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li>Running your tests</li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li>Code Analysis</li>
 </ol>
 
@@ -1418,36 +1568,6 @@ Rename to: new_name</leader-key></p>
 The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
 
 <p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Local Variable]]></title>
-    <link href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-rename-local-variable/"/>
-    <updated>2010-12-30T16:59:58-08:00</updated>
-    <id>http://justinramel.com/2010/12/30/vim-ruby-refactoring-rename-local-variable</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4 id="rename-local-variable">Rename Local Variable</h4>
-
-<p>Renames the selected local variable. </p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renamevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_before_thumb.png" alt="RenameVar_Before" /></a>    <br />
-Visually select the local variable you wish to rename    <br />
-Hit your **<leader-key>** then type **rrlv        
-**You will now see a prompt to enter the new variable name:   
-Rename to: is_mac_os</leader-key></p>
-
-<p>After refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renamevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_after_thumb.png" alt="RenameVar_After" /></a>    <br />
-The local variable <em><strong>mac_os</strong></em> has been renamed to <strong><em>is_mac_os</em></strong> in both locations within the method.</p>
-
-<p><strong>rrlv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>L</strong>ocal <strong>V</strong>ariable.</p>
 ]]></content>
   </entry>
   

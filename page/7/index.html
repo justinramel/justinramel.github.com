@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Good write up of the TortoiseSVN ASP.NET Hack here Basically involves creating an environment variable SVN_ASP_DOT_NET_HACK with the value of 1. When &hellip;">
+  <meta name="description" content="I’m taking a look at a .net implementation of Ruby on Rails called Monorail. It’s part of the Castle project. So far it looks pretty good! Community &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/06/22/monorail/">Castle MonoRail</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-06-22T03:46:48-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’m taking a look at a .net implementation of Ruby on Rails called <a href="http://www.castleproject.org/index.php/MonoRail">Monorail</a>.  It’s part of the <a href="http://www.castleproject.org/index.php/Main_Page">Castle</a> project.  So far it looks pretty good!</p>
+
+<p><strong>Community</strong>
+<a href="http://thread.gmane.org/gmane.comp.windows.dotnet.castleproject.devel">Mail List</a> - Although I haven’t been able to get signed up on this yet! There is an archive though.
+<a href="http://forum.castleproject.org/viewforum.php?f=5">Forum</a> - Just lurking at the moment.</p>
+
+<p><strong>Source</strong>
+<a href="https://svn.castleproject.org/svn/castle/trunk/">https://svn.castleproject.org/svn/castle/trunk/</a></p>
+
+<p><strong>Daily builds</strong>
+<a href="http://www.castleproject.org/~ayende/">http://www.castleproject.org/~ayende/</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -481,107 +527,6 @@ ActiveRecord::Base.pluralize_table_names = false
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/04/04/setting-up-ruby-on-rails/">Setting up Ruby on Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-04-04T03:26:22-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’m going to give Ruby on Rails (RoR) a try on my Windows XP machine.  Here’s how I’ve set it up…</p>
-
-<ol>
-  <li>
-    <p>Install Ruby
-Using the <a href="http://rubyforge.org/projects/rubyinstaller/">Ruby One Click Installer Ruby One Click Installer</a> (v184-16 release candidate 1)</p>
-  </li>
-  <li>
-    <p>Setup proxy</p>
-  </li>
-</ol>
-
-<pre><code>set HTTP_PROXY=http://wwwcache:8080
-</code></pre>
-
-<ol>
-  <li>GEM install Ruby on Rails</li>
-</ol>
-
-<pre><code>gem install rails --include-dependencies
-</code></pre>
-
-<ol>
-  <li>
-    <p>Install RadRails
-I also downloaded and installed the latest <a href="http://www.radrails.org/">RadRails</a> (v0.6.1) </p>
-  </li>
-  <li>
-    <p>Database
-I’m going to try rails with our dev MS-SQL server so no database to install. No doubt lots of configuring to do though!</p>
-  </li>
-</ol>
-
-<h4 id="note">NOTE:</h4>
-
-<p>There appears to be a problem with the WEBrick web server in this setup.  I couldn’t find the answer on google but I did find a work around. If you run the WEBrick server using the standard ruby script\server you will get the following error:</p>
-
-<pre><code>ruby script\server
-=&gt; Booting WEBrick...
-=&gt; Rails application started on http://0.0.0.0:3000
-=&gt; Ctrl-C to shutdown server; call with --help for options
-[2006-04-04 13:20:35] INFO  WEBrick 1.3.1
-[2006-04-04 13:20:35] INFO  ruby 1.8.4 (2005-12-24) [i386-mswin32]
-[2006-04-04 13:20:35] WARN  TCPServer Error: Bad file descriptor - bind(2)
-c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - bind(2) (Errno::EBADF)
-        from c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `create_listeners'
-        from c:/ruby/lib/ruby/1.8/webrick/utils.rb:70:in `create_listeners'
-        from c:/ruby/lib/ruby/1.8/webrick/server.rb:75:in `listen'
-        from c:/ruby/lib/ruby/1.8/webrick/server.rb:63:in `initialize'
-        from c:/ruby/lib/ruby/1.8/webrick/httpserver.rb:24:in `initialize'
-        from c:/ruby/lib/ruby/gems/1.8/gems/rails-1.1.0/lib/webrick_server.rb:59:in `dispatch'
-        from c:/ruby/lib/ruby/gems/1.8/gems/rails-1.1.0/lib/commands/servers/webrick.rb:59
-        from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
-        from c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.3.0/lib/active_support/dependencies.rb:136:in `require'
-        from c:/ruby/lib/ruby/gems/1.8/gems/rails-1.1.0/lib/commands/server.rb:30
-        from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
-        from c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.3.0/lib/active_support/dependencies.rb:136:in `require'
-        from script/server:3
-</code></pre>
-
-<p>There appears to be some problem binding to the port 3000, netstat shows nothing running on port 3000 so I’ve no idea what is causing it. Any hoose a work around is simply to run on another port:</p>
-
-<pre><code>ruby script\server --port=8000
-</code></pre>
-
-<p>If I do find out what is causing the problem I’ll update this post.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -599,6 +544,10 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/running-your-tests/">Running your tests</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
       </li>
     
@@ -612,10 +561,6 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
     
       <li class="post">
         <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a>
       </li>
     
   </ul>

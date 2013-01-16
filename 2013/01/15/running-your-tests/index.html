@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Running your tests - just ram</title>
+  <meta name="author" content="Justin Ramel">
+
+  
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://justinramel.com/2013/01/15/running-your-tests/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35853047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">just ram</a></h1>
+  
+    <h2>stuff I should remember</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:justinramel.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Running your tests</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T20:19:00-08:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li>Code Analysis</li>
+</ol>
+
+<hr />
+
+<p>After building your solution the next task you’ll want to automate is the
+running of your tests. Jenkins comes with a multitude of test plugins so
+whatever test framework you’re using chances are you’ll be covered. To show how
+easy it is to add tests to a build we’ll add NUnit to our demo solution and
+have Jenkins run the tests every time we commit a change to the source
+repository.</p>
+
+<h3 id="test-project-structure">Test Project Structure</h3>
+
+<p>Structure of the demo project is:</p>
+
+<p>Tools\NUnit\bin contains the NUnit framework and runner.</p>
+
+<p>The DemoTest project references the nunit.framework.dll from this folder. This
+enables the solution to be checked out and run with out any pre-installation
+requirements. This work great for Jenkins but its also a great way to setup
+your solutions, if you need to move to a new machine or if you have a new
+starter you just check out the solution and its ready to build and run your
+tests.</p>
+
+<h3 id="execute-any-test-runner">Execute any test runner</h3>
+
+<p>The build step “Execute Windows batch command” works with any test runner that
+has a command line runner. We will use this method to run the NUnit command
+line test runner in the Demo project.</p>
+
+<p>Use the Demo » Configure link to access the configuration page, under the
+Build section click the “Add build step” button.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-1.png" alt="test 1" /></p>
+
+<p>Select the “Execute Windows batch command” to add a new build step.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-2.png" alt="test 2" /></p>
+
+<p>Under the “Execute Windows batch command” section enter the command:</p>
+
+<ul>
+  <li>
+    <p>Tools\nunit\bin\nunit-console.exe src\DemoTests\bin\Debug\DemoTests.dll</p>
+  </li>
+  <li>
+    <p>Click the “Save” button</p>
+  </li>
+</ul>
+
+<p>This command is telling Jenkins the location of the NUnit test runner
+(Tools\nunit\bin\nunit-console.exe) and the location of the test DLL to run
+against (src\DemoTests\bin\Debug\DemoTests.dll).</p>
+
+<p>This command will now execute the NUnit test runner after every solution build.</p>
+
+<h3 id="failing-tests">Failing Tests</h3>
+
+<p>When a test fails Jenkins will fail the build and show a red ball for the
+status of the project.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-3.png" alt="test 3" /></p>
+
+<p>Now we know the build has failed but we don’t want to start digging through the
+console output to find the details of the failing test. Lets introduce another
+Jenkins plugin which will show details of exactly which test failed and why.</p>
+
+<h3 id="plugin-setup">Plugin Setup</h3>
+
+<p>Use the Demo » Configure link to access the Demo jobs configuration page,
+under the Post-Build Actions section.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-4.png" alt="test 4" /></p>
+
+<ul>
+  <li>
+    <p>Tick the “Publish NUnit test result report” check box.</p>
+  </li>
+  <li>
+    <p>Enter the output of the NUnit test runner: TestResult.xml</p>
+  </li>
+  <li>
+    <p>Click the “Save” button.</p>
+  </li>
+</ul>
+
+<p>Run a build again to see the NUnit test report.</p>
+
+<ul>
+  <li>Click the Demo » Build Now link.</li>
+</ul>
+
+<p>Of course the build has failed again but that’s what we want. This allows us to
+see NUnit test report. To view the report click on the failed build in the
+Build History.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-5.png" alt="test 5" /></p>
+
+<p>We now have a Test Result area that is showing 1 failure in the
+DemoTests.ProgramTests.Add namespace. That’s certainly easier than digging
+through the console output. The benefits don’t end there, if you click on the
+Test Result link we will get a more detailed report.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-6.png" alt="test 6" /></p>
+
+<p>Here we get a pretty report showing the full details of the failure. We can
+drill down for even more detail using the link DemoTests.ProgramTests.Add.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-7.png" alt="test 7" /></p>
+
+<p>This gives the error message from the test, a stack trace, the filename of the
+failing test and even the line number. You can’t ask for much more than that
+but there is one more benefit we can eke out of our test runner and that is our
+test history.</p>
+
+<h3 id="test-history">Test History</h3>
+
+<p>Once you setup the Unit plugin, Jenkins will track all your test results. This
+is a great way to keep an eye on the general health of your project. I’ve added
+a few more tests and commits to the demo project to show how the test history
+works.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-8.png" alt="test 8" /></p>
+
+<p>As you can see the Demo home page now has a “Test Result Trend” graph showing
+the initial failing test, followed by anther commit to fix the failure then
+another 4 tests that were added. The graph shows at a glance that our Demo
+project is getting healthier on every commit. This is the type of graph we want
+to see in our projects.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Justin Ramel</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T20:19:00-08:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='//categories/-net/'>.net</a>, <a class='category' href='//categories/jenkins/'>jenkins</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2013/01/15/running-your-tests/" data-via="justinramel" data-counturl="http://justinramel.com/2013/01/15/running-your-tests/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/01/14/monitoring-your-build/" title="Previous Post: Monitoring your build">&laquo; Monitoring your build</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/01/15/running-your-tests/">Running your tests</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/justinramel">@justinramel</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'justinramel',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Strava</h1>
+  <br />
+  <iframe height='160' width='272' frameborder='0' allowtransparency='true' scrolling='no' src='http://app.strava.com/athletes/1108047/activity-summary/38bbd39fbf5da9f3bf5e3845fb2f4592704e5de4'></iframe>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("justinramel", 0, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/justinramel" class="twitter-follow-button" data-show-count="false">Follow @justinramel</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:njr11">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "njr11"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108885363809433432894?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Justin Ramel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'justinramel';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://justinramel.com/2013/01/15/running-your-tests/';
+        var disqus_url = 'http://justinramel.com/2013/01/15/running-your-tests/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
