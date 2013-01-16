@@ -82,6 +82,154 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T23:33:00-08:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>For my final post on using Jenkins with .net, here’s how to do all that in 5
+minutes!</p>
+
+<h3 id="install">Install</h3>
+
+<ol>
+  <li>Download the latest version of Jenkins from:
+<a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></li>
+  <li>Extract the setup files from the zip file.</li>
+  <li>Run the Setup.exe.</li>
+  <li>Accept all the defaults in the setup wizard.</li>
+  <li>Jenkins will now be installed and the main Jenkins page will be open.</li>
+</ol>
+
+<h3 id="add-required-net-plugins">Add required .NET Plugins</h3>
+
+<ol>
+  <li>Download and install your required .NET framework from:
+<a href="http://www.microsoft.com/net/download">http://www.microsoft.com/net/download</a></li>
+  <li>Open the Manage Plugins page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Manage Plugins.</li>
+  <li>Click the “Available” tab.</li>
+  <li>Tick the “MSBuild” plugin.</li>
+</ol>
+
+<h3 id="add-optional-net-plugins">Add optional .NET Plugins</h3>
+
+<ol>
+  <li>Tick the plugin for the source control management software your using.</li>
+  <li>If you want to run unit tests as part of your build Tick your chosen testing
+plugin, this guide will use NUnit.</li>
+  <li>Tick the “Active Directory Plugin” if you want to use Active Directory for
+Authentication.</li>
+</ol>
+
+<h3 id="setup-jenkins">Setup Jenkins</h3>
+
+<ol>
+  <li>Open the main setup page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Configure System.</li>
+  <li>Under the MSBuild section, click the “Add MSBuild” button.</li>
+  <li>Set the name and path to MSBuild for example:
+Name: v3.5
+Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the “Save” button.</li>
+</ol>
+
+<h3 id="setting-up-your-first-job">Setting up your first job</h3>
+
+<ol>
+  <li>From the Jenkins menu click Jenkins » New Job.</li>
+  <li>Set Job name for example: Demo.</li>
+  <li>Select the “Build a free-style software project” radio button.</li>
+  <li>Then click the “OK” button.</li>
+  <li>Jenkins will now create the Job workspace on disk and redirect you to the
+job configuration page.</li>
+</ol>
+
+<h3 id="source-control">Source Control</h3>
+
+<p>This guide will use Subversion but there are many available.</p>
+
+<ol>
+  <li>Under the Source Control Management section select the “Subversion” radio
+button.</li>
+  <li>Set the Repository URL for example:
+https://jenkins-net-demo.googlecode.com/svn/trunk</li>
+</ol>
+
+<h3 id="build-triggers">Build Triggers</h3>
+
+<ol>
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for
+changes every 5 minutes.</li>
+</ol>
+
+<h3 id="build-the-solution">Build the Solution</h3>
+
+<ol>
+  <li>Under the Build section click the “Add build step” button and select “Build
+a Visual Studio project or solution using MSBuild”.</li>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution:
+Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+  <li>Click the “Build Now” link.</li>
+</ol>
+
+<p>You’re done!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/01/15/active-directory-security/">Active directory security</a></h1>
     
     
@@ -121,6 +269,10 @@
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -236,6 +388,10 @@ again with the Active Directory Domain controller setting.</p>
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -381,6 +537,10 @@ is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -545,6 +705,10 @@ graph.</p>
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -724,6 +888,10 @@ to see in our projects.</p>
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -911,6 +1079,10 @@ purpose.</p>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
 <hr />
 
 <p>Last time we had a failing build with Jenkin’s showing a red ball to prove it.
@@ -1003,6 +1175,10 @@ failures.</p>
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -1104,6 +1280,10 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -1212,6 +1392,10 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="/2013/01/15/security/">Security</a></li>
   <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
 <hr />
 
@@ -1355,97 +1539,6 @@ detected. This is done via the “Add build step” button under the Build secti
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-09T20:35:00-07:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-  <li><a href="/2013/01/15/security/">Security</a></li>
-  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
-</ol>
-
-<hr />
-
-<p>There are some important settings, that we need to configure before we get
-started building our first project.</p>
-
-<h2 id="manage">Manage</h2>
-
-<p>On the main Jenkins menu, click the ‘Manage Jenkins’ link.</p>
-
-<p><img src="/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
-
-<p>You will now see the Manage Jenkins page. Click the ‘Configure System’ link to
-get to the main configuration page.</p>
-
-<p><img src="/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
-
-<h2 id="msbuild">MSBuild</h2>
-
-<p>We need to setup MSBuild to carry out the compilation and build of your .NET
-solutions. We can use any version of MSBuild you have installed on the Jenkins
-machine. As Windows 7 comes with version 3.5 of the .NET Framework pre
-installed I’ll demo that version here but obviously you can download, install
-and use any version of the .NET Framework.</p>
-
-<p><img src="/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
-
-<p>Click the ‘Add MSBuild’ button.</p>
-
-<p><img src="/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
-
-<p>Set the name and path to MSBuild:</p>
-
-<ol>
-  <li>Name: v3.5</li>
-  <li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
-  <li>Click the ‘Save’ button</li>
-</ol>
-
-<p>In my next post we’ll actually get to setup our first job!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1461,6 +1554,10 @@ and use any version of the .NET Framework.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
       </li>
     
@@ -1474,10 +1571,6 @@ and use any version of the .NET Framework.</p>
     
       <li class="post">
         <a href="/2013/01/15/running-your-tests/">Running your tests</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
       </li>
     
   </ul>

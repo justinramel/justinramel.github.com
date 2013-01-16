@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’ve just updated to the latest version of the Castle stack and got hit with this exception: The ProxyFactoryFactory was not configured.
-Initialize ' &hellip;">
+  <meta name="description" content="A few notes I’ve compiled while starting to play with JP Boodhoo’s BDD framework (http://github.com/developwithpassion). At first sight the syntax &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +76,133 @@ Initialize ' &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/04/30/developwithpassionbdd-notes/">developwithpassion.bdd - notes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-30T11:29:37-07:00" pubdate data-updated="true">Apr 30<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few notes I’ve compiled while starting to play with <a href="http://blog.jpboodhoo.com/">JP Boodhoo’s</a> BDD framework (<a href="http://github.com/developwithpassion">http://github.com/developwithpassion</a>). At first sight the syntax looks quite alien but try it for a while you eyes soon adjust. </p>
+
+<h2 id="jp-blog-posts">JP blog posts</h2>
+
+<ul>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart1.aspx">How I’m Currently Writing My BDD Style Tests – Part 1</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/HowIrsquomCurrentlyWritingMyBDDStyleTestsNdashPart2.aspx">How I’m Currently Writing My BDD Style Tests – Part 2</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/TestExamplesWithMBUnitAndJpboodhoobdd.aspx">Test examples with MBUnit and jpboodhoo.bdd</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/SlightAdditionToJpboodhoobdd.aspx">Slight addition to jpboodhoo.bdd</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/UsingJpboodhoobddWithTestDrivenNet.aspx">Using jpboodhoo.bdd with TestDriven.Net</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.jpboodhoo.com/MoreNewConventionsForHowIOrganizeMyTests.aspx">More new conventions for how I organize my tests!!</a></p>
+  </li>
+</ul>
+
+<h2 id="base-classes">Base classes</h2>
+
+<ul>
+  <li>
+    <p>observations_for_a_static_sut – For testing a static class or a quick inline test</p>
+  </li>
+  <li>
+    <p>observations_for_a_sut_with_a_contract – For testing against the interface of a class </p>
+
+    <ul>
+      <li>
+        <p>sut is automatically created </p>
+      </li>
+      <li>
+        <p>No more broken test when you add a new dependency to a class! YAY</p>
+      </li>
+      <li>
+        <p>Automatic creation of sut can be over ridden</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>observations_for_a_sut_without_a_contract – For testing against a concrete class</p>
+  </li>
+</ul>
+
+<h2 id="delegate-call-order">Delegate call order</h2>
+
+<ul>
+  <li>
+    <p>context</p>
+
+    <ul>
+      <li>
+        <p>Can define a context block in the concerns base class which will be run before a context block in the inheriting class</p>
+      </li>
+      <li>
+        <p>Can call method provide_a_basic_sut_constructor_argument</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>after_sut_has_been_initialized</p>
+  </li>
+  <li>
+    <p>because</p>
+  </li>
+  <li>
+    <p>it</p>
+  </li>
+  <li>
+    <p>after_each_observation</p>
+  </li>
+</ul>
+
+<h2 id="exceptions">Exceptions</h2>
+
+<p>When you want to <strike>test</strike> spec? for an exception use the doing method:</p>
+
+<blockquote>
+
+  <p>because b = () =&gt;      <br />
+doing(() =&gt; sut.MethodWhichThrows()); </p>
+
+  <p>it should_throw_exception = () =&gt;     <br />
+exception_thrown_by_the_sut.Message.should_contain(“MY EXCEPTION”); </p>
+</blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -654,44 +780,6 @@ I’ve been working on creating web services for Enterprise Portal and calling t
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/12/05/sap-portal-developer-guide/">SAP Portal Developer Guide</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-12-05T04:26:00-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Looking for help on the SAP Portal? HTMLB syntax and lots of other goodies this way…</p>
-
-<p><a href="http://help.sap.com/saphelp_nw04/helpdata/en/9f/fd4e41bbd1f423e10000000a155106/frameset.htm">SAP Portal Developer Guide</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/6/">&larr; Older</a>
@@ -709,6 +797,10 @@ I’ve been working on creating web services for Enterprise Portal and calling t
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
       </li>
     
@@ -722,10 +814,6 @@ I’ve been working on creating web services for Enterprise Portal and calling t
     
       <li class="post">
         <a href="/2013/01/15/running-your-tests/">Running your tests</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
       </li>
     
   </ul>
