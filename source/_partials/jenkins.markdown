@@ -8,7 +8,7 @@ This post is part of a series:
 6. [Breaking the build](/2013/01/14/breaking-the-build/)
 7. [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
 8. [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9. Running your tests
+9. [Running your tests](/2013/01/15/running-your-tests/)
 10. Code Analysis
 
 ---
