@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. IMPORTANT: As well as installing the vim-ruby-refactoring plugin, you &hellip;">
+  <meta name="description" content="These are the steps I take when creating a new Rails app, documented here for when I forget. Create app rails new cd git git init git add . git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,100 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/01/11/rails-new-app-workflow/">Rails new app workflow</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-11T06:58:47-08:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
+
+<h4 id="create-app">Create app</h4>
+
+<p>rails new <app_name /></p>
+
+<p>cd <app_name /></p>
+
+<h4 id="git">git</h4>
+
+<p>git init</p>
+
+<p>git add .</p>
+
+<p>git commit –m ‘Initial commit’</p>
+
+<p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
+
+<h4 id="rvm-and-gemsets">rvm and gemsets</h4>
+
+<p>rvm gemset create <app_name /></p>
+
+<p>echo ‘rvm use 1.9.2@<app_name>&#8217; &gt;&gt; .rvmrc</app_name></p>
+
+<p>echo ‘.rvmrc’ » .gitignore</p>
+
+<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created. </p>
+
+<p>Change in and out of the directory to get rvm to kick in:</p>
+
+<p>cd ..</p>
+
+<p>cd <app_name /></p>
+
+<h4 id="gemfile">Gemfile</h4>
+
+<p>Edit ./Gemfile and add the following lines.</p>
+
+<p>gem ‘haml’</p>
+
+<p>group :test do</p>
+
+<p>gem ‘rspec’</p>
+
+<p>gem ‘rspec-rails’</p>
+
+<p>end</p>
+
+<p>Then install and run bundler:</p>
+
+<p>gem install bundler</p>
+
+<p>bundle install</p>
+
+<h4 id="rspec">rspec</h4>
+
+<p>Generate the rspec files:</p>
+
+<p>rails g rspec:install</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -590,74 +684,6 @@ The contact method now has a date parameter added.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-series/">Using vim to write ruby code? Check out this excellent refactoring plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T07:33:32-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve written a series of posts documenting the excellent <a href="http://www.vim.org/">vim</a> plugin <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a>. As you may have guessed from the name, its a <a href="http://www.ruby-lang.org/">Ruby</a> refactoring plugin for <a href="http://www.vim.org/">vim</a>. </p>
-
-<ol>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-add-parameter-2/">Add Parameter</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-inline-temp/">Inline Temp</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">Convert Post Conditional</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-constant/">Extract Constant</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-to-let/">Extract to Let</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/">Extract Local Variable</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/">Rename Local Variable</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">Rename Instance Variable</a></p>
-  </li>
-  <li>
-    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-method/">Extract Method</a></p>
-  </li>
-</ol>
-
-<p><strong>IMPORTANT:</strong> When installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, make sure you also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin otherwise some of these refactoring’s will not work.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/4/">&larr; Older</a>
@@ -675,6 +701,10 @@ The contact method now has a date parameter added.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/active-directory-security/">Active directory security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/security/">Security</a>
       </li>
     
@@ -688,10 +718,6 @@ The contact method now has a date parameter added.</p>
     
       <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T22:48:49-08:00</updated>
+  <updated>2013-01-15T23:31:53-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Active directory security]]></title>
+    <link href="http://justinramel.com/2013/01/15/active-directory-security/"/>
+    <updated>2013-01-15T22:51:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/active-directory-security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<hr />
+
+<p>If you happen to be running Active Directory within your organization you can
+have Jenkins utilize it for authentication. This will save you and your team
+from having to remember yet another password when connecting to Jenkins.</p>
+
+<p>Install the Active Directory Plugin via Jenkins » Manage Jenkins » Manage
+Plugins</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-1.png" alt="active directory 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-2.png" alt="active directory 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Active Directory”
+radio button.</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-3.png" alt="active directory 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button.</p>
+
+<p>This option will give you the most flexibility over the security for Jenkins.
+I usually give Anonymous users Read access that allows me to share the build
+information with managers and stake holders if they are interested. As I trust
+my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<ul>
+  <li>Enter your Active Directory username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<p>You have just given administrator access to this user, and they will be able to
+login to Jenkins using their Active Directory password.</p>
+
+<h3 id="trouble-shooting">Trouble shooting</h3>
+
+<p>If you find Jenkins is not connecting to your Active Directory controller, try
+setting the advanced settings for the Active Directory plugin.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-4.png" alt="active directory 4" /></p>
+
+<p>Click the “Advanced…” button. To reveal the area where you can specify the full
+details of your Active Directory Domain and Server.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-5.png" alt="active directory 5" /></p>
+
+<p>Start by setting the Domain Name of your Active Directory and clicking the
+“Save” button. Now retry your Active Directory access.</p>
+
+<p>This worked first time for me but if your not so lucky, try the same process
+again with the Active Directory Domain controller setting.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Security]]></title>
@@ -32,6 +120,7 @@
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -149,6 +238,7 @@ is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -285,6 +375,7 @@ graph.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -436,6 +527,7 @@ to see in our projects.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -594,6 +686,7 @@ purpose.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -659,6 +752,7 @@ failures.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -732,6 +826,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -812,6 +907,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -971,6 +1067,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -1034,6 +1131,7 @@ and use any version of the .NET Framework.</p>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -1177,6 +1275,7 @@ healthy competition never did anyone any harm.</em></li>
   <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -1701,73 +1800,6 @@ git push origin master</p>
 <p>rm -r myrepo/
 git clone git@yourserver.com:myrepo
 `</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails new app workflow]]></title>
-    <link href="http://justinramel.com/2011/01/11/rails-new-app-workflow/"/>
-    <updated>2011-01-11T06:58:47-08:00</updated>
-    <id>http://justinramel.com/2011/01/11/rails-new-app-workflow</id>
-    <content type="html"><![CDATA[<p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
-
-<h4 id="create-app">Create app</h4>
-
-<p>rails new <app_name /></p>
-
-<p>cd <app_name /></p>
-
-<h4 id="git">git</h4>
-
-<p>git init</p>
-
-<p>git add .</p>
-
-<p>git commit –m ‘Initial commit’</p>
-
-<p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
-
-<h4 id="rvm-and-gemsets">rvm and gemsets</h4>
-
-<p>rvm gemset create <app_name /></p>
-
-<p>echo ‘rvm use 1.9.2@<app_name>&#8217; &gt;&gt; .rvmrc</app_name></p>
-
-<p>echo ‘.rvmrc’ » .gitignore</p>
-
-<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created. </p>
-
-<p>Change in and out of the directory to get rvm to kick in:</p>
-
-<p>cd ..</p>
-
-<p>cd <app_name /></p>
-
-<h4 id="gemfile">Gemfile</h4>
-
-<p>Edit ./Gemfile and add the following lines.</p>
-
-<p>gem ‘haml’</p>
-
-<p>group :test do</p>
-
-<p>gem ‘rspec’</p>
-
-<p>gem ‘rspec-rails’</p>
-
-<p>end</p>
-
-<p>Then install and run bundler:</p>
-
-<p>gem install bundler</p>
-
-<p>bundle install</p>
-
-<h4 id="rspec">rspec</h4>
-
-<p>Generate the rspec files:</p>
-
-<p>rails g rspec:install</p>
 ]]></content>
   </entry>
   

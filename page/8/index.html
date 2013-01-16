@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb: ActiveRecord::Base.connection. &hellip;">
+  <meta name="description" content="NOTE: These instructions are now seriously out of date. You may want to check out my always up to date ebook instead. The secret of connecting Rails &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server/">Connecting Ruby on Rails to Microsoft SQL Server</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-04-07T13:39:21-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>NOTE: These instructions are now seriously out of date. You may want to check out my always up to date ebook instead. <a href="http://rails2ms-sql.heroku.com/">The secret of connecting Rails to Microsoft SQL Server</a></strong></p>
+
+<p><a href="http://rails2ms-sql.heroku.com/"><img src="http://justinram.files.wordpress.com/2010/12/banner.png" alt="" /></a></p>
+
+<p>It appears rails does not connect to MS SQL Server right out of the box.  You need to do the following to get the connection to work:</p>
+
+<p>Get the latest source distribution of <a href="http://rubyforge.org/projects/ruby-dbi/">Ruby-DBI</a> and copy the file:</p>
+
+<pre><code>bdi-0.1.0/lib/dbd/ADO.rb
+</code></pre>
+
+<p>to:</p>
+
+<pre><code>c:/ruby/lib/ruby/site_ruby/1.8/DBD/ADO/ADO.rb
+</code></pre>
+
+<p><strong>NOTE: The ADO directory does not exist on a standard install, you will need to create it.</strong></p>
+
+<p>Then simply set up your railsapp/config/database.yml</p>
+
+<p>Here’s an example for reference:</p>
+
+<pre><code>development:
+  adapter: sqlserver
+  database: database_name
+  host: server_name
+  username: user_name
+  password: your_pw_here
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -576,75 +641,6 @@ c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/20/installing-subclipse-for-sap-netweaver-developer-studio-2013/">Installing Subclipse for SAP NetWeaver Developer Studio 2.0.13</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-20T04:30:50-08:00" pubdate data-updated="true">Mar 20<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>First download the correct version of Subclipse:</p>
-
-<p><a href="http://subclipse.tigris.org/files/documents/906/22688/org.tigris.subversion.subclipse_0.9.3.3.zip">Download the Eclipse 2.x version</a></p>
-
-<p>Extract the zip file and copy the two folders:</p>
-
-<pre><code>org.tigris.subversion.subclipse.core_0.9.3.3
-org.tigris.subversion.subclipse.ui_0.9.3.3
-</code></pre>
-
-<p>To your plugins folder, in my case:</p>
-
-<pre><code>C:\\Program Files\\SAP\\JDT\\eclipse\\plugins
-</code></pre>
-
-<p>Fire up the developer studio and you should now have the subversion perspective available.</p>
-
-<p>Menu: Window =&gt; Open Perspective =&gt; Other…</p>
-
-<p>Select SVN Repository Exploring from the dialog.</p>
-
-<p>Right click on the SVN Repository windows to add a new repository:</p>
-
-<p>Menu: New =&gt; Repository Location…</p>
-
-<p>You will now see the following dialog:</p>
-
-<p><img src="http://justinram.files.wordpress.com/2006/03/repository.jpg" alt="New Repository Dialog" /></p>
-
-<p>Simply enter your subversion server address and user/password if required.</p>
-
-<p>You should now see your source code, right click on the Trunk folder of a project and select Check Out as Project.</p>
-
-<p>Cogs will start turning and when finished you will have a shiny new project to play with.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/9/">&larr; Older</a>
@@ -662,6 +658,10 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/active-directory-security/">Active directory security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/security/">Security</a>
       </li>
     
@@ -675,10 +675,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
     
       <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
   </ul>

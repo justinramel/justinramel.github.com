@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="The problem I am calling a web service from a controller and the web service throws a WebException with different exception messages, one when the &hellip;">
+  <meta name="description" content="I’ve just updated to the latest version of the Castle stack and got hit with this exception: The ProxyFactoryFactory was not configured.
+Initialize ' &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +77,101 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured/">Castle ActiveRecord – Exception : The ProxyFactoryFactory was not configured</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-23T08:38:12-08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve just updated to the latest version of the Castle stack and got hit with this exception:</p>
+
+<pre><code>The ProxyFactoryFactory was not configured.
+Initialize 'proxyfactory.factory_class' property of the session-factory configuration section with one of the available NHibernate.ByteCode providers.
+Example:
+NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu
+Example:
+NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
+</code></pre>
+
+<p>Turns out the NHibernate config has changed and as the exception says you must now specify a factory class.</p>
+
+<p>To fix the exception add a new line to your active record facility config:</p>
+
+<facility id="activerecord.facility" isweb="true" type="Castle.Facilities.ActiveRecordIntegration.ActiveRecordFacility, Castle.Facilities.ActiveRecordIntegration">
+    
+<assemblies>
+
+    
+<item>Nu.Core</item>
+
+    
+</assemblies>
+
+    
+<config>
+
+    
+<add value="false" key="cache.use_query_cache" />
+
+    
+<add value="ReadCommitted" key="connection.isolation" />
+
+    
+<add value="false" key="show_sql" />
+
+    
+<add value="NHibernate.Dialect.SQLiteDialect" key="dialect" />
+
+    
+<add value="NHibernate.Driver.SQLite20Driver" key="connection.driver_class" />
+
+    
+<add value="true=1;false=0" key="query.substitutions" />
+
+    
+<add value="#{ConnectionString}" key="connection.connection_string" />
+
+    
+<add value="NHibernate.Connection.DriverConnectionProvider" key="connection.provider" />
+
+    
+** <add value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" key="proxyfactory.factory_class" />
+      
+** </config>
+
+    
+</facility>
+
+<p>Then add a reference in your project to NHibernate.ByteCode.Castle.dll.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -596,48 +692,6 @@ I’ve been working on creating web services for Enterprise Portal and calling t
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/12/05/sap-portal-how-do-i-reference-a-javascript-file/">SAP Portal how do I reference a Javascript file?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-12-05T04:25:36-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Easy when you know how</p>
-
-<pre><code>request = (IPortalComponentRequest)this.getRequest();
-response = (IPortalComponentResponse)this.getResponse();
-IResource jsResource = request.getResource(IResource.SCRIPT, “scripts/myscript.js”);
-response.addResource(jsResource);
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/6/">&larr; Older</a>
@@ -655,6 +709,10 @@ response.addResource(jsResource);
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/active-directory-security/">Active directory security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/security/">Security</a>
       </li>
     
@@ -668,10 +726,6 @@ response.addResource(jsResource);
     
       <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
   </ul>

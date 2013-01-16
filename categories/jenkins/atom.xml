@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jenkins | just ram]]></title>
   <link href="http://justinramel.com//categories/jenkins/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T22:48:49-08:00</updated>
+  <updated>2013-01-15T23:31:53-08:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Active directory security]]></title>
+    <link href="http://justinramel.com/2013/01/15/active-directory-security/"/>
+    <updated>2013-01-15T22:51:00-08:00</updated>
+    <id>http://justinramel.com/2013/01/15/active-directory-security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
+
+---
+</p>
+
+<p>If you happen to be running Active Directory within your organization you can
+have Jenkins utilize it for authentication. This will save you and your team
+from having to remember yet another password when connecting to Jenkins.</p>
+
+<p>Install the Active Directory Plugin via Jenkins » Manage Jenkins » Manage
+Plugins</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-1.png" alt="active directory 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-2.png" alt="active directory 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Active Directory”
+radio button.</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-3.png" alt="active directory 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button.</p>
+
+<p>This option will give you the most flexibility over the security for Jenkins.
+I usually give Anonymous users Read access that allows me to share the build
+information with managers and stake holders if they are interested. As I trust
+my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<ul>
+  <li>Enter your Active Directory username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<p>You have just given administrator access to this user, and they will be able to
+login to Jenkins using their Active Directory password.</p>
+
+<h3 id="trouble-shooting">Trouble shooting</h3>
+
+<p>If you find Jenkins is not connecting to your Active Directory controller, try
+setting the advanced settings for the Active Directory plugin.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-4.png" alt="active directory 4" /></p>
+
+<p>Click the “Advanced…” button. To reveal the area where you can specify the full
+details of your Active Directory Domain and Server.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-5.png" alt="active directory 5" /></p>
+
+<p>Start by setting the Domain Name of your Active Directory and clicking the
+“Save” button. Now retry your Active Directory access.</p>
+
+<p>This worked first time for me but if your not so lucky, try the same process
+again with the Active Directory Domain controller setting.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Security]]></title>
@@ -31,6 +118,7 @@
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
 11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
 
 ---
 </p>
@@ -147,6 +235,7 @@ is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
 11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
 
 ---
 </p>
@@ -282,6 +371,7 @@ graph.</p>
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
 11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
 
 ---
 </p>
@@ -432,6 +522,7 @@ to see in our projects.</p>
 9.  [Running your tests](/2013/01/15/running-your-tests/)
 10. [Code Analysis](/2013/01/15/code-analysis/)
 11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
 
 ---
 </p>
@@ -568,70 +659,6 @@ purpose.</p>
 <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin</a></p>
 
 <p><img src="/images/jenkins-net/ch08/team.png" alt="team" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Diagnosing and fixing a broken build]]></title>
-    <link href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/"/>
-    <updated>2013-01-14T20:39:00-08:00</updated>
-    <id>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build</id>
-    <content type="html"><![CDATA[<p>This post is part of a series:
-
-1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
-2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
-3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
-4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
-5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
-6.  [Breaking the build](/2013/01/14/breaking-the-build/)
-7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
-8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
-9.  [Running your tests](/2013/01/15/running-your-tests/)
-10. [Code Analysis](/2013/01/15/code-analysis/)
-11. [Security](/2013/01/15/security/)
-
----
-</p>
-
-<p>Last time we had a failing build with Jenkin’s showing a red ball to prove it.
-The first place to look when we have a failing build is the console output. You
-can get to the console output via the main menu on the left of your project
-page.</p>
-
-<h3 id="console-output">Console output</h3>
-
-<p><img src="/images/jenkins-net/ch07/console-output.png" alt="" /></p>
-
-<p>As the screenshot shows we get all the output from our build process and there
-is a lot of it! I’ve highlighted the actual problem which is the causing the
-build to fail, our missing dll.</p>
-
-<p>This is the error your team mates will see when they check out and try to build
-your code.</p>
-
-<h3 id="console-blindness">Console “blindness”</h3>
-
-<p>When you first see the console output for your build it can be a little
-overwhelming, there is a lot of information packed into the output. Sometimes
-you look at all that information and you can’t see the wood for the trees, or
-the errors in all that output. I have seen people look at this output and they
-are blind to the errors.</p>
-
-<p>Of course once you get used to looking at this output it becomes easier. To
-help you get over this initially a simple search to find all the errors listed
-on the page can really help. Simply search for the word “error” and your
-browser will help you see again.</p>
-
-<p><img src="/images/jenkins-net/ch07/console-output-find.png" alt="" /></p>
-
-<p>You now have only a few places to concentrate your efforts in that sea of
-information.</p>
-
-<p>To fix the problem we can simply add the missing dll and Jenkins will rebuild
-the solution and we’ll be back to green balls.</p>
-
-<p>Next time we’ll look at the different ways to monitor our build and it’s
-failures.</p>
 ]]></content>
   </entry>
   

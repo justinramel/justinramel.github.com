@@ -9,10 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="NOTE: You must have TortoiseSVN installed for these instructions to work! First create your Project folder structure: ProjectName
-branches
-tags
-trunk &hellip;">
+  <meta name="description" content="It is a good idea to create a library project which includes all the jar files needed for a portal project. Why?
+1. The SAP consultant told us to do &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +77,87 @@ trunk &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/02/22/create-a-library-project-of-sap-portal-pdk-jars/">Create a library project of SAP Portal PDK JARs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-22T07:53:00-08:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It is a good idea to create a library project which includes all the jar files needed for a portal project.  Why?
+1. The SAP consultant told us to do it this way
+2. It means on each new project you just need to include the library project and we are good to go.</p>
+
+<p>So this is what we need to do:</p>
+
+<p><strong>Step 1: Get the portal PDK JAR files</strong>
+These JAR files can de downloaded from the portal, they live under the following portal menu:</p>
+
+<p>(Top Menu) Java Development -&gt; (Left Sub Menu) Tools -&gt; PDK Jars Download</p>
+
+<p>Download the zip file and extract the JAR files to a folder on your PC for example c:\source\sap\devlibs</p>
+
+<p><strong>Step 2: Create the library project</strong>
+In SAP Netweaver Developer Studio create a new project:</p>
+
+<p>File -&gt; New -&gt; Project…</p>
+
+<p>You will now see a wizard dialog:</p>
+
+<p>Select Java -&gt; Java Project</p>
+
+<p>Click Next</p>
+
+<p>Give the project a name DevLibs for example and specify a folder to save the project to.</p>
+
+<p>You should now have a blank project to work with.</p>
+
+<p><strong>Step 3: Import the SAP Portal PDK JAR files</strong>
+Right click your mouse on the new blank project you just created (in this case DevLibs) select Properties from the context menu.</p>
+
+<p>You will now see the DevLibs properties dialog:
+<a href="http://photos1.blogger.com/blogger/752/2322/1600/devlibs.0.jpg"><img src="http://photos1.blogger.com/blogger/752/2322/320/devlibs.0.jpg" alt="" /></a>
+Select Java Build Path from the left pane.</p>
+
+<p>Select “Libaries” from the Tab.</p>
+
+<p>Click the “Add External JARs” button.</p>
+
+<p>The file open dialog will now appear, select the downloaded JAR files from Step 1.</p>
+
+<p>Click the “Order and Export” tab, click the “Select all” button.</p>
+
+<p>Finally click the “OK” button.</p>
+
+<p>You now have a library project which can be included in new portal projects!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -293,6 +372,10 @@ else
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/active-directory-security/">Active directory security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/security/">Security</a>
       </li>
     
@@ -306,10 +389,6 @@ else
     
       <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
   </ul>

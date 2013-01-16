@@ -82,6 +82,121 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/01/15/active-directory-security/">Active directory security</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T22:51:00-08:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<hr />
+
+<p>If you happen to be running Active Directory within your organization you can
+have Jenkins utilize it for authentication. This will save you and your team
+from having to remember yet another password when connecting to Jenkins.</p>
+
+<p>Install the Active Directory Plugin via Jenkins » Manage Jenkins » Manage
+Plugins</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-1.png" alt="active directory 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-2.png" alt="active directory 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Active Directory”
+radio button.</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-3.png" alt="active directory 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button.</p>
+
+<p>This option will give you the most flexibility over the security for Jenkins.
+I usually give Anonymous users Read access that allows me to share the build
+information with managers and stake holders if they are interested. As I trust
+my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<ul>
+  <li>Enter your Active Directory username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<p>You have just given administrator access to this user, and they will be able to
+login to Jenkins using their Active Directory password.</p>
+
+<h3 id="trouble-shooting">Trouble shooting</h3>
+
+<p>If you find Jenkins is not connecting to your Active Directory controller, try
+setting the advanced settings for the Active Directory plugin.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-4.png" alt="active directory 4" /></p>
+
+<p>Click the “Advanced…” button. To reveal the area where you can specify the full
+details of your Active Directory Domain and Server.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-5.png" alt="active directory 5" /></p>
+
+<p>Start by setting the Domain Name of your Active Directory and clicking the
+“Save” button. Now retry your Active Directory access.</p>
+
+<p>This worked first time for me but if your not so lucky, try the same process
+again with the Active Directory Domain controller setting.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/01/15/security/">Security</a></h1>
     
     
@@ -119,6 +234,7 @@
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -263,6 +379,7 @@ is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -426,6 +543,7 @@ graph.</p>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -604,6 +722,7 @@ to see in our projects.</p>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -789,6 +908,7 @@ purpose.</p>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -881,6 +1001,7 @@ failures.</p>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -981,6 +1102,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -1088,6 +1210,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -1274,6 +1397,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
   <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
   <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
 <hr />
@@ -1322,176 +1446,6 @@ and use any version of the .NET Framework.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-20T18:43:00-07:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-  <li><a href="/2013/01/15/security/">Security</a></li>
-</ol>
-
-<hr />
-
-<h2 id="plugins">Plugins</h2>
-
-<p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
-Thankfully Jenkins makes is very easy to find and install plugins. On the main
-Jenkins menu click the ‘Manage Jenkins’ link.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
-
-<p>You will now see the Manage Jenkins page. Click the ‘Manage Plugins’ link.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
-
-<p>You will now see a list of the currently installed plugins. Click the
-Available tab to see a list of all the Jenkins plugins, which are available to
-install.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
-
-<p>As you can see Jenkins has a massive number of plugins. I encourage you to
-look through and play with the plugins they are really useful and the list is
-growing by the day.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
-
-<h2 id="required-plugins">Required Plugins</h2>
-
-<p>Without these required Plugins you will not be able to build and test .NET
-solutions. So you must at least install these Plugins for the rest of this
-guide to work.</p>
-
-<h3 id="build-plugins">Build Plugins</h3>
-
-<p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
-solution.</p>
-
-<ul>
-  <li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
-projects.</em></li>
-</ul>
-
-<h3 id="testing-plugins">Testing Plugins</h3>
-
-<p>You’ll need one of these depending on your chosen test framework.</p>
-
-<ul>
-  <li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
-XML reports so it can be integrated with Jenkins JUnit features.</em></li>
-  <li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
-  <li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
-of an execution of a testing tool in Jenkins.</em></li>
-  <li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
-test results.</em></li>
-</ul>
-
-<p>Tick the check box next to each of the required Plugins and then click the
-‘Download now and install after restart’ button.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
-
-<h3 id="optional-plugins">Optional Plugins</h3>
-
-<p>These Plugins are optional but still recommend ranging from genuine
-productivity tools to just plain fun.</p>
-
-<h3 id="jenkins-enhancements">Jenkins Enhancements</h3>
-
-<ul>
-  <li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
-successful builds. <strong>Who doesn’t want Green Balls!</strong></em></li>
-  <li><strong>Copy project link plugin</strong> - <em>This plugin adds the “Copy project” link into
-left side panel in the main project page.</em></li>
-  <li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
-a highly visible manner. This is ideal for displaying on a screen on the
-office wall as a form of Extreme Feedback Device.</em></li>
-</ul>
-
-<h3 id="authentication">Authentication</h3>
-
-<ul>
-  <li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
-authenticates the username and the password through Active Directory.</em></li>
-</ul>
-
-<blockquote>
-  <p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
-guessing most of you already login via Active Directory so this Plugin saves
-you having to remember yet another password.</p>
-</blockquote>
-
-<h3 id="code-analysis">Code Analysis</h3>
-
-<ul>
-  <li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
-tasks and generates a trend report.</em></li>
-  <li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
-warnings in the console log or in log files.</em></li>
-</ul>
-
-<h3 id="build-tools">Build Tools</h3>
-
-<ul>
-  <li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
-build step.</em></li>
-  <li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
-</ul>
-
-<h3 id="fun-fun-fun">Fun, Fun, Fun</h3>
-
-<ul>
-  <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
-Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
-build page. <strong>Every build server needs a Chuck Norris, right?</strong></em></li>
-  <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
-where users get points on improving the builds. Although this is indeed a fun
-plugin it can help when first introducing Jenkins to your team, a little
-healthy competition never did anyone any harm.</em></li>
-</ul>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1507,6 +1461,10 @@ healthy competition never did anyone any harm.</em></li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/active-directory-security/">Active directory security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/security/">Security</a>
       </li>
     
@@ -1520,10 +1478,6 @@ healthy competition never did anyone any harm.</em></li>
     
       <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
   </ul>

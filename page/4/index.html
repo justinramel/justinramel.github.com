@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="The latest Alpha version of nServiceBus uses the TopShelf project as part of its new hosting feature. This new Host feature makes it super easy to &hellip;">
+  <meta name="description" content="I’ve written a series of posts documenting the excellent vim plugin vim-ruby-refactoring. As you may have guessed from the name, its a Ruby &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,74 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-series/">Using vim to write ruby code? Check out this excellent refactoring plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-30T07:33:32-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve written a series of posts documenting the excellent <a href="http://www.vim.org/">vim</a> plugin <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a>. As you may have guessed from the name, its a <a href="http://www.ruby-lang.org/">Ruby</a> refactoring plugin for <a href="http://www.vim.org/">vim</a>. </p>
+
+<ol>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-add-parameter-2/">Add Parameter</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-inline-temp/">Inline Temp</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">Convert Post Conditional</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-constant/">Extract Constant</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-extract-to-let/">Extract to Let</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/">Extract Local Variable</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/">Rename Local Variable</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">Rename Instance Variable</a></p>
+  </li>
+  <li>
+    <p><a href="http://justinram.wordpress.com/2010/12/31/vim-ruby-refactoring-extract-method/">Extract Method</a></p>
+  </li>
+</ol>
+
+<p><strong>IMPORTANT:</strong> When installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, make sure you also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin otherwise some of these refactoring’s will not work.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1088,101 +1156,6 @@ exception_thrown_by_the_sut.Message.should_contain(“MY EXCEPTION”); </p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured/">Castle ActiveRecord – Exception : The ProxyFactoryFactory was not configured</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-23T08:38:12-08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve just updated to the latest version of the Castle stack and got hit with this exception:</p>
-
-<pre><code>The ProxyFactoryFactory was not configured.
-Initialize 'proxyfactory.factory_class' property of the session-factory configuration section with one of the available NHibernate.ByteCode providers.
-Example:
-NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu
-Example:
-NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
-</code></pre>
-
-<p>Turns out the NHibernate config has changed and as the exception says you must now specify a factory class.</p>
-
-<p>To fix the exception add a new line to your active record facility config:</p>
-
-<facility id="activerecord.facility" isweb="true" type="Castle.Facilities.ActiveRecordIntegration.ActiveRecordFacility, Castle.Facilities.ActiveRecordIntegration">
-    
-<assemblies>
-
-    
-<item>Nu.Core</item>
-
-    
-</assemblies>
-
-    
-<config>
-
-    
-<add value="false" key="cache.use_query_cache" />
-
-    
-<add value="ReadCommitted" key="connection.isolation" />
-
-    
-<add value="false" key="show_sql" />
-
-    
-<add value="NHibernate.Dialect.SQLiteDialect" key="dialect" />
-
-    
-<add value="NHibernate.Driver.SQLite20Driver" key="connection.driver_class" />
-
-    
-<add value="true=1;false=0" key="query.substitutions" />
-
-    
-<add value="#{ConnectionString}" key="connection.connection_string" />
-
-    
-<add value="NHibernate.Connection.DriverConnectionProvider" key="connection.provider" />
-
-    
-** <add value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" key="proxyfactory.factory_class" />
-      
-** </config>
-
-    
-</facility>
-
-<p>Then add a reference in your project to NHibernate.ByteCode.Castle.dll.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/5/">&larr; Older</a>
@@ -1200,6 +1173,10 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/active-directory-security/">Active directory security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/security/">Security</a>
       </li>
     
@@ -1213,10 +1190,6 @@ NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
     
       <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
   </ul>

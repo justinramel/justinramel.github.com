@@ -9,7 +9,9 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="If you don’t wish to run all the unit tests in your test case you can tell ruby to run only one by passing in the name of the test: ruby &hellip;">
+  <meta name="description" content="Easy when you know how request = (IPortalComponentRequest)this.getRequest();
+response = (IPortalComponentResponse)this.getResponse();
+IResource &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +78,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/12/05/sap-portal-how-do-i-reference-a-javascript-file/">SAP Portal how do I reference a Javascript file?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-12-05T04:25:36-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Easy when you know how</p>
+
+<pre><code>request = (IPortalComponentRequest)this.getRequest();
+response = (IPortalComponentResponse)this.getResponse();
+IResource jsResource = request.getResource(IResource.SCRIPT, “scripts/myscript.js”);
+response.addResource(jsResource);
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -546,137 +590,6 @@ GO
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/07/20/continuous-integration-cruisecontrolnet-subversion-msbuild-net-20/">Continuous Integration + CruiseControl.Net + Subversion + MSBuild + .Net 2.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-07-20T03:20:14-07:00" pubdate data-updated="true">Jul 20<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve read quite a bit about <a href="http://www.martinfowler.com/articles/continuousIntegration.html">Continuous Integration</a> and the .Net implementation <a href="http://confluence.public.thoughtworks.org/display/CCNET">CruiseControl.Net</a>. It always seemed like a really good idea but I’ve never gotten around to trying it out, until now…</p>
-
-<p>By the way setting up the server was a lot easier than I thought it would be! Here’s what I did:</p>
-
-<h3 id="cruisecontrolnet-setup">CruiseControl.Net Setup</h3>
-
-<p>Download and run CruiseControl.Net setup
-<a href="http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198">
-http://sourceforge.net/project/showfiles.php?group_id=71179&amp;package_id=83198</a></p>
-
-<p>I’ve used version 1.0.1:</p>
-
-<p><a href="http://prdownloads.sourceforge.net/ccnet/CruiseControl.NET-1.0.1-Setup.exe?download">CruiseControl.NET-1.0.1-Setup.exe</a></p>
-
-<p><strong>NOTE:</strong> After setup if your server has .Net 1.1 and 2.0 as mine did you may need to change the ccnet website to use .Net 2.0.  This can be done through the IIS control panel, get the properties of the ccnet site  and  change via the ASP.NET tab.</p>
-
-<h3 id="subversion-client">Subversion Client</h3>
-
-<p>Your server will need the subversion console client on the server to allow CruiseControl to checkout your source.</p>
-
-<p><a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></p>
-
-<h3 id="net-2-sdk">.Net 2 SDK</h3>
-
-<p>To allow us to build .Net 2  projects without the need for Visual Studio we need to download and install .Net 2 SDK onto  the server</p>
-
-<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en">http://www.microsoft.com/downloads/details.aspx?familyid=fe6f2099-b7b4-4f47-a244-c96d69c35dec&amp;displaylang=en</a></p>
-
-<h3 id="setup-msbuild">Setup MSBuild</h3>
-
-<p>To use MSBuild with CC.Net we need the logger dll -ThoughtWorks.CruiseControl.MsBuild.dll from:</p>
-
-<p><a href="http://ccnetlive.thoughtworks.com/MSBuildXmlLogger%2DBuilds/">http://ccnetlive.thoughtworks.com/MSBuildXmlLogger%2DBuilds/</a></p>
-
-<p>Download and copy to:
-C:\Program Files\CruiseControl.NET\webdashboard\bin\</p>
-
-<h3 id="directory-structure">Directory structure</h3>
-
-<p>Setup your directory structure:</p>
-
-<p>C:\CI\Myproject\
-C:\CI\Myproject\build
-C:\CI\Myproject\logs</p>
-
-<p>Using your subversion client checkout source to C:\CI\MyProject\build</p>
-
-<h3 id="ccnetconfig">ccnet.config</h3>
-
-<p>Add the project config to ccnet.confg:</p>
-
-<pre><code>&lt;cruisecontrol&gt;
- &lt;project name="MyProject"&gt;
-  &lt;!-- after a change is detected, wait 10 mins and then kick off the build--&gt;
-  &lt;schedule type="schedule" sleepSeconds="600" /&gt;
-  &lt;!--set the sourcecontrol type to subversion and point to the subversion exe--&gt;
-  &lt;sourcecontrol type="svn"&gt;
-   &lt;executable&gt;C:\Program Files\Subversion\bin\svn.exe&lt;/executable&gt;
-   &lt;workingDirectory&gt;C:\CI\MyProject\build&lt;/workingDirectory&gt;
-   &lt;trunkUrl&gt;svn://svnserver/MyProject/trunk&lt;/trunkUrl&gt;
-   &lt;autoGetSource&gt;true&lt;/autoGetSource&gt;
-   &lt;username&gt;myuser&lt;/username&gt;
-   &lt;password&gt;mypassword&lt;/password&gt;
-  &lt;/sourcecontrol&gt;
-  &lt;tasks&gt;
-   &lt;!-- Configure MSBuild to compile the updated files --&gt;c:\
-   &lt;msbuild&gt;
-    &lt;executable&gt;C:\windows\Microsoft.NET\Framework\v2.0.50727\MSBuild.exe&lt;/executable&gt;
-    &lt;workingDirectory&gt;C:\CI\MyProject\build\src\&lt;/workingDirectory&gt;
-    &lt;projectFile&gt;MyProject.sln&lt;/projectFile&gt;
-    &lt;buildArgs&gt;/noconsolelogger /p:Configuration=Debug&lt;/buildArgs&gt;
-    &lt;targets&gt;&lt;/targets&gt;
-    &lt;timeout&gt;15&lt;/timeout&gt;
-    &lt;logger&gt;ThoughtWorks.CruiseControl.MsBuild.XmlLogger,C:\Program Files\CruiseControl.NET\webdashboard\bin\ThoughtWorks.CruiseControl.MsBuild.dll&lt;/logger&gt;
-   &lt;/msbuild&gt;
-  &lt;/tasks&gt;
-  &lt;!--Publishers will be done after the build has completed--&gt;
-  &lt;publishers&gt;
-   &lt;xmllogger&gt;
-    &lt;logDir&gt;C:\CI\MyProject\Logs&lt;/logDir&gt;
-   &lt;/xmllogger&gt;
-  &lt;/publishers&gt;
-  &lt;modificationDelaySeconds&gt;10&lt;/modificationDelaySeconds&gt;
- &lt;/project&gt;
-&lt;/cruisecontrol&gt;
-</code></pre>
-
-<h3 id="cc-tray">CC Tray</h3>
-
-<p>You will also want to install the CC Tray monitoring software on your pc:</p>
-
-<p><a href="http://prdownloads.sourceforge.net/ccnet/CruiseControl.NET-CCTray-1.0.1-Setup.exe?download">CCTray</a></p>
-
-<p>It will allow you to keep an eye on the server from the comfort of your own pc.</p>
-
-<p>That’s it we’re down!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/7/">&larr; Older</a>
@@ -694,6 +607,10 @@ C:\CI\Myproject\logs</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/active-directory-security/">Active directory security</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/security/">Security</a>
       </li>
     
@@ -707,10 +624,6 @@ C:\CI\Myproject\logs</p>
     
       <li class="post">
         <a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a>
       </li>
     
   </ul>
