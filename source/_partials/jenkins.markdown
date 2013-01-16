@@ -13,4 +13,7 @@ This post is part of a series:
 11. [Security](/2013/01/15/security/)
 12. [Active Directory Security](/2013/01/15/active-directory-security/)
 
+* BONUS: [Jenkins for .net in 5 Minutes](/2013/01/15/5-minute-setup/)
+
+
 ---
