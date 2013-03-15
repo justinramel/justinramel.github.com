@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T23:59:07-08:00</updated>
+  <updated>2013-03-15T14:13:21+00:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -14,9 +14,68 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Git feature workflow - basic commands]]></title>
+    <link href="http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands/"/>
+    <updated>2013-03-15T13:06:00+00:00</updated>
+    <id>http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands</id>
+    <content type="html"><![CDATA[<p>List of basic commands to use during feature branch workflow.</p>
+
+<h2 id="create-feature-branch">Create feature branch</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git checkout -b my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p><strong>NOTE:</strong> The <em>-b</em> parameter means branch, it saves us having to use two separate git commands. Without this option we’d need to branch then checkout.</p>
+</blockquote>
+
+<p>Now do lots of work on the new feature…</p>
+
+<p>When finished working on the new feature find out what has changed.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git status</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="add-changes-to-git">Add changes to git</h2>
+
+<p>Either add each file manually using:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git add my-changed-file.txt</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Or add all the files in the current directory.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git add .</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Run <code>git status</code> one more time to get a list of everything that is going to be committed.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Accidentally added files can be removed using the command <code>git rm &lt;filename&gt;</code></p>
+</blockquote>
+
+<h2 id="commit-changes">Commit changes</h2>
+
+<p>Commit your changes with a <em>meaningful</em> message.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git commit -m "my awesome new feature, this changes everything!"</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="push-changes">Push changes</h2>
+
+<p>Push the new feature up to github so we can do a pull request.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git push origin -u my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The new branch should now be visible on github and we can now issue a pull request.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Jenkins for .net in 5 Minutes]]></title>
     <link href="http://justinramel.com/2013/01/15/5-minute-setup/"/>
-    <updated>2013-01-15T23:33:00-08:00</updated>
+    <updated>2013-01-15T23:33:00+00:00</updated>
     <id>http://justinramel.com/2013/01/15/5-minute-setup</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -137,7 +196,7 @@ Jenkins-net-demo.sln</li>
   <entry>
     <title type="html"><![CDATA[Active directory security]]></title>
     <link href="http://justinramel.com/2013/01/15/active-directory-security/"/>
-    <updated>2013-01-15T22:51:00-08:00</updated>
+    <updated>2013-01-15T22:51:00+00:00</updated>
     <id>http://justinramel.com/2013/01/15/active-directory-security</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -229,7 +288,7 @@ again with the Active Directory Domain controller setting.</p>
   <entry>
     <title type="html"><![CDATA[Security]]></title>
     <link href="http://justinramel.com/2013/01/15/security/"/>
-    <updated>2013-01-15T22:06:00-08:00</updated>
+    <updated>2013-01-15T22:06:00+00:00</updated>
     <id>http://justinramel.com/2013/01/15/security</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -351,7 +410,7 @@ is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
   <entry>
     <title type="html"><![CDATA[Code analysis]]></title>
     <link href="http://justinramel.com/2013/01/15/code-analysis/"/>
-    <updated>2013-01-15T21:18:00-08:00</updated>
+    <updated>2013-01-15T21:18:00+00:00</updated>
     <id>http://justinramel.com/2013/01/15/code-analysis</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -492,7 +551,7 @@ graph.</p>
   <entry>
     <title type="html"><![CDATA[Running your tests]]></title>
     <link href="http://justinramel.com/2013/01/15/running-your-tests/"/>
-    <updated>2013-01-15T20:19:00-08:00</updated>
+    <updated>2013-01-15T20:19:00+00:00</updated>
     <id>http://justinramel.com/2013/01/15/running-your-tests</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -648,7 +707,7 @@ to see in our projects.</p>
   <entry>
     <title type="html"><![CDATA[Monitoring your build]]></title>
     <link href="http://justinramel.com/2013/01/14/monitoring-your-build/"/>
-    <updated>2013-01-14T22:28:00-08:00</updated>
+    <updated>2013-01-14T22:28:00+00:00</updated>
     <id>http://justinramel.com/2013/01/14/monitoring-your-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -811,7 +870,7 @@ purpose.</p>
   <entry>
     <title type="html"><![CDATA[Diagnosing and fixing a broken build]]></title>
     <link href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/"/>
-    <updated>2013-01-14T20:39:00-08:00</updated>
+    <updated>2013-01-14T20:39:00+00:00</updated>
     <id>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -881,7 +940,7 @@ failures.</p>
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Breaking the build]]></title>
     <link href="http://justinramel.com/2013/01/14/breaking-the-build/"/>
-    <updated>2013-01-14T17:38:00-08:00</updated>
+    <updated>2013-01-14T17:38:00+00:00</updated>
     <id>http://justinramel.com/2013/01/14/breaking-the-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -959,7 +1018,7 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Your first build]]></title>
     <link href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
-    <updated>2012-10-24T21:11:00-07:00</updated>
+    <updated>2012-10-24T21:11:00+01:00</updated>
     <id>http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -1044,7 +1103,7 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
     <link href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
-    <updated>2012-10-20T21:14:00-07:00</updated>
+    <updated>2012-10-20T21:14:00+01:00</updated>
     <id>http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -1208,7 +1267,7 @@ detected. This is done via the “Add build step” button under the Build secti
   <entry>
     <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
     <link href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/"/>
-    <updated>2012-10-09T20:35:00-07:00</updated>
+    <updated>2012-10-09T20:35:00+01:00</updated>
     <id>http://justinramel.com/2012/10/09/setup-jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -1276,7 +1335,7 @@ and use any version of the .NET Framework.</p>
   <entry>
     <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
     <link href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/"/>
-    <updated>2012-09-20T18:43:00-07:00</updated>
+    <updated>2012-09-20T18:43:00+01:00</updated>
     <id>http://justinramel.com/2012/09/20/jenkins-dot-net-plugins</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -1424,7 +1483,7 @@ healthy competition never did anyone any harm.</em></li>
   <entry>
     <title type="html"><![CDATA[Jenkins.NET]]></title>
     <link href="http://justinramel.com/2012/09/17/jenkins-dot-net/"/>
-    <updated>2012-09-17T21:58:00-07:00</updated>
+    <updated>2012-09-17T21:58:00+01:00</updated>
     <id>http://justinramel.com/2012/09/17/jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
@@ -1568,7 +1627,7 @@ message upon completion. Click the Finish button.</p>
   <entry>
     <title type="html"><![CDATA[vim tip: !mkdir %:h]]></title>
     <link href="http://justinramel.com/2012/09/06/vim-tip-mkdir-percent-h/"/>
-    <updated>2012-09-06T22:10:00-07:00</updated>
+    <updated>2012-09-06T22:10:00+01:00</updated>
     <id>http://justinramel.com/2012/09/06/vim-tip-mkdir-percent-h</id>
     <content type="html"><![CDATA[<p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
 as well as the great content, I’m picking up lots of vim tips. I’m having to
@@ -1680,7 +1739,7 @@ use this switch the command will fail.</p>
   <entry>
     <title type="html"><![CDATA[Hello brave new world]]></title>
     <link href="http://justinramel.com/2012/08/31/hello-brave-new-world/"/>
-    <updated>2012-08-31T21:21:00-07:00</updated>
+    <updated>2012-08-31T21:21:00+01:00</updated>
     <id>http://justinramel.com/2012/08/31/hello-brave-new-world</id>
     <content type="html"><![CDATA[<h1 id="trying-out-octopress">Trying out Octopress</h1>
 <p><a href="http://octopress.org/">Octopress</a> for the win!</p>
@@ -1722,9 +1781,9 @@ Octopress is a go, go, go!</p>
   
   <entry>
     <title type="html"><![CDATA[My first Redcar plugin]]></title>
-    <link href="http://justinramel.com/2011/08/18/my-first-redcar-plugin/"/>
-    <updated>2011-08-18T17:04:35-07:00</updated>
-    <id>http://justinramel.com/2011/08/18/my-first-redcar-plugin</id>
+    <link href="http://justinramel.com/2011/08/19/my-first-redcar-plugin/"/>
+    <updated>2011-08-19T01:04:35+01:00</updated>
+    <id>http://justinramel.com/2011/08/19/my-first-redcar-plugin</id>
     <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating my first plugin.</p>
 
 <h4 id="introduction">Introduction</h4>
@@ -1808,7 +1867,7 @@ Octopress is a go, go, go!</p>
   <entry>
     <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
     <link href="http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
-    <updated>2011-07-20T12:19:55-07:00</updated>
+    <updated>2011-07-20T20:19:55+01:00</updated>
     <id>http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux</id>
     <content type="html"><![CDATA[<h4 id="fortress">Fortress</h4>
 
@@ -1827,7 +1886,7 @@ Octopress is a go, go, go!</p>
   <entry>
     <title type="html"><![CDATA[Shibboleth settings for TorqueBox]]></title>
     <link href="http://justinramel.com/2011/07/16/shibboleth-settings-for-torquebox/"/>
-    <updated>2011-07-16T15:14:52-07:00</updated>
+    <updated>2011-07-16T23:14:52+01:00</updated>
     <id>http://justinramel.com/2011/07/16/shibboleth-settings-for-torquebox</id>
     <content type="html"><![CDATA[<h4 id="authentication-settings">Authentication Settings</h4>
 
@@ -1869,7 +1928,7 @@ Octopress is a go, go, go!</p>
   <entry>
     <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
     <link href="http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
-    <updated>2011-07-16T14:16:31-07:00</updated>
+    <updated>2011-07-16T22:16:31+01:00</updated>
     <id>http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
     <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
 
@@ -1900,38 +1959,6 @@ Here we are passing all calls to the /myapp/ url on to the Torquebox server http
   context: /myapp
 ruby:
   version: 1.9</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TorqueBox - gem install error]]></title>
-    <link href="http://justinramel.com/2011/07/14/torquebox-gem-install-error/"/>
-    <updated>2011-07-14T04:42:27-07:00</updated>
-    <id>http://justinramel.com/2011/07/14/torquebox-gem-install-error</id>
-    <content type="html"><![CDATA[<h4 id="torquebox-install">TorqueBox Install</h4>
-
-<p>I’m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
-
-<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
-
-<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
-
-<h4 id="error">Error</h4>
-
-<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
-
-<p>Error: Your application used more memory than the safety cap of 500m.
-Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
-
-<h4 id="fix">Fix</h4>
-
-<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
-
-<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
-
-<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
-
-<p>Hope that helps someone or maybe me if have to do this again!</p>
 ]]></content>
   </entry>
   

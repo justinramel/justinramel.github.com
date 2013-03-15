@@ -82,6 +82,197 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-20T21:14:00+01:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>In Jenkins the definition of a build process is called a Job. Jobs are created
+using the main menu on the Jenkins home page. We’ll create a basic Job that
+will checkout our source and build the solution.</p>
+
+<p>From the main Jenkins menu, Click the ‘New Job’ link.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
+
+<p>You now see the New Job configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
+
+<ol>
+  <li>Set Job name to Demo.</li>
+  <li>Select the ‘Build a free-style software project’ radio button.</li>
+  <li>Click the ‘OK’ button.</li>
+</ol>
+
+<p>Jenkins will now create the Job workspace on disk and redirect you to the job
+configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
+
+<p>Next we’re going to checkout our solution from source control and build it.  So
+we first need to give Jenkins details of our source control server.</p>
+
+<h2 id="source-control">Source Control</h2>
+
+<p>For the purpose of this demo we’ll use
+<a href="http://subversion.apache.org/">Subversion</a>, mainly because this is the source
+control management software I use day to day. Subversion is a very popular open
+source choice for .NET.</p>
+
+<p>Jenkins supports Subversion right out of the box but it also has support for
+all the major source control management systems. For example here are few which
+are popular for use with the .NET framework:</p>
+
+<ul>
+  <li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
+Foundation Server source control to Jenkins.</em></li>
+  <li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
+system with Jenkins.</em></li>
+  <li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
+newer is required.</em></li>
+  <li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
+Visual SourceSafe.</em></li>
+</ul>
+
+<p><span class="pullquote-right" data-pullquote="Visual SourceSafe, seriously?">
+Visual SourceSafe, seriously? Maybe you’re being forced to use it at gunpoint? If not do yourself a favour
+and check out Subversion.
+<a href="http://www.visualsvn.com/server/download/">VisualSVNServer</a> is a very easy to
+install, administer and use on Windows best of all its free! There is also a
+great Subversion Plugin
+<a href="http://www.visualsvn.com/visualsvn/download/">VisualSVN</a> for Visual Studio
+that I highly recommend.
+</span></p>
+
+<p>I have created a Subversion repository on GoogleCode that we’ll use to demo the
+build process from Jenkins. Lets setup our Job to grab the source code from
+this repository. This is done in the Source Code Management section of the
+configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
+
+<ol>
+  <li>Select the Subversion radio button.</li>
+  <li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
+</ol>
+
+<h2 id="subversion-authentication">Subversion Authentication</h2>
+
+<p>Unlike the demo repository used here, it’s more likely your source code
+repository requires authentication (if it doesn’t, you may want to think about
+securing it). If your repository does require authentication Jenkins will
+display and error message and ask for you to supply login credentials.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
+
+<p>Click the “enter credential” link. You will now be shown the Subversion
+Authentication page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
+
+<p>Enter your authentication details and then click the “OK” button.</p>
+
+<p>Subversion is now configured and we can move onto Build Triggers.</p>
+
+<h2 id="build-triggers">Build Triggers</h2>
+
+<p>We want to trigger a build every time our source code changes; we achieve this
+by creating a “Build Trigger” which polls our source code repository. When a
+change is detected a new build is triggered.</p>
+
+<p><img src="/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
+
+<ol>
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
+minutes.</li>
+</ol>
+
+<p>As you can see from the help (which is available by clicking the
+<img src="/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
+in how often we check the source code repository for changes. Checking every 5
+minutes is my default as I tend make lots of small commits and I want to know
+quickly if I’ve introduced a problem.</p>
+
+<p>Finally we just need to tell Jenkins how to build the solution when changes are
+detected. This is done via the “Add build step” button under the Build section.</p>
+
+<p><img src="/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p>
+  </li>
+  <li>
+    <p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p>
+  </li>
+</ol>
+
+<p><img src="/images/jenkins-net/ch04/build.png" alt="" /></p>
+
+<ol>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+</ol>
+
+<p>Congratulations your first Jenkins Job is setup.</p>
+
+<p>In my next post we’ll build it!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></h1>
     
     
@@ -98,7 +289,7 @@
   
 
 
-<time datetime="2012-10-09T20:35:00-07:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+<time datetime="2012-10-09T20:35:00+01:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
         
       </p>
     
@@ -193,7 +384,7 @@ and use any version of the .NET Framework.</p>
   
 
 
-<time datetime="2012-09-20T18:43:00-07:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+<time datetime="2012-09-20T18:43:00+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
         
       </p>
     
@@ -368,7 +559,7 @@ healthy competition never did anyone any harm.</em></li>
   
 
 
-<time datetime="2012-09-17T21:58:00-07:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+<time datetime="2012-09-17T21:58:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
         
       </p>
     
@@ -539,7 +730,7 @@ message upon completion. Click the Finish button.</p>
   
 
 
-<time datetime="2012-09-06T22:10:00-07:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
+<time datetime="2012-09-06T22:10:00+01:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
         
       </p>
     
@@ -678,7 +869,7 @@ use this switch the command will fail.</p>
   
 
 
-<time datetime="2012-08-31T21:21:00-07:00" pubdate data-updated="true">Aug 31<span>st</span>, 2012</time>
+<time datetime="2012-08-31T21:21:00+01:00" pubdate data-updated="true">Aug 31<span>st</span>, 2012</time>
         
       </p>
     
@@ -732,7 +923,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2011/08/18/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
+      <h1 class="entry-title"><a href="/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
     
     
       <p class="meta">
@@ -748,7 +939,7 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-08-18T17:04:35-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2011</time>
+<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
         
       </p>
     
@@ -860,7 +1051,7 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-07-20T12:19:55-07:00" pubdate data-updated="true">Jul 20<span>th</span>, 2011</time>
+<time datetime="2011-07-20T20:19:55+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2011</time>
         
       </p>
     
@@ -906,7 +1097,7 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-07-16T15:14:52-07:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
         
       </p>
     
@@ -975,7 +1166,7 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-07-16T14:16:31-07:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+<time datetime="2011-07-16T22:16:31+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
         
       </p>
     
@@ -1018,65 +1209,6 @@ ruby:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-14T04:42:27-07:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4 id="torquebox-install">TorqueBox Install</h4>
-
-<p>I’m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
-
-<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
-
-<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
-
-<h4 id="error">Error</h4>
-
-<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
-
-<p>Error: Your application used more memory than the safety cap of 500m.
-Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
-
-<h4 id="fix">Fix</h4>
-
-<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
-
-<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
-
-<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
-
-<p>Hope that helps someone or maybe me if have to do this again!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/3/">&larr; Older</a>
@@ -1094,6 +1226,10 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
       </li>
     
@@ -1107,10 +1243,6 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
     
       <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
   </ul>

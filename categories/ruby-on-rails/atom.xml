@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby on Rails | just ram]]></title>
   <link href="http://justinramel.com//categories/ruby-on-rails/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T23:59:07-08:00</updated>
+  <updated>2013-03-15T14:13:21+00:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Rails new app workflow]]></title>
     <link href="http://justinramel.com/2011/01/11/rails-new-app-workflow/"/>
-    <updated>2011-01-11T06:58:47-08:00</updated>
+    <updated>2011-01-11T14:58:47+00:00</updated>
     <id>http://justinramel.com/2011/01/11/rails-new-app-workflow</id>
     <content type="html"><![CDATA[<p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
 
@@ -83,7 +83,7 @@
   <entry>
     <title type="html"><![CDATA[Connecting Ruby on Rails to Microsoft SQL Server]]></title>
     <link href="http://justinramel.com/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server/"/>
-    <updated>2006-04-07T13:39:21-07:00</updated>
+    <updated>2006-04-07T21:39:21+01:00</updated>
     <id>http://justinramel.com/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server</id>
     <content type="html"><![CDATA[<p><strong>NOTE: These instructions are now seriously out of date. You may want to check out my always up to date ebook instead. <a href="http://rails2ms-sql.heroku.com/">The secret of connecting Rails to Microsoft SQL Server</a></strong></p>
 
@@ -121,7 +121,7 @@
   <entry>
     <title type="html"><![CDATA[Migrations 'Zombie State' and MS SQL]]></title>
     <link href="http://justinramel.com/2006/04/04/migrations-zombie-state-and-ms-sql/"/>
-    <updated>2006-04-04T06:28:44-07:00</updated>
+    <updated>2006-04-04T14:28:44+01:00</updated>
     <id>http://justinramel.com/2006/04/04/migrations-zombie-state-and-ms-sql</id>
     <content type="html"><![CDATA[<p>Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
 
@@ -134,7 +134,7 @@
   <entry>
     <title type="html"><![CDATA[Pluralize table names - no thanks!]]></title>
     <link href="http://justinramel.com/2006/04/04/pluralize-table-names-no-thanks/"/>
-    <updated>2006-04-04T06:05:19-07:00</updated>
+    <updated>2006-04-04T14:05:19+01:00</updated>
     <id>http://justinramel.com/2006/04/04/pluralize-table-names-no-thanks</id>
     <content type="html"><![CDATA[<p>Sorry I just can’t live with plural table names, I just can’t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
 
@@ -149,7 +149,7 @@ ActiveRecord::Base.pluralize_table_names = false
   <entry>
     <title type="html"><![CDATA[Setting up Ruby on Rails]]></title>
     <link href="http://justinramel.com/2006/04/04/setting-up-ruby-on-rails/"/>
-    <updated>2006-04-04T03:26:22-07:00</updated>
+    <updated>2006-04-04T11:26:22+01:00</updated>
     <id>http://justinramel.com/2006/04/04/setting-up-ruby-on-rails</id>
     <content type="html"><![CDATA[<p>I’m going to give Ruby on Rails (RoR) a try on my Windows XP machine.  Here’s how I’ve set it up…</p>
 

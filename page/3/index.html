@@ -9,9 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="ADDING KEY TO SERVER scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys SERVER sudo mkdir /home/git/myrepo
-cd /home/git/myrepo
-sudo git -- &hellip;">
+  <meta name="description" content="TorqueBox Install I’m playing with latest version of TorqueBox (Currently 2.x.incremental.245) the easiest way to install it is via a gem: gem &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +82,65 @@ sudo git -- &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-14T12:42:27+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4 id="torquebox-install">TorqueBox Install</h4>
+
+<p>I’m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
+
+<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
+
+<h4 id="error">Error</h4>
+
+<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
+
+<p>Error: Your application used more memory than the safety cap of 500m.
+Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
+
+<h4 id="fix">Fix</h4>
+
+<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
+
+<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
+
+<p>Hope that helps someone or maybe me if have to do this again!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2011/07/12/setup-git-repo/">SETUP GIT REPO</a></h1>
     
     
@@ -100,7 +157,7 @@ sudo git -- &hellip;">
   
 
 
-<time datetime="2011-07-12T13:48:22-07:00" pubdate data-updated="true">Jul 12<span>th</span>, 2011</time>
+<time datetime="2011-07-12T21:48:22+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2011</time>
         
       </p>
     
@@ -164,7 +221,7 @@ git clone git@yourserver.com:myrepo
   
 
 
-<time datetime="2011-01-11T06:58:47-08:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
+<time datetime="2011-01-11T14:58:47+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2011</time>
         
       </p>
     
@@ -242,7 +299,7 @@ git clone git@yourserver.com:myrepo
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-method/">vim-ruby-refactoring - Extract Method</a></h1>
+      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-extract-method/">vim-ruby-refactoring - Extract Method</a></h1>
     
     
       <p class="meta">
@@ -258,7 +315,7 @@ git clone git@yourserver.com:myrepo
   
 
 
-<time datetime="2010-12-30T17:32:57-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-31T01:32:57+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
         
       </p>
     
@@ -301,7 +358,7 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-rename-instance-variable/">vim-ruby-refactoring - Rename Instance Variable</a></h1>
+      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-rename-instance-variable/">vim-ruby-refactoring - Rename Instance Variable</a></h1>
     
     
       <p class="meta">
@@ -317,7 +374,7 @@ A new method <strong><em>print_details</em></strong> has been added above the <s
   
 
 
-<time datetime="2010-12-30T17:14:03-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-31T01:14:03+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
         
       </p>
     
@@ -358,7 +415,7 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-rename-local-variable/">vim-ruby-refactoring - Rename Local Variable</a></h1>
+      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-rename-local-variable/">vim-ruby-refactoring - Rename Local Variable</a></h1>
     
     
       <p class="meta">
@@ -374,7 +431,7 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
   
 
 
-<time datetime="2010-12-30T16:59:58-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-31T00:59:58+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
         
       </p>
     
@@ -415,7 +472,7 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-local-variable/">vim-ruby-refactoring - Extract Local Variable</a></h1>
+      <h1 class="entry-title"><a href="/2010/12/31/vim-ruby-refactoring-extract-local-variable/">vim-ruby-refactoring - Extract Local Variable</a></h1>
     
     
       <p class="meta">
@@ -431,7 +488,7 @@ The local variable <em><strong>mac_os</strong></em> has been renamed to <strong>
   
 
 
-<time datetime="2010-12-30T16:27:45-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-31T00:27:45+00:00" pubdate data-updated="true">Dec 31<span>st</span>, 2010</time>
         
       </p>
     
@@ -488,7 +545,7 @@ The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been
   
 
 
-<time datetime="2010-12-30T15:49:00-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-30T23:49:00+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -541,7 +598,7 @@ The let method is created above the it block, using the initialisation line - ac
   
 
 
-<time datetime="2010-12-30T15:04:56-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-30T23:04:56+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -598,7 +655,7 @@ The value <strong><em>9.81</em></strong> has been extracted into a constant <str
   
 
 
-<time datetime="2010-12-30T14:37:07-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2010-12-30T22:37:07+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
         
       </p>
     
@@ -633,64 +690,6 @@ The post conditional expression is split across 3 lines and converted into a sta
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-inline-temp/">vim-ruby-refactoring - Inline Temp</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T13:37:59-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4 id="inline-temp">Inline Temp</h4>
-
-<p>Replaces a temporary variable with a direct call to the method or formula.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/inlineTemp.html">http://www.refactoring.com/catalog/inlineTemp.html</a></p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_before.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_before_thumb.png" alt="InlineTemp_Before" /></a>     <br />
-Move the cursor onto the temp variable (in this case base_price)     <br />
-Hit your **<leader-key>** then type **rit        
-**</leader-key></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_after.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_after_thumb.png" alt="InlineTemp_After" /></a>     <br />
-The temp variable base_price has been replace with a direct call to the method and we’ve saved a line of code.</p>
-
-<p><strong>rit</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>I</strong>nline <strong>T</strong>emp.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/4/">&larr; Older</a>
@@ -708,6 +707,10 @@ The temp variable base_price has been replace with a direct call to the method a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
       </li>
     
@@ -721,10 +724,6 @@ The temp variable base_price has been replace with a direct call to the method a
     
       <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
   </ul>

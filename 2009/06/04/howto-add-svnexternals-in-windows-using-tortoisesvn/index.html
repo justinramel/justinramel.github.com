@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>vim-ruby-refactoring - Rename Instance Variable - just ram</title>
+  <title>HOWTO: Add svn:externals in windows using tortoisesvn - just ram</title>
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. IMPORTANT: As well as installing the vim-ruby-refactoring plugin, you &hellip;">
+  <meta name="description" content="I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/2010/12/30/vim-ruby-refactoring-rename-instance-variable/">
+  <link rel="canonical" href="http://justinramel.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">vim-ruby-refactoring - Rename Instance Variable</h1>
+      <h1 class="entry-title">HOWTO: Add svn:externals in windows using tortoisesvn</h1>
     
     
       <p class="meta">
@@ -95,35 +95,51 @@
   
 
 
-<time datetime="2010-12-30T17:14:03-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2009-06-04T01:00:25+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+<div class="entry-content"><p>I have a few projects in subversion using the same set of third party tools nant, bdd, mbunit etc. I’ve read its a good idea to put the tools into their own repository and include them in the other projects using an svn:external. The advantage this gives you is any changes you make to the external repository can be updated easily across all projects. Any hoose this is who to do it. </p>
 
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
+<ol>
+  <li>
+    <p>Go to the root of the folder you want to add the externals too. </p>
+  </li>
+  <li>
+    <p>Right click on the root folder of the project you want to add the external repository to and select _T_ortoiseSVN –&gt; _P_roperties.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_settings3.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_settings3_thumb.png" alt="tortoise_settings[3]" /></a> <strong>Note:</strong> This folder has to be a checked out subversion repository or you’ll not get the context menu!</p>
+  </li>
+  <li>
+    <p>You will now see the subversion properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties1_thumb.png" alt="tortoise_properties[1]" /></a></p>
+  </li>
+  <li>
+    <p>Click the _N_ew.. button. You will now see the Add properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_add_properties1_thumb.png" alt="tortoise_add_properties[1]" /></a></p>
+  </li>
+  <li>
+    <p>Select svn:externals from the property name drop down list. </p>
+  </li>
+  <li>
+    <p>Enter the name you want to give to the external folder followed by the path to your tools repository in property value text area.      <br />
+In the example above: tools svn://server/tools/trunk       <br />
+<strong>Note:</strong> You can add more external repositories by simply adding more lines to the property value text area. </p>
+  </li>
+  <li>
+    <p>Click Ok to add the property will now be listed in the properties dialog.<a href="http://justinram.files.wordpress.com/2009/06/tortoise_properties21.png"><img src="http://justinram.files.wordpress.com/2009/06/tortoise_properties21_thumb.png" alt="tortoise_properties2[1]" /></a></p>
+  </li>
+  <li>
+    <p>Right click on the root folder and select SVN Update from the menu. Subversion will now pull down the files from the external repository and your done. </p>
+  </li>
+</ol>
 
-<h4 id="rename-instance-variable">Rename Instance Variable</h4>
+<p>Once you check this change in other people checking out from the repository will automatically get the externals folder. Also any changes to the external repository will be updated in this repository on any update. So in this case if I add a new tool or update one of the tools all repositories using this external repository will get the changes on their next update. </p>
 
-<p>Renames the selected instance variable. </p>
+<h3 id="gotchas">Gotchas</h3>
 
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br />
-Visually select the instance variable you wish to rename    <br />
-Hit your **<leader-key>** then type **rriv        
-**You will now see a prompt to enter the new variable name:   
-Rename to: new_name</leader-key></p>
-
-<p>After refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br />
-The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
-
-<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
+<ul>
+  <li>Don’t forget to give the folder name before the repository address and not just the repository address or you will get an error along the lines of: Error parsing svn:externals property on …<img src="http://justinram.files.wordpress.com/2009/06/tortoise_error1_thumb.png" alt="tortoise_error[1]" /></li>
+</ul>
 </div>
 
 
@@ -146,12 +162,12 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
   
 
 
-<time datetime="2010-12-30T17:14:03-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+<time datetime="2009-06-04T01:00:25+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2009</time>
       
 
 <span class="categories">
   
-    <a class='category' href='//categories/ruby/'>Ruby</a>, <a class='category' href='//categories/vim/'>vim</a>
+    <a class='category' href='//categories/subversion/'>Subversion</a>
   
 </span>
 
@@ -160,7 +176,7 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2010/12/30/vim-ruby-refactoring-rename-instance-variable/" data-via="justinramel" data-counturl="http://justinramel.com/2010/12/30/vim-ruby-refactoring-rename-instance-variable/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/" data-via="justinramel" data-counturl="http://justinramel.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -171,14 +187,20 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2010/12/30/vim-ruby-refactoring-rename-local-variable/" title="Previous Post: vim-ruby-refactoring - Rename Local Variable">&laquo; vim-ruby-refactoring - Rename Local Variable</a>
+        <a class="basic-alignment left" href="/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0/" title="Previous Post: HOWTO: Download and run Microsoft Report Builder 1.0">&laquo; HOWTO: Download and run Microsoft Report Builder 1.0</a>
       
       
-        <a class="basic-alignment right" href="/2010/12/30/vim-ruby-refactoring-extract-method/" title="Next Post: vim-ruby-refactoring - Extract Method">vim-ruby-refactoring - Extract Method &raquo;</a>
+        <a class="basic-alignment right" href="/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/" title="Next Post: Setup ASP.NET MVC with Spark View Engine in 5 minutes or less">Setup ASP.NET MVC with Spark View Engine in 5 minutes or less &raquo;</a>
       
     </p>
   </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -187,6 +209,10 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
+      </li>
     
       <li class="post">
         <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
@@ -202,10 +228,6 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
     
       <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
   </ul>
@@ -306,6 +328,22 @@ The instance variable <em><strong>@name</strong></em> has been renamed to <stron
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'justinramel';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://justinramel.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/';
+        var disqus_url = 'http://justinramel.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

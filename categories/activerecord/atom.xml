@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ActiveRecord | just ram]]></title>
   <link href="http://justinramel.com//categories/activerecord/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T23:59:07-08:00</updated>
+  <updated>2013-03-15T14:13:21+00:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Castle ActiveRecord – Exception : The ProxyFactoryFactory was not configured]]></title>
     <link href="http://justinramel.com/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured/"/>
-    <updated>2009-01-23T08:38:12-08:00</updated>
+    <updated>2009-01-23T16:38:12+00:00</updated>
     <id>http://justinramel.com/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured</id>
     <content type="html"><![CDATA[<p>I’ve just updated to the latest version of the Castle stack and got hit with this exception:</p>
 

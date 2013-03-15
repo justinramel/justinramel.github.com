@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Today I needed to compare two different versions of a source file. One in the main trunk folder and the other in a previously tagged version folder. &hellip;">
+  <meta name="description" content="So you want to backup your repository? Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,58 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2006/05/03/subversion-server-windows-backup/">Subversion server + windows + backup</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-03T11:46:34+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So you want to backup your repository?</p>
+
+<p>Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which will cause problems on restore. So you should do a “hot copy” to prevent any locking issues when the actual backup is made.  My “hot copy” is created using the following batch file:</p>
+
+<pre><code>REM Reset hot copy
+rmdir /S /Q c:\\svnrepos_hotcopy
+mkdir c:\\svnrepos_hotcopy
+
+REM Initiate SVN backup. Use svadmin hotcopy --help for details
+svnadmin hotcopy c:\\svnrepos c:\\svnrepos_hotcopy --clean-logs
+</code></pre>
+
+<p>I run this batch file daily as a scheduled task before the actual backup.</p>
+
+<p>This batch file is a modification of the batch file described over at:</p>
+
+<p><a href="http://www.blendedtechnologies.com/daily-backup-of-subversion/21">Blended Technologies</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/">Windows SubVersion / TortoiseSVN - Compare two versions of a file</a></h1>
     
     
@@ -98,7 +150,7 @@
   
 
 
-<time datetime="2006-04-26T06:47:52-07:00" pubdate data-updated="true">Apr 26<span>th</span>, 2006</time>
+<time datetime="2006-04-26T14:47:52+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2006</time>
         
       </p>
     
@@ -145,7 +197,7 @@ If you want to compare two revisions in a file’s history, for example revision
   
 
 
-<time datetime="2006-04-07T13:39:21-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2006</time>
+<time datetime="2006-04-07T21:39:21+01:00" pubdate data-updated="true">Apr 7<span>th</span>, 2006</time>
         
       </p>
     
@@ -210,7 +262,7 @@ If you want to compare two revisions in a file’s history, for example revision
   
 
 
-<time datetime="2006-04-04T06:28:44-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T14:28:44+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
@@ -250,7 +302,7 @@ If you want to compare two revisions in a file’s history, for example revision
   
 
 
-<time datetime="2006-04-04T06:05:19-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T14:05:19+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
@@ -292,7 +344,7 @@ ActiveRecord::Base.pluralize_table_names = false
   
 
 
-<time datetime="2006-04-04T03:26:22-07:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+<time datetime="2006-04-04T11:26:22+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
         
       </p>
     
@@ -393,7 +445,7 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   
 
 
-<time datetime="2006-04-03T02:25:29-07:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2006</time>
+<time datetime="2006-04-03T10:25:29+01:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2006</time>
         
       </p>
     
@@ -447,7 +499,7 @@ c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - 
   
 
 
-<time datetime="2006-03-30T14:06:48-08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
+<time datetime="2006-03-30T23:06:48+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
         
       </p>
     
@@ -518,7 +570,7 @@ c
   
 
 
-<time datetime="2006-03-30T13:22:01-08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
+<time datetime="2006-03-30T22:22:01+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
         
       </p>
     
@@ -571,7 +623,7 @@ c
   
 
 
-<time datetime="2006-03-30T13:04:37-08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
+<time datetime="2006-03-30T22:04:37+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
         
       </p>
     
@@ -585,50 +637,6 @@ c
 <pre><code>  ruby test_mytestcase.rb --name test_just_this_method
 </code></pre>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/28/35/">SAP Portal: How do I reference a Javascript file in my iView?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-28T05:58:23-08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Easy when you know how</p>
-
-<pre><code>public void doInitialization(){
-  request = (IPortalComponentRequest)this.getRequest();
-  response = (IPortalComponentResponse)this.getResponse();
-  IResource jsResource = request.getResource(IResource.SCRIPT, “scripts/myscript.js”);
-  response.addResource(jsResource);
-}
-</code></pre>
 </div>
   
   
@@ -653,6 +661,10 @@ c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
       </li>
     
@@ -666,10 +678,6 @@ c
     
       <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
   </ul>

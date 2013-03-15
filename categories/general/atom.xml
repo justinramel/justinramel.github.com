@@ -4,7 +4,7 @@
   <title><![CDATA[Category: General | just ram]]></title>
   <link href="http://justinramel.com//categories/general/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T23:59:07-08:00</updated>
+  <updated>2013-03-15T14:13:21+00:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My first Redcar plugin]]></title>
-    <link href="http://justinramel.com/2011/08/18/my-first-redcar-plugin/"/>
-    <updated>2011-08-18T17:04:35-07:00</updated>
-    <id>http://justinramel.com/2011/08/18/my-first-redcar-plugin</id>
+    <link href="http://justinramel.com/2011/08/19/my-first-redcar-plugin/"/>
+    <updated>2011-08-19T01:04:35+01:00</updated>
+    <id>http://justinramel.com/2011/08/19/my-first-redcar-plugin</id>
     <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating my first plugin.</p>
 
 <h4 id="introduction">Introduction</h4>
@@ -95,7 +95,7 @@ end
   <entry>
     <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
     <link href="http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
-    <updated>2011-07-20T12:19:55-07:00</updated>
+    <updated>2011-07-20T20:19:55+01:00</updated>
     <id>http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux</id>
     <content type="html"><![CDATA[<h4 id="fortress">Fortress</h4>
 
@@ -114,7 +114,7 @@ end
   <entry>
     <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
     <link href="http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
-    <updated>2011-07-16T14:16:31-07:00</updated>
+    <updated>2011-07-16T22:16:31+01:00</updated>
     <id>http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
     <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
 
@@ -151,7 +151,7 @@ ruby:
   <entry>
     <title type="html"><![CDATA[Building FubuMVC with a portable version of rake]]></title>
     <link href="http://justinramel.com/2009/06/19/building-fubumvc-with-a-portable-version-of-rake/"/>
-    <updated>2009-06-19T08:55:24-07:00</updated>
+    <updated>2009-06-19T16:55:24+01:00</updated>
     <id>http://justinramel.com/2009/06/19/building-fubumvc-with-a-portable-version-of-rake</id>
     <content type="html"><![CDATA[<p>To build <a href="http://fubumvc.pbworks.com/">FubuMVC</a> you need to install ruby, rake etc. Unfortunately for me the firewall at work will not allow me to get the rake gem (I’ve downloaded gems before using the HTTP_PROXY setting before but no luck this time). Any hoose I remember reading <a href="http://www.stephenbalkum.com/Default.aspx">Stephen Balkum</a> post on packaging up <a href="http://docs.rubyrake.org/index.html">Rake</a> as an executable.  I followed Stephens guide and created a portable rake package which got around my firewall problem <strong>but</strong> <a href="http://fubumvc.pbworks.com/">FubuMVC</a> required another gem <a href="http://rubyforge.org/frs/download.php/11376/rubyzip-0.9.1.zip">rubyzip</a> to allow a build.</p>
 
@@ -220,7 +220,7 @@ ruby:
   <entry>
     <title type="html"><![CDATA[HOWTO: Download and run Microsoft Report Builder 1.0]]></title>
     <link href="http://justinramel.com/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0/"/>
-    <updated>2009-05-20T09:58:51-07:00</updated>
+    <updated>2009-05-20T17:58:51+01:00</updated>
     <id>http://justinramel.com/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0</id>
     <content type="html"><![CDATA[<p>Assuming you have an SQL Server 2005 running reporting services you can run Report builder as a ClickOnce app using the following url:</p>
 

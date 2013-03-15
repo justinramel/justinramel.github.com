@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Try this… In SAP Netweaver Developer Studio Open your project Open the file: MyPortalProject dist PORTAL-INF Portalapp.xml You should now see a “Run &hellip;">
+  <meta name="description" content="Easy when you know how public void doInitialization(){ request = (IPortalComponentRequest)this.getRequest(); response = (IPortalComponentResponse) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,50 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2006/03/28/35/">SAP Portal: How do I reference a Javascript file in my iView?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-03-28T14:58:23+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Easy when you know how</p>
+
+<pre><code>public void doInitialization(){
+  request = (IPortalComponentRequest)this.getRequest();
+  response = (IPortalComponentResponse)this.getResponse();
+  IResource jsResource = request.getResource(IResource.SCRIPT, “scripts/myscript.js”);
+  response.addResource(jsResource);
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2006/03/22/how-do-i-find-the-url-of-my-sap-portal-component/">How do I find the url of my SAP Portal Component?</a></h1>
     
     
@@ -98,7 +142,7 @@
   
 
 
-<time datetime="2006-03-22T06:49:29-08:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2006</time>
+<time datetime="2006-03-22T14:49:29+00:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2006</time>
         
       </p>
     
@@ -150,7 +194,7 @@
   
 
 
-<time datetime="2006-03-20T04:30:50-08:00" pubdate data-updated="true">Mar 20<span>th</span>, 2006</time>
+<time datetime="2006-03-20T12:30:50+00:00" pubdate data-updated="true">Mar 20<span>th</span>, 2006</time>
         
       </p>
     
@@ -219,7 +263,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-03-16T08:29:10-08:00" pubdate data-updated="true">Mar 16<span>th</span>, 2006</time>
+<time datetime="2006-03-16T16:29:10+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2006</time>
         
       </p>
     
@@ -273,7 +317,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-03-01T10:17:40-08:00" pubdate data-updated="true">Mar 1<span>st</span>, 2006</time>
+<time datetime="2006-03-01T18:17:40+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2006</time>
         
       </p>
     
@@ -311,7 +355,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-02-28T09:07:03-08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
+<time datetime="2006-02-28T17:07:03+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
         
       </p>
     
@@ -347,7 +391,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   
 
 
-<time datetime="2006-02-28T04:57:00-08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
+<time datetime="2006-02-28T12:57:00+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2006</time>
         
       </p>
     
@@ -423,7 +467,7 @@ end&lt;/code&gt;
   
 
 
-<time datetime="2006-02-27T06:52:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
+<time datetime="2006-02-27T14:52:00+00:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
         
       </p>
     
@@ -465,7 +509,7 @@ end&lt;/code&gt;
   
 
 
-<time datetime="2006-02-27T02:57:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
+<time datetime="2006-02-27T10:57:00+00:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
         
       </p>
     
@@ -520,7 +564,7 @@ end&lt;/code&gt;
   
 
 
-<time datetime="2006-02-27T02:49:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
+<time datetime="2006-02-27T10:49:00+00:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
         
       </p>
     
@@ -555,57 +599,6 @@ automating browser-based tests of web applications. It is pronounced water.”</
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/02/23/removing-par-files-from-the-sap-portal/">Removing PAR files from the SAP Portal</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-02-23T03:34:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So you’ve accidentally uploaded a PAR file to the portal eh?</p>
-
-<p>Here’s how to get rid…</p>
-
-<p>(Top Menu) Java Development -&gt; (Left Sub Menu) Tools -&gt; Portal Archive Deployer&amp;Remover</p>
-
-<p>(Main Page) Archive Remover</p>
-
-<p>Select the PAR file you wish to remove from the drop down list and click the “Clean” button</p>
-
-<p>You should now see a message along the lines of:</p>
-
-<p>INFO: Received clean-up request for application: “MyApp”
-INFO: MyApp has been successfully removed from the PCD.</p>
-
-<p>The PAR is no more.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/10/">&larr; Older</a>
@@ -623,6 +616,10 @@ INFO: MyApp has been successfully removed from the PCD.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
       </li>
     
@@ -636,10 +633,6 @@ INFO: MyApp has been successfully removed from the PCD.</p>
     
       <li class="post">
         <a href="/2013/01/15/code-analysis/">Code analysis</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/running-your-tests/">Running your tests</a>
       </li>
     
   </ul>

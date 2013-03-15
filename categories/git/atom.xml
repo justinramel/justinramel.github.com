@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | just ram]]></title>
   <link href="http://justinramel.com//categories/git/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-01-15T23:59:07-08:00</updated>
+  <updated>2013-03-15T14:13:21+00:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -14,9 +14,74 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Git feature workflow - basic commands]]></title>
+    <link href="http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands/"/>
+    <updated>2013-03-15T13:06:00+00:00</updated>
+    <id>http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands</id>
+    <content type="html"><![CDATA[<p>List of basic commands to use during feature branch workflow.</p>
+
+<h2 id="create-feature-branch">Create feature branch</h2>
+
+<p><code>
+git checkout -b my-awesome-new-feature
+</code></p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> The <em>-b</em> parameter means branch, it saves us having to use two separate git commands. Without this option we’d need to branch then checkout.</p>
+</blockquote>
+
+<p>Now do lots of work on the new feature…</p>
+
+<p>When finished working on the new feature find out what has changed.</p>
+
+<p><code>
+git status
+</code></p>
+
+<h2 id="add-changes-to-git">Add changes to git</h2>
+
+<p>Either add each file manually using:</p>
+
+<p><code>
+git add my-changed-file.txt
+</code></p>
+
+<p>Or add all the files in the current directory.</p>
+
+<p><code>
+git add .
+</code></p>
+
+<p>Run <code>git status</code> one more time to get a list of everything that is going to be committed.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Accidentally added files can be removed using the command <code>git rm &lt;filename&gt;</code></p>
+</blockquote>
+
+<h2 id="commit-changes">Commit changes</h2>
+
+<p>Commit your changes with a <em>meaningful</em> message.</p>
+
+<p><code>
+git commit -m "my awesome new feature, this changes everything!"
+</code></p>
+
+<h2 id="push-changes">Push changes</h2>
+
+<p>Push the new feature up to github so we can do a pull request.</p>
+
+<p><code>
+git push origin -u my-awesome-new-feature
+</code></p>
+
+<p>The new branch should now be visible on github and we can now issue a pull request.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[SETUP GIT REPO]]></title>
     <link href="http://justinramel.com/2011/07/12/setup-git-repo/"/>
-    <updated>2011-07-12T13:48:22-07:00</updated>
+    <updated>2011-07-12T21:48:22+01:00</updated>
     <id>http://justinramel.com/2011/07/12/setup-git-repo</id>
     <content type="html"><![CDATA[<h4 id="adding-key-to-server">ADDING KEY TO SERVER</h4>
 
