@@ -9,8 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="List of basic commands to use during feature branch workflow. Create feature branch 1
-git checkout -b my-awesome-new-feature NOTE: The -b parameter &hellip;">
+  <meta name="description" content="Switch on vim colour Do your self a favour and switch on git colour it makes the command line output
+much easier to read. git config --global --add &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,97 @@ git checkout -b my-awesome-new-feature NOTE: The -b parameter &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-22T23:46:00+00:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="switch-on-vim-colour">Switch on vim colour</h2>
+
+<p>Do your self a favour and switch on git colour it makes the command line output
+much easier to read.</p>
+
+<p><code>git config --global --add color.ui true</code></p>
+
+<h2 id="remote-branches">Remote branches</h2>
+
+<p>Working as part of a team at some point you’ll need to take a look at a team
+mates branch, first they need to push their branch up to github.</p>
+
+<p><code>git push origin -u my-awesome-new-feature</code></p>
+
+<h2 id="pull-down-a-team-mates-branch">Pull down a team mates branch</h2>
+
+<p>Don’t know or can’t remember the remote branch name?</p>
+
+<p><code>git branch -r</code></p>
+
+<p>Next you need to create a local branch that tracks the remote branch.</p>
+
+<p><code>git checkout --track origin/my-awesome-new-feature</code></p>
+
+<p>This command creates a local branch named my-awesome-new-feature which is
+tracking the remote branch. Now when you push your changes the remote branch
+will be updated.</p>
+
+<ul>
+  <li>More info on <a href="http://stackoverflow.com/questions/9537392/git-fetch-remote-branch">stackoverflow</a></li>
+</ul>
+
+<h2 id="fix-a-conflict">Fix a conflict</h2>
+
+<p>When you have a conflict in a feature branch you’ll not be able to auto merge
+on github you’ll need to merge the branch manually.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git checkout master
+</span><span class="line">git merge my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Fix any conflicts.</p>
+
+<ul>
+  <li>Check out this
+<a href="http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/">vimcast</a>
+for a nice way to fix conflicts in vim using the <a href="https://github.com/tpope/vim-fugitive">fugitive
+plugin</a>.</li>
+</ul>
+
+<blockquote>
+  <p>fugitive.vim: a Git wrapper so awesome, it should be illegal</p>
+</blockquote>
+
+<p>Finally <code>git push</code> the merge up to github and you’re done.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1325,118 +1416,6 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-24T21:11:00+01:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-  <li><a href="/2013/01/15/security/">Security</a></li>
-  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
-</ol>
-
-<ul>
-  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
-</ul>
-
-<hr />
-
-<p>From the Project Demo page we created last time we can activate a Build at
-will.</p>
-
-<h3 id="build-now">Build Now</h3>
-
-<p><img src="/images/jenkins-net/ch05/build-now.png" alt="" /></p>
-
-<p>Click the “Build Now” link.</p>
-
-<p>This tells Jenkins to build the Job we have just defined.</p>
-
-<h3 id="build-history">Build History</h3>
-
-<p><img src="/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
-
-<p>The Build History will show the Job running. Once the build is complete you
-should have your first successful build.</p>
-
-<p><img src="/images/jenkins-net/ch05/build-history-2.png" alt="" /></p>
-
-<p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
-you to the build page for the Demo Job.</p>
-
-<h3 id="console-output">Console Output</h3>
-
-<p>This page allows us to access all the information relevant to the build we just
-ran. The area we are interested in is the Console Output this shows all the
-programs that ran during the build.</p>
-
-<p><img src="/images/jenkins-net/ch05/console-output-1.png" alt="" /></p>
-
-<p>Click the “Console Output” link.</p>
-
-<p><img src="/images/jenkins-net/ch05/console-output-2.png" alt="" /></p>
-
-<p>This is the place to come whenever you are trying to debug a failing build.
-Everything you need to fix the problem will usually be shown on this page.</p>
-
-<p>As you can see this was a successful build and we can see that:</p>
-
-<ul>
-  <li>Jenkins created a workspace for the Job</li>
-  <li>Ran a Subversion check out
-    <ul>
-      <li>Listed of all files updated</li>
-    </ul>
-  </li>
-  <li>Ran MSBuild
-    <ul>
-      <li>Shows all output from MSBuild</li>
-    </ul>
-  </li>
-  <li>Shows Success message</li>
-</ul>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1452,6 +1431,10 @@ Everything you need to fix the problem will usually be shown on this page.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
       </li>
     
@@ -1465,10 +1448,6 @@ Everything you need to fix the problem will usually be shown on this page.</p>
     
       <li class="post">
         <a href="/2013/01/15/security/">Security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
   </ul>

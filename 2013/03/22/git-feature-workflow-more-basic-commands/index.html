@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Subversion - just ram</title>
+  <title>Git feature workflow - more basic commands - just ram</title>
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Category: Subversion">
+  <meta name="description" content="Switch on vim colour Do your self a favour and switch on git colour it makes the command line output
+much easier to read. git config --global --add &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/categories/subversion/">
+  <link rel="canonical" href="http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -75,95 +76,148 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Subversion</h1>
+    
+      <h1 class="entry-title">Git feature workflow - more basic commands</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-22T23:46:00+00:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h2 id="switch-on-vim-colour">Switch on vim colour</h2>
 
-  
-  <h2>2009</h2>
+<p>Do your self a favour and switch on git colour it makes the command line output
+much easier to read.</p>
 
-<article>
-  
-<h1><a href="/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/">HOWTO: Add svn:externals in windows using tortoisesvn</a></h1>
-<time datetime="2009-06-04T01:00:25+01:00" pubdate><span class='month'>Jun</span> <span class='day'>04</span> <span class='year'>2009</span></time>
+<p><code>git config --global --add color.ui true</code></p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='//categories/subversion/'>Subversion</a></span>
-</footer>
+<h2 id="remote-branches">Remote branches</h2>
 
+<p>Working as part of a team at some point you’ll need to take a look at a team
+mates branch, first they need to push their branch up to github.</p>
 
-</article>
+<p><code>git push origin -u my-awesome-new-feature</code></p>
 
+<h2 id="pull-down-a-team-mates-branch">Pull down a team mates branch</h2>
 
+<p>Don’t know or can’t remember the remote branch name?</p>
 
-  
-  <h2>2006</h2>
+<p><code>git branch -r</code></p>
 
-<article>
-  
-<h1><a href="/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/">Subversion, TortoiseSVN and the _SVN ASP.NET Hack</a></h1>
-<time datetime="2006-06-07T12:15:08+01:00" pubdate><span class='month'>Jun</span> <span class='day'>07</span> <span class='year'>2006</span></time>
+<p>Next you need to create a local branch that tracks the remote branch.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='//categories/subversion/'>Subversion</a></span>
-</footer>
+<p><code>git checkout --track origin/my-awesome-new-feature</code></p>
 
+<p>This command creates a local branch named my-awesome-new-feature which is
+tracking the remote branch. Now when you push your changes the remote branch
+will be updated.</p>
 
-</article>
+<ul>
+  <li>More info on <a href="http://stackoverflow.com/questions/9537392/git-fetch-remote-branch">stackoverflow</a></li>
+</ul>
 
+<h2 id="fix-a-conflict">Fix a conflict</h2>
 
+<p>When you have a conflict in a feature branch you’ll not be able to auto merge
+on github you’ll need to merge the branch manually.</p>
 
-<article>
-  
-<h1><a href="/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/">Ruby script to rename windows subversion files .svn to _svn</a></h1>
-<time datetime="2006-05-04T22:46:34+01:00" pubdate><span class='month'>May</span> <span class='day'>04</span> <span class='year'>2006</span></time>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git checkout master
+</span><span class="line">git merge my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='//categories/ruby/'>Ruby</a>, <a class='category' href='//categories/subversion/'>Subversion</a></span>
-</footer>
+<p>Fix any conflicts.</p>
 
+<ul>
+  <li>Check out this
+<a href="http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/">vimcast</a>
+for a nice way to fix conflicts in vim using the <a href="https://github.com/tpope/vim-fugitive">fugitive
+plugin</a>.</li>
+</ul>
 
-</article>
+<blockquote>
+  <p>fugitive.vim: a Git wrapper so awesome, it should be illegal</p>
+</blockquote>
 
-
-
-<article>
-  
-<h1><a href="/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/">Windows SubVersion / TortoiseSVN - Compare two versions of a file</a></h1>
-<time datetime="2006-04-26T14:47:52+01:00" pubdate><span class='month'>Apr</span> <span class='day'>26</span> <span class='year'>2006</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='//categories/subversion/'>Subversion</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/2006/04/03/tagging-in-subversion/">Tagging in subversion</a></h1>
-<time datetime="2006-04-03T10:25:29+01:00" pubdate><span class='month'>Apr</span> <span class='day'>03</span> <span class='year'>2006</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='//categories/subversion/'>Subversion</a></span>
-</footer>
-
-
-</article>
-
+<p>Finally <code>git push</code> the merge up to github and you’re done.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Justin Ramel</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-22T23:46:00+00:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='//categories/git/'>git</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/" data-via="justinramel" data-counturl="http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/03/15/git-feature-workflow-basic-commands/" title="Previous Post: Git feature workflow - basic commands">&laquo; Git feature workflow - basic commands</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -296,7 +350,10 @@
       var disqus_shortname = 'justinramel';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/';
+        var disqus_url = 'http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

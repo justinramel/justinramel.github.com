@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="So you want to backup your repository? Unfortunately you cannot do a straight backup of your repository as someone may have a file open/locked which &hellip;">
+  <meta name="description" content="Dir["**/.svn"].each do |folder| File.rename(folder, folder.sub('.svn', '_svn'))
+end ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +77,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/">Ruby script to rename windows subversion files .svn to _svn</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-04T22:46:34+01:00" pubdate data-updated="true">May 4<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>Dir["**/.svn"].each do |folder|
+	File.rename(folder, folder.sub('.svn', '_svn'))
+end
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -602,48 +643,6 @@ c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/30/ruby-unit-tests-run-only-one-test-method/">Ruby unit tests - run only one test method</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-30T22:04:37+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>What if you don’t wish to run all the unit tests in your test case?</p>
-
-<p>You can tell ruby to run only one test method by passing in the name of the test:</p>
-
-<pre><code>  ruby test_mytestcase.rb --name test_just_this_method
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/9/">&larr; Older</a>
@@ -661,6 +660,10 @@ c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
       </li>
     
@@ -674,10 +677,6 @@ c
     
       <li class="post">
         <a href="/2013/01/15/security/">Security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
   </ul>

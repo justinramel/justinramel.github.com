@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="TorqueBox Install I’m playing with latest version of TorqueBox (Currently 2.x.incremental.245) the easiest way to install it is via a gem: gem &hellip;">
+  <meta name="description" content="Setup Apache as a Reverse Proxy in front of a standalone Torquebox server. Apache Setup Proxy Module For this to work Apache must have the mod_proxy &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T22:16:31+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
+
+<h4 id="apache-setup">Apache Setup</h4>
+
+<h5 id="proxy-module">Proxy Module</h5>
+
+<p>For this to work Apache must have the mod_proxy module loaded:</p>
+
+<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
+
+<p>Config file: /etc/httpd/conf/httpd.conf</p>
+
+<p><code>ProxyRequests     Off 						   # Switch off forward proxy
+ProxyPreserveHost On 							   # Pass host name onto the proxy
+ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server 
+ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
+</code>
+Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
+
+<h4 id="torquebox-setup">TorqueBox Setup</h4>
+
+<p>In your Torquebox application folder create a file ‘config/torquebox.yml’ which contains a context which matches the Apache reverse proxy url.</p>
+
+<p>torquebox.yml</p>
+
+<p>web:
+  context: /myapp
+ruby:
+  version: 1.9</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -634,62 +698,6 @@ The value <strong><em>9.81</em></strong> has been extracted into a constant <str
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-convert-post-conditional/">vim-ruby-refactoring - Convert Post Conditional</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T22:37:07+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4 id="convert-post-conditional">Convert Post Conditional</h4>
-
-<p>Converts a post conditional expression to a conditional expression.</p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before_thumb.png" alt="ConvertPostConditional_Before" /></a>     <br />
-Move the cursor onto the line which contains the post conditional expression     <br />
-Hit your **<leader-key>** then type **rcpc        
-**</leader-key></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after_thumb.png" alt="ConvertPostConditional_After" /></a>     <br />
-The post conditional expression is split across 3 lines and converted into a standard if expression.</p>
-
-<p><strong>rcpc</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>C</strong>onvert <strong>P</strong>ost <strong>C</strong>onditional.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/4/">&larr; Older</a>
@@ -707,6 +715,10 @@ The post conditional expression is split across 3 lines and converted into a sta
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
       </li>
     
@@ -720,10 +732,6 @@ The post conditional expression is split across 3 lines and converted into a sta
     
       <li class="post">
         <a href="/2013/01/15/security/">Security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
   </ul>

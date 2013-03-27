@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | just ram]]></title>
   <link href="http://justinramel.com//categories/git/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-03-15T14:16:15+00:00</updated>
+  <updated>2013-03-27T22:17:44+00:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git feature workflow - more basic commands]]></title>
+    <link href="http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/"/>
+    <updated>2013-03-22T23:46:00+00:00</updated>
+    <id>http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands</id>
+    <content type="html"><![CDATA[<h2 id="switch-on-vim-colour">Switch on vim colour</h2>
+
+<p>Do your self a favour and switch on git colour it makes the command line output
+much easier to read.</p>
+
+<p><code>git config --global --add color.ui true</code></p>
+
+<h2 id="remote-branches">Remote branches</h2>
+
+<p>Working as part of a team at some point you’ll need to take a look at a team
+mates branch, first they need to push their branch up to github.</p>
+
+<p><code>git push origin -u my-awesome-new-feature</code></p>
+
+<h2 id="pull-down-a-team-mates-branch">Pull down a team mates branch</h2>
+
+<p>Don’t know or can’t remember the remote branch name?</p>
+
+<p><code>git branch -r</code></p>
+
+<p>Next you need to create a local branch that tracks the remote branch.</p>
+
+<p><code>git checkout --track origin/my-awesome-new-feature</code></p>
+
+<p>This command creates a local branch named my-awesome-new-feature which is
+tracking the remote branch. Now when you push your changes the remote branch
+will be updated.</p>
+
+<ul>
+  <li>More info on <a href="http://stackoverflow.com/questions/9537392/git-fetch-remote-branch">stackoverflow</a></li>
+</ul>
+
+<h2 id="fix-a-conflict">Fix a conflict</h2>
+
+<p>When you have a conflict in a feature branch you’ll not be able to auto merge
+on github you’ll need to merge the branch manually.</p>
+
+<p><code>
+git checkout master
+git merge my-awesome-new-feature
+</code></p>
+
+<p>Fix any conflicts.</p>
+
+<ul>
+  <li>Check out this
+<a href="http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/">vimcast</a>
+for a nice way to fix conflicts in vim using the <a href="https://github.com/tpope/vim-fugitive">fugitive
+plugin</a>.</li>
+</ul>
+
+<blockquote>
+  <p>fugitive.vim: a Git wrapper so awesome, it should be illegal</p>
+</blockquote>
+
+<p>Finally <code>git push</code> the merge up to github and you’re done.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Git feature workflow - basic commands]]></title>

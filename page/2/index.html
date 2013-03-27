@@ -82,6 +82,118 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-24T21:11:00+01:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>From the Project Demo page we created last time we can activate a Build at
+will.</p>
+
+<h3 id="build-now">Build Now</h3>
+
+<p><img src="/images/jenkins-net/ch05/build-now.png" alt="" /></p>
+
+<p>Click the “Build Now” link.</p>
+
+<p>This tells Jenkins to build the Job we have just defined.</p>
+
+<h3 id="build-history">Build History</h3>
+
+<p><img src="/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
+
+<p>The Build History will show the Job running. Once the build is complete you
+should have your first successful build.</p>
+
+<p><img src="/images/jenkins-net/ch05/build-history-2.png" alt="" /></p>
+
+<p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
+you to the build page for the Demo Job.</p>
+
+<h3 id="console-output">Console Output</h3>
+
+<p>This page allows us to access all the information relevant to the build we just
+ran. The area we are interested in is the Console Output this shows all the
+programs that ran during the build.</p>
+
+<p><img src="/images/jenkins-net/ch05/console-output-1.png" alt="" /></p>
+
+<p>Click the “Console Output” link.</p>
+
+<p><img src="/images/jenkins-net/ch05/console-output-2.png" alt="" /></p>
+
+<p>This is the place to come whenever you are trying to debug a failing build.
+Everything you need to fix the problem will usually be shown on this page.</p>
+
+<p>As you can see this was a successful build and we can see that:</p>
+
+<ul>
+  <li>Jenkins created a workspace for the Job</li>
+  <li>Ran a Subversion check out
+    <ul>
+      <li>Listed of all files updated</li>
+    </ul>
+  </li>
+  <li>Ran MSBuild
+    <ul>
+      <li>Shows all output from MSBuild</li>
+    </ul>
+  </li>
+  <li>Shows Success message</li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a></h1>
     
     
@@ -1145,70 +1257,6 @@ Octopress is a go, go, go!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-16T22:16:31+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
-
-<h4 id="apache-setup">Apache Setup</h4>
-
-<h5 id="proxy-module">Proxy Module</h5>
-
-<p>For this to work Apache must have the mod_proxy module loaded:</p>
-
-<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
-
-<p>Config file: /etc/httpd/conf/httpd.conf</p>
-
-<p><code>ProxyRequests     Off 						   # Switch off forward proxy
-ProxyPreserveHost On 							   # Pass host name onto the proxy
-ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server 
-ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
-</code>
-Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
-
-<h4 id="torquebox-setup">TorqueBox Setup</h4>
-
-<p>In your Torquebox application folder create a file ‘config/torquebox.yml’ which contains a context which matches the Apache reverse proxy url.</p>
-
-<p>torquebox.yml</p>
-
-<p>web:
-  context: /myapp
-ruby:
-  version: 1.9</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/3/">&larr; Older</a>
@@ -1226,6 +1274,10 @@ ruby:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
       </li>
     
@@ -1239,10 +1291,6 @@ ruby:
     
       <li class="post">
         <a href="/2013/01/15/security/">Security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/code-analysis/">Code analysis</a>
       </li>
     
   </ul>
