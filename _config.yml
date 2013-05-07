@@ -31,6 +31,7 @@ source: source
 destination: public
 plugins: plugins
 code_dir: downloads/code
+<<<<<<< HEAD
 category_dir: /categories
 markdown: kramdown
 #category_dir: blog/categories
