@@ -363,7 +363,7 @@ task :setup_github_pages, :repo do |t, args|
       f.write rakefile
     end
   end
-  puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"
+  puts "\n---\n## Now you can deploy to #{repo_url} with `rake deploy` ##"
 end
 
 def ok_failed(condition)
