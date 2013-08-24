@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jenkins | just ram]]></title>
   <link href="http://justinramel.com//categories/jenkins/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-03-27T22:17:44+00:00</updated>
+  <updated>2013-08-24T23:04:12+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -194,6 +194,12 @@ can even take this as far as a project-based matrix.</p>
 
 <ul>
   <li>Enter your Active Directory username in the “User/group to add” text box.</li>
+</ul>
+
+<p><strong>NOTE:</strong> Usernames are case sensitive! Kindly pointed out by bartensud, read
+his comments below for more details.</p>
+
+<ul>
   <li>Click the “Add” button.</li>
   <li>Tick the Administer check box in the Overall area of the matrix.</li>
   <li>Finally click the “Save” button.</li>
