@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="A colleague needed to add a button to the first row of a table but how do you do this in a foreach loop? NVelocity has a property called $ &hellip;">
+  <meta name="description" content="I was lucky enough to be at the Monaco F1 Grand Prix this year after a friend (John “Diddy” Donaldson) won a trip aboard a luxury yacht for the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/05/30/monaco-f1-grand-prix-2007/">Monaco F1 Grand Prix 2007</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-05-30T10:12:16+01:00" pubdate data-updated="true">May 30<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was lucky enough to be at the Monaco F1 Grand Prix this year after a friend (John “Diddy” Donaldson) won a trip aboard a luxury yacht for the weekend. After nail biting coin toss I was invited along to literally the trip of a life time. So here are the photos, videos and links:</p>
+
+<p><strong>PHOTOS</strong>
+<a href="http://www.flickr.com/photos/justinpics/sets/72157600282065312/">http://www.flickr.com/photos/justinpics/sets/72157600282065312/</a>
+<a href="http://www.flickr.com/photos/justinpics/sets/72157600286256602/">http://www.flickr.com/photos/justinpics/sets/72157600286256602/</a></p>
+
+<p><strong>VIDEOS</strong>
+<a href="http://www.youtube.com/view_play_list?p=B39BC24DE3FD196F">http://www.youtube.com/view_play_list?p=B39BC24DE3FD196F</a></p>
+
+<p><strong>LINKS - In case you want to hire the yacht</strong>
+<a href="http://www.luxuryachts.net/yacht.asp?y=starofthesea">http://www.luxuryachts.net/yacht.asp?y=starofthesea</a></p>
+
+<p><a href="http://www.cnconnect.com/charter/yachtdetail.aspx?id=3929">http://www.cnconnect.com/charter/yachtdetail.aspx?id=3929</a></p>
+
+<p><a href="http://www.csoyachts.com/view_yacht.php?ref_bat=0327018">http://www.csoyachts.com/view_yacht.php?ref_bat=0327018</a></p>
+
+<p>The only downside of the trip was the day after the race when depression sets in as you realise your not really a millionaire!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -516,72 +568,6 @@ GO
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/10/27/automated-functional-testing-part-6-of/">SAP Enterprise Portal - Automated Functional Testing - Part 6 of &#8230;</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-27T11:58:26+01:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there.  </p>
-
-<p><strong>TOP TIP - How to navigate the portal</strong><br />
-So how do you navigate around the portal using the menu? Simple you don’t! I found there are lots of problems using the portal menus due to the number of frames used so I simply jump directly to the URL of the PAR file I am testing. Here is a typical test:<br />
-`def test_typical<br />
-# My Helper method which logs in using the given user id and password<br />
-logon(“myuserid”, “mypassword”)   </p>
-
-<h1 id="go-directly-to-the-url-of-the-par-i-want-to-test">Go directly to the URL of the PAR I want to test</h1>
-<p>@ie.goto(‘http://portal:50000/irj/servlet/prt/portal/prtroot/uk.ac.ncl.testing.ISRPageProcessor’)  </p>
-
-<h1 id="do-tests-here">do tests here</h1>
-<p>end`<br />
-Ok that’s fine but how do you find the direct URL of the PAR file you want to test? Ahh thats were my next top tip comes in.  </p>
-
-<p><strong>TOP TIP - How to find the direct URL of a PAR file</strong><br />
-Open up the SAP Netweaver Developer Studio  </p>
-
-<p>Open your project  </p>
-
-<p>Open the file:<br />
-<code>MyPortalProject  
-dist  
-PORTAL-INF  
-Portalapp.xml</code><br />
-You should now see a “Run…” button for each portal component in your project  </p>
-
-<p>Click the “Run…” button and the dev studio will open up a new browser window with the URL of your PAR file. Now simply use this URL in your test scripts.  </p>
-
-<p><strong>COMING UP IN PART SEVEN</strong><br />
-Short and sweet but at least I’m posting more often. Next time… You guessed it more top tips!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/7/">&larr; Older</a>
@@ -599,6 +585,10 @@ Short and sweet but at least I’m posting more often. Next time… You guessed 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -612,10 +602,6 @@ Short and sweet but at least I’m posting more often. Next time… You guessed 
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>

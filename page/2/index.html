@@ -82,6 +82,111 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T17:38:00+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Lets break the build to see how Jenkins reacts. I’ll add a DLL to the project
+then “forget” to add it to source control; unfortunately I see this problem a
+lot when new developers join the team.</p>
+
+<h3 id="i-see-red-projects">I see red projects</h3>
+
+<p><img src="/images/jenkins-net/ch06/red-ball.png" alt="" /></p>
+
+<p>As you can see Jenkins now shows a red ball next to the Demo project. Also
+notice the slightly cloudy weather icon indicating all is not well with our
+project.</p>
+
+<h3 id="hows-the-weather">How’s the weather?</h3>
+
+<p>Jenkins uses a weather metaphor to show at a glance how a project is doing.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-1.png" alt="" /></td>
+      <td>No recent builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-2.png" alt="" /></td>
+      <td>1 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-3.png" alt="" /></td>
+      <td>2 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-4.png" alt="" /></td>
+      <td>3 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-5.png" alt="" /></td>
+      <td>4 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-6.png" alt="" /></td>
+      <td>5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Obviously we want our projects to stay sunny and avoid the bad weather so next
+time we’ll discuss how to diagnose and fix a broken build.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a></h1>
     
     
@@ -1188,75 +1293,6 @@ Octopress is a go, go, go!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4 id="authentication-settings">Authentication Settings</h4>
-
-<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
-
-<p>Config File: /etc/httpd/conf.d/shib.conf</p>
-
-<p><code>  ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  require valid-user
-</code></p>
-
-<p>The ‘<code>ShibUseHeaders On</code>’ setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
-
-<h4 id="simple-authorisation">Simple Authorisation</h4>
-
-<p>If you don’t need a complex authorisation system and you don’t mind users seeing a standard Shibboleth authorisation error page:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
-
-<p>You can implement this via your Shibboleth settings using the require statement:</p>
-
-<p><code>  ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  **require grouper_groups ~ MySecurityGroup**
-</code></p>
-
-<p>Here we require the custom grouper_groups attribute matches on the regular expression after the ‘<code>~</code>’. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
-
-<h5 id="top-tip">Top Tip</h5>
-
-<p>When playing with your Shib settings don’t forget to restart httpd to see the affect.
-<code>sudo /sbin/service httpd restart</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/3/">&larr; Older</a>
@@ -1274,6 +1310,10 @@ Octopress is a go, go, go!</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -1287,10 +1327,6 @@ Octopress is a go, go, go!</p>
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>

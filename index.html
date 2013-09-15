@@ -9,8 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Switch on vim colour Do your self a favour and switch on git colour it makes the command line output
-much easier to read. git config --global --add &hellip;">
+  <meta name="description" content="Why?
+Mostly curiosity. As a long time Vim user I’ve heard lots of good and bad about this other ancient editor Emacs. As well as my curiosity I’ve &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,66 @@ much easier to read. git config --global --add &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-14T12:54:00+01:00" pubdate data-updated="true">Sep 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="why">Why?</h2>
+<p>Mostly curiosity. As a long time Vim user I’ve heard lots of good and bad about this other ancient editor Emacs. As well as my curiosity I’ve rubbed up against a few rough edges lately mixing Vim and Tmux’s modal modes and problems getting Vim plugin’s working cross platform.</p>
+
+<p>I decided to find out for myself, is Emacs is as good/bad as they say?</p>
+
+<h2 id="evil">Evil</h2>
+<p>I’ve tried Emacs before but quickly returned to Vim after becoming perplexed at the number of <code>Ctrl + x Ctrl + ?!?</code> keystrokes needed to do the simplest of actions. This time I’m trying the <a href="http://www.emacswiki.org/emacs/Evil">Evil</a> package with gives Vim like editing within Emacs. The best of both worlds? Or too good to be true?</p>
+
+<p>So far I’m very impressed with Evil, once this package was installed I was right at home. You really can’t get way without learning some of the basic Emacs control keys but they are very small in number.</p>
+
+<h2 id="emacs-redux">Emacs Redux</h2>
+<p>Out of the box Emacs is not the most pleasant of experiences, just like Vim it is very raw until you tweak the config. Thankfully Emacs is ridiculously configurable you really can create an editor suited to your own personal tastes. Configuration is done via Emacs Lisp, a little overwhelming for beginners but I do look forward to learning the language. It’s certainly looks a lot nicer than VIML!</p>
+
+<p>I quickly realised hacking on my init.el conifg file with my limited knowledge was not the way to go. I eventually found the excellent <a href="http://emacsredux.com/">Emacs Redux</a> blog and the <a href="https://github.com/bbatsov/prelude">Prelude</a> configuration project. This project has allowed me to have a solid foundation as I find my feet in Emacs land.</p>
+
+<h2 id="initial-config">Initial Config</h2>
+<ul>
+  <li><a href="http://www.emacswiki.org/emacs/Evil">Evil</a></li>
+  <li><a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a></li>
+</ul>
+
+<p>I’ve also changed a few Prelude defaults which can be found in my <a href="https://github.com/justinramel/prelude">personal fork</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>So far so good. I’m honestly surprised how quickly I’ve settled in with Emacs this time, there is lots here to like. I really don’t feel like I’m deserting Vim, thanks to Evil all that Vim ‘muscle memory’ is coming along with me.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1317,111 +1377,6 @@ failures.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-14T17:38:00+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-  <li><a href="/2013/01/15/security/">Security</a></li>
-  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
-</ol>
-
-<ul>
-  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
-</ul>
-
-<hr />
-
-<p>Lets break the build to see how Jenkins reacts. I’ll add a DLL to the project
-then “forget” to add it to source control; unfortunately I see this problem a
-lot when new developers join the team.</p>
-
-<h3 id="i-see-red-projects">I see red projects</h3>
-
-<p><img src="/images/jenkins-net/ch06/red-ball.png" alt="" /></p>
-
-<p>As you can see Jenkins now shows a red ball next to the Demo project. Also
-notice the slightly cloudy weather icon indicating all is not well with our
-project.</p>
-
-<h3 id="hows-the-weather">How’s the weather?</h3>
-
-<p>Jenkins uses a weather metaphor to show at a glance how a project is doing.</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-1.png" alt="" /></td>
-      <td>No recent builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-2.png" alt="" /></td>
-      <td>1 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-3.png" alt="" /></td>
-      <td>2 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-4.png" alt="" /></td>
-      <td>3 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-5.png" alt="" /></td>
-      <td>4 out of the last 5 builds failed</td>
-    </tr>
-    <tr>
-      <td><img src="/images/jenkins-net/ch06/weather-6.png" alt="" /></td>
-      <td>5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Obviously we want our projects to stay sunny and avoid the bad weather so next
-time we’ll discuss how to diagnose and fix a broken build.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1437,6 +1392,10 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -1450,10 +1409,6 @@ time we’ll discuss how to diagnose and fix a broken build.</p>
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>

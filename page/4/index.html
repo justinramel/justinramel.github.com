@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Convert Post Conditional Converts a post conditional expression to a &hellip;">
+  <meta name="description" content="This post is part of a series which documents the vim-ruby-refactoring plugin. Extract Constant Extracts a selection into a constant which is placed &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,63 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-constant/">vim-ruby-refactoring - Extract Constant</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-30T23:04:56+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
+
+<h4 id="extract-constant">Extract Constant</h4>
+
+<p>Extracts a selection into a constant which is placed at the top of the current module or class.</p>
+
+<p>The refactoring: <a href="http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html">http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html</a></p>
+
+<h4 id="example">Example</h4>
+
+<p>Before refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_before_thumb.png" alt="ExtractConstant_Before" /></a> <br />
+Visually select the value you wish to extract    <br />
+Hit your **<leader-key>** then type **rec        
+**You will now see a prompt to enter the constant name:   
+Constant name: Gravitational_Constant</leader-key></p>
+
+<p>After refactoring:   <br />
+<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_after_thumb.png" alt="ExtractConstant_After" /></a>    <br />
+The value <strong><em>9.81</em></strong> has been extracted into a constant <strong><em>GRAVITATIONAL_CONSTANT</em></strong> which is placed at the top of the module.</p>
+
+<p><strong>rec</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>C</strong>onstant.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -908,189 +965,6 @@ required: message    <br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/">Setup ASP.NET MVC with Spark View Engine in 5 minutes or less</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-08T15:33:21+01:00" pubdate data-updated="true">Jun 8<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Setup folder structure:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb.png" alt="image" /></a></p>
-
-<p>Download and put the <a href="http://www.asp.net/mvc/download/">asp.net mvc</a> dll’s in mvc folder and <a href="http://sparkviewengine.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=27109">spark</a> dll’s in spark folder. </p>
-
-<p>Create a new asp.net application not a <strong>mvc</strong> application just a standard asp.net application. This means you will not get the mvc helpers for creating controllers and views but that’s not a massive loss and has the advantage that you don’t need the asp.net mvc installed if you open the solution on another machine.</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image1.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb1.png" alt="add new project" /></a>Change content of Default.aspx to: <!-- Placeholder do not delete! --></p>
-
-<p>The default.aspx placeholder is required to allow the asp.net routing to work. </p>
-
-<p>Delete the code behind files for Default.aspx (Default.aspx.cs, Default.aspx.designer.cs) they are not needed.</p>
-
-<p>Add references to the Spark.dll and Spark.Web.Mvc.dll located in the libs folder.</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/vs_add_ref.png"><img src="http://justinram.files.wordpress.com/2009/06/vs_add_ref_thumb.png" alt="vs_add_ref" /></a></p>
-
-<p>Add references to asp.net mvc System.Web.Routing.dll, System.Web.Abstractions.dll, System.Web.Mvc.dll</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image2.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb2.png" alt="image" /></a></p>
-
-<p>Add spark to the web.config:</p>
-
-<p>&lt;/sectionGroup&gt;    <br />
-&lt;section name=&#8221;spark&#8221; type=&#8221;Spark.Configuration.SparkSectionHandler, Spark&#8221;/&gt;     <br />
-&lt;/configSections&gt;</p>
-
-<spark>      
-<compilation debug="true" />       
-</spark>
-
-<p>Debug true shows compilation errors when rendering views.</p>
-
-<p>Add routing to httpModules section of web.config:</p>
-
-<add name="UrlRoutingModule" type="System.Web.Routing.UrlRoutingModule, System.Web.Routing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-
-<p>Add a application.cs which creates the routes and registers the spark view engine:</p>
-
-<p>using System.Collections.Generic;    <br />
-using System.Web.Mvc;     <br />
-using System.Web.Routing;     <br />
-using Spark.Web.Mvc; </p>
-
-<p>namespace Web    <br />
-{     <br />
-public class Application     <br />
-{     <br />
-public void RegisterRoutes(IList<routebase> routes)       
-{       
-routes.Add(new Route(       
-&#8220;{controller}/{action}/{id}&#8221;,       
-new RouteValueDictionary(new {controller = &#8220;home&#8221;, action = &#8220;index&#8221;, id = &#8220;&#8221;}),       
-new MvcRouteHandler()));       
-} </routebase></p>
-
-<p>public void RegisterViewEngine(IList<iviewengine> engines)      
-{       
-SparkEngineStarter.RegisterViewEngine(engines);       
-}       
-}       
-}</iviewengine></p>
-
-<p>Add a global.asax with the following code behind.</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image3.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb3.png" alt="image" /></a></p>
-
-<p>using System;    <br />
-using System.Web;     <br />
-using System.Web.Mvc;     <br />
-using System.Web.Routing; </p>
-
-<p>namespace Web    <br />
-{     <br />
-public class Global : HttpApplication     <br />
-{     <br />
-protected void Application_Start(object sender, EventArgs e)     <br />
-{     <br />
-var app = new Application();     <br />
-app.RegisterRoutes(RouteTable.Routes);     <br />
-app.RegisterViewEngine(ViewEngines.Engines);     <br />
-} </p>
-
-<p>protected void Application_BeginRequest(object sender, EventArgs e)    <br />
-{     <br />
-string path = Request.AppRelativeCurrentExecutionFilePath;     <br />
-if (string.Equals(path, “~/default.aspx”, StringComparison.InvariantCultureIgnoreCase) ||     <br />
-string.Equals(path, “~/”))     <br />
-{     <br />
-Context.RewritePath(“~/Home”);     <br />
-}     <br />
-}     <br />
-}     <br />
-}</p>
-
-<p>Create content, controllers and view folders in the root of the asp.net project:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image4.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb4.png" alt="image" /></a></p>
-
-<p>Create a shared folder in the views folder with a _global.spark file this will be used to share come code with all views.</p>
-
-<use namespace="System.Collections.Generic" />
-
-<use namespace="System.Web.Mvc.Html" />
-
-<p>Create a layouts folder in the views folder with a file called application.spark which will be used for the layout of the application very much like a master page.</p>
-
-<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”</a>&gt;     <br />
-&lt;html xmlns=”<a href="http://www.w3.org/1999/xhtml&quot;">http://www.w3.org/1999/xhtml”</a>&gt;       </p>
-
-<head>       
-<title>Sample</title>       
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />       
-</head>
-<body>       
-<h1>Header</h1>       
-** <use content="view" />        
-** <h1>Footer</h1>       
-</body>
-<p>&lt;/html&gt;</p>
-
-<p>The use content view tag highlighted above is replaced by the current view returned by asp.net mvc.</p>
-
-<p>Add a HomeController.cs under the controllers folder with the following content:</p>
-
-<p>using System.Web.Mvc; </p>
-
-<p>namespace Web.controllers    <br />
-{     <br />
-public class HomeController : Controller     <br />
-{     <br />
-public ActionResult Index()     <br />
-{     <br />
-return View();     <br />
-}     <br />
-}     <br />
-}</p>
-
-<p>Under the views folder create a home\index.spark with the following content:</p>
-
-<p>Hello spark.</p>
-
-<p>Run the project and you should get:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2009/06/image5.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb5.png" alt="image" /></a></p>
-
-<p>You can download this sample solution <a href="http://fppuvw.bay.livefilestore.com/y1puB8Efa8gk4G6CzMEi40m1JxymO-5kxvTnYWbZ3uh1YZD71y8xOd58vSLWuNpPG06X9y7MgTOntrkvH82-jAqoMWnN9ranxJ6/sparksetup.zip?download">here</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/5/">&larr; Older</a>
@@ -1108,6 +982,10 @@ return View();     <br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -1121,10 +999,6 @@ return View();     <br />
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>

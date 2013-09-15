@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Setup Apache as a Reverse Proxy in front of a standalone Torquebox server. Apache Setup Proxy Module For this to work Apache must have the mod_proxy &hellip;">
+  <meta name="description" content="Authentication Settings Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox. Config File: /etc/httpd/conf.d/shib.conf &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,75 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4 id="authentication-settings">Authentication Settings</h4>
+
+<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
+
+<p>Config File: /etc/httpd/conf.d/shib.conf</p>
+
+<p><code>  ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  require valid-user
+</code></p>
+
+<p>The ‘<code>ShibUseHeaders On</code>’ setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
+
+<h4 id="simple-authorisation">Simple Authorisation</h4>
+
+<p>If you don’t need a complex authorisation system and you don’t mind users seeing a standard Shibboleth authorisation error page:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
+
+<p>You can implement this via your Shibboleth settings using the require statement:</p>
+
+<p><code>  ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  **require grouper_groups ~ MySecurityGroup**
+</code></p>
+
+<p>Here we require the custom grouper_groups attribute matches on the regular expression after the ‘<code>~</code>’. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
+
+<h5 id="top-tip">Top Tip</h5>
+
+<p>When playing with your Shib settings don’t forget to restart httpd to see the affect.
+<code>sudo /sbin/service httpd restart</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -641,63 +710,6 @@ The let method is created above the it block, using the initialisation line - ac
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/12/30/vim-ruby-refactoring-extract-constant/">vim-ruby-refactoring - Extract Constant</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T23:04:56+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4 id="extract-constant">Extract Constant</h4>
-
-<p>Extracts a selection into a constant which is placed at the top of the current module or class.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html">http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html</a></p>
-
-<h4 id="example">Example</h4>
-
-<p>Before refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_before_thumb.png" alt="ExtractConstant_Before" /></a> <br />
-Visually select the value you wish to extract    <br />
-Hit your **<leader-key>** then type **rec        
-**You will now see a prompt to enter the constant name:   
-Constant name: Gravitational_Constant</leader-key></p>
-
-<p>After refactoring:   <br />
-<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_after_thumb.png" alt="ExtractConstant_After" /></a>    <br />
-The value <strong><em>9.81</em></strong> has been extracted into a constant <strong><em>GRAVITATIONAL_CONSTANT</em></strong> which is placed at the top of the module.</p>
-
-<p><strong>rec</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>C</strong>onstant.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/4/">&larr; Older</a>
@@ -715,6 +727,10 @@ The value <strong><em>9.81</em></strong> has been extracted into a constant <str
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -728,10 +744,6 @@ The value <strong><em>9.81</em></strong> has been extracted into a constant <str
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>

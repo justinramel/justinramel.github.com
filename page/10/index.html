@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I am hoping to use this software to test my web developments, from what I have read it looks very promising. “WATIR stands for “Web Application &hellip;">
+  <meta name="description" content="The install should be as simple as dropping into dos, cd to your Ruby folder and run the command:
+gem install watir Unfortunately it wasn’t that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +77,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/02/27/installing-watir-via-the-gem-utility/">Installing Watir via the gem utility</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-02-27T10:57:00+00:00" pubdate data-updated="true">Feb 27<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The install should be as simple as dropping into dos, cd to your Ruby folder and run the command:
+<code>gem install watir</code></p>
+
+<p>Unfortunately it wasn’t that simple for me, we work via a proxy here so I had to tell the gem utility about it.</p>
+
+<p><strong>Running gem install when you are behind a proxy</strong></p>
+
+<p>Set the HTTP_PROXY environment variable.</p>
+
+<p>Example:
+<code>set HTTP_PROXY=http://mycache:8080</code></p>
+
+<p>You can now run:
+<code>gem install watir</code></p>
+
+<p>Or you can pass the proxy information as a parameter to gem via the -p switch:</p>
+
+<p><code>gem install watir -p http://mycache:8080</code></p>
+
+<p>Gem will now go off download and install the latest Watir package, version 1.4.1 in my case.  Be patient this can take some time depending on server load.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -526,6 +582,10 @@ else
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -539,10 +599,6 @@ else
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>

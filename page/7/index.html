@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Ok last time I promised some hints and tips so lets begin. I’m going to keep the hints and tips posts fairly short in the hope it will encourage me &hellip;">
+  <meta name="description" content="Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there. TOP TIP - How to navigate the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/10/27/automated-functional-testing-part-6-of/">SAP Enterprise Portal - Automated Functional Testing - Part 6 of &#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-27T11:58:26+01:00" pubdate data-updated="true">Oct 27<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Time for some more tips. I had a comment on my last post asking how to navigate around the portal so lets start there.  </p>
+
+<p><strong>TOP TIP - How to navigate the portal</strong><br />
+So how do you navigate around the portal using the menu? Simple you don’t! I found there are lots of problems using the portal menus due to the number of frames used so I simply jump directly to the URL of the PAR file I am testing. Here is a typical test:<br />
+`def test_typical<br />
+# My Helper method which logs in using the given user id and password<br />
+logon(“myuserid”, “mypassword”)   </p>
+
+<h1 id="go-directly-to-the-url-of-the-par-i-want-to-test">Go directly to the URL of the PAR I want to test</h1>
+<p>@ie.goto(‘http://portal:50000/irj/servlet/prt/portal/prtroot/uk.ac.ncl.testing.ISRPageProcessor’)  </p>
+
+<h1 id="do-tests-here">do tests here</h1>
+<p>end`<br />
+Ok that’s fine but how do you find the direct URL of the PAR file you want to test? Ahh thats were my next top tip comes in.  </p>
+
+<p><strong>TOP TIP - How to find the direct URL of a PAR file</strong><br />
+Open up the SAP Netweaver Developer Studio  </p>
+
+<p>Open your project  </p>
+
+<p>Open the file:<br />
+<code>MyPortalProject  
+dist  
+PORTAL-INF  
+Portalapp.xml</code><br />
+You should now see a “Run…” button for each portal component in your project  </p>
+
+<p>Click the “Run…” button and the dev studio will open up a new browser window with the URL of your PAR file. Now simply use this URL in your test scripts.  </p>
+
+<p><strong>COMING UP IN PART SEVEN</strong><br />
+Short and sweet but at least I’m posting more often. Next time… You guessed it more top tips!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -697,48 +763,6 @@ Calling a helper with IDictonary Paramaters:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/05/08/sap-netwweaver-developer-studio-compile-error/">SAP NetWeaver developer Studio – Compile Error</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-05-08T11:41:58+01:00" pubdate data-updated="true">May 8<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Was getting weird error when trying to compile a project today:</p>
-
-<p><code>The project was not built due to "Problems encountered while copying resources.". Fix the problem, then try refreshing this project and rebuilding it since it may be inconsistent.</code></p>
-
-<p>After a quick Google it appears this has happened to others and a re-install fixed the problem.  I managed to fix the problem by:</p>
-
-<p>Highlighting the project in the Enterprise Portal perspective then doing a File =&gt; Refresh from the menu.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -756,6 +780,10 @@ Calling a helper with IDictonary Paramaters:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -769,10 +797,6 @@ Calling a helper with IDictonary Paramaters:
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>

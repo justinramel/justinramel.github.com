@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Dir["**/.svn"].each do |folder| File.rename(folder, folder.sub('.svn', '_svn'))
-end ">
+  <meta name="description" content="Was getting weird error when trying to compile a project today: The project was not built due to "Problems encountered while copying resources.". Fix &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +76,48 @@ end ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/05/08/sap-netwweaver-developer-studio-compile-error/">SAP NetWeaver developer Studio – Compile Error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-05-08T11:41:58+01:00" pubdate data-updated="true">May 8<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Was getting weird error when trying to compile a project today:</p>
+
+<p><code>The project was not built due to "Problems encountered while copying resources.". Fix the problem, then try refreshing this project and rebuilding it since it may be inconsistent.</code></p>
+
+<p>After a quick Google it appears this has happened to others and a re-install fixed the problem.  I managed to fix the problem by:</p>
+
+<p>Highlighting the project in the Enterprise Portal perspective then doing a File =&gt; Refresh from the menu.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -590,59 +631,6 @@ c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/30/ruby-unit-testing-setting-up-your-project-folder-for-testing/">Ruby unit testing - Setting up your project folder for testing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-30T22:22:01+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Its a good idea to keep your test cases seperate from your production code:</p>
-
-<pre><code>  myproject
-      lib/
-          workomatic.rb
-      test/
-          test_workomatic.rb
-</code></pre>
-
-<p>When you have your project setup in this way add the following line to the top of your test cases:</p>
-
-<p>Inside test_workomatic.rb</p>
-
-<pre><code>  $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
-  require workomatic.rb
-</code></pre>
-
-<p>Now when you run this test case the workomatic.rb file and all supporting files in the lib folder will be picked up.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/9/">&larr; Older</a>
@@ -660,6 +648,10 @@ c
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
@@ -673,10 +665,6 @@ c
     
       <li class="post">
         <a href="/2013/01/15/active-directory-security/">Active directory security</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/security/">Security</a>
       </li>
     
   </ul>
