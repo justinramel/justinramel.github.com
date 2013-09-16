@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | just ram]]></title>
   <link href="http://justinramel.com//categories/emacs/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-09-15T11:29:06+01:00</updated>
+  <updated>2013-09-16T21:41:26+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emacs - Ace Jump Mode]]></title>
+    <link href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/"/>
+    <updated>2013-09-15T23:19:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode</id>
+    <content type="html"><![CDATA[<p>One of the things I miss from Vim is the wonderful <a href="https://github.com/Lokaltog/vim-easymotion">Easy Motion</a> which allows you to jump quickly to any word in the buffer.</p>
+
+<p>Thankfully Emacs has a very similar package <a href="http://www.emacswiki.org/emacs/AceJump">Ace Jump Mode</a>.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Using Prelude setup was simple, create a file in the personal folder and it will be auto loaded when Emacs starts.</p>
+
+<p>```
+(prelude-require-package ‘ace-jump-mode)</p>
+
+<p>(require ‘ace-jump-mode)
+(define-key global-map (kbd “C-c SPC”) ‘ace-jump-mode)
+```</p>
+
+<p>I’m using the <code>prelude-require-package</code> function to make sure the <code>ace-jump-mode</code> package is available just in case this is a new machine where the package has not been installed.</p>
+
+<p>I then require the <code>ace-jump-mode</code> package and bind a short cut key to <code>C-c SPC</code>.</p>
+
+<p>Now when I press Ctrl + c followed by Space Emacs asks for a <code>Head Char:</code> which will then highlight all words that begin with that Char. Pressing that char jumps straight to that Char.</p>
+
+<p>A screen cast is worth a thousand words:</p>
+
+<p><iframe width="640" height="510" src="http://www.youtube.com/embed/UZkpmegySnc " frameborder="0" allowfullscreen></iframe></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim to Emacs]]></title>

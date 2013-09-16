@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-09-15T11:29:06+01:00</updated>
+  <updated>2013-09-16T21:41:26+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emacs - Ace Jump Mode]]></title>
+    <link href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/"/>
+    <updated>2013-09-15T23:19:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode</id>
+    <content type="html"><![CDATA[<p>One of the things I miss from Vim is the wonderful <a href="https://github.com/Lokaltog/vim-easymotion">Easy Motion</a> which allows you to jump quickly to any word in the buffer.</p>
+
+<p>Thankfully Emacs has a very similar package <a href="http://www.emacswiki.org/emacs/AceJump">Ace Jump Mode</a>.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Using Prelude setup was simple, create a file in the personal folder and it will be auto loaded when Emacs starts.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(prelude-require-package 'ace-jump-mode)
+</span><span class="line">
+</span><span class="line">(require 'ace-jump-mode)
+</span><span class="line">(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’m using the <code>prelude-require-package</code> function to make sure the <code>ace-jump-mode</code> package is available just in case this is a new machine where the package has not been installed.</p>
+
+<p>I then require the <code>ace-jump-mode</code> package and bind a short cut key to <code>C-c SPC</code>.</p>
+
+<p>Now when I press Ctrl + c followed by Space Emacs asks for a <code>Head Char:</code> which will then highlight all words that begin with that Char. Pressing that char jumps straight to that Char.</p>
+
+<p>A screen cast is worth a thousand words:</p>
+
+<iframe width="640" height="510" src="http://www.youtube.com/embed/UZkpmegySnc " frameborder="0" allowfullscreen=""></iframe>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim to Emacs]]></title>
@@ -1115,7 +1148,11 @@ project.</p>
   </tbody>
 </table>
 
-<p>Obviously we want our projects to stay sunny and avoid the bad weather so next
+<p>«««&lt; HEAD</p>
+
+<p>=======
+»»»&gt; breaking the build
+Obviously we want our projects to stay sunny and avoid the bad weather so next
 time we’ll discuss how to diagnose and fix a broken build.</p>
 ]]></content>
   </entry>
@@ -1879,8 +1916,6 @@ he’s half man half fish, others say it’s more of a 70/30 split.
 
 <p>That pretty much covers everything I want to do with this blog so I think
 Octopress is a go, go, go!</p>
-
-<p>I wonder if I can blog from my ipad? Hmmm…</p>
 ]]></content>
   </entry>
   
@@ -1949,7 +1984,7 @@ Octopress is a go, go, go!</p>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 </pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">storage</span>
-</span><span class="line">  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="vi">@storage</span> <span class="o">||=</span> <span class="ss">Plugin</span><span class="p">:</span><span class="ss">:Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
 </span><span class="line">  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </span><span class="line">  <span class="vi">@storage</span>
 </span><span class="line"><span class="k">end</span>
@@ -1966,25 +2001,6 @@ Octopress is a go, go, go!</p>
 <p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I’ve spent more time fussing over this blog post than developing the plugin.</p>
 
 <p>So what you waiting for? Go give it a try!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
-    <link href="http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
-    <updated>2011-07-20T20:19:55+01:00</updated>
-    <id>http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux</id>
-    <content type="html"><![CDATA[<h4 id="fortress">Fortress</h4>
-
-<p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
-
-<h4 id="curl-to-the-rescue">curl to the rescue!</h4>
-
-<p>You can upload files using curl directly into Sharepoint via it’s HTTP PUT interface.</p>
-
-<p><code>curl --ntlm --user username:password --upload-file myfile.xls https://sharepointserver.com/sites/mysite/myfile.xls</code></p>
-
-<p>Told you, easy when you know how.</p>
 ]]></content>
   </entry>
   
