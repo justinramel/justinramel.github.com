@@ -7,19 +7,8 @@ require "stringex"
 ssh_user       = "user@domain.com"
 ssh_port       = "22"
 document_root  = "~/website.com/"
-<<<<<<< HEAD
-<<<<<<< HEAD
 rsync_delete   = true
 deploy_default = "push"
-=======
-rsync_delete   = false
-rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "rsync"
->>>>>>> Disabled Rsync delete by default. Closes #787
-=======
-rsync_delete   = true
-deploy_default = "push"
->>>>>>> initall blog post, testing octopress
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "master"
