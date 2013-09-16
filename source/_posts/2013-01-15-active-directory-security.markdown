@@ -42,6 +42,10 @@ server. Of course you are free to setup whatever security Matrix you like, you
 can even take this as far as a project-based matrix.
 
 * Enter your Active Directory username in the "User/group to add" text box.
+
+**NOTE:** Usernames are case sensitive! Kindly pointed out by bartensud, read
+his comments below for more details.
+
 * Click the “Add” button.
 * Tick the Administer check box in the Overall area of the matrix.
 * Finally click the "Save" button.
