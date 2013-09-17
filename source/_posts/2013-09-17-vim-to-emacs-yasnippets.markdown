@@ -5,6 +5,8 @@ date: 2013-09-17 22:01
 comments: true
 categories: emacs
 ---
+{% render_partial _partials/vim-to-emacs.markdown %}
+
 Another plugin I miss from Vim is [snipMate](http://www.vim.org/scripts/script.php?script_id=2540), I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, [YASnippet](https://github.com/capitaomorte/yasnippet) offers the same functionality.
 
 ## Setup

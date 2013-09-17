@@ -5,6 +5,8 @@ date: 2013-09-15 23:19
 comments: true
 categories: Emacs
 ---
+{% render_partial _partials/vim-to-emacs.markdown %}
+
 One of the things I miss from Vim is the wonderful [Easy Motion](https://github.com/Lokaltog/vim-easymotion) which allows you to jump quickly to any word in the buffer.
 
 Thankfully Emacs has a very similar package [Ace Jump Mode](http://www.emacswiki.org/emacs/AceJump).

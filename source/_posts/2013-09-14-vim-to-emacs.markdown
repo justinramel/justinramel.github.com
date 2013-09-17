@@ -5,6 +5,8 @@ date: 2013-09-14 12:54
 comments: true
 categories: Emacs
 ---
+{% render_partial _partials/vim-to-emacs.markdown %}
+
 ## Why?
 Mostly curiosity. As a long time Vim user I've heard lots of good and bad about this other ancient editor Emacs. As well as my curiosity I've rubbed up against a few rough edges lately mixing Vim and Tmux's modal modes and problems getting Vim plugin's working cross platform.
 
