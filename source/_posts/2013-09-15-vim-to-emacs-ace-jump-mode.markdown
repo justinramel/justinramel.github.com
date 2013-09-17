@@ -12,6 +12,8 @@ Thankfully Emacs has a very similar package [Ace Jump Mode](http://www.emacswiki
 ## Setup
 Using Prelude setup was simple, create a file in the personal folder and it will be auto loaded when Emacs starts.
 
+[personal/ace-jump-mode.el](https://github.com/justinramel/prelude/blob/master/personal/ace-jump-mode.el)
+
 ```
 (prelude-require-package 'ace-jump-mode)
 
