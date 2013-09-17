@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-09-17T22:59:40+01:00</updated>
+  <updated>2013-09-17T23:14:29+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -18,7 +18,17 @@
     <link href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/"/>
     <updated>2013-09-17T22:01:00+01:00</updated>
     <id>http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets</id>
-    <content type="html"><![CDATA[<p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+</ol>
+
+<hr />
+
+<p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
 
 <h2 id="setup">Setup</h2>
 <p>Create a <code>yasnippet.el</code> in the <code>.emacs.d/personal</code> folder.</p>
@@ -52,7 +62,17 @@
     <link href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/"/>
     <updated>2013-09-15T23:19:00+01:00</updated>
     <id>http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode</id>
-    <content type="html"><![CDATA[<p>One of the things I miss from Vim is the wonderful <a href="https://github.com/Lokaltog/vim-easymotion">Easy Motion</a> which allows you to jump quickly to any word in the buffer.</p>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+</ol>
+
+<hr />
+
+<p>One of the things I miss from Vim is the wonderful <a href="https://github.com/Lokaltog/vim-easymotion">Easy Motion</a> which allows you to jump quickly to any word in the buffer.</p>
 
 <p>Thankfully Emacs has a very similar package <a href="http://www.emacswiki.org/emacs/AceJump">Ace Jump Mode</a>.</p>
 
@@ -87,7 +107,17 @@
     <link href="http://justinramel.com/2013/09/14/vim-to-emacs/"/>
     <updated>2013-09-14T12:54:00+01:00</updated>
     <id>http://justinramel.com/2013/09/14/vim-to-emacs</id>
-    <content type="html"><![CDATA[<h2 id="why">Why?</h2>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+</ol>
+
+<hr />
+
+<h2 id="why">Why?</h2>
 <p>Mostly curiosity. As a long time Vim user I’ve heard lots of good and bad about this other ancient editor Emacs. As well as my curiosity I’ve rubbed up against a few rough edges lately mixing Vim and Tmux’s modal modes and problems getting Vim plugin’s working cross platform.</p>
 
 <p>I decided to find out for myself, is Emacs is as good/bad as they say?</p>

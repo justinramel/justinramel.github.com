@@ -4,7 +4,7 @@
   <title><![CDATA[Category: emacs | just ram]]></title>
   <link href="http://justinramel.com//categories/emacs/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-09-17T22:59:40+01:00</updated>
+  <updated>2013-09-17T23:14:29+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -18,7 +18,16 @@
     <link href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/"/>
     <updated>2013-09-17T22:01:00+01:00</updated>
     <id>http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets</id>
-    <content type="html"><![CDATA[<p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Vim to Emacs](/2013/09/14/vim-to-emacs/)
+2.  [Vim to Emacs - Ace Jump Mode](/2013/09/15/vim-to-emacs-ace-jump-mode/)
+3.  [Vim to Emacs - YASnippets](/2013/09/17/vim-to-emacs-yasnippets/)
+
+---
+</p>
+
+<p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
 
 <h2 id="setup">Setup</h2>
 <p>Create a <code>yasnippet.el</code> in the <code>.emacs.d/personal</code> folder.</p>
