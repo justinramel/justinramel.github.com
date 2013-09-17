@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="One of the things I miss from Vim is the wonderful Easy Motion which allows you to jump quickly to any word in the buffer. Thankfully Emacs has a &hellip;">
+  <meta name="description" content="Another plugin I miss from Vim is snipMate, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,67 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-17T22:01:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Create a <code>yasnippet.el</code> in the <code>.emacs.d/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/yasnippet.el">personal/yasnippet.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(prelude-require-package 'yasnippet)
+</span><span class="line">
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">(yas-global-mode 1)</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here I make sure the <code>yasnippet</code> package is available then require the package and enable it globally.</p>
+
+<h2 id="personal-snippets">Personal Snippets</h2>
+<p>You can create your own personal snippets in the <code>.emas.d/snippets</code> folder. More details in this slightly outdated <a href="http://capitaomorte.github.io/yasnippet/">guide</a>.</p>
+
+<h2 id="ruby-snippets">Ruby Snippets</h2>
+<p>I have also installed a set of ruby and rspecs snippets from bmaland’s <a href="https://github.com/bmaland/yasnippet-ruby-mode">repo</a>. I simply cloned the repo into the personal snippest folder with name ruby-mode. Note the name is important it needs to match the Emacs mode where the snippets are used.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git clone git@github.com:bmaland/yasnippet-ruby-mode.git ~/.emacs.d/personal/ruby-mode</span></code></pre></td></tr></table></div></figure></notextile></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></h1>
     
     
@@ -112,6 +173,8 @@
 
 <h2 id="setup">Setup</h2>
 <p>Using Prelude setup was simple, create a file in the personal folder and it will be auto loaded when Emacs starts.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/ace-jump-mode.el">personal/ace-jump-mode.el</a></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -1150,196 +1213,6 @@ to see in our projects.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-14T22:28:00+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-  <li><a href="/2013/01/15/security/">Security</a></li>
-  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
-</ol>
-
-<ul>
-  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
-</ul>
-
-<hr />
-
-<p>Unless you’re a glutton for punishment manually checking Jenkins after every
-build is going to become very old very quickly. Luckily Jenkins has several
-notification mechanisms to save you this manual task.</p>
-
-<h3 id="email-notification">Email Notification</h3>
-
-<p>We can setup Jenkins to send an email notification whenever a build fails this
-save us having to check the server after every build, we can trust Jenkins to
-email us on failure. Jenkins will also send a notification email when the build
-returns to a working state.</p>
-
-<p>Setting up email notification is a two-step process. First we give Jenkins
-details of the email server and second we set which email addresses to notify
-upon failure of a build.</p>
-
-<h3 id="email-server-configuration">Email Server Configuration</h3>
-
-<p>Email server configuration is done via the Configure System page. You get to
-the configuration page from the main Jenkins home page Manage Jenkins »
-Configure System. At the bottom of this page is the E-mail Notification
-section.</p>
-
-<p><img src="/images/jenkins-net/ch08/email-setup.png" alt="email setup" /></p>
-
-<p>Chances are you’ll have a local SMTP server, if not you can use something like
-the Gmail SMTP server as shown here. Make sure you tick the “Test configuration
-by sending test e-mail” check box and then click the “Test Configuration”
-button to have Jenkins send you a test email, confirming your configuration is
-OK. Once you’ve successfully received an email don’t forget to click the “Save”
-button to save your changes.</p>
-
-<h3 id="project-notification-email">Project Notification Email</h3>
-
-<p>Once you have the email server configured you can specify per project who to
-notify when a build fails. This is accessed via each Jobs configuration page,
-for our Demo job we click Jenkins » Demo » Configure. At the bottom of this
-page under the Post-Build Actions section is the E-mail Notification area.</p>
-
-<p><img src="/images/jenkins-net/ch08/email-notification.png" alt="email notification" /></p>
-
-<ul>
-  <li>Tick the “E-mail Notification” checkbox.</li>
-  <li>Enter a space-separated list of email address to notify when a build fails.</li>
-  <li>Tick the “Send e-mail for every unstable build” checkbox.</li>
-</ul>
-
-<p>If you really want to annoy the person who broke the build you can send them
-another email by ticking the “Send separate e-mails to individuals who broke
-the build” checkbox.</p>
-
-<p>Finally don’t forget to click the “Save” button.</p>
-
-<p>Unfortunately the only way to test this is working is to break the build,
-follow the instructions in section 6. <a href="/2013/01/14/breaking-the-build/">Breaking the
-build</a> to test email notification is working.</p>
-
-<h3 id="your-constant-reminder">Your constant reminder</h3>
-
-<p>Email notification is great but I also like to have a constant reminder of the
-current build status. The best way I have found to do this on Windows is by
-using the Hudson Tray Tracker (read Jenkins Tray Tracker), which is available
-to download from
-<a href="http://code.google.com/p/hudson-tray-tracker/">http://code.google.com/p/hudson-tray-tracker/</a>.</p>
-
-<p><img src="/images/jenkins-net/ch08/tray-1.png" alt="tray tracker 1" /></p>
-
-<p>Once you download and install Hudson Tray Tracker you get a tray notification
-icon showing a constant reminder of the current build status. Initially the
-tray icon will be grey until you point it at a Jenkins build server.</p>
-
-<p><img src="/images/jenkins-net/ch08/tray-2.png" alt="tray tracker 2" /></p>
-
-<ul>
-  <li>
-    <p>Right click on the tray icon to access the context menu.</p>
-  </li>
-  <li>
-    <p>Click Settings to configure the software.</p>
-  </li>
-</ul>
-
-<p><img src="/images/jenkins-net/ch08/tray-3.png" alt="tray tracker 3" /></p>
-
-<ul>
-  <li>Click the “Add server” button.</li>
-</ul>
-
-<p><img src="/images/jenkins-net/ch08/tray-4.png" alt="tray tracker 4" /></p>
-
-<ul>
-  <li>
-    <p>Enter the URL and port of your Jenkins server.</p>
-  </li>
-  <li>
-    <p>Click the “OK” button.</p>
-  </li>
-</ul>
-
-<p>You will now see a list of projects on the Jenkins server.</p>
-
-<p><img src="/images/jenkins-net/ch08/tray-5.png" alt="tray tracker 5" /></p>
-
-<p>Tick the Projects you would like to monitor. Here there is only our demo
-project but in reality you may have lots of Projects to monitor.</p>
-
-<p><img src="/images/jenkins-net/ch08/tray-6.png" alt="tray tracker 6" /></p>
-
-<p>Once you have a server and projects setup, the tray icon will turn green to
-indicate a good build. That is assuming you have a working build. When the
-build breaks the icon will turn red and show a build failed message.</p>
-
-<p><img src="/images/jenkins-net/ch08/tray-7.png" alt="tray tracker 7" /></p>
-
-<p>You can also use the software to open Jenkins on the build page of a Job by
-double clicking on the tray icon to open the list window.</p>
-
-<p><img src="/images/jenkins-net/ch08/tray-8.png" alt="tray tracker 8" /></p>
-
-<p>Then double click on the Job your interested in. In this case double clicking
-on the Demo line will open up Jenkins on the Demo job page.</p>
-
-<h3 id="the-teams-constant-reminder">The teams constant reminder</h3>
-
-<p>A large screen in the development room can be a great way to give everyone on
-the team a highly visible, constant reminder of the current build status.</p>
-
-<p>Jenkins has a Radiator View plugin that is designed specifically for this
-purpose.</p>
-
-<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin</a></p>
-
-<p><img src="/images/jenkins-net/ch08/team.png" alt="team" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1355,6 +1228,10 @@ purpose.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a>
       </li>
     
@@ -1368,10 +1245,6 @@ purpose.</p>
     
       <li class="post">
         <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-09-16T21:41:26+01:00</updated>
+  <updated>2013-09-17T22:59:40+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emas - YASnippet]]></title>
+    <link href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/"/>
+    <updated>2013-09-17T22:01:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets</id>
+    <content type="html"><![CDATA[<p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Create a <code>yasnippet.el</code> in the <code>.emacs.d/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/yasnippet.el">personal/yasnippet.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(prelude-require-package 'yasnippet)
+</span><span class="line">
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">(yas-global-mode 1)</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here I make sure the <code>yasnippet</code> package is available then require the package and enable it globally.</p>
+
+<h2 id="personal-snippets">Personal Snippets</h2>
+<p>You can create your own personal snippets in the <code>.emas.d/snippets</code> folder. More details in this slightly outdated <a href="http://capitaomorte.github.io/yasnippet/">guide</a>.</p>
+
+<h2 id="ruby-snippets">Ruby Snippets</h2>
+<p>I have also installed a set of ruby and rspecs snippets from bmaland’s <a href="https://github.com/bmaland/yasnippet-ruby-mode">repo</a>. I simply cloned the repo into the personal snippest folder with name ruby-mode. Note the name is important it needs to match the Emacs mode where the snippets are used.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git clone git@github.com:bmaland/yasnippet-ruby-mode.git ~/.emacs.d/personal/ruby-mode</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim to Emacs - Ace Jump Mode]]></title>
@@ -24,6 +58,8 @@
 
 <h2 id="setup">Setup</h2>
 <p>Using Prelude setup was simple, create a file in the personal folder and it will be auto loaded when Emacs starts.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/ace-jump-mode.el">personal/ace-jump-mode.el</a></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -1916,91 +1952,6 @@ he’s half man half fish, others say it’s more of a 70/30 split.
 
 <p>That pretty much covers everything I want to do with this blog so I think
 Octopress is a go, go, go!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My first Redcar plugin]]></title>
-    <link href="http://justinramel.com/2011/08/19/my-first-redcar-plugin/"/>
-    <updated>2011-08-19T01:04:35+01:00</updated>
-    <id>http://justinramel.com/2011/08/19/my-first-redcar-plugin</id>
-    <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating my first plugin.</p>
-
-<h4 id="introduction">Introduction</h4>
-<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what’s not to like? Though I must confess I don’t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
-
-<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
-
-<h4 id="whats-da-big-idea">What’s da big idea</h4>
-<p>The idea for my first plugin is rather ambitious considering I’ve no idea how to write a plugin. I’d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
-
-<p>I’m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
-
-<h4 id="install-redcar">Install Redcar</h4>
-<p>I first followed the install instructions:</p>
-
-<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
-
-<p>All good no problems there (I’m running on a Mac OSX 10.7.1)</p>
-
-<h4 id="plugin-guides">Plugin Guides</h4>
-<p>I then read the plugin guides I found here:</p>
-
-<ul>
-  <li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
-  <li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
-</ul>
-
-<h4 id="pluginrb">Plugin.rb</h4>
-<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin’s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
-
-<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
-</span><span class="line">  <span class="no">RefreshBrowser</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
-
-<h4 id="browser-refresh-script">Browser refresh script</h4>
-<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
-
-<p>I managed to find a script to refresh the browser here:</p>
-
-<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
-
-<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
-
-<h4 id="storage">Storage</h4>
-<p>Redcar’s storage mechanism allows you to easily store configuration data into a yaml file.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">storage</span>
-</span><span class="line">  <span class="vi">@storage</span> <span class="o">||=</span> <span class="ss">Plugin</span><span class="p">:</span><span class="ss">:Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class="line">  <span class="vi">@storage</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Here I am using this mechanism to store the ‘keyword’ used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It’s also possible to setup a nice edit page but for now this will do.</p>
-
-<h4 id="source">Source</h4>
-<p>You can find the source for this plugin here:</p>
-
-<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
-
-<h4 id="was-it-easy">Was it easy?</h4>
-<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I’ve spent more time fussing over this blog post than developing the plugin.</p>
-
-<p>So what you waiting for? Go give it a try!</p>
 ]]></content>
   </entry>
   
