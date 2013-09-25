@@ -4,7 +4,7 @@
   <title><![CDATA[just ram]]></title>
   <link href="http://justinramel.com/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-09-17T23:14:29+01:00</updated>
+  <updated>2013-09-25T21:11:11+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emacs - Smart Tab]]></title>
+    <link href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/"/>
+    <updated>2013-09-25T20:25:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
+
+<hr />
+
+<p>The latest thing I’m missing from Vim is tab completion. I’d like to hit tab and have Emacs either insert a snippet or try to auto-complete the word based on what I just typed.</p>
+
+<p>With lots of Googlizing I’ve managed to hack together a solution, it’s not perfect (yet) but still meets most of my needs for now.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Download <code>smart-tab.el</code> from <a href="https://github.com/genehack/smart-tab">genehack</a> (or from <a href="https://github.com/justinramel/prelude/blob/master/vendor/smart-tab.el">me</a>) and save it in to the <code>.emacs.d/vendor</code> folder.</p>
+
+<p>Next create a <code>tab.el</code> in the <code>.emacs/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/tab.el">personal/tab.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(require 'smart-tab)
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">
+</span><span class="line">(cons 'yas/hippie-try-expand 'hippie-expand-try-functions-list)
+</span><span class="line">
+</span><span class="line">(setq smart-tab-using-hippie-expand t)
+</span><span class="line">(global-smart-tab-mode t)
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here I am using cons to push YASnippets to the front of the hippie expand list, this means snippets are found before trying to auto-complete words.</p>
+
+<p>As I said this is not perfect, I can’t auto-complete in the middle of a snippet process for instance but it’s not a bad start.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim to Emas - YASnippet]]></title>
@@ -24,6 +73,7 @@
   <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
   <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
   <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
 <hr />
@@ -68,6 +118,7 @@
   <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
   <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
   <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
 <hr />
@@ -113,6 +164,7 @@
   <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
   <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
   <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
 <hr />
@@ -1941,47 +1993,6 @@ use this switch the command will fail.</p>
 </span><span class="line">umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>I think that’s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello brave new world]]></title>
-    <link href="http://justinramel.com/2012/08/31/hello-brave-new-world/"/>
-    <updated>2012-08-31T21:21:00+01:00</updated>
-    <id>http://justinramel.com/2012/08/31/hello-brave-new-world</id>
-    <content type="html"><![CDATA[<h1 id="trying-out-octopress">Trying out Octopress</h1>
-<p><a href="http://octopress.org/">Octopress</a> for the win!</p>
-
-<p>Bloggin’ from vim, yay.</p>
-
-<p>Updated the theme to <a href="https://github.com/amelandri/darkstripes">darkstripes</a></p>
-
-<p>Imported my old worpress posts using <a href="https://github.com/thomasf/exitwp">exitwp</a></p>
-
-<h2 id="code">Code</h2>
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>ruby, ruby, ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="nb">puts</span> <span class="s1">&#39;hello world!&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="images">Images</h2>
-<p>### I’m Old Gregg!
-<img src="http://justinramel.com/images/old-gregg.jpeg" title="I'm old Gregg" /></p>
-
-<h2 id="quotes">Quotes</h2>
-<p>### Block quote</p>
-<blockquote><p>You ever drunk Baileys from a shoe?</p><footer><strong>Old Gregg</strong> <cite>The Mighty Boosh</cite></footer></blockquote>
-
-<h3 id="pull-quote">Pull quote</h3>
-<p><span class="pullquote-right" data-pullquote="half man half fish">
-Old Gregg’s anatomy a species classification is a topic of debate. Some say
-he’s half man half fish, others say it’s more of a 70/30 split.
-</span></p>
-
-<h2 id="video">Video</h2>
-<iframe width="640" height="510" src="http://www.youtube.com/embed/5Enans8ABSM " frameborder="0" allowfullscreen=""></iframe>
-
-<p>That pretty much covers everything I want to do with this blog so I think
-Octopress is a go, go, go!</p>
 ]]></content>
   </entry>
   

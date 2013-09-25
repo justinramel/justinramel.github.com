@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>SAP NetWeaver developer Studio – Compile Error - just ram</title>
+  <title>Vim to Emacs - Smart Tab - just ram</title>
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Was getting weird error when trying to compile a project today: The project was not built due to "Problems encountered while copying resources.". Fix &hellip;">
+  <meta name="description" content="This post is part of a series: Vim to Emacs Vim to Emacs - Ace Jump Mode Vim to Emacs - YASnippets Vim to Emacs - Smart Tab The latest thing I’m &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/2006/05/08/sap-netwweaver-developer-studio-compile-error">
+  <link rel="canonical" href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">SAP NetWeaver developer Studio – Compile Error</h1>
+      <h1 class="entry-title">Vim to Emacs - Smart Tab</h1>
     
     
       <p class="meta">
@@ -96,20 +96,54 @@
   
 
 
-<time datetime="2006-05-08T11:41:58+01:00" pubdate data-updated="true">May 8<span>th</span>, 2006</time>
+<time datetime="2013-09-25T20:25:00+01:00" pubdate data-updated="true">Sep 25<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Was getting weird error when trying to compile a project today:</p>
+<div class="entry-content"><p>This post is part of a series:</p>
 
-<p><code>The project was not built due to "Problems encountered while copying resources.". Fix the problem, then try refreshing this project and rebuilding it since it may be inconsistent.</code></p>
+<ol>
+  <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
 
-<p>After a quick Google it appears this has happened to others and a re-install fixed the problem.  I managed to fix the problem by:</p>
+<hr />
 
-<p>Highlighting the project in the Enterprise Portal perspective then doing a File =&gt; Refresh from the menu.</p>
+<p>The latest thing I’m missing from Vim is tab completion. I’d like to hit tab and have Emacs either insert a snippet or try to auto-complete the word based on what I just typed.</p>
+
+<p>With lots of Googlizing I’ve managed to hack together a solution, it’s not perfect (yet) but still meets most of my needs for now.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Download <code>smart-tab.el</code> from <a href="https://github.com/genehack/smart-tab">genehack</a> (or from <a href="https://github.com/justinramel/prelude/blob/master/vendor/smart-tab.el">me</a>) and save it in to the <code>.emacs.d/vendor</code> folder.</p>
+
+<p>Next create a <code>tab.el</code> in the <code>.emacs/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/tab.el">personal/tab.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(require 'smart-tab)
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">
+</span><span class="line">(cons 'yas/hippie-try-expand 'hippie-expand-try-functions-list)
+</span><span class="line">
+</span><span class="line">(setq smart-tab-using-hippie-expand t)
+</span><span class="line">(global-smart-tab-mode t)
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here I am using cons to push YASnippets to the front of the hippie expand list, this means snippets are found before trying to auto-complete words.</p>
+
+<p>As I said this is not perfect, I can’t auto-complete in the middle of a snippet process for instance but it’s not a bad start.</p>
 </div>
 
 
@@ -132,12 +166,12 @@
   
 
 
-<time datetime="2006-05-08T11:41:58+01:00" pubdate data-updated="true">May 8<span>th</span>, 2006</time>
+<time datetime="2013-09-25T20:25:00+01:00" pubdate data-updated="true">Sep 25<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='//categories/sap-enterprise-portal/'>SAP Enterprise Portal</a>
+    <a class='category' href='//categories/emacs/'>emacs</a>
   
 </span>
 
@@ -146,7 +180,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2006/05/08/sap-netwweaver-developer-studio-compile-error/" data-via="justinramel" data-counturl="http://justinramel.com/2006/05/08/sap-netwweaver-developer-studio-compile-error/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/" data-via="justinramel" data-counturl="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -157,10 +191,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/" title="Previous Post: Ruby script to rename windows subversion files .svn to _svn">&laquo; Ruby script to rename windows subversion files .svn to _svn</a>
+        <a class="basic-alignment left" href="/2013/09/17/vim-to-emacs-yasnippets/" title="Previous Post: Vim to Emas - YASnippet">&laquo; Vim to Emas - YASnippet</a>
       
-      
-        <a class="basic-alignment right" href="/2006/06/06/95/" title="Next Post: Location of XML files">Location of XML files &raquo;</a>
       
     </p>
   </footer>
@@ -262,8 +294,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://justinramel.com/2006/05/08/sap-netwweaver-developer-studio-compile-error/';
-        var disqus_url = 'http://justinramel.com/2006/05/08/sap-netwweaver-developer-studio-compile-error/';
+        var disqus_identifier = 'http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/';
+        var disqus_url = 'http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/';
         var disqus_script = 'embed.js';
       
     (function () {

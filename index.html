@@ -9,7 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Vim to Emacs Vim to Emacs - Ace Jump Mode Vim to Emacs - YASnippets Another plugin I miss from Vim is snipMate, I use &hellip;">
+  <meta name="description" content="This post is part of a series: Vim to Emacs Vim to Emacs - Ace Jump Mode Vim to Emacs - YASnippets Vim to Emacs - Smart Tab The latest thing I’m &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,82 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-25T20:25:00+01:00" pubdate data-updated="true">Sep 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
+
+<hr />
+
+<p>The latest thing I’m missing from Vim is tab completion. I’d like to hit tab and have Emacs either insert a snippet or try to auto-complete the word based on what I just typed.</p>
+
+<p>With lots of Googlizing I’ve managed to hack together a solution, it’s not perfect (yet) but still meets most of my needs for now.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Download <code>smart-tab.el</code> from <a href="https://github.com/genehack/smart-tab">genehack</a> (or from <a href="https://github.com/justinramel/prelude/blob/master/vendor/smart-tab.el">me</a>) and save it in to the <code>.emacs.d/vendor</code> folder.</p>
+
+<p>Next create a <code>tab.el</code> in the <code>.emacs/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/tab.el">personal/tab.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(require 'smart-tab)
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">
+</span><span class="line">(cons 'yas/hippie-try-expand 'hippie-expand-try-functions-list)
+</span><span class="line">
+</span><span class="line">(setq smart-tab-using-hippie-expand t)
+</span><span class="line">(global-smart-tab-mode t)
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here I am using cons to push YASnippets to the front of the hippie expand list, this means snippets are found before trying to auto-complete words.</p>
+
+<p>As I said this is not perfect, I can’t auto-complete in the middle of a snippet process for instance but it’s not a bad start.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a></h1>
     
     
@@ -112,6 +188,7 @@
   <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
   <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
   <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
 <hr />
@@ -183,6 +260,7 @@
   <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
   <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
   <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
 <hr />
@@ -255,6 +333,7 @@
   <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
   <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
   <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
 <hr />
@@ -1060,189 +1139,6 @@ graph.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/15/running-your-tests/">Running your tests</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-15T20:19:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-  <li><a href="/2013/01/15/security/">Security</a></li>
-  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
-</ol>
-
-<ul>
-  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
-</ul>
-
-<hr />
-
-<p>After building your solution the next task you’ll want to automate is the
-running of your tests. Jenkins comes with a multitude of test plugins so
-whatever test framework you’re using chances are you’ll be covered. To show how
-easy it is to add tests to a build we’ll add NUnit to our demo solution and
-have Jenkins run the tests every time we commit a change to the source
-repository.</p>
-
-<h3 id="test-project-structure">Test Project Structure</h3>
-
-<p>Structure of the demo project is:</p>
-
-<p>Tools\NUnit\bin contains the NUnit framework and runner.</p>
-
-<p>The DemoTest project references the nunit.framework.dll from this folder. This
-enables the solution to be checked out and run with out any pre-installation
-requirements. This work great for Jenkins but its also a great way to setup
-your solutions, if you need to move to a new machine or if you have a new
-starter you just check out the solution and its ready to build and run your
-tests.</p>
-
-<h3 id="execute-any-test-runner">Execute any test runner</h3>
-
-<p>The build step “Execute Windows batch command” works with any test runner that
-has a command line runner. We will use this method to run the NUnit command
-line test runner in the Demo project.</p>
-
-<p>Use the Demo » Configure link to access the configuration page, under the
-Build section click the “Add build step” button.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-1.png" alt="test 1" /></p>
-
-<p>Select the “Execute Windows batch command” to add a new build step.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-2.png" alt="test 2" /></p>
-
-<p>Under the “Execute Windows batch command” section enter the command:</p>
-
-<ul>
-  <li>
-    <p>Tools\nunit\bin\nunit-console.exe src\DemoTests\bin\Debug\DemoTests.dll</p>
-  </li>
-  <li>
-    <p>Click the “Save” button</p>
-  </li>
-</ul>
-
-<p>This command is telling Jenkins the location of the NUnit test runner
-(Tools\nunit\bin\nunit-console.exe) and the location of the test DLL to run
-against (src\DemoTests\bin\Debug\DemoTests.dll).</p>
-
-<p>This command will now execute the NUnit test runner after every solution build.</p>
-
-<h3 id="failing-tests">Failing Tests</h3>
-
-<p>When a test fails Jenkins will fail the build and show a red ball for the
-status of the project.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-3.png" alt="test 3" /></p>
-
-<p>Now we know the build has failed but we don’t want to start digging through the
-console output to find the details of the failing test. Lets introduce another
-Jenkins plugin which will show details of exactly which test failed and why.</p>
-
-<h3 id="plugin-setup">Plugin Setup</h3>
-
-<p>Use the Demo » Configure link to access the Demo jobs configuration page,
-under the Post-Build Actions section.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-4.png" alt="test 4" /></p>
-
-<ul>
-  <li>
-    <p>Tick the “Publish NUnit test result report” check box.</p>
-  </li>
-  <li>
-    <p>Enter the output of the NUnit test runner: TestResult.xml</p>
-  </li>
-  <li>
-    <p>Click the “Save” button.</p>
-  </li>
-</ul>
-
-<p>Run a build again to see the NUnit test report.</p>
-
-<ul>
-  <li>Click the Demo » Build Now link.</li>
-</ul>
-
-<p>Of course the build has failed again but that’s what we want. This allows us to
-see NUnit test report. To view the report click on the failed build in the
-Build History.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-5.png" alt="test 5" /></p>
-
-<p>We now have a Test Result area that is showing 1 failure in the
-DemoTests.ProgramTests.Add namespace. That’s certainly easier than digging
-through the console output. The benefits don’t end there, if you click on the
-Test Result link we will get a more detailed report.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-6.png" alt="test 6" /></p>
-
-<p>Here we get a pretty report showing the full details of the failure. We can
-drill down for even more detail using the link DemoTests.ProgramTests.Add.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-7.png" alt="test 7" /></p>
-
-<p>This gives the error message from the test, a stack trace, the filename of the
-failing test and even the line number. You can’t ask for much more than that
-but there is one more benefit we can eke out of our test runner and that is our
-test history.</p>
-
-<h3 id="test-history">Test History</h3>
-
-<p>Once you setup the Unit plugin, Jenkins will track all your test results. This
-is a great way to keep an eye on the general health of your project. I’ve added
-a few more tests and commits to the demo project to show how the test history
-works.</p>
-
-<p><img src="/images/jenkins-net/ch09/test-8.png" alt="test 8" /></p>
-
-<p>As you can see the Demo home page now has a “Test Result Trend” graph showing
-the initial failing test, followed by anther commit to fix the failure then
-another 4 tests that were added. The graph shows at a glance that our Demo
-project is getting healthier on every commit. This is the type of graph we want
-to see in our projects.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1258,6 +1154,10 @@ to see in our projects.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a>
       </li>
     
@@ -1271,10 +1171,6 @@ to see in our projects.</p>
     
       <li class="post">
         <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a>
       </li>
     
   </ul>

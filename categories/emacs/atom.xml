@@ -4,7 +4,7 @@
   <title><![CDATA[Category: emacs | just ram]]></title>
   <link href="http://justinramel.com//categories/emacs/atom.xml" rel="self"/>
   <link href="http://justinramel.com/"/>
-  <updated>2013-09-17T23:14:29+01:00</updated>
+  <updated>2013-09-25T21:11:11+01:00</updated>
   <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emacs - Smart Tab]]></title>
+    <link href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/"/>
+    <updated>2013-09-25T20:25:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Vim to Emacs](/2013/09/14/vim-to-emacs/)
+2.  [Vim to Emacs - Ace Jump Mode](/2013/09/15/vim-to-emacs-ace-jump-mode/)
+3.  [Vim to Emacs - YASnippets](/2013/09/17/vim-to-emacs-yasnippets/)
+4.  [Vim to Emacs - Smart Tab](/2013/09/25/vim-to-emacs-smart-tab/)
+
+---
+</p>
+
+<p>The latest thing I’m missing from Vim is tab completion. I’d like to hit tab and have Emacs either insert a snippet or try to auto-complete the word based on what I just typed.</p>
+
+<p>With lots of Googlizing I’ve managed to hack together a solution, it’s not perfect (yet) but still meets most of my needs for now.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Download <code>smart-tab.el</code> from <a href="https://github.com/genehack/smart-tab">genehack</a> (or from <a href="https://github.com/justinramel/prelude/blob/master/vendor/smart-tab.el">me</a>) and save it in to the <code>.emacs.d/vendor</code> folder.</p>
+
+<p>Next create a <code>tab.el</code> in the <code>.emacs/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/tab.el">personal/tab.el</a></p>
+
+<p>```
+(require ‘smart-tab)
+(require ‘yasnippet)</p>
+
+<p>(cons ‘yas/hippie-try-expand ‘hippie-expand-try-functions-list)</p>
+
+<p>(setq smart-tab-using-hippie-expand t)
+(global-smart-tab-mode t)</p>
+
+<p>```</p>
+
+<p>Here I am using cons to push YASnippets to the front of the hippie expand list, this means snippets are found before trying to auto-complete words.</p>
+
+<p>As I said this is not perfect, I can’t auto-complete in the middle of a snippet process for instance but it’s not a bad start.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim to Emas - YASnippet]]></title>
@@ -23,6 +66,7 @@
 1.  [Vim to Emacs](/2013/09/14/vim-to-emacs/)
 2.  [Vim to Emacs - Ace Jump Mode](/2013/09/15/vim-to-emacs-ace-jump-mode/)
 3.  [Vim to Emacs - YASnippets](/2013/09/17/vim-to-emacs-yasnippets/)
+4.  [Vim to Emacs - Smart Tab](/2013/09/25/vim-to-emacs-smart-tab/)
 
 ---
 </p>
