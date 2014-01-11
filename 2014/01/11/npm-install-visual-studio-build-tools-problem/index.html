@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Subversion, TortoiseSVN and the _SVN ASP.NET Hack - just ram</title>
+  <title>npm install - visual studio build tools problem - just ram</title>
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="Good write up of the TortoiseSVN ASP.NET Hack here Basically involves creating an environment variable SVN_ASP_DOT_NET_HACK with the value of 1. When &hellip;">
+  <meta name="description" content="Trying to install a node module on windows (via npm) and I keep getting the annoying error message: 1
+error MSB8020: The build tools for Visual &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack">
+  <link rel="canonical" href="http://justinramel.com/2014/01/11/npm-install-visual-studio-build-tools-problem">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
@@ -80,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">Subversion, TortoiseSVN and the _SVN ASP.NET Hack</h1>
+      <h1 class="entry-title">npm install - visual studio build tools problem</h1>
     
     
       <p class="meta">
@@ -96,16 +97,23 @@
   
 
 
-<time datetime="2006-06-07T12:15:08+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2006</time>
+<time datetime="2014-01-11T13:58:00+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Good write up of the TortoiseSVN ASP.NET Hack <a href="http://www.codefez.com/Home/tabid/36/ctl/ArticleView/mid/364/articleId/191/Subversion-and-the-ASP-NET-Hack.aspx">here</a></p>
+<div class="entry-content"><p>Trying to install a node module on windows (via npm) and I keep getting the annoying error message:</p>
 
-<p>Basically involves creating an environment variable SVN_ASP_DOT_NET_HACK with the value of 1. When TortoiseSVN finds this variable it looks for _svn folder instead of .svn</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">error MSB8020: The build tools for Visual Studio 2010 (Platform Toolset = 'v100') cannot be found. To build using the v100 build tools, p lease install Visual Studio 2010 build tools.</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I have Visual Studio 2013 installed but the project requires the 2010 version. After lots of digging around I discovered an option you can pass to npm, forcing it to use whatever version of Visual Studio you like.</p>
+
+<p><code>npm install karma --msvs_version=2013</code></p>
+
+<p>This was a welcome relief as getting the Visual Studio 2010 build tools appears to involve a full install of Visual Studio 2010!?!</p>
 </div>
 
 
@@ -128,21 +136,15 @@
   
 
 
-<time datetime="2006-06-07T12:15:08+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2006</time>
+<time datetime="2014-01-11T13:58:00+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2014</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='//categories/subversion/'>Subversion</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/" data-via="justinramel" data-counturl="http://justinramel.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2014/01/11/npm-install-visual-studio-build-tools-problem/" data-via="justinramel" data-counturl="http://justinramel.com/2014/01/11/npm-install-visual-studio-build-tools-problem/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -153,10 +155,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2006/06/06/95/" title="Previous Post: Location of XML files">&laquo; Location of XML files</a>
+        <a class="basic-alignment left" href="/2013/09/25/vim-to-emacs-smart-tab/" title="Previous Post: Vim to Emacs - Smart Tab">&laquo; Vim to Emacs - Smart Tab</a>
       
-      
-        <a class="basic-alignment right" href="/2006/06/22/monorail/" title="Next Post: Castle MonoRail">Castle MonoRail &raquo;</a>
       
     </p>
   </footer>
@@ -258,8 +258,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://justinramel.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/';
-        var disqus_url = 'http://justinramel.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/';
+        var disqus_identifier = 'http://justinramel.com/2014/01/11/npm-install-visual-studio-build-tools-problem/';
+        var disqus_url = 'http://justinramel.com/2014/01/11/npm-install-visual-studio-build-tools-problem/';
         var disqus_script = 'embed.js';
       
     (function () {

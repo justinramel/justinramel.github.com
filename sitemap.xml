@@ -2,480 +2,486 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://justinramel.com/2006/02/21/my-first-post/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/21/installing-subversion-server-on-windows/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/22/sap-portal-http-or-https/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/02/22/create-a-library-project-of-sap-portal-pdk-jars/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/23/sap-portal-par-locations/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/23/removing-par-files-from-the-sap-portal/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/27/watir-testing-your-website/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/27/installing-watir-via-the-gem-utility/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/27/searching-google-for-watir-help/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/02/28/functionally-testing-sap-enterprise-portal-using-watir/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/02/28/my-first-wordpress-post/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/03/01/18/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/03/16/installing-sap-netweaver-developer-studio/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/03/20/installing-subclipse-for-sap-netweaver-developer-studio-2013/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/03/22/how-do-i-find-the-url-of-my-sap-portal-component/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/03/28/35/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/03/30/ruby-unit-tests-run-only-one-test-method/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/03/30/ruby-unit-testing-setting-up-your-project-folder-for-testing/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/03/30/ruby-iteractive-debugging/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/04/03/tagging-in-subversion/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/04/04/setting-up-ruby-on-rails/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/04/04/pluralize-table-names-no-thanks/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/04/04/migrations-zombie-state-and-ms-sql/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/04/26/windows-subversion-tortoisesvn-compare-two-versions-of-a-file/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/05/03/subversion-server-windows-backup/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/05/04/ruby-script-to-rename-windows-subversion-files-svn-to-_svn/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/05/08/sap-netwweaver-developer-studio-compile-error/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/06/06/95/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/06/07/subversion-tortoisesvn-and-the-asp-net-hack/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/06/22/monorail/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/06/22/monorail-nvelocity-view-engine/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/06/29/monorail-e28093-moving-from-beta5-to-latest-build/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/07/20/continuous-integration-cruisecontrolnet-subversion-msbuild-net-20/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/07/27/monorail-active-record-testing-createschemafromfile/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/10/17/sdn-blog/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/10/18/sap-enterprise-portal-functional-testing-part-5-of/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/10/27/automated-functional-testing-part-6-of/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/11/10/fw-castle-projects-monorail-10-release-candidate-2/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/12/05/monorail-active-record-testing-createschemafromfile-2/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/12/05/location-of-xml-files/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/12/05/ruby-testing-setup-project-folders/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/12/05/ruby-unit-testing-run-only-one-test/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/12/05/sap-portal-how-do-i-reference-a-javascript-file/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2006/12/05/sap-portal-developer-guide/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2006/12/05/sap-enterprise-portal-automated-functional-testing-part-7-of/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2007/05/17/monorail-nvelocity-how-to-find-out-if-your-in-the-first-item-of-a-foreach-loop/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2007/05/30/monaco-f1-grand-prix-2007/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2007/06/12/sap-wiki-my-profile/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2007/06/18/castle-using-the-trunk-my-config/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2007/10/10/tortoisesvn-global-ignore-pattern/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2008/01/03/books-head-first-c-lab-1-solution/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/01/09/monorail-custom-rescue-controller-irescuecontroller/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2009/04/30/developwithpassionbdd-notes/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/06/04/howto-add-svnexternals-in-windows-using-tortoisesvn/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/06/08/setup-asp-net-mvc-with-spark-view-engine-in-5-minutes-or-less/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2009/06/10/resharper-format-settings/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2009/06/18/fubumvc-resources/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/06/19/building-fubumvc-with-a-portable-version-of-rake/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/06/25/jquery-validation-plugin-dynamically-change-validator-message/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2009/08/03/how-the-new-host-feature-works-in-nservicebus/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/30/vim-ruby-refactoring-series/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/30/vim-ruby-refactoring-add-parameter-2/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/30/vim-ruby-refactoring-inline-temp/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2010/12/30/vim-ruby-refactoring-convert-post-conditional/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-constant/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/30/vim-ruby-refactoring-extract-to-let/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-local-variable/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-local-variable/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://justinramel.com/2010/12/31/vim-ruby-refactoring-rename-instance-variable/
         </loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2010/12/31/vim-ruby-refactoring-extract-method/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2011/01/11/rails-new-app-workflow/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2011/07/12/setup-git-repo/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2011/07/14/torquebox-gem-install-error/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2011/07/16/shibboleth-settings-for-torquebox/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2011/08/19/my-first-redcar-plugin/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/08/31/hello-brave-new-world/</loc>
-        <lastmod>2013-09-16T21:36:11+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/09/06/vim-tip-mkdir-percent-h/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/09/17/jenkins-dot-net/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/10/09/setup-jenkins-dot-net/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/14/breaking-the-build/</loc>
-        <lastmod>2013-09-16T21:13:30+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/14/monitoring-your-build/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/15/running-your-tests/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/15/code-analysis/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/15/security/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/15/active-directory-security/</loc>
-        <lastmod>2013-09-16T21:14:26+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/01/15/5-minute-setup/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/</loc>
-        <lastmod>2013-09-16T20:08:16+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/09/14/vim-to-emacs/</loc>
-        <lastmod>2013-09-17T23:11:18+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/</loc>
-        <lastmod>2013-09-17T23:11:46+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/</loc>
-        <lastmod>2013-09-17T23:12:10+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/</loc>
-        <lastmod>2013-09-25T21:09:10+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://justinramel.com/2014/01/11/npm-install-visual-studio-build-tools-problem/
+        </loc>
+        <lastmod>2014-01-11T14:05:51+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/blog/archives/</loc>
-        <lastmod>2013-09-25T21:09:10+01:00</lastmod>
+        <lastmod>2014-01-11T14:05:51+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/</loc>
-        <lastmod>2013-09-25T21:09:10+01:00</lastmod>
+        <lastmod>2014-01-11T14:05:51+00:00</lastmod>
     </url>
     <url>
         <loc>http://justinramel.com/robots.txt</loc>
-        <lastmod>2013-09-16T21:14:26+01:00</lastmod>
+        <lastmod>2014-01-11T11:14:41+00:00</lastmod>
     </url>
 </urlset>

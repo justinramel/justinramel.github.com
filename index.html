@@ -9,7 +9,8 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Vim to Emacs Vim to Emacs - Ace Jump Mode Vim to Emacs - YASnippets Vim to Emacs - Smart Tab The latest thing I’m &hellip;">
+  <meta name="description" content="Trying to install a node module on windows (via npm) and I keep getting the annoying error message: 1
+error MSB8020: The build tools for Visual &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/01/11/npm-install-visual-studio-build-tools-problem/">npm install - visual studio build tools problem</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-11T13:58:00+00:00" pubdate data-updated="true">Jan 11<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Trying to install a node module on windows (via npm) and I keep getting the annoying error message:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">error MSB8020: The build tools for Visual Studio 2010 (Platform Toolset = 'v100') cannot be found. To build using the v100 build tools, p lease install Visual Studio 2010 build tools.</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I have Visual Studio 2013 installed but the project requires the 2010 version. After lots of digging around I discovered an option you can pass to npm, forcing it to use whatever version of Visual Studio you like.</p>
+
+<p><code>npm install karma --msvs_version=2013</code></p>
+
+<p>This was a welcome relief as getting the Visual Studio 2010 build tools appears to involve a full install of Visual Studio 2010!?!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -971,174 +1017,6 @@ is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/15/code-analysis/">Code analysis</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-15T21:18:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post is part of a series:</p>
-
-<ol>
-  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
-  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
-  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
-  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
-  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
-  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
-  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
-  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
-  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
-  <li><a href="/2013/01/15/security/">Security</a></li>
-  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
-</ol>
-
-<ul>
-  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
-</ul>
-
-<hr />
-
-<p>Jenkins can run a series of code analysis tools after each build, this will
-help you monitor the health of your solution.</p>
-
-<h3 id="compiler-warnings">Compiler Warnings</h3>
-
-<p>Ideally your solution will have no compiler warnings and you can have your
-solution fail to build if the any warnings appear. I know in the real world
-this isn’t always possible, so we can utilize Jenkins to make sure the number
-of warnings do not get out of hand.</p>
-
-<p>This is accessed via the Jobs configuration page, for our Demo job we click
-Jenkins » Demo » Configure. You’ll find the “Scan for compiler warnings” at the
-bottom of this page under the “Post-Build Actions” section.</p>
-
-<h3 id="configure">Configure</h3>
-
-<p><img src="/images/jenkins-net/ch10/code-1.png" alt="code 1" /></p>
-
-<ul>
-  <li>Tick the “Scan for compiler warnings”</li>
-  <li>Click the “Add” button under the “Scan console log” area</li>
-  <li>Select MSBuild from the Parser drop down list</li>
-  <li>Click the “Save” button</li>
-</ul>
-
-<p>Now when you carry out a build, you’ll get a compiler warnings section as part
-of your build report.</p>
-
-<h3 id="warnings-report">Warnings report</h3>
-
-<p><img src="/images/jenkins-net/ch10/code-2.png" alt="code 2" /></p>
-
-<p>Here we have no compiler warnings so I’ll commit a warning to show the
-information Jenkins tracks.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-3.png" alt="code 3" /></p>
-
-<p>We now have 2 compiler warnings and we can drill down for more details by
-clicking the 2 warnings link.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-4.png" alt="code 4" /></p>
-
-<p>We can continue drilling and find the actual source file and line number
-causing the warning.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-5.png" alt="code 5" /></p>
-
-<h3 id="trending">Trending</h3>
-
-<p>As well as the low level details Jenkins also gives us a Compiler Warnings
-Trend graph.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-6.png" alt="code 6" /></p>
-
-<p>Your mission is to reverse this trend and keep your compiler warnings low or
-preferably non-existent.</p>
-
-<h3 id="tasks-and-to-dos">Tasks and To-dos</h3>
-
-<p>Another sign of Technical Debt is lots of To-dos, hack, and fix-me comments in
-your code. Lets use Jenkins to monitor these type of comments.  For our Demo
-job we click Jenkins » Demo » Configure. You’ll find the “Scan workspace for
-open tasks” at the bottom of this page under the “Post-Build Actions” section.</p>
-
-<h3 id="configure-1">Configure</h3>
-
-<p><img src="/images/jenkins-net/ch10/code-7.png" alt="code 7" /></p>
-
-<ul>
-  <li>Tick the “Scan workspace for open tasks” check box</li>
-  <li>In the “Files to scan” textbox enter: <em>*/</em>.cs which scans all C Sharp files
-for these comments.</li>
-  <li>In the “Tasks tags” High priority textbox enter: HACK, FIXME</li>
-  <li>In the “Tasks tags” Normal priority textbox enter: TODO, TO-DO</li>
-  <li>Tick the “Ignore case” check box</li>
-  <li>Click the “Save” button</li>
-</ul>
-
-<p>These task tags can be anything you or your team use to indicate work that
-needs to be carried out in your source. When we carry out a build, we’ll get a
-compiler warnings section as part of our build report.</p>
-
-<h3 id="task-scanner-report">Task Scanner Report</h3>
-
-<p><img src="/images/jenkins-net/ch10/code-8.png" alt="code 8" /></p>
-
-<p>Here we have no tasks, I’ll commit a few To-dos and Hack comments to show the
-information Jenkins tracks.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-9.png" alt="code 9" /></p>
-
-<p>We now have 3 open tasks and we can drill down for more details by clicking the
-3 open tasks link.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-10.png" alt="code 10" /></p>
-
-<p>As you can see depending on the priority of the open task we get different
-color bars to indicate they severity.</p>
-
-<p>We can continue drilling and find the actual source file and line number of the
-tasks.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-11.png" alt="code 11" /></p>
-
-<h3 id="trending-1">Trending</h3>
-
-<p>As well as the low level details Jenkins also gives us an Open Tasks Trend
-graph.</p>
-
-<p><img src="/images/jenkins-net/ch10/code-12.png" alt="code 12" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1154,6 +1032,10 @@ graph.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/01/11/npm-install-visual-studio-build-tools-problem/">npm install - visual studio build tools problem</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a>
       </li>
     
@@ -1167,10 +1049,6 @@ graph.</p>
     
       <li class="post">
         <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
   </ul>
@@ -1222,7 +1100,7 @@ graph.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Justin Ramel -
+  Copyright &copy; 2014 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

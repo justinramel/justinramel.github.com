@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="I’m going to give Ruby on Rails (RoR) a try on my Windows XP machine. Here’s how I’ve set it up… Install Ruby
-Using the Ruby One Click Installer Ruby &hellip;">
+  <meta name="description" content="Sorry I just can’t live with plural table names, I just can’t get my head around it! Luckily it is easily turned off. In RadRails there is a simple &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +77,48 @@ Using the Ruby One Click Installer Ruby &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/04/04/pluralize-table-names-no-thanks/">Pluralize table names - no thanks!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-04-04T14:05:19+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sorry I just can’t live with plural table names, I just can’t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
+
+<pre><code># Include your application configuration below
+ActiveRecord::Base.pluralize_table_names = false
+</code></pre>
+
+<p>I may live to regret not embracing plural table names but I doubt it!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -619,44 +660,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/03/01/18/">SAP Portal Developer Guide</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-03-01T18:17:40+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Can’t remember that HTMLB syntax? Look no further…</p>
-
-<p><a href="http://help.sap.com/saphelp_nw04/helpdata/en/9f/fd4e41bbd1f423e10000000a155106/frameset.htm">SAP Portal Developer Guide</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/10/">&larr; Older</a>
@@ -674,6 +677,10 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/01/11/npm-install-visual-studio-build-tools-problem/">npm install - visual studio build tools problem</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a>
       </li>
     
@@ -687,10 +694,6 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
     
       <li class="post">
         <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
   </ul>
@@ -742,7 +745,7 @@ org.tigris.subversion.subclipse.ui_0.9.3.3
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Justin Ramel -
+  Copyright &copy; 2014 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

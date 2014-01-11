@@ -83,6 +83,174 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/01/15/code-analysis/">Code analysis</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T21:18:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Jenkins can run a series of code analysis tools after each build, this will
+help you monitor the health of your solution.</p>
+
+<h3 id="compiler-warnings">Compiler Warnings</h3>
+
+<p>Ideally your solution will have no compiler warnings and you can have your
+solution fail to build if the any warnings appear. I know in the real world
+this isn’t always possible, so we can utilize Jenkins to make sure the number
+of warnings do not get out of hand.</p>
+
+<p>This is accessed via the Jobs configuration page, for our Demo job we click
+Jenkins » Demo » Configure. You’ll find the “Scan for compiler warnings” at the
+bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure">Configure</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-1.png" alt="code 1" /></p>
+
+<ul>
+  <li>Tick the “Scan for compiler warnings”</li>
+  <li>Click the “Add” button under the “Scan console log” area</li>
+  <li>Select MSBuild from the Parser drop down list</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>Now when you carry out a build, you’ll get a compiler warnings section as part
+of your build report.</p>
+
+<h3 id="warnings-report">Warnings report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-2.png" alt="code 2" /></p>
+
+<p>Here we have no compiler warnings so I’ll commit a warning to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-3.png" alt="code 3" /></p>
+
+<p>We now have 2 compiler warnings and we can drill down for more details by
+clicking the 2 warnings link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-4.png" alt="code 4" /></p>
+
+<p>We can continue drilling and find the actual source file and line number
+causing the warning.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-5.png" alt="code 5" /></p>
+
+<h3 id="trending">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us a Compiler Warnings
+Trend graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-6.png" alt="code 6" /></p>
+
+<p>Your mission is to reverse this trend and keep your compiler warnings low or
+preferably non-existent.</p>
+
+<h3 id="tasks-and-to-dos">Tasks and To-dos</h3>
+
+<p>Another sign of Technical Debt is lots of To-dos, hack, and fix-me comments in
+your code. Lets use Jenkins to monitor these type of comments.  For our Demo
+job we click Jenkins » Demo » Configure. You’ll find the “Scan workspace for
+open tasks” at the bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure-1">Configure</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-7.png" alt="code 7" /></p>
+
+<ul>
+  <li>Tick the “Scan workspace for open tasks” check box</li>
+  <li>In the “Files to scan” textbox enter: <em>*/</em>.cs which scans all C Sharp files
+for these comments.</li>
+  <li>In the “Tasks tags” High priority textbox enter: HACK, FIXME</li>
+  <li>In the “Tasks tags” Normal priority textbox enter: TODO, TO-DO</li>
+  <li>Tick the “Ignore case” check box</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>These task tags can be anything you or your team use to indicate work that
+needs to be carried out in your source. When we carry out a build, we’ll get a
+compiler warnings section as part of our build report.</p>
+
+<h3 id="task-scanner-report">Task Scanner Report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-8.png" alt="code 8" /></p>
+
+<p>Here we have no tasks, I’ll commit a few To-dos and Hack comments to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-9.png" alt="code 9" /></p>
+
+<p>We now have 3 open tasks and we can drill down for more details by clicking the
+3 open tasks link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-10.png" alt="code 10" /></p>
+
+<p>As you can see depending on the priority of the open task we get different
+color bars to indicate they severity.</p>
+
+<p>We can continue drilling and find the actual source file and line number of the
+tasks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-11.png" alt="code 11" /></p>
+
+<h3 id="trending-1">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us an Open Tasks Trend
+graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-12.png" alt="code 12" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/01/15/running-your-tests/">Running your tests</a></h1>
     
     
@@ -1401,145 +1569,6 @@ message upon completion. Click the Finish button.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-06T22:10:00+01:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
-as well as the great content, I’m picking up lots of vim tips. I’m having to
-pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
-damn fast. Any way I’m going to start writing these vim gems down in the vain
-hope I’ll remember some of them.</p>
-
-<h2 id="quickly-creating-a-project-structure">Quickly creating a project structure</h2>
-
-<p>It’s possible to setup a new project without leaving vim. Lets create a new dir
-for a quick demo:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">mkdir demo
-</span><span class="line">cd demo
-</span><span class="line">vim</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>From the vim command prompt we can create a new user model in the models dir
-using the vim command <code>:n models/user.rb</code></p>
-
-<p><img src="/images/vim-tip-1/new-file.png" /></p>
-
-<p>Lets break this command down:</p>
-
-<ul>
-  <li><strong>:n</strong>             - n is short for new as in file</li>
-  <li><strong>models/user.rb</strong> - the directory and name of our new file</li>
-</ul>
-
-<p>This creates the new file in a vim buffer but when we go to write this file we
-get an error <code>E212: Can't open file for writing</code>, this is because the directory
-models does not exist.</p>
-
-<p><img src="/images/vim-tip-1/write-error.png" /></p>
-
-<p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
-
-<p><img src="/images/vim-tip-1/mkdir-command.png" /></p>
-
-<p>Now the directory has been created we can write the new file from vim.</p>
-
-<p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
-
-<ul>
-  <li><strong>:!</strong>    - Execute {command} with the shell</li>
-  <li><strong>mkdir</strong> - Make a directory shell command</li>
-  <li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
-</ul>
-
-<p>The full vim help text for <code>%:h</code>:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">:h	Head of the file name (the last component and any separators
-</span><span class="line">	removed).  Cannot be used with :e, :r or :t.
-</span><span class="line">	Can be repeated to remove several components at the end.
-</span><span class="line">	When the file name ends in a path separator, only the path
-</span><span class="line">	separator is removed.  Thus ":p:h" on a directory name results
-</span><span class="line">	on the directory name itself (without trailing slash).
-</span><span class="line">	When the file name is an absolute path (starts with "/" for
-</span><span class="line">	Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
-</span><span class="line">	part is not removed.  When there is no head (path is relative
-</span><span class="line">	to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="deeper-folder-structure">Deeper folder structure</h2>
-
-<p>You can create deeper folder structures using the same technique with one extra
-switch on the mkdir command.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">:n specs/models/user_spec.rb
-</span><span class="line">:!mkdir -p %:h
-</span><span class="line">:w</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The <code>-p</code> switch will create the intermediate directories for you. If you don’t
-use this switch the command will fail.</p>
-
-<p>The full command line help for the <code>mkdir -p</code> switch:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">-p	Create intermediate directories as required.  If this option is not
-</span><span class="line">specified, the full path prefix of each operand must already exist.  On the
-</span><span class="line">other hand, with this option specified, no error will be reported if a
-</span><span class="line">directory given as an operand already exists.  Intermediate directories are
-</span><span class="line">created with permission bits of rwxrwxrwx (0777) as modified by the current
-</span><span class="line">umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I think that’s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/3/">&larr; Older</a>
@@ -1557,6 +1586,10 @@ use this switch the command will fail.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/01/11/npm-install-visual-studio-build-tools-problem/">npm install - visual studio build tools problem</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a>
       </li>
     
@@ -1570,10 +1603,6 @@ use this switch the command will fail.</p>
     
       <li class="post">
         <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
   </ul>
@@ -1625,7 +1654,7 @@ use this switch the command will fail.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Justin Ramel -
+  Copyright &copy; 2014 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
