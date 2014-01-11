@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Books + Head First C# + Lab 1 Solution - just ram</title>
+  <meta name="author" content="Justin Ramel">
+
+  
+  <meta name="description" content="I’ve been reading through the new Head First book Head First C#
+which appeared on Safari just before Christmas. I’ve been a fan of the Head Fist &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://justinramel.com/2008/01/03/books-head-first-c-lab-1-solution">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35853047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">just ram</a></h1>
+  
+    <h2>stuff I should remember</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:justinramel.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Books + Head First C# + Lab 1 Solution</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-03T21:52:00+00:00" pubdate data-updated="true">Jan 3<span>rd</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I’ve been reading through the new Head First book <a href="http://www.amazon.com/gp/product/0596514824?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596514824">Head First C#</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596514824" alt="" />
+which appeared on <a href="http://search.safaribooksonline.com/home">Safari</a> just before Christmas. I’ve been a fan of the Head Fist books ever since reading their best selling <a href="http://www.amazon.com/gp/product/0596007124?ie=UTF8&amp;tag=justinramelco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596007124">Head First Design Patterns</a><img src="http://www.assoc-amazon.com/e/ir?t=justinramelco-20&amp;l=as2&amp;o=1&amp;a=0596007124" alt="" /> book. This particular book is aimed at beginners / hobbyists so I’m not exactly the target audience but hey it covers C# 3 so its got to be worth at least a skim.</p>
+
+<p>I was pleased to see they’ve added a new feature to the head first series namely lab sections. There are 3 lab sections in the book which are basically specifications for mini games, the idea being the reader creates the games using their newly acquired C# skills. I though this was a great idea and having a lot of spare time in front of my laptop over the Christmas (due to a very <a href="http://justin.ramel.googlepages.com/ankle.jpg">sore ankle</a>) I did the first of the labs “A day at the races”.</p>
+
+<p>I used the lab as an exercise in <a href="http://behaviour-driven.org/">Behaviour Driven Development (BDD)</a> which I’d recently read about <a href="http://dannorth.net/introducing-bdd">here</a> and <a href="http://codebetter.com/blogs/david_laribee/archive/2007/12/17/approaching-bdd.aspx">here</a>. I also got to try out a Test Data Builder I’d read about <a href="http://nat.truemesh.com/archives/000714.html">here</a>. Now I’m not convinced I hit the nail on the head with the BDD as my solution wasn’t created in a test behaviour first manor. This was mainly due to the fact the book provides you with the shell of a solution to keep things nice and simple for beginners. Never the less it was a good fun doing the lab it’s a great way to try out new techniques.</p>
+
+<p>All in all the BDD experience was pretty good not sure about the code duplication in the context setup but you got to love the way the descriptive contexts and method names combine to read like a sentence:</p>
+
+<p><img src="http://justin.ramel.googlepages.com/bdd.gif" alt="" /></p>
+
+<p>Also the Test Data Builder is a really flexible way to create test data using a fluent interface which again is really easy to read:</p>
+
+<p><code>myGuy = new GuyBuilder().WithName("Joe").AndCash(50).Build(); </code></p>
+
+<p>You can download the solution <a href="http://justin.ramel.googlepages.com/lab01.zip">here</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Justin Ramel</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-03T21:52:00+00:00" pubdate data-updated="true">Jan 3<span>rd</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='//categories/bdd/'>BDD</a>, <a class='category' href='//categories/books/'>Books</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://justinramel.com/2008/01/03/books-head-first-c-lab-1-solution/" data-via="justinramel" data-counturl="http://justinramel.com/2008/01/03/books-head-first-c-lab-1-solution/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2007/10/10/tortoisesvn-global-ignore-pattern/" title="Previous Post: TortoiseSVN + Global ignore pattern">&laquo; TortoiseSVN + Global ignore pattern</a>
+      
+      
+        <a class="basic-alignment right" href="/2009/01/09/monorail-custom-rescue-controller-irescuecontroller/" title="Next Post: MonoRail custom rescue controller (IRescueController)">MonoRail custom rescue controller (IRescueController) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Strava</h1>
+  <br />
+  <iframe height='160' width='272' frameborder='0' allowtransparency='true' scrolling='no' src='http://app.strava.com/athletes/1108047/activity-summary/38bbd39fbf5da9f3bf5e3845fb2f4592704e5de4'></iframe>
+</section>
+<section>
+<h1>Twitter</h1>
+<a class="twitter-timeline" href="https://twitter.com/justinramel" data-widget-id="379381495074287617">Tweets by @justinramel</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:njr11">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "njr11"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108885363809433432894?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Justin Ramel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'justinramel';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://justinramel.com/2008/01/03/books-head-first-c-lab-1-solution/';
+        var disqus_url = 'http://justinramel.com/2008/01/03/books-head-first-c-lab-1-solution/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

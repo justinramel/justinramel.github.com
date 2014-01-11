@@ -1,0 +1,1677 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>just ram</title>
+  <meta name="author" content="Justin Ramel">
+
+  
+  <meta name="description" content="This post is part of a series: Jenkins.NET Jenkins.NET Plugins Setup Jenkins.NET Setting up your first job Your first build Breaking the build &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://justinramel.com/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35853047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">just ram</a></h1>
+  
+    <h2>stuff I should remember</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:justinramel.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/15/running-your-tests/">Running your tests</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T20:19:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>After building your solution the next task you’ll want to automate is the
+running of your tests. Jenkins comes with a multitude of test plugins so
+whatever test framework you’re using chances are you’ll be covered. To show how
+easy it is to add tests to a build we’ll add NUnit to our demo solution and
+have Jenkins run the tests every time we commit a change to the source
+repository.</p>
+
+<h3 id="test-project-structure">Test Project Structure</h3>
+
+<p>Structure of the demo project is:</p>
+
+<p>Tools\NUnit\bin contains the NUnit framework and runner.</p>
+
+<p>The DemoTest project references the nunit.framework.dll from this folder. This
+enables the solution to be checked out and run with out any pre-installation
+requirements. This work great for Jenkins but its also a great way to setup
+your solutions, if you need to move to a new machine or if you have a new
+starter you just check out the solution and its ready to build and run your
+tests.</p>
+
+<h3 id="execute-any-test-runner">Execute any test runner</h3>
+
+<p>The build step “Execute Windows batch command” works with any test runner that
+has a command line runner. We will use this method to run the NUnit command
+line test runner in the Demo project.</p>
+
+<p>Use the Demo » Configure link to access the configuration page, under the
+Build section click the “Add build step” button.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-1.png" alt="test 1" /></p>
+
+<p>Select the “Execute Windows batch command” to add a new build step.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-2.png" alt="test 2" /></p>
+
+<p>Under the “Execute Windows batch command” section enter the command:</p>
+
+<ul>
+  <li>
+    <p>Tools\nunit\bin\nunit-console.exe src\DemoTests\bin\Debug\DemoTests.dll</p>
+  </li>
+  <li>
+    <p>Click the “Save” button</p>
+  </li>
+</ul>
+
+<p>This command is telling Jenkins the location of the NUnit test runner
+(Tools\nunit\bin\nunit-console.exe) and the location of the test DLL to run
+against (src\DemoTests\bin\Debug\DemoTests.dll).</p>
+
+<p>This command will now execute the NUnit test runner after every solution build.</p>
+
+<h3 id="failing-tests">Failing Tests</h3>
+
+<p>When a test fails Jenkins will fail the build and show a red ball for the
+status of the project.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-3.png" alt="test 3" /></p>
+
+<p>Now we know the build has failed but we don’t want to start digging through the
+console output to find the details of the failing test. Lets introduce another
+Jenkins plugin which will show details of exactly which test failed and why.</p>
+
+<h3 id="plugin-setup">Plugin Setup</h3>
+
+<p>Use the Demo » Configure link to access the Demo jobs configuration page,
+under the Post-Build Actions section.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-4.png" alt="test 4" /></p>
+
+<ul>
+  <li>
+    <p>Tick the “Publish NUnit test result report” check box.</p>
+  </li>
+  <li>
+    <p>Enter the output of the NUnit test runner: TestResult.xml</p>
+  </li>
+  <li>
+    <p>Click the “Save” button.</p>
+  </li>
+</ul>
+
+<p>Run a build again to see the NUnit test report.</p>
+
+<ul>
+  <li>Click the Demo » Build Now link.</li>
+</ul>
+
+<p>Of course the build has failed again but that’s what we want. This allows us to
+see NUnit test report. To view the report click on the failed build in the
+Build History.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-5.png" alt="test 5" /></p>
+
+<p>We now have a Test Result area that is showing 1 failure in the
+DemoTests.ProgramTests.Add namespace. That’s certainly easier than digging
+through the console output. The benefits don’t end there, if you click on the
+Test Result link we will get a more detailed report.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-6.png" alt="test 6" /></p>
+
+<p>Here we get a pretty report showing the full details of the failure. We can
+drill down for even more detail using the link DemoTests.ProgramTests.Add.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-7.png" alt="test 7" /></p>
+
+<p>This gives the error message from the test, a stack trace, the filename of the
+failing test and even the line number. You can’t ask for much more than that
+but there is one more benefit we can eke out of our test runner and that is our
+test history.</p>
+
+<h3 id="test-history">Test History</h3>
+
+<p>Once you setup the Unit plugin, Jenkins will track all your test results. This
+is a great way to keep an eye on the general health of your project. I’ve added
+a few more tests and commits to the demo project to show how the test history
+works.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-8.png" alt="test 8" /></p>
+
+<p>As you can see the Demo home page now has a “Test Result Trend” graph showing
+the initial failing test, followed by anther commit to fix the failure then
+another 4 tests that were added. The graph shows at a glance that our Demo
+project is getting healthier on every commit. This is the type of graph we want
+to see in our projects.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T22:28:00+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Unless you’re a glutton for punishment manually checking Jenkins after every
+build is going to become very old very quickly. Luckily Jenkins has several
+notification mechanisms to save you this manual task.</p>
+
+<h3 id="email-notification">Email Notification</h3>
+
+<p>We can setup Jenkins to send an email notification whenever a build fails this
+save us having to check the server after every build, we can trust Jenkins to
+email us on failure. Jenkins will also send a notification email when the build
+returns to a working state.</p>
+
+<p>Setting up email notification is a two-step process. First we give Jenkins
+details of the email server and second we set which email addresses to notify
+upon failure of a build.</p>
+
+<h3 id="email-server-configuration">Email Server Configuration</h3>
+
+<p>Email server configuration is done via the Configure System page. You get to
+the configuration page from the main Jenkins home page Manage Jenkins »
+Configure System. At the bottom of this page is the E-mail Notification
+section.</p>
+
+<p><img src="/images/jenkins-net/ch08/email-setup.png" alt="email setup" /></p>
+
+<p>Chances are you’ll have a local SMTP server, if not you can use something like
+the Gmail SMTP server as shown here. Make sure you tick the “Test configuration
+by sending test e-mail” check box and then click the “Test Configuration”
+button to have Jenkins send you a test email, confirming your configuration is
+OK. Once you’ve successfully received an email don’t forget to click the “Save”
+button to save your changes.</p>
+
+<h3 id="project-notification-email">Project Notification Email</h3>
+
+<p>Once you have the email server configured you can specify per project who to
+notify when a build fails. This is accessed via each Jobs configuration page,
+for our Demo job we click Jenkins » Demo » Configure. At the bottom of this
+page under the Post-Build Actions section is the E-mail Notification area.</p>
+
+<p><img src="/images/jenkins-net/ch08/email-notification.png" alt="email notification" /></p>
+
+<ul>
+  <li>Tick the “E-mail Notification” checkbox.</li>
+  <li>Enter a space-separated list of email address to notify when a build fails.</li>
+  <li>Tick the “Send e-mail for every unstable build” checkbox.</li>
+</ul>
+
+<p>If you really want to annoy the person who broke the build you can send them
+another email by ticking the “Send separate e-mails to individuals who broke
+the build” checkbox.</p>
+
+<p>Finally don’t forget to click the “Save” button.</p>
+
+<p>Unfortunately the only way to test this is working is to break the build,
+follow the instructions in section 6. <a href="/2013/01/14/breaking-the-build/">Breaking the
+build</a> to test email notification is working.</p>
+
+<h3 id="your-constant-reminder">Your constant reminder</h3>
+
+<p>Email notification is great but I also like to have a constant reminder of the
+current build status. The best way I have found to do this on Windows is by
+using the Hudson Tray Tracker (read Jenkins Tray Tracker), which is available
+to download from
+<a href="http://code.google.com/p/hudson-tray-tracker/">http://code.google.com/p/hudson-tray-tracker/</a>.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-1.png" alt="tray tracker 1" /></p>
+
+<p>Once you download and install Hudson Tray Tracker you get a tray notification
+icon showing a constant reminder of the current build status. Initially the
+tray icon will be grey until you point it at a Jenkins build server.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-2.png" alt="tray tracker 2" /></p>
+
+<ul>
+  <li>
+    <p>Right click on the tray icon to access the context menu.</p>
+  </li>
+  <li>
+    <p>Click Settings to configure the software.</p>
+  </li>
+</ul>
+
+<p><img src="/images/jenkins-net/ch08/tray-3.png" alt="tray tracker 3" /></p>
+
+<ul>
+  <li>Click the “Add server” button.</li>
+</ul>
+
+<p><img src="/images/jenkins-net/ch08/tray-4.png" alt="tray tracker 4" /></p>
+
+<ul>
+  <li>
+    <p>Enter the URL and port of your Jenkins server.</p>
+  </li>
+  <li>
+    <p>Click the “OK” button.</p>
+  </li>
+</ul>
+
+<p>You will now see a list of projects on the Jenkins server.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-5.png" alt="tray tracker 5" /></p>
+
+<p>Tick the Projects you would like to monitor. Here there is only our demo
+project but in reality you may have lots of Projects to monitor.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-6.png" alt="tray tracker 6" /></p>
+
+<p>Once you have a server and projects setup, the tray icon will turn green to
+indicate a good build. That is assuming you have a working build. When the
+build breaks the icon will turn red and show a build failed message.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-7.png" alt="tray tracker 7" /></p>
+
+<p>You can also use the software to open Jenkins on the build page of a Job by
+double clicking on the tray icon to open the list window.</p>
+
+<p><img src="/images/jenkins-net/ch08/tray-8.png" alt="tray tracker 8" /></p>
+
+<p>Then double click on the Job your interested in. In this case double clicking
+on the Demo line will open up Jenkins on the Demo job page.</p>
+
+<h3 id="the-teams-constant-reminder">The teams constant reminder</h3>
+
+<p>A large screen in the development room can be a great way to give everyone on
+the team a highly visible, constant reminder of the current build status.</p>
+
+<p>Jenkins has a Radiator View plugin that is designed specifically for this
+purpose.</p>
+
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin</a></p>
+
+<p><img src="/images/jenkins-net/ch08/team.png" alt="team" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T20:39:00+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Last time we had a failing build with Jenkin’s showing a red ball to prove it.
+The first place to look when we have a failing build is the console output. You
+can get to the console output via the main menu on the left of your project
+page.</p>
+
+<h3 id="console-output">Console output</h3>
+
+<p><img src="/images/jenkins-net/ch07/console-output.png" alt="" /></p>
+
+<p>As the screenshot shows we get all the output from our build process and there
+is a lot of it! I’ve highlighted the actual problem which is the causing the
+build to fail, our missing dll.</p>
+
+<p>This is the error your team mates will see when they check out and try to build
+your code.</p>
+
+<h3 id="console-blindness">Console “blindness”</h3>
+
+<p>When you first see the console output for your build it can be a little
+overwhelming, there is a lot of information packed into the output. Sometimes
+you look at all that information and you can’t see the wood for the trees, or
+the errors in all that output. I have seen people look at this output and they
+are blind to the errors.</p>
+
+<p>Of course once you get used to looking at this output it becomes easier. To
+help you get over this initially a simple search to find all the errors listed
+on the page can really help. Simply search for the word “error” and your
+browser will help you see again.</p>
+
+<p><img src="/images/jenkins-net/ch07/console-output-find.png" alt="" /></p>
+
+<p>You now have only a few places to concentrate your efforts in that sea of
+information.</p>
+
+<p>To fix the problem we can simply add the missing dll and Jenkins will rebuild
+the solution and we’ll be back to green balls.</p>
+
+<p>Next time we’ll look at the different ways to monitor our build and it’s
+failures.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/14/breaking-the-build/">Jenkins.NET Breaking the build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T17:38:00+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Lets break the build to see how Jenkins reacts. I’ll add a DLL to the project
+then “forget” to add it to source control; unfortunately I see this problem a
+lot when new developers join the team.</p>
+
+<h3 id="i-see-red-projects">I see red projects</h3>
+
+<p><img src="/images/jenkins-net/ch06/red-ball.png" alt="" /></p>
+
+<p>As you can see Jenkins now shows a red ball next to the Demo project. Also
+notice the slightly cloudy weather icon indicating all is not well with our
+project.</p>
+
+<h3 id="hows-the-weather">How’s the weather?</h3>
+
+<p>Jenkins uses a weather metaphor to show at a glance how a project is doing.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-1.png" alt="" /></td>
+      <td>No recent builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-2.png" alt="" /></td>
+      <td>1 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-3.png" alt="" /></td>
+      <td>2 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-4.png" alt="" /></td>
+      <td>3 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-5.png" alt="" /></td>
+      <td>4 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="/images/jenkins-net/ch06/weather-6.png" alt="" /></td>
+      <td>5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>«««&lt; HEAD</p>
+
+<p>=======
+»»»&gt; breaking the build
+Obviously we want our projects to stay sunny and avoid the bad weather so next
+time we’ll discuss how to diagnose and fix a broken build.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Jenkins.NET Your first build</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-24T21:11:00+01:00" pubdate data-updated="true">Oct 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>From the Project Demo page we created last time we can activate a Build at
+will.</p>
+
+<h3 id="build-now">Build Now</h3>
+
+<p><img src="/images/jenkins-net/ch05/build-now.png" alt="" /></p>
+
+<p>Click the “Build Now” link.</p>
+
+<p>This tells Jenkins to build the Job we have just defined.</p>
+
+<h3 id="build-history">Build History</h3>
+
+<p><img src="/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
+
+<p>The Build History will show the Job running. Once the build is complete you
+should have your first successful build.</p>
+
+<p><img src="/images/jenkins-net/ch05/build-history-2.png" alt="" /></p>
+
+<p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
+you to the build page for the Demo Job.</p>
+
+<h3 id="console-output">Console Output</h3>
+
+<p>This page allows us to access all the information relevant to the build we just
+ran. The area we are interested in is the Console Output this shows all the
+programs that ran during the build.</p>
+
+<p><img src="/images/jenkins-net/ch05/console-output-1.png" alt="" /></p>
+
+<p>Click the “Console Output” link.</p>
+
+<p><img src="/images/jenkins-net/ch05/console-output-2.png" alt="" /></p>
+
+<p>This is the place to come whenever you are trying to debug a failing build.
+Everything you need to fix the problem will usually be shown on this page.</p>
+
+<p>As you can see this was a successful build and we can see that:</p>
+
+<ul>
+  <li>Jenkins created a workspace for the Job</li>
+  <li>Ran a Subversion check out
+    <ul>
+      <li>Listed of all files updated</li>
+    </ul>
+  </li>
+  <li>Ran MSBuild
+    <ul>
+      <li>Shows all output from MSBuild</li>
+    </ul>
+  </li>
+  <li>Shows Success message</li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Jenkins.NET Setting up your first job</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-20T21:14:00+01:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>In Jenkins the definition of a build process is called a Job. Jobs are created
+using the main menu on the Jenkins home page. We’ll create a basic Job that
+will checkout our source and build the solution.</p>
+
+<p>From the main Jenkins menu, Click the ‘New Job’ link.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
+
+<p>You now see the New Job configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
+
+<ol>
+  <li>Set Job name to Demo.</li>
+  <li>Select the ‘Build a free-style software project’ radio button.</li>
+  <li>Click the ‘OK’ button.</li>
+</ol>
+
+<p>Jenkins will now create the Job workspace on disk and redirect you to the job
+configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
+
+<p>Next we’re going to checkout our solution from source control and build it.  So
+we first need to give Jenkins details of our source control server.</p>
+
+<h2 id="source-control">Source Control</h2>
+
+<p>For the purpose of this demo we’ll use
+<a href="http://subversion.apache.org/">Subversion</a>, mainly because this is the source
+control management software I use day to day. Subversion is a very popular open
+source choice for .NET.</p>
+
+<p>Jenkins supports Subversion right out of the box but it also has support for
+all the major source control management systems. For example here are few which
+are popular for use with the .NET framework:</p>
+
+<ul>
+  <li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
+Foundation Server source control to Jenkins.</em></li>
+  <li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
+system with Jenkins.</em></li>
+  <li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
+newer is required.</em></li>
+  <li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
+Visual SourceSafe.</em></li>
+</ul>
+
+<p><span class="pullquote-right" data-pullquote="Visual SourceSafe, seriously?">
+Visual SourceSafe, seriously? Maybe you’re being forced to use it at gunpoint? If not do yourself a favour
+and check out Subversion.
+<a href="http://www.visualsvn.com/server/download/">VisualSVNServer</a> is a very easy to
+install, administer and use on Windows best of all its free! There is also a
+great Subversion Plugin
+<a href="http://www.visualsvn.com/visualsvn/download/">VisualSVN</a> for Visual Studio
+that I highly recommend.
+</span></p>
+
+<p>I have created a Subversion repository on GoogleCode that we’ll use to demo the
+build process from Jenkins. Lets setup our Job to grab the source code from
+this repository. This is done in the Source Code Management section of the
+configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
+
+<ol>
+  <li>Select the Subversion radio button.</li>
+  <li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
+</ol>
+
+<h2 id="subversion-authentication">Subversion Authentication</h2>
+
+<p>Unlike the demo repository used here, it’s more likely your source code
+repository requires authentication (if it doesn’t, you may want to think about
+securing it). If your repository does require authentication Jenkins will
+display and error message and ask for you to supply login credentials.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
+
+<p>Click the “enter credential” link. You will now be shown the Subversion
+Authentication page.</p>
+
+<p><img src="/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
+
+<p>Enter your authentication details and then click the “OK” button.</p>
+
+<p>Subversion is now configured and we can move onto Build Triggers.</p>
+
+<h2 id="build-triggers">Build Triggers</h2>
+
+<p>We want to trigger a build every time our source code changes; we achieve this
+by creating a “Build Trigger” which polls our source code repository. When a
+change is detected a new build is triggered.</p>
+
+<p><img src="/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
+
+<ol>
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
+minutes.</li>
+</ol>
+
+<p>As you can see from the help (which is available by clicking the
+<img src="/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
+in how often we check the source code repository for changes. Checking every 5
+minutes is my default as I tend make lots of small commits and I want to know
+quickly if I’ve introduced a problem.</p>
+
+<p>Finally we just need to tell Jenkins how to build the solution when changes are
+detected. This is done via the “Add build step” button under the Build section.</p>
+
+<p><img src="/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p>
+  </li>
+  <li>
+    <p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p>
+  </li>
+</ol>
+
+<p><img src="/images/jenkins-net/ch04/build.png" alt="" /></p>
+
+<ol>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+</ol>
+
+<p>Congratulations your first Jenkins Job is setup.</p>
+
+<p>In my next post we’ll build it!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-09T20:35:00+01:00" pubdate data-updated="true">Oct 9<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>There are some important settings, that we need to configure before we get
+started building our first project.</p>
+
+<h2 id="manage">Manage</h2>
+
+<p>On the main Jenkins menu, click the ‘Manage Jenkins’ link.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the ‘Configure System’ link to
+get to the main configuration page.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
+
+<h2 id="msbuild">MSBuild</h2>
+
+<p>We need to setup MSBuild to carry out the compilation and build of your .NET
+solutions. We can use any version of MSBuild you have installed on the Jenkins
+machine. As Windows 7 comes with version 3.5 of the .NET Framework pre
+installed I’ll demo that version here but obviously you can download, install
+and use any version of the .NET Framework.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
+
+<p>Click the ‘Add MSBuild’ button.</p>
+
+<p><img src="/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
+
+<p>Set the name and path to MSBuild:</p>
+
+<ol>
+  <li>Name: v3.5</li>
+  <li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the ‘Save’ button</li>
+</ol>
+
+<p>In my next post we’ll actually get to setup our first job!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-20T18:43:00+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<h2 id="plugins">Plugins</h2>
+
+<p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
+Thankfully Jenkins makes is very easy to find and install plugins. On the main
+Jenkins menu click the ‘Manage Jenkins’ link.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the ‘Manage Plugins’ link.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
+
+<p>You will now see a list of the currently installed plugins. Click the
+Available tab to see a list of all the Jenkins plugins, which are available to
+install.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
+
+<p>As you can see Jenkins has a massive number of plugins. I encourage you to
+look through and play with the plugins they are really useful and the list is
+growing by the day.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
+
+<h2 id="required-plugins">Required Plugins</h2>
+
+<p>Without these required Plugins you will not be able to build and test .NET
+solutions. So you must at least install these Plugins for the rest of this
+guide to work.</p>
+
+<h3 id="build-plugins">Build Plugins</h3>
+
+<p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
+solution.</p>
+
+<ul>
+  <li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+projects.</em></li>
+</ul>
+
+<h3 id="testing-plugins">Testing Plugins</h3>
+
+<p>You’ll need one of these depending on your chosen test framework.</p>
+
+<ul>
+  <li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+XML reports so it can be integrated with Jenkins JUnit features.</em></li>
+  <li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+  <li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+of an execution of a testing tool in Jenkins.</em></li>
+  <li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+test results.</em></li>
+</ul>
+
+<p>Tick the check box next to each of the required Plugins and then click the
+‘Download now and install after restart’ button.</p>
+
+<p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
+
+<h3 id="optional-plugins">Optional Plugins</h3>
+
+<p>These Plugins are optional but still recommend ranging from genuine
+productivity tools to just plain fun.</p>
+
+<h3 id="jenkins-enhancements">Jenkins Enhancements</h3>
+
+<ul>
+  <li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn’t want Green Balls!</strong></em></li>
+  <li><strong>Copy project link plugin</strong> - <em>This plugin adds the “Copy project” link into
+left side panel in the main project page.</em></li>
+  <li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+a highly visible manner. This is ideal for displaying on a screen on the
+office wall as a form of Extreme Feedback Device.</em></li>
+</ul>
+
+<h3 id="authentication">Authentication</h3>
+
+<ul>
+  <li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+authenticates the username and the password through Active Directory.</em></li>
+</ul>
+
+<blockquote>
+  <p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+guessing most of you already login via Active Directory so this Plugin saves
+you having to remember yet another password.</p>
+</blockquote>
+
+<h3 id="code-analysis">Code Analysis</h3>
+
+<ul>
+  <li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+tasks and generates a trend report.</em></li>
+  <li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+warnings in the console log or in log files.</em></li>
+</ul>
+
+<h3 id="build-tools">Build Tools</h3>
+
+<ul>
+  <li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+build step.</em></li>
+  <li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+</ul>
+
+<h3 id="fun-fun-fun">Fun, Fun, Fun</h3>
+
+<ul>
+  <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
+build page. <strong>Every build server needs a Chuck Norris, right?</strong></em></li>
+  <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+where users get points on improving the builds. Although this is indeed a fun
+plugin it can help when first introducing Jenkins to your team, a little
+healthy competition never did anyone any harm.</em></li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T21:58:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This is the first in a series of posts which I’ll be writing on using Jenkins
+to build .NET solutions. These posts will be as detailed as possible, probably
+too detailed in places.</p>
+
+<h2 id="installing-jenkins">Installing Jenkins</h2>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Jenkins used to be known as ‘Hudson’ but when Oracle bought Sun there
+was a fall out between the then ‘Hudson’ developers and Oracle so they decided
+to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p>
+</blockquote>
+
+<p>I’m going to install and setup Jenkins on a freshly minted Windows 7 virtual
+machine although this process should work fine on other versions of Windows.</p>
+
+<p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
+
+<p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
+
+<h3 id="download">Download</h3>
+
+<p>Rather than the generic .war file we’ll download the Windows native package,
+which saves as a few steps during installation. The latest windows package is
+available here:</p>
+
+<p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
+
+<p>I’m using Internet Explorer here, which by default blocks the installer from
+downloading. Notice the warning message shown at the top of the browser
+window.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
+
+<p>Click the message bar to get the download options context menu.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
+
+<p>Select the Download File… menu option. You will now see the File Download
+dialog.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
+
+<p>Click the Save button to download the installation zip file to your download
+folder. You will now see the Save As dialog again click the Save button to
+actually download the file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
+
+<p>In a short while you will see the Download complete dialog. Click the Open
+button to open the zipped installation file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
+
+<p>Internet Explorer Security may kick in and ask if you want to allow this
+operation. Click the Allow button to open the zip file.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
+
+<p>Once the zip file is open, Click Extract all files from the menu.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
+
+<p>You will now see the Extract zip file dialog, Click the Extract button to
+extract the files to the default location.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
+
+<p>Phew! That’s the download complete.</p>
+
+<h3 id="setup">Setup</h3>
+
+<p>Finally we can run the Setup program. Double click setup to run the program.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
+
+<p>Windows will show a Security Warning to make sure you trust the publisher of
+this software. Click Run to begin the installation.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
+
+<p>You will now see the Jenkins installation wizard. Click the Next button.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
+
+<p>The wizard allows you to change the installation folder. Click Next to accept
+the default folder.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
+
+<p>You are now at the final page of the setup wizard. Click the Install button
+and the installation will begin.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
+
+<p>On Windows 7 the User Account Control may kick in to ask permission to run the
+installation. Click the Yes button to continue.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
+
+<p>The installation wizard will now copy Jenkins onto your machine and display a
+message upon completion. Click the Finish button.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
+
+<p>The install wizard will now open the Jenkins web page.</p>
+
+<p><img src="/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
+
+<p>Congratulation Jenkins is now installed on your machine!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-06T22:10:00+01:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
+as well as the great content, I’m picking up lots of vim tips. I’m having to
+pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
+damn fast. Any way I’m going to start writing these vim gems down in the vain
+hope I’ll remember some of them.</p>
+
+<h2 id="quickly-creating-a-project-structure">Quickly creating a project structure</h2>
+
+<p>It’s possible to setup a new project without leaving vim. Lets create a new dir
+for a quick demo:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">mkdir demo
+</span><span class="line">cd demo
+</span><span class="line">vim</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>From the vim command prompt we can create a new user model in the models dir
+using the vim command <code>:n models/user.rb</code></p>
+
+<p><img src="/images/vim-tip-1/new-file.png" /></p>
+
+<p>Lets break this command down:</p>
+
+<ul>
+  <li><strong>:n</strong>             - n is short for new as in file</li>
+  <li><strong>models/user.rb</strong> - the directory and name of our new file</li>
+</ul>
+
+<p>This creates the new file in a vim buffer but when we go to write this file we
+get an error <code>E212: Can't open file for writing</code>, this is because the directory
+models does not exist.</p>
+
+<p><img src="/images/vim-tip-1/write-error.png" /></p>
+
+<p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
+
+<p><img src="/images/vim-tip-1/mkdir-command.png" /></p>
+
+<p>Now the directory has been created we can write the new file from vim.</p>
+
+<p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
+
+<ul>
+  <li><strong>:!</strong>    - Execute {command} with the shell</li>
+  <li><strong>mkdir</strong> - Make a directory shell command</li>
+  <li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
+</ul>
+
+<p>The full vim help text for <code>%:h</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:h	Head of the file name (the last component and any separators
+</span><span class="line">	removed).  Cannot be used with :e, :r or :t.
+</span><span class="line">	Can be repeated to remove several components at the end.
+</span><span class="line">	When the file name ends in a path separator, only the path
+</span><span class="line">	separator is removed.  Thus ":p:h" on a directory name results
+</span><span class="line">	on the directory name itself (without trailing slash).
+</span><span class="line">	When the file name is an absolute path (starts with "/" for
+</span><span class="line">	Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
+</span><span class="line">	part is not removed.  When there is no head (path is relative
+</span><span class="line">	to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="deeper-folder-structure">Deeper folder structure</h2>
+
+<p>You can create deeper folder structures using the same technique with one extra
+switch on the mkdir command.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:n specs/models/user_spec.rb
+</span><span class="line">:!mkdir -p %:h
+</span><span class="line">:w</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>-p</code> switch will create the intermediate directories for you. If you don’t
+use this switch the command will fail.</p>
+
+<p>The full command line help for the <code>mkdir -p</code> switch:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">-p	Create intermediate directories as required.  If this option is not
+</span><span class="line">specified, the full path prefix of each operand must already exist.  On the
+</span><span class="line">other hand, with this option specified, no error will be reported if a
+</span><span class="line">directory given as an operand already exists.  Intermediate directories are
+</span><span class="line">created with permission bits of rwxrwxrwx (0777) as modified by the current
+</span><span class="line">umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I think that’s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Strava</h1>
+  <br />
+  <iframe height='160' width='272' frameborder='0' allowtransparency='true' scrolling='no' src='http://app.strava.com/athletes/1108047/activity-summary/38bbd39fbf5da9f3bf5e3845fb2f4592704e5de4'></iframe>
+</section>
+<section>
+<h1>Twitter</h1>
+<a class="twitter-timeline" href="https://twitter.com/justinramel" data-widget-id="379381495074287617">Tweets by @justinramel</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll&#8230;</ul>
+  <p><a href="http://pinboard.in/u:njr11">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "njr11"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/108885363809433432894?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Justin Ramel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'justinramel';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

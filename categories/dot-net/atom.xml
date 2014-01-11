@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: .net | just ram]]></title>
+  <link href="http://justinramel.com//categories/dot-net/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins for .net in 5 Minutes]]></title>
+    <link href="http://justinramel.com/2013/01/15/5-minute-setup/"/>
+    <updated>2013-01-15T23:33:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/5-minute-setup</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
+
+* BONUS: [Jenkins for .net in 5 Minutes](/2013/01/15/5-minute-setup/)
+
+---
+</p>
+
+<p>For my final post on using Jenkins with .net, here’s how to set it all up in 5
+minutes!</p>
+
+<h3 id="install">Install</h3>
+
+<ol>
+  <li>Download the latest version of Jenkins from:
+<a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></li>
+  <li>Extract the setup files from the zip file.</li>
+  <li>Run the Setup.exe.</li>
+  <li>Accept all the defaults in the setup wizard.</li>
+  <li>Jenkins will now be installed and the main Jenkins page will be open.</li>
+</ol>
+
+<h3 id="add-required-net-plugins">Add required .NET Plugins</h3>
+
+<ol>
+  <li>Download and install your required .NET framework from:
+<a href="http://www.microsoft.com/net/download">http://www.microsoft.com/net/download</a></li>
+  <li>Open the Manage Plugins page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Manage Plugins.</li>
+  <li>Click the “Available” tab.</li>
+  <li>Tick the “MSBuild” plugin.</li>
+</ol>
+
+<h3 id="add-optional-net-plugins">Add optional .NET Plugins</h3>
+
+<ol>
+  <li>Tick the plugin for the source control management software your using.</li>
+  <li>If you want to run unit tests as part of your build Tick your chosen testing
+plugin, this guide will use NUnit.</li>
+  <li>Tick the “Active Directory Plugin” if you want to use Active Directory for
+Authentication.</li>
+</ol>
+
+<h3 id="setup-jenkins">Setup Jenkins</h3>
+
+<ol>
+  <li>Open the main setup page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Configure System.</li>
+  <li>Under the MSBuild section, click the “Add MSBuild” button.</li>
+  <li>Set the name and path to MSBuild for example:
+Name: v3.5
+Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the “Save” button.</li>
+</ol>
+
+<h3 id="setting-up-your-first-job">Setting up your first job</h3>
+
+<ol>
+  <li>From the Jenkins menu click Jenkins » New Job.</li>
+  <li>Set Job name for example: Demo.</li>
+  <li>Select the “Build a free-style software project” radio button.</li>
+  <li>Then click the “OK” button.</li>
+  <li>Jenkins will now create the Job workspace on disk and redirect you to the
+job configuration page.</li>
+</ol>
+
+<h3 id="source-control">Source Control</h3>
+
+<p>This guide will use Subversion but there are many available.</p>
+
+<ol>
+  <li>Under the Source Control Management section select the “Subversion” radio
+button.</li>
+  <li>Set the Repository URL for example:
+https://jenkins-net-demo.googlecode.com/svn/trunk</li>
+</ol>
+
+<h3 id="build-triggers">Build Triggers</h3>
+
+<ol>
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for
+changes every 5 minutes.</li>
+</ol>
+
+<h3 id="build-the-solution">Build the Solution</h3>
+
+<ol>
+  <li>Under the Build section click the “Add build step” button and select “Build
+a Visual Studio project or solution using MSBuild”.</li>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution:
+Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+  <li>Click the “Build Now” link.</li>
+</ol>
+
+<p>You’re done!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Active directory security]]></title>
+    <link href="http://justinramel.com/2013/01/15/active-directory-security/"/>
+    <updated>2013-01-15T22:51:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/active-directory-security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
+
+* BONUS: [Jenkins for .net in 5 Minutes](/2013/01/15/5-minute-setup/)
+
+---
+</p>
+
+<p>If you happen to be running Active Directory within your organization you can
+have Jenkins utilize it for authentication. This will save you and your team
+from having to remember yet another password when connecting to Jenkins.</p>
+
+<p>Install the Active Directory Plugin via Jenkins » Manage Jenkins » Manage
+Plugins</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-1.png" alt="active directory 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-2.png" alt="active directory 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Active Directory”
+radio button.</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-3.png" alt="active directory 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button.</p>
+
+<p>This option will give you the most flexibility over the security for Jenkins.
+I usually give Anonymous users Read access that allows me to share the build
+information with managers and stake holders if they are interested. As I trust
+my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<ul>
+  <li>Enter your Active Directory username in the “User/group to add” text box.</li>
+</ul>
+
+<p><strong>NOTE:</strong> Usernames are case sensitive! Kindly pointed out by bartensud, read
+his comments below for more details.</p>
+
+<ul>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<p>You have just given administrator access to this user, and they will be able to
+login to Jenkins using their Active Directory password.</p>
+
+<h3 id="trouble-shooting">Trouble shooting</h3>
+
+<p>If you find Jenkins is not connecting to your Active Directory controller, try
+setting the advanced settings for the Active Directory plugin.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-4.png" alt="active directory 4" /></p>
+
+<p>Click the “Advanced…” button. To reveal the area where you can specify the full
+details of your Active Directory Domain and Server.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-5.png" alt="active directory 5" /></p>
+
+<p>Start by setting the Domain Name of your Active Directory and clicking the
+“Save” button. Now retry your Active Directory access.</p>
+
+<p>This worked first time for me but if your not so lucky, try the same process
+again with the Active Directory Domain controller setting.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Security]]></title>
+    <link href="http://justinramel.com/2013/01/15/security/"/>
+    <updated>2013-01-15T22:06:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
+
+* BONUS: [Jenkins for .net in 5 Minutes](/2013/01/15/5-minute-setup/)
+
+---
+</p>
+
+<p>By default Jenkins is wide open to anyone who stumbles across your web server,
+depending on your circumstances you may want to enable Jenkins security and
+force developers and even guests to login.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Jenkins security is configured from the main Jenkins configuration page which
+is accessed via Jenkins » Manage Jenkins » Configure System.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-1.png" alt="security 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="/images/jenkins-net/ch11/security-2.png" alt="security 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Jenkins’s own
+user database” radio button.</p>
+
+<p>Un-tick the “Allow users to sign up” check box otherwise anyone hitting the
+site will be able to sign up for an account (if your enabling security my guess
+is you don’t want that).</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch11/security-3.png" alt="security 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button. This option will give you the most flexibility over the security for
+Jenkins. I usually give Anonymous users Read access that allows me to share the
+build information with managers and stake holders if they are interested.  As I
+trust my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<h3 id="add-administrator">Add Administrator</h3>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<h3 id="first-user-sign-up">First user sign up</h3>
+
+<p>If this is the first time you’ve setup a user on the server Jenkins will
+immediately ask for your user credentials.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-4.png" alt="security 4" /></p>
+
+<ul>
+  <li>Enter your user credentials.</li>
+  <li>Click the “Sign up” button.</li>
+</ul>
+
+<p>You should see a success message from Jenkins saying you are now logged in.</p>
+
+<h3 id="adding-users">Adding Users</h3>
+
+<p>You’ll want to add more users to the servers this is done via the Manage Users
+page. You can access this page via Jenkins » Manage Jenkins » Manage Users.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-5.png" alt="security 5" /></p>
+
+<h3 id="create-user">Create User</h3>
+
+<p>Click the Create User link to add another user.</p>
+
+<p>You will now see the Sign up page.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-6.png" alt="security 6" /></p>
+
+<p>Enter the credentials for the new user. Make sure you remember the username, as
+you’ll probably want to give the new user more than read only access to the
+server.</p>
+
+<h3 id="authorization-1">Authorization</h3>
+
+<p>After creating the user you’ll want to give them an authorization level. This
+is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-7.png" alt="security 7" /></p>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code analysis]]></title>
+    <link href="http://justinramel.com/2013/01/15/code-analysis/"/>
+    <updated>2013-01-15T21:18:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/code-analysis</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
+
+* BONUS: [Jenkins for .net in 5 Minutes](/2013/01/15/5-minute-setup/)
+
+---
+</p>
+
+<p>Jenkins can run a series of code analysis tools after each build, this will
+help you monitor the health of your solution.</p>
+
+<h3 id="compiler-warnings">Compiler Warnings</h3>
+
+<p>Ideally your solution will have no compiler warnings and you can have your
+solution fail to build if the any warnings appear. I know in the real world
+this isn’t always possible, so we can utilize Jenkins to make sure the number
+of warnings do not get out of hand.</p>
+
+<p>This is accessed via the Jobs configuration page, for our Demo job we click
+Jenkins » Demo » Configure. You’ll find the “Scan for compiler warnings” at the
+bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure">Configure</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-1.png" alt="code 1" /></p>
+
+<ul>
+  <li>Tick the “Scan for compiler warnings”</li>
+  <li>Click the “Add” button under the “Scan console log” area</li>
+  <li>Select MSBuild from the Parser drop down list</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>Now when you carry out a build, you’ll get a compiler warnings section as part
+of your build report.</p>
+
+<h3 id="warnings-report">Warnings report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-2.png" alt="code 2" /></p>
+
+<p>Here we have no compiler warnings so I’ll commit a warning to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-3.png" alt="code 3" /></p>
+
+<p>We now have 2 compiler warnings and we can drill down for more details by
+clicking the 2 warnings link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-4.png" alt="code 4" /></p>
+
+<p>We can continue drilling and find the actual source file and line number
+causing the warning.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-5.png" alt="code 5" /></p>
+
+<h3 id="trending">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us a Compiler Warnings
+Trend graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-6.png" alt="code 6" /></p>
+
+<p>Your mission is to reverse this trend and keep your compiler warnings low or
+preferably non-existent.</p>
+
+<h3 id="tasks-and-to-dos">Tasks and To-dos</h3>
+
+<p>Another sign of Technical Debt is lots of To-dos, hack, and fix-me comments in
+your code. Lets use Jenkins to monitor these type of comments.  For our Demo
+job we click Jenkins » Demo » Configure. You’ll find the “Scan workspace for
+open tasks” at the bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure-1">Configure</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-7.png" alt="code 7" /></p>
+
+<ul>
+  <li>Tick the “Scan workspace for open tasks” check box</li>
+  <li>In the “Files to scan” textbox enter: <em>*/</em>.cs which scans all C Sharp files
+for these comments.</li>
+  <li>In the “Tasks tags” High priority textbox enter: HACK, FIXME</li>
+  <li>In the “Tasks tags” Normal priority textbox enter: TODO, TO-DO</li>
+  <li>Tick the “Ignore case” check box</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>These task tags can be anything you or your team use to indicate work that
+needs to be carried out in your source. When we carry out a build, we’ll get a
+compiler warnings section as part of our build report.</p>
+
+<h3 id="task-scanner-report">Task Scanner Report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-8.png" alt="code 8" /></p>
+
+<p>Here we have no tasks, I’ll commit a few To-dos and Hack comments to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-9.png" alt="code 9" /></p>
+
+<p>We now have 3 open tasks and we can drill down for more details by clicking the
+3 open tasks link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-10.png" alt="code 10" /></p>
+
+<p>As you can see depending on the priority of the open task we get different
+color bars to indicate they severity.</p>
+
+<p>We can continue drilling and find the actual source file and line number of the
+tasks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-11.png" alt="code 11" /></p>
+
+<h3 id="trending-1">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us an Open Tasks Trend
+graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-12.png" alt="code 12" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Running your tests]]></title>
+    <link href="http://justinramel.com/2013/01/15/running-your-tests/"/>
+    <updated>2013-01-15T20:19:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/running-your-tests</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:
+
+1.  [Jenkins.NET](/2012/09/17/jenkins-dot-net/)
+2.  [Jenkins.NET Plugins](/2012/09/20/jenkins-dot-net-plugins/)
+3.  [Setup Jenkins.NET](/2012/10/09/setup-jenkins-dot-net/)
+4.  [Setting up your first job](/2012/10/20/jenkins-dot-net-setting-up-your-first-job/)
+5.  [Your first build](/2012/10/24/jenkins-dot-net-your-first-build/)
+6.  [Breaking the build](/2013/01/14/breaking-the-build/)
+7.  [Diagnosing and fixing a broken build](/2013/01/14/diagnosing-and-fixing-a-broken-build/)
+8.  [Monitoring your build](/2013/01/14/monitoring-your-build/)
+9.  [Running your tests](/2013/01/15/running-your-tests/)
+10. [Code Analysis](/2013/01/15/code-analysis/)
+11. [Security](/2013/01/15/security/)
+12. [Active Directory Security](/2013/01/15/active-directory-security/)
+
+* BONUS: [Jenkins for .net in 5 Minutes](/2013/01/15/5-minute-setup/)
+
+---
+</p>
+
+<p>After building your solution the next task you’ll want to automate is the
+running of your tests. Jenkins comes with a multitude of test plugins so
+whatever test framework you’re using chances are you’ll be covered. To show how
+easy it is to add tests to a build we’ll add NUnit to our demo solution and
+have Jenkins run the tests every time we commit a change to the source
+repository.</p>
+
+<h3 id="test-project-structure">Test Project Structure</h3>
+
+<p>Structure of the demo project is:</p>
+
+<p>Tools\NUnit\bin contains the NUnit framework and runner.</p>
+
+<p>The DemoTest project references the nunit.framework.dll from this folder. This
+enables the solution to be checked out and run with out any pre-installation
+requirements. This work great for Jenkins but its also a great way to setup
+your solutions, if you need to move to a new machine or if you have a new
+starter you just check out the solution and its ready to build and run your
+tests.</p>
+
+<h3 id="execute-any-test-runner">Execute any test runner</h3>
+
+<p>The build step “Execute Windows batch command” works with any test runner that
+has a command line runner. We will use this method to run the NUnit command
+line test runner in the Demo project.</p>
+
+<p>Use the Demo » Configure link to access the configuration page, under the
+Build section click the “Add build step” button.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-1.png" alt="test 1" /></p>
+
+<p>Select the “Execute Windows batch command” to add a new build step.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-2.png" alt="test 2" /></p>
+
+<p>Under the “Execute Windows batch command” section enter the command:</p>
+
+<ul>
+  <li>
+    <p>Tools\nunit\bin\nunit-console.exe src\DemoTests\bin\Debug\DemoTests.dll</p>
+  </li>
+  <li>
+    <p>Click the “Save” button</p>
+  </li>
+</ul>
+
+<p>This command is telling Jenkins the location of the NUnit test runner
+(Tools\nunit\bin\nunit-console.exe) and the location of the test DLL to run
+against (src\DemoTests\bin\Debug\DemoTests.dll).</p>
+
+<p>This command will now execute the NUnit test runner after every solution build.</p>
+
+<h3 id="failing-tests">Failing Tests</h3>
+
+<p>When a test fails Jenkins will fail the build and show a red ball for the
+status of the project.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-3.png" alt="test 3" /></p>
+
+<p>Now we know the build has failed but we don’t want to start digging through the
+console output to find the details of the failing test. Lets introduce another
+Jenkins plugin which will show details of exactly which test failed and why.</p>
+
+<h3 id="plugin-setup">Plugin Setup</h3>
+
+<p>Use the Demo » Configure link to access the Demo jobs configuration page,
+under the Post-Build Actions section.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-4.png" alt="test 4" /></p>
+
+<ul>
+  <li>
+    <p>Tick the “Publish NUnit test result report” check box.</p>
+  </li>
+  <li>
+    <p>Enter the output of the NUnit test runner: TestResult.xml</p>
+  </li>
+  <li>
+    <p>Click the “Save” button.</p>
+  </li>
+</ul>
+
+<p>Run a build again to see the NUnit test report.</p>
+
+<ul>
+  <li>Click the Demo » Build Now link.</li>
+</ul>
+
+<p>Of course the build has failed again but that’s what we want. This allows us to
+see NUnit test report. To view the report click on the failed build in the
+Build History.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-5.png" alt="test 5" /></p>
+
+<p>We now have a Test Result area that is showing 1 failure in the
+DemoTests.ProgramTests.Add namespace. That’s certainly easier than digging
+through the console output. The benefits don’t end there, if you click on the
+Test Result link we will get a more detailed report.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-6.png" alt="test 6" /></p>
+
+<p>Here we get a pretty report showing the full details of the failure. We can
+drill down for even more detail using the link DemoTests.ProgramTests.Add.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-7.png" alt="test 7" /></p>
+
+<p>This gives the error message from the test, a stack trace, the filename of the
+failing test and even the line number. You can’t ask for much more than that
+but there is one more benefit we can eke out of our test runner and that is our
+test history.</p>
+
+<h3 id="test-history">Test History</h3>
+
+<p>Once you setup the Unit plugin, Jenkins will track all your test results. This
+is a great way to keep an eye on the general health of your project. I’ve added
+a few more tests and commits to the demo project to show how the test history
+works.</p>
+
+<p><img src="/images/jenkins-net/ch09/test-8.png" alt="test 8" /></p>
+
+<p>As you can see the Demo home page now has a “Test Result Trend” graph showing
+the initial failing test, followed by anther commit to fix the failure then
+another 4 tests that were added. The graph shows at a glance that our Demo
+project is getting healthier on every commit. This is the type of graph we want
+to see in our projects.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | just ram]]></title>
+  <link href="http://justinramel.com//categories/git/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git feature workflow - more basic commands]]></title>
+    <link href="http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/"/>
+    <updated>2013-03-22T23:46:00+00:00</updated>
+    <id>http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands</id>
+    <content type="html"><![CDATA[<h2 id="switch-on-vim-colour">Switch on vim colour</h2>
+
+<p>Do your self a favour and switch on git colour it makes the command line output
+much easier to read.</p>
+
+<p><code>git config --global --add color.ui true</code></p>
+
+<h2 id="remote-branches">Remote branches</h2>
+
+<p>Working as part of a team at some point you’ll need to take a look at a team
+mates branch, first they need to push their branch up to github.</p>
+
+<p><code>git push origin -u my-awesome-new-feature</code></p>
+
+<h2 id="pull-down-a-team-mates-branch">Pull down a team mates branch</h2>
+
+<p>Don’t know or can’t remember the remote branch name?</p>
+
+<p><code>git branch -r</code></p>
+
+<p>Next you need to create a local branch that tracks the remote branch.</p>
+
+<p><code>git checkout --track origin/my-awesome-new-feature</code></p>
+
+<p>This command creates a local branch named my-awesome-new-feature which is
+tracking the remote branch. Now when you push your changes the remote branch
+will be updated.</p>
+
+<ul>
+  <li>More info on <a href="http://stackoverflow.com/questions/9537392/git-fetch-remote-branch">stackoverflow</a></li>
+</ul>
+
+<h2 id="fix-a-conflict">Fix a conflict</h2>
+
+<p>When you have a conflict in a feature branch you’ll not be able to auto merge
+on github you’ll need to merge the branch manually.</p>
+
+<p><code>
+git checkout master
+git merge my-awesome-new-feature
+</code></p>
+
+<p>Fix any conflicts.</p>
+
+<ul>
+  <li>Check out this
+<a href="http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/">vimcast</a>
+for a nice way to fix conflicts in vim using the <a href="https://github.com/tpope/vim-fugitive">fugitive
+plugin</a>.</li>
+</ul>
+
+<blockquote>
+  <p>fugitive.vim: a Git wrapper so awesome, it should be illegal</p>
+</blockquote>
+
+<p>Finally <code>git push</code> the merge up to github and you’re done.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git feature workflow - basic commands]]></title>
+    <link href="http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands/"/>
+    <updated>2013-03-15T13:06:00+00:00</updated>
+    <id>http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands</id>
+    <content type="html"><![CDATA[<p>List of basic commands to use during feature branch workflow.</p>
+
+<h2 id="create-feature-branch">Create feature branch</h2>
+
+<p><code>
+git checkout -b my-awesome-new-feature
+</code></p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> The <em>-b</em> parameter means branch, it saves us having to use two separate git commands. Without this option we’d need to branch then checkout.</p>
+</blockquote>
+
+<p>Now do lots of work on the new feature…</p>
+
+<h2 id="find-out-what-has-changed">Find out what has changed</h2>
+
+<p>When finished working on the new feature find out what has changed.</p>
+
+<p><code>
+git status
+</code></p>
+
+<h2 id="add-changes-to-git">Add changes to git</h2>
+
+<p>Either add each file manually using:</p>
+
+<p><code>
+git add my-changed-file.txt
+</code></p>
+
+<p>Or add all the files in the current directory.</p>
+
+<p><code>
+git add .
+</code></p>
+
+<p>Run <code>git status</code> one more time to get a list of everything that is going to be committed.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Accidentally added files can be removed using the command <code>git rm &lt;filename&gt;</code></p>
+</blockquote>
+
+<h2 id="commit-changes">Commit changes</h2>
+
+<p>Commit your changes with a <em>meaningful</em> message.</p>
+
+<p><code>
+git commit -m "my awesome new feature, this changes everything!"
+</code></p>
+
+<h2 id="push-changes">Push changes</h2>
+
+<p>Push the new feature up to github so we can do a pull request.</p>
+
+<p><code>
+git push origin -u my-awesome-new-feature
+</code></p>
+
+<p>The new branch should now be visible on github and we can now issue a pull request.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SETUP GIT REPO]]></title>
+    <link href="http://justinramel.com/2011/07/12/setup-git-repo/"/>
+    <updated>2011-07-12T21:48:22+01:00</updated>
+    <id>http://justinramel.com/2011/07/12/setup-git-repo</id>
+    <content type="html"><![CDATA[<h4 id="adding-key-to-server">ADDING KEY TO SERVER</h4>
+
+<p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
+
+<h4 id="server">SERVER</h4>
+
+<p><code>sudo mkdir /home/git/myrepo
+cd /home/git/myrepo
+sudo git --bare init
+sudo chown -R git:git /home/git/myrepo
+</code></p>
+
+<h4 id="client">CLIENT</h4>
+
+<p>`mkdir myrepo
+cd myrepo
+git init</p>
+
+<h1 id="add-some-files">add some files</h1>
+
+<p>git add .
+git commit -m “added some files”</p>
+
+<p>git remote add origin git@myserver.com:myrepo
+git push origin master</p>
+
+<p>rm -r myrepo/
+git clone git@yourserver.com:myrepo
+`</p>
+]]></content>
+  </entry>
+  
+</feed>

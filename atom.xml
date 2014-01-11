@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[just ram]]></title>
-  <link href="http://justinramel.github.com/atom.xml" rel="self"/>
-  <link href="http://justinramel.github.com/"/>
-  <updated>2012-09-20T23:11:24+01:00</updated>
-  <id>http://justinramel.github.com/</id>
+  <link href="http://justinramel.com/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
   <author>
     <name><![CDATA[Justin Ramel]]></name>
     
@@ -14,265 +14,1871 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/"/>
-    <updated>2012-09-20T18:43:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins</id>
+    <title type="html"><![CDATA[Vim to Emacs - Smart Tab]]></title>
+    <link href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/"/>
+    <updated>2013-09-25T20:25:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
-<li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
+<hr />
 
-<h2>Plugins</h2>
+<p>The latest thing I’m missing from Vim is tab completion. I’d like to hit tab and have Emacs either insert a snippet or try to auto-complete the word based on what I just typed.</p>
+
+<p>With lots of Googlizing I’ve managed to hack together a solution, it’s not perfect (yet) but still meets most of my needs for now.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Download <code>smart-tab.el</code> from <a href="https://github.com/genehack/smart-tab">genehack</a> (or from <a href="https://github.com/justinramel/prelude/blob/master/vendor/smart-tab.el">me</a>) and save it in to the <code>.emacs.d/vendor</code> folder.</p>
+
+<p>Next create a <code>tab.el</code> in the <code>.emacs/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/tab.el">personal/tab.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(require 'smart-tab)
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">
+</span><span class="line">(cons 'yas/hippie-try-expand 'hippie-expand-try-functions-list)
+</span><span class="line">
+</span><span class="line">(setq smart-tab-using-hippie-expand t)
+</span><span class="line">(global-smart-tab-mode t)
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here I am using cons to push YASnippets to the front of the hippie expand list, this means snippets are found before trying to auto-complete words.</p>
+
+<p>As I said this is not perfect, I can’t auto-complete in the middle of a snippet process for instance but it’s not a bad start.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emas - YASnippet]]></title>
+    <link href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/"/>
+    <updated>2013-09-17T22:01:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
+
+<hr />
+
+<p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Create a <code>yasnippet.el</code> in the <code>.emacs.d/personal</code> folder.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/yasnippet.el">personal/yasnippet.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(prelude-require-package 'yasnippet)
+</span><span class="line">
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">(yas-global-mode 1)</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here I make sure the <code>yasnippet</code> package is available then require the package and enable it globally.</p>
+
+<h2 id="personal-snippets">Personal Snippets</h2>
+<p>You can create your own personal snippets in the <code>.emas.d/snippets</code> folder. More details in this slightly outdated <a href="http://capitaomorte.github.io/yasnippet/">guide</a>.</p>
+
+<h2 id="ruby-snippets">Ruby Snippets</h2>
+<p>I have also installed a set of ruby and rspecs snippets from bmaland’s <a href="https://github.com/bmaland/yasnippet-ruby-mode">repo</a>. I simply cloned the repo into the personal snippest folder with name ruby-mode. Note the name is important it needs to match the Emacs mode where the snippets are used.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git clone git@github.com:bmaland/yasnippet-ruby-mode.git ~/.emacs.d/personal/ruby-mode</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emacs - Ace Jump Mode]]></title>
+    <link href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/"/>
+    <updated>2013-09-15T23:19:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
+
+<hr />
+
+<p>One of the things I miss from Vim is the wonderful <a href="https://github.com/Lokaltog/vim-easymotion">Easy Motion</a> which allows you to jump quickly to any word in the buffer.</p>
+
+<p>Thankfully Emacs has a very similar package <a href="http://www.emacswiki.org/emacs/AceJump">Ace Jump Mode</a>.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Using Prelude setup was simple, create a file in the personal folder and it will be auto loaded when Emacs starts.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/ace-jump-mode.el">personal/ace-jump-mode.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(prelude-require-package 'ace-jump-mode)
+</span><span class="line">
+</span><span class="line">(require 'ace-jump-mode)
+</span><span class="line">(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’m using the <code>prelude-require-package</code> function to make sure the <code>ace-jump-mode</code> package is available just in case this is a new machine where the package has not been installed.</p>
+
+<p>I then require the <code>ace-jump-mode</code> package and bind a short cut key to <code>C-c SPC</code>.</p>
+
+<p>Now when I press Ctrl + c followed by Space Emacs asks for a <code>Head Char:</code> which will then highlight all words that begin with that Char. Pressing that char jumps straight to that Char.</p>
+
+<p>A screen cast is worth a thousand words:</p>
+
+<iframe width="640" height="510" src="http://www.youtube.com/embed/UZkpmegySnc " frameborder="0" allowfullscreen=""></iframe>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vim to Emacs]]></title>
+    <link href="http://justinramel.com/2013/09/14/vim-to-emacs/"/>
+    <updated>2013-09-14T12:54:00+01:00</updated>
+    <id>http://justinramel.com/2013/09/14/vim-to-emacs</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="http://justinramel.com/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="http://justinramel.com/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="http://justinramel.com/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
+
+<hr />
+
+<h2 id="why">Why?</h2>
+<p>Mostly curiosity. As a long time Vim user I’ve heard lots of good and bad about this other ancient editor Emacs. As well as my curiosity I’ve rubbed up against a few rough edges lately mixing Vim and Tmux’s modal modes and problems getting Vim plugin’s working cross platform.</p>
+
+<p>I decided to find out for myself, is Emacs is as good/bad as they say?</p>
+
+<h2 id="evil">Evil</h2>
+<p>I’ve tried Emacs before but quickly returned to Vim after becoming perplexed at the number of <code>Ctrl + x Ctrl + ?!?</code> keystrokes needed to do the simplest of actions. This time I’m trying the <a href="http://www.emacswiki.org/emacs/Evil">Evil</a> package with gives Vim like editing within Emacs. The best of both worlds? Or too good to be true?</p>
+
+<p>So far I’m very impressed with Evil, once this package was installed I was right at home. You really can’t get way without learning some of the basic Emacs control keys but they are very small in number.</p>
+
+<h2 id="emacs-redux">Emacs Redux</h2>
+<p>Out of the box Emacs is not the most pleasant of experiences, just like Vim it is very raw until you tweak the config. Thankfully Emacs is ridiculously configurable you really can create an editor suited to your own personal tastes. Configuration is done via Emacs Lisp, a little overwhelming for beginners but I do look forward to learning the language. It’s certainly looks a lot nicer than VIML!</p>
+
+<p>I quickly realised hacking on my init.el conifg file with my limited knowledge was not the way to go. I eventually found the excellent <a href="http://emacsredux.com/">Emacs Redux</a> blog and the <a href="https://github.com/bbatsov/prelude">Prelude</a> configuration project. This project has allowed me to have a solid foundation as I find my feet in Emacs land.</p>
+
+<h2 id="initial-config">Initial Config</h2>
+<ul>
+  <li><a href="http://www.emacswiki.org/emacs/Evil">Evil</a></li>
+  <li><a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a></li>
+</ul>
+
+<p>I’ve also changed a few Prelude defaults which can be found in my <a href="https://github.com/justinramel/prelude">personal fork</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>So far so good. I’m honestly surprised how quickly I’ve settled in with Emacs this time, there is lots here to like. I really don’t feel like I’m deserting Vim, thanks to Evil all that Vim ‘muscle memory’ is coming along with me.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git feature workflow - more basic commands]]></title>
+    <link href="http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands/"/>
+    <updated>2013-03-22T23:46:00+00:00</updated>
+    <id>http://justinramel.com/2013/03/22/git-feature-workflow-more-basic-commands</id>
+    <content type="html"><![CDATA[<h2 id="switch-on-vim-colour">Switch on vim colour</h2>
+
+<p>Do your self a favour and switch on git colour it makes the command line output
+much easier to read.</p>
+
+<p><code>git config --global --add color.ui true</code></p>
+
+<h2 id="remote-branches">Remote branches</h2>
+
+<p>Working as part of a team at some point you’ll need to take a look at a team
+mates branch, first they need to push their branch up to github.</p>
+
+<p><code>git push origin -u my-awesome-new-feature</code></p>
+
+<h2 id="pull-down-a-team-mates-branch">Pull down a team mates branch</h2>
+
+<p>Don’t know or can’t remember the remote branch name?</p>
+
+<p><code>git branch -r</code></p>
+
+<p>Next you need to create a local branch that tracks the remote branch.</p>
+
+<p><code>git checkout --track origin/my-awesome-new-feature</code></p>
+
+<p>This command creates a local branch named my-awesome-new-feature which is
+tracking the remote branch. Now when you push your changes the remote branch
+will be updated.</p>
+
+<ul>
+  <li>More info on <a href="http://stackoverflow.com/questions/9537392/git-fetch-remote-branch">stackoverflow</a></li>
+</ul>
+
+<h2 id="fix-a-conflict">Fix a conflict</h2>
+
+<p>When you have a conflict in a feature branch you’ll not be able to auto merge
+on github you’ll need to merge the branch manually.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git checkout master
+</span><span class="line">git merge my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Fix any conflicts.</p>
+
+<ul>
+  <li>Check out this
+<a href="http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/">vimcast</a>
+for a nice way to fix conflicts in vim using the <a href="https://github.com/tpope/vim-fugitive">fugitive
+plugin</a>.</li>
+</ul>
+
+<blockquote>
+  <p>fugitive.vim: a Git wrapper so awesome, it should be illegal</p>
+</blockquote>
+
+<p>Finally <code>git push</code> the merge up to github and you’re done.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git feature workflow - basic commands]]></title>
+    <link href="http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands/"/>
+    <updated>2013-03-15T13:06:00+00:00</updated>
+    <id>http://justinramel.com/2013/03/15/git-feature-workflow-basic-commands</id>
+    <content type="html"><![CDATA[<p>List of basic commands to use during feature branch workflow.</p>
+
+<h2 id="create-feature-branch">Create feature branch</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git checkout -b my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p><strong>NOTE:</strong> The <em>-b</em> parameter means branch, it saves us having to use two separate git commands. Without this option we’d need to branch then checkout.</p>
+</blockquote>
+
+<p>Now do lots of work on the new feature…</p>
+
+<h2 id="find-out-what-has-changed">Find out what has changed</h2>
+
+<p>When finished working on the new feature find out what has changed.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git status</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="add-changes-to-git">Add changes to git</h2>
+
+<p>Either add each file manually using:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git add my-changed-file.txt</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Or add all the files in the current directory.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git add .</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Run <code>git status</code> one more time to get a list of everything that is going to be committed.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Accidentally added files can be removed using the command <code>git rm &lt;filename&gt;</code></p>
+</blockquote>
+
+<h2 id="commit-changes">Commit changes</h2>
+
+<p>Commit your changes with a <em>meaningful</em> message.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git commit -m "my awesome new feature, this changes everything!"</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="push-changes">Push changes</h2>
+
+<p>Push the new feature up to github so we can do a pull request.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git push origin -u my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The new branch should now be visible on github and we can now issue a pull request.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins for .net in 5 Minutes]]></title>
+    <link href="http://justinramel.com/2013/01/15/5-minute-setup/"/>
+    <updated>2013-01-15T23:33:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/5-minute-setup</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>For my final post on using Jenkins with .net, here’s how to set it all up in 5
+minutes!</p>
+
+<h3 id="install">Install</h3>
+
+<ol>
+  <li>Download the latest version of Jenkins from:
+<a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></li>
+  <li>Extract the setup files from the zip file.</li>
+  <li>Run the Setup.exe.</li>
+  <li>Accept all the defaults in the setup wizard.</li>
+  <li>Jenkins will now be installed and the main Jenkins page will be open.</li>
+</ol>
+
+<h3 id="add-required-net-plugins">Add required .NET Plugins</h3>
+
+<ol>
+  <li>Download and install your required .NET framework from:
+<a href="http://www.microsoft.com/net/download">http://www.microsoft.com/net/download</a></li>
+  <li>Open the Manage Plugins page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Manage Plugins.</li>
+  <li>Click the “Available” tab.</li>
+  <li>Tick the “MSBuild” plugin.</li>
+</ol>
+
+<h3 id="add-optional-net-plugins">Add optional .NET Plugins</h3>
+
+<ol>
+  <li>Tick the plugin for the source control management software your using.</li>
+  <li>If you want to run unit tests as part of your build Tick your chosen testing
+plugin, this guide will use NUnit.</li>
+  <li>Tick the “Active Directory Plugin” if you want to use Active Directory for
+Authentication.</li>
+</ol>
+
+<h3 id="setup-jenkins">Setup Jenkins</h3>
+
+<ol>
+  <li>Open the main setup page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Configure System.</li>
+  <li>Under the MSBuild section, click the “Add MSBuild” button.</li>
+  <li>Set the name and path to MSBuild for example:
+Name: v3.5
+Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the “Save” button.</li>
+</ol>
+
+<h3 id="setting-up-your-first-job">Setting up your first job</h3>
+
+<ol>
+  <li>From the Jenkins menu click Jenkins » New Job.</li>
+  <li>Set Job name for example: Demo.</li>
+  <li>Select the “Build a free-style software project” radio button.</li>
+  <li>Then click the “OK” button.</li>
+  <li>Jenkins will now create the Job workspace on disk and redirect you to the
+job configuration page.</li>
+</ol>
+
+<h3 id="source-control">Source Control</h3>
+
+<p>This guide will use Subversion but there are many available.</p>
+
+<ol>
+  <li>Under the Source Control Management section select the “Subversion” radio
+button.</li>
+  <li>Set the Repository URL for example:
+https://jenkins-net-demo.googlecode.com/svn/trunk</li>
+</ol>
+
+<h3 id="build-triggers">Build Triggers</h3>
+
+<ol>
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for
+changes every 5 minutes.</li>
+</ol>
+
+<h3 id="build-the-solution">Build the Solution</h3>
+
+<ol>
+  <li>Under the Build section click the “Add build step” button and select “Build
+a Visual Studio project or solution using MSBuild”.</li>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution:
+Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+  <li>Click the “Build Now” link.</li>
+</ol>
+
+<p>You’re done!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Active directory security]]></title>
+    <link href="http://justinramel.com/2013/01/15/active-directory-security/"/>
+    <updated>2013-01-15T22:51:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/active-directory-security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>If you happen to be running Active Directory within your organization you can
+have Jenkins utilize it for authentication. This will save you and your team
+from having to remember yet another password when connecting to Jenkins.</p>
+
+<p>Install the Active Directory Plugin via Jenkins » Manage Jenkins » Manage
+Plugins</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-1.png" alt="active directory 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-2.png" alt="active directory 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Active Directory”
+radio button.</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-3.png" alt="active directory 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button.</p>
+
+<p>This option will give you the most flexibility over the security for Jenkins.
+I usually give Anonymous users Read access that allows me to share the build
+information with managers and stake holders if they are interested. As I trust
+my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<ul>
+  <li>Enter your Active Directory username in the “User/group to add” text box.</li>
+</ul>
+
+<p><strong>NOTE:</strong> Usernames are case sensitive! Kindly pointed out by bartensud, read
+his comments below for more details.</p>
+
+<ul>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<p>You have just given administrator access to this user, and they will be able to
+login to Jenkins using their Active Directory password.</p>
+
+<h3 id="trouble-shooting">Trouble shooting</h3>
+
+<p>If you find Jenkins is not connecting to your Active Directory controller, try
+setting the advanced settings for the Active Directory plugin.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-4.png" alt="active directory 4" /></p>
+
+<p>Click the “Advanced…” button. To reveal the area where you can specify the full
+details of your Active Directory Domain and Server.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch12/ad-5.png" alt="active directory 5" /></p>
+
+<p>Start by setting the Domain Name of your Active Directory and clicking the
+“Save” button. Now retry your Active Directory access.</p>
+
+<p>This worked first time for me but if your not so lucky, try the same process
+again with the Active Directory Domain controller setting.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Security]]></title>
+    <link href="http://justinramel.com/2013/01/15/security/"/>
+    <updated>2013-01-15T22:06:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/security</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>By default Jenkins is wide open to anyone who stumbles across your web server,
+depending on your circumstances you may want to enable Jenkins security and
+force developers and even guests to login.</p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Jenkins security is configured from the main Jenkins configuration page which
+is accessed via Jenkins » Manage Jenkins » Configure System.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-1.png" alt="security 1" /></p>
+
+<p>Tick the “Enable security” check box to open up the security area.</p>
+
+<h3 id="access-control">Access Control</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-2.png" alt="security 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Jenkins’s own
+user database” radio button.</p>
+
+<p>Un-tick the “Allow users to sign up” check box otherwise anyone hitting the
+site will be able to sign up for an account (if your enabling security my guess
+is you don’t want that).</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-3.png" alt="security 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button. This option will give you the most flexibility over the security for
+Jenkins. I usually give Anonymous users Read access that allows me to share the
+build information with managers and stake holders if they are interested.  As I
+trust my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<h3 id="add-administrator">Add Administrator</h3>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<h3 id="first-user-sign-up">First user sign up</h3>
+
+<p>If this is the first time you’ve setup a user on the server Jenkins will
+immediately ask for your user credentials.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-4.png" alt="security 4" /></p>
+
+<ul>
+  <li>Enter your user credentials.</li>
+  <li>Click the “Sign up” button.</li>
+</ul>
+
+<p>You should see a success message from Jenkins saying you are now logged in.</p>
+
+<h3 id="adding-users">Adding Users</h3>
+
+<p>You’ll want to add more users to the servers this is done via the Manage Users
+page. You can access this page via Jenkins » Manage Jenkins » Manage Users.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-5.png" alt="security 5" /></p>
+
+<h3 id="create-user">Create User</h3>
+
+<p>Click the Create User link to add another user.</p>
+
+<p>You will now see the Sign up page.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-6.png" alt="security 6" /></p>
+
+<p>Enter the credentials for the new user. Make sure you remember the username, as
+you’ll probably want to give the new user more than read only access to the
+server.</p>
+
+<h3 id="authorization-1">Authorization</h3>
+
+<p>After creating the user you’ll want to give them an authorization level. This
+is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch11/security-7.png" alt="security 7" /></p>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Code analysis]]></title>
+    <link href="http://justinramel.com/2013/01/15/code-analysis/"/>
+    <updated>2013-01-15T21:18:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/code-analysis</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Jenkins can run a series of code analysis tools after each build, this will
+help you monitor the health of your solution.</p>
+
+<h3 id="compiler-warnings">Compiler Warnings</h3>
+
+<p>Ideally your solution will have no compiler warnings and you can have your
+solution fail to build if the any warnings appear. I know in the real world
+this isn’t always possible, so we can utilize Jenkins to make sure the number
+of warnings do not get out of hand.</p>
+
+<p>This is accessed via the Jobs configuration page, for our Demo job we click
+Jenkins » Demo » Configure. You’ll find the “Scan for compiler warnings” at the
+bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure">Configure</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-1.png" alt="code 1" /></p>
+
+<ul>
+  <li>Tick the “Scan for compiler warnings”</li>
+  <li>Click the “Add” button under the “Scan console log” area</li>
+  <li>Select MSBuild from the Parser drop down list</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>Now when you carry out a build, you’ll get a compiler warnings section as part
+of your build report.</p>
+
+<h3 id="warnings-report">Warnings report</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-2.png" alt="code 2" /></p>
+
+<p>Here we have no compiler warnings so I’ll commit a warning to show the
+information Jenkins tracks.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-3.png" alt="code 3" /></p>
+
+<p>We now have 2 compiler warnings and we can drill down for more details by
+clicking the 2 warnings link.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-4.png" alt="code 4" /></p>
+
+<p>We can continue drilling and find the actual source file and line number
+causing the warning.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-5.png" alt="code 5" /></p>
+
+<h3 id="trending">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us a Compiler Warnings
+Trend graph.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-6.png" alt="code 6" /></p>
+
+<p>Your mission is to reverse this trend and keep your compiler warnings low or
+preferably non-existent.</p>
+
+<h3 id="tasks-and-to-dos">Tasks and To-dos</h3>
+
+<p>Another sign of Technical Debt is lots of To-dos, hack, and fix-me comments in
+your code. Lets use Jenkins to monitor these type of comments.  For our Demo
+job we click Jenkins » Demo » Configure. You’ll find the “Scan workspace for
+open tasks” at the bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure-1">Configure</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-7.png" alt="code 7" /></p>
+
+<ul>
+  <li>Tick the “Scan workspace for open tasks” check box</li>
+  <li>In the “Files to scan” textbox enter: <em>*/</em>.cs which scans all C Sharp files
+for these comments.</li>
+  <li>In the “Tasks tags” High priority textbox enter: HACK, FIXME</li>
+  <li>In the “Tasks tags” Normal priority textbox enter: TODO, TO-DO</li>
+  <li>Tick the “Ignore case” check box</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>These task tags can be anything you or your team use to indicate work that
+needs to be carried out in your source. When we carry out a build, we’ll get a
+compiler warnings section as part of our build report.</p>
+
+<h3 id="task-scanner-report">Task Scanner Report</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-8.png" alt="code 8" /></p>
+
+<p>Here we have no tasks, I’ll commit a few To-dos and Hack comments to show the
+information Jenkins tracks.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-9.png" alt="code 9" /></p>
+
+<p>We now have 3 open tasks and we can drill down for more details by clicking the
+3 open tasks link.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-10.png" alt="code 10" /></p>
+
+<p>As you can see depending on the priority of the open task we get different
+color bars to indicate they severity.</p>
+
+<p>We can continue drilling and find the actual source file and line number of the
+tasks.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-11.png" alt="code 11" /></p>
+
+<h3 id="trending-1">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us an Open Tasks Trend
+graph.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch10/code-12.png" alt="code 12" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Running your tests]]></title>
+    <link href="http://justinramel.com/2013/01/15/running-your-tests/"/>
+    <updated>2013-01-15T20:19:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/15/running-your-tests</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>After building your solution the next task you’ll want to automate is the
+running of your tests. Jenkins comes with a multitude of test plugins so
+whatever test framework you’re using chances are you’ll be covered. To show how
+easy it is to add tests to a build we’ll add NUnit to our demo solution and
+have Jenkins run the tests every time we commit a change to the source
+repository.</p>
+
+<h3 id="test-project-structure">Test Project Structure</h3>
+
+<p>Structure of the demo project is:</p>
+
+<p>Tools\NUnit\bin contains the NUnit framework and runner.</p>
+
+<p>The DemoTest project references the nunit.framework.dll from this folder. This
+enables the solution to be checked out and run with out any pre-installation
+requirements. This work great for Jenkins but its also a great way to setup
+your solutions, if you need to move to a new machine or if you have a new
+starter you just check out the solution and its ready to build and run your
+tests.</p>
+
+<h3 id="execute-any-test-runner">Execute any test runner</h3>
+
+<p>The build step “Execute Windows batch command” works with any test runner that
+has a command line runner. We will use this method to run the NUnit command
+line test runner in the Demo project.</p>
+
+<p>Use the Demo » Configure link to access the configuration page, under the
+Build section click the “Add build step” button.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-1.png" alt="test 1" /></p>
+
+<p>Select the “Execute Windows batch command” to add a new build step.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-2.png" alt="test 2" /></p>
+
+<p>Under the “Execute Windows batch command” section enter the command:</p>
+
+<ul>
+  <li>
+    <p>Tools\nunit\bin\nunit-console.exe src\DemoTests\bin\Debug\DemoTests.dll</p>
+  </li>
+  <li>
+    <p>Click the “Save” button</p>
+  </li>
+</ul>
+
+<p>This command is telling Jenkins the location of the NUnit test runner
+(Tools\nunit\bin\nunit-console.exe) and the location of the test DLL to run
+against (src\DemoTests\bin\Debug\DemoTests.dll).</p>
+
+<p>This command will now execute the NUnit test runner after every solution build.</p>
+
+<h3 id="failing-tests">Failing Tests</h3>
+
+<p>When a test fails Jenkins will fail the build and show a red ball for the
+status of the project.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-3.png" alt="test 3" /></p>
+
+<p>Now we know the build has failed but we don’t want to start digging through the
+console output to find the details of the failing test. Lets introduce another
+Jenkins plugin which will show details of exactly which test failed and why.</p>
+
+<h3 id="plugin-setup">Plugin Setup</h3>
+
+<p>Use the Demo » Configure link to access the Demo jobs configuration page,
+under the Post-Build Actions section.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-4.png" alt="test 4" /></p>
+
+<ul>
+  <li>
+    <p>Tick the “Publish NUnit test result report” check box.</p>
+  </li>
+  <li>
+    <p>Enter the output of the NUnit test runner: TestResult.xml</p>
+  </li>
+  <li>
+    <p>Click the “Save” button.</p>
+  </li>
+</ul>
+
+<p>Run a build again to see the NUnit test report.</p>
+
+<ul>
+  <li>Click the Demo » Build Now link.</li>
+</ul>
+
+<p>Of course the build has failed again but that’s what we want. This allows us to
+see NUnit test report. To view the report click on the failed build in the
+Build History.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-5.png" alt="test 5" /></p>
+
+<p>We now have a Test Result area that is showing 1 failure in the
+DemoTests.ProgramTests.Add namespace. That’s certainly easier than digging
+through the console output. The benefits don’t end there, if you click on the
+Test Result link we will get a more detailed report.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-6.png" alt="test 6" /></p>
+
+<p>Here we get a pretty report showing the full details of the failure. We can
+drill down for even more detail using the link DemoTests.ProgramTests.Add.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-7.png" alt="test 7" /></p>
+
+<p>This gives the error message from the test, a stack trace, the filename of the
+failing test and even the line number. You can’t ask for much more than that
+but there is one more benefit we can eke out of our test runner and that is our
+test history.</p>
+
+<h3 id="test-history">Test History</h3>
+
+<p>Once you setup the Unit plugin, Jenkins will track all your test results. This
+is a great way to keep an eye on the general health of your project. I’ve added
+a few more tests and commits to the demo project to show how the test history
+works.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch09/test-8.png" alt="test 8" /></p>
+
+<p>As you can see the Demo home page now has a “Test Result Trend” graph showing
+the initial failing test, followed by anther commit to fix the failure then
+another 4 tests that were added. The graph shows at a glance that our Demo
+project is getting healthier on every commit. This is the type of graph we want
+to see in our projects.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Monitoring your build]]></title>
+    <link href="http://justinramel.com/2013/01/14/monitoring-your-build/"/>
+    <updated>2013-01-14T22:28:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/14/monitoring-your-build</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Unless you’re a glutton for punishment manually checking Jenkins after every
+build is going to become very old very quickly. Luckily Jenkins has several
+notification mechanisms to save you this manual task.</p>
+
+<h3 id="email-notification">Email Notification</h3>
+
+<p>We can setup Jenkins to send an email notification whenever a build fails this
+save us having to check the server after every build, we can trust Jenkins to
+email us on failure. Jenkins will also send a notification email when the build
+returns to a working state.</p>
+
+<p>Setting up email notification is a two-step process. First we give Jenkins
+details of the email server and second we set which email addresses to notify
+upon failure of a build.</p>
+
+<h3 id="email-server-configuration">Email Server Configuration</h3>
+
+<p>Email server configuration is done via the Configure System page. You get to
+the configuration page from the main Jenkins home page Manage Jenkins »
+Configure System. At the bottom of this page is the E-mail Notification
+section.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/email-setup.png" alt="email setup" /></p>
+
+<p>Chances are you’ll have a local SMTP server, if not you can use something like
+the Gmail SMTP server as shown here. Make sure you tick the “Test configuration
+by sending test e-mail” check box and then click the “Test Configuration”
+button to have Jenkins send you a test email, confirming your configuration is
+OK. Once you’ve successfully received an email don’t forget to click the “Save”
+button to save your changes.</p>
+
+<h3 id="project-notification-email">Project Notification Email</h3>
+
+<p>Once you have the email server configured you can specify per project who to
+notify when a build fails. This is accessed via each Jobs configuration page,
+for our Demo job we click Jenkins » Demo » Configure. At the bottom of this
+page under the Post-Build Actions section is the E-mail Notification area.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/email-notification.png" alt="email notification" /></p>
+
+<ul>
+  <li>Tick the “E-mail Notification” checkbox.</li>
+  <li>Enter a space-separated list of email address to notify when a build fails.</li>
+  <li>Tick the “Send e-mail for every unstable build” checkbox.</li>
+</ul>
+
+<p>If you really want to annoy the person who broke the build you can send them
+another email by ticking the “Send separate e-mails to individuals who broke
+the build” checkbox.</p>
+
+<p>Finally don’t forget to click the “Save” button.</p>
+
+<p>Unfortunately the only way to test this is working is to break the build,
+follow the instructions in section 6. <a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the
+build</a> to test email notification is working.</p>
+
+<h3 id="your-constant-reminder">Your constant reminder</h3>
+
+<p>Email notification is great but I also like to have a constant reminder of the
+current build status. The best way I have found to do this on Windows is by
+using the Hudson Tray Tracker (read Jenkins Tray Tracker), which is available
+to download from
+<a href="http://code.google.com/p/hudson-tray-tracker/">http://code.google.com/p/hudson-tray-tracker/</a>.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-1.png" alt="tray tracker 1" /></p>
+
+<p>Once you download and install Hudson Tray Tracker you get a tray notification
+icon showing a constant reminder of the current build status. Initially the
+tray icon will be grey until you point it at a Jenkins build server.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-2.png" alt="tray tracker 2" /></p>
+
+<ul>
+  <li>
+    <p>Right click on the tray icon to access the context menu.</p>
+  </li>
+  <li>
+    <p>Click Settings to configure the software.</p>
+  </li>
+</ul>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-3.png" alt="tray tracker 3" /></p>
+
+<ul>
+  <li>Click the “Add server” button.</li>
+</ul>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-4.png" alt="tray tracker 4" /></p>
+
+<ul>
+  <li>
+    <p>Enter the URL and port of your Jenkins server.</p>
+  </li>
+  <li>
+    <p>Click the “OK” button.</p>
+  </li>
+</ul>
+
+<p>You will now see a list of projects on the Jenkins server.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-5.png" alt="tray tracker 5" /></p>
+
+<p>Tick the Projects you would like to monitor. Here there is only our demo
+project but in reality you may have lots of Projects to monitor.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-6.png" alt="tray tracker 6" /></p>
+
+<p>Once you have a server and projects setup, the tray icon will turn green to
+indicate a good build. That is assuming you have a working build. When the
+build breaks the icon will turn red and show a build failed message.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-7.png" alt="tray tracker 7" /></p>
+
+<p>You can also use the software to open Jenkins on the build page of a Job by
+double clicking on the tray icon to open the list window.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/tray-8.png" alt="tray tracker 8" /></p>
+
+<p>Then double click on the Job your interested in. In this case double clicking
+on the Demo line will open up Jenkins on the Demo job page.</p>
+
+<h3 id="the-teams-constant-reminder">The teams constant reminder</h3>
+
+<p>A large screen in the development room can be a great way to give everyone on
+the team a highly visible, constant reminder of the current build status.</p>
+
+<p>Jenkins has a Radiator View plugin that is designed specifically for this
+purpose.</p>
+
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin</a></p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch08/team.png" alt="team" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Diagnosing and fixing a broken build]]></title>
+    <link href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/"/>
+    <updated>2013-01-14T20:39:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Last time we had a failing build with Jenkin’s showing a red ball to prove it.
+The first place to look when we have a failing build is the console output. You
+can get to the console output via the main menu on the left of your project
+page.</p>
+
+<h3 id="console-output">Console output</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch07/console-output.png" alt="" /></p>
+
+<p>As the screenshot shows we get all the output from our build process and there
+is a lot of it! I’ve highlighted the actual problem which is the causing the
+build to fail, our missing dll.</p>
+
+<p>This is the error your team mates will see when they check out and try to build
+your code.</p>
+
+<h3 id="console-blindness">Console “blindness”</h3>
+
+<p>When you first see the console output for your build it can be a little
+overwhelming, there is a lot of information packed into the output. Sometimes
+you look at all that information and you can’t see the wood for the trees, or
+the errors in all that output. I have seen people look at this output and they
+are blind to the errors.</p>
+
+<p>Of course once you get used to looking at this output it becomes easier. To
+help you get over this initially a simple search to find all the errors listed
+on the page can really help. Simply search for the word “error” and your
+browser will help you see again.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch07/console-output-find.png" alt="" /></p>
+
+<p>You now have only a few places to concentrate your efforts in that sea of
+information.</p>
+
+<p>To fix the problem we can simply add the missing dll and Jenkins will rebuild
+the solution and we’ll be back to green balls.</p>
+
+<p>Next time we’ll look at the different ways to monitor our build and it’s
+failures.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET Breaking the build]]></title>
+    <link href="http://justinramel.com/2013/01/14/breaking-the-build/"/>
+    <updated>2013-01-14T17:38:00+00:00</updated>
+    <id>http://justinramel.com/2013/01/14/breaking-the-build</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>Lets break the build to see how Jenkins reacts. I’ll add a DLL to the project
+then “forget” to add it to source control; unfortunately I see this problem a
+lot when new developers join the team.</p>
+
+<h3 id="i-see-red-projects">I see red projects</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch06/red-ball.png" alt="" /></p>
+
+<p>As you can see Jenkins now shows a red ball next to the Demo project. Also
+notice the slightly cloudy weather icon indicating all is not well with our
+project.</p>
+
+<h3 id="hows-the-weather">How’s the weather?</h3>
+
+<p>Jenkins uses a weather metaphor to show at a glance how a project is doing.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="http://justinramel.com/images/jenkins-net/ch06/weather-1.png" alt="" /></td>
+      <td>No recent builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="http://justinramel.com/images/jenkins-net/ch06/weather-2.png" alt="" /></td>
+      <td>1 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="http://justinramel.com/images/jenkins-net/ch06/weather-3.png" alt="" /></td>
+      <td>2 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="http://justinramel.com/images/jenkins-net/ch06/weather-4.png" alt="" /></td>
+      <td>3 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="http://justinramel.com/images/jenkins-net/ch06/weather-5.png" alt="" /></td>
+      <td>4 out of the last 5 builds failed</td>
+    </tr>
+    <tr>
+      <td><img src="http://justinramel.com/images/jenkins-net/ch06/weather-6.png" alt="" /></td>
+      <td>5 out of the last 5 builds failed (Yeah I know the icon is no different to 4, go figure.)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>«««&lt; HEAD</p>
+
+<p>=======
+»»»&gt; breaking the build
+Obviously we want our projects to stay sunny and avoid the bad weather so next
+time we’ll discuss how to diagnose and fix a broken build.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET Your first build]]></title>
+    <link href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/"/>
+    <updated>2012-10-24T21:11:00+01:00</updated>
+    <id>http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>From the Project Demo page we created last time we can activate a Build at
+will.</p>
+
+<h3 id="build-now">Build Now</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/build-now.png" alt="" /></p>
+
+<p>Click the “Build Now” link.</p>
+
+<p>This tells Jenkins to build the Job we have just defined.</p>
+
+<h3 id="build-history">Build History</h3>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/build-history-1.png" alt="" /></p>
+
+<p>The Build History will show the Job running. Once the build is complete you
+should have your first successful build.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/build-history-2.png" alt="" /></p>
+
+<p>Clicking the Build History link (in this case 19-Feb-2012 00:10:39) will take
+you to the build page for the Demo Job.</p>
+
+<h3 id="console-output">Console Output</h3>
+
+<p>This page allows us to access all the information relevant to the build we just
+ran. The area we are interested in is the Console Output this shows all the
+programs that ran during the build.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/console-output-1.png" alt="" /></p>
+
+<p>Click the “Console Output” link.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch05/console-output-2.png" alt="" /></p>
+
+<p>This is the place to come whenever you are trying to debug a failing build.
+Everything you need to fix the problem will usually be shown on this page.</p>
+
+<p>As you can see this was a successful build and we can see that:</p>
+
+<ul>
+  <li>Jenkins created a workspace for the Job</li>
+  <li>Ran a Subversion check out
+    <ul>
+      <li>Listed of all files updated</li>
+    </ul>
+  </li>
+  <li>Ran MSBuild
+    <ul>
+      <li>Shows all output from MSBuild</li>
+    </ul>
+  </li>
+  <li>Shows Success message</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET Setting up your first job]]></title>
+    <link href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/"/>
+    <updated>2012-10-20T21:14:00+01:00</updated>
+    <id>http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>In Jenkins the definition of a build process is called a Job. Jobs are created
+using the main menu on the Jenkins home page. We’ll create a basic Job that
+will checkout our source and build the solution.</p>
+
+<p>From the main Jenkins menu, Click the ‘New Job’ link.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-00-new-job.png" alt="" /></p>
+
+<p>You now see the New Job configuration page.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-01-new-job-page.png" alt="" /></p>
+
+<ol>
+  <li>Set Job name to Demo.</li>
+  <li>Select the ‘Build a free-style software project’ radio button.</li>
+  <li>Click the ‘OK’ button.</li>
+</ol>
+
+<p>Jenkins will now create the Job workspace on disk and redirect you to the job
+configuration page.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-02-job-config.png" alt="" /></p>
+
+<p>Next we’re going to checkout our solution from source control and build it.  So
+we first need to give Jenkins details of our source control server.</p>
+
+<h2 id="source-control">Source Control</h2>
+
+<p>For the purpose of this demo we’ll use
+<a href="http://subversion.apache.org/">Subversion</a>, mainly because this is the source
+control management software I use day to day. Subversion is a very popular open
+source choice for .NET.</p>
+
+<p>Jenkins supports Subversion right out of the box but it also has support for
+all the major source control management systems. For example here are few which
+are popular for use with the .NET framework:</p>
+
+<ul>
+  <li><strong>Team Foundation Server Plugin</strong> - <em>This plugin integrates Microsoft Team
+Foundation Server source control to Jenkins.</em></li>
+  <li><strong>Mercurial Plugin</strong> - <em>This plugin integrates the Mercurial version control
+system with Jenkins.</em></li>
+  <li><strong>Git Plugin</strong> - <em>This plugin allows use of Git as a build SCM. Git 1.3.3 or
+newer is required.</em></li>
+  <li><strong>Visual SourceSafe Plugin</strong> - <em>This plugin integrates Jenkins with Microsoft
+Visual SourceSafe.</em></li>
+</ul>
+
+<p><span class="pullquote-right" data-pullquote="Visual SourceSafe, seriously?">
+Visual SourceSafe, seriously? Maybe you’re being forced to use it at gunpoint? If not do yourself a favour
+and check out Subversion.
+<a href="http://www.visualsvn.com/server/download/">VisualSVNServer</a> is a very easy to
+install, administer and use on Windows best of all its free! There is also a
+great Subversion Plugin
+<a href="http://www.visualsvn.com/visualsvn/download/">VisualSVN</a> for Visual Studio
+that I highly recommend.
+</span></p>
+
+<p>I have created a Subversion repository on GoogleCode that we’ll use to demo the
+build process from Jenkins. Lets setup our Job to grab the source code from
+this repository. This is done in the Source Code Management section of the
+configuration page.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-03-source-code.png" alt="" /></p>
+
+<ol>
+  <li>Select the Subversion radio button.</li>
+  <li>Set the Repository URL to: <a href="https://jenkins-net-demo.googlecode.com/svn/trunk">https://jenkins-net-demo.googlecode.com/svn/trunk</a></li>
+</ol>
+
+<h2 id="subversion-authentication">Subversion Authentication</h2>
+
+<p>Unlike the demo repository used here, it’s more likely your source code
+repository requires authentication (if it doesn’t, you may want to think about
+securing it). If your repository does require authentication Jenkins will
+display and error message and ask for you to supply login credentials.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-04-subversion-authentication.png" alt="" /></p>
+
+<p>Click the “enter credential” link. You will now be shown the Subversion
+Authentication page.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/04-05-subversion-authentication-page.png" alt="" /></p>
+
+<p>Enter your authentication details and then click the “OK” button.</p>
+
+<p>Subversion is now configured and we can move onto Build Triggers.</p>
+
+<h2 id="build-triggers">Build Triggers</h2>
+
+<p>We want to trigger a build every time our source code changes; we achieve this
+by creating a “Build Trigger” which polls our source code repository. When a
+change is detected a new build is triggered.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/build-trigger.png" alt="" /></p>
+
+<ol>
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for changes every 5
+minutes.</li>
+</ol>
+
+<p>As you can see from the help (which is available by clicking the
+<img src="http://justinramel.com/images/jenkins-net/ch04/question.png" alt="" /> icon) we can be extremely flexible
+in how often we check the source code repository for changes. Checking every 5
+minutes is my default as I tend make lots of small commits and I want to know
+quickly if I’ve introduced a problem.</p>
+
+<p>Finally we just need to tell Jenkins how to build the solution when changes are
+detected. This is done via the “Add build step” button under the Build section.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/add-build-step.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Click the “Add build step” button and select “Build a Visual Studio project or solution using MSBuild”.</p>
+  </li>
+  <li>
+    <p>This adds a “Build a Visual Studio project or solution using MSBuild.” area under the Build section.</p>
+  </li>
+</ol>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch04/build.png" alt="" /></p>
+
+<ol>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution: Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+</ol>
+
+<p>Congratulations your first Jenkins Job is setup.</p>
+
+<p>In my next post we’ll build it!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Jenkins.NET]]></title>
+    <link href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/"/>
+    <updated>2012-10-09T20:35:00+01:00</updated>
+    <id>http://justinramel.com/2012/10/09/setup-jenkins-dot-net</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<p>There are some important settings, that we need to configure before we get
+started building our first project.</p>
+
+<h2 id="manage">Manage</h2>
+
+<p>On the main Jenkins menu, click the ‘Manage Jenkins’ link.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-00-manage.png" alt="" /></p>
+
+<p>You will now see the Manage Jenkins page. Click the ‘Configure System’ link to
+get to the main configuration page.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-00-manage-page.png" alt="" /></p>
+
+<h2 id="msbuild">MSBuild</h2>
+
+<p>We need to setup MSBuild to carry out the compilation and build of your .NET
+solutions. We can use any version of MSBuild you have installed on the Jenkins
+machine. As Windows 7 comes with version 3.5 of the .NET Framework pre
+installed I’ll demo that version here but obviously you can download, install
+and use any version of the .NET Framework.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-02-msbuild.png" alt="" /></p>
+
+<p>Click the ‘Add MSBuild’ button.</p>
+
+<p><img src="http://justinramel.com/images/jenkins-net/ch03/03-02-msbuild-2.png" alt="" /></p>
+
+<p>Set the name and path to MSBuild:</p>
+
+<ol>
+  <li>Name: v3.5</li>
+  <li>Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the ‘Save’ button</li>
+</ol>
+
+<p>In my next post we’ll actually get to setup our first job!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins.NET Plugins]]></title>
+    <link href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/"/>
+    <updated>2012-09-20T18:43:00+01:00</updated>
+    <id>http://justinramel.com/2012/09/20/jenkins-dot-net-plugins</id>
+    <content type="html"><![CDATA[<p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
+
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
+
+<hr />
+
+<h2 id="plugins">Plugins</h2>
 
 <p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
 Thankfully Jenkins makes is very easy to find and install plugins. On the main
-Jenkins menu click the &#8216;Manage Jenkins&#8217; link.</p>
+Jenkins menu click the ‘Manage Jenkins’ link.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
 
-<p>You will now see the Manage Jenkins page. Click the &#8216;Manage Plugins&#8217; link.</p>
+<p>You will now see the Manage Jenkins page. Click the ‘Manage Plugins’ link.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
 
 <p>You will now see a list of the currently installed plugins. Click the
 Available tab to see a list of all the Jenkins plugins, which are available to
 install.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
 
 <p>As you can see Jenkins has a massive number of plugins. I encourage you to
 look through and play with the plugins they are really useful and the list is
 growing by the day.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
 
-<h2>Required Plugins</h2>
+<h2 id="required-plugins">Required Plugins</h2>
 
 <p>Without these required Plugins you will not be able to build and test .NET
 solutions. So you must at least install these Plugins for the rest of this
 guide to work.</p>
 
-<h3>Build Plugins</h3>
+<h3 id="build-plugins">Build Plugins</h3>
 
 <p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
 solution.</p>
 
 <ul>
-<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
+  <li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
 projects.</em></li>
 </ul>
 
+<h3 id="testing-plugins">Testing Plugins</h3>
 
-<h3>Testing Plugins</h3>
-
-<p>You&#8217;ll need one of these depending on your chosen test framework.</p>
+<p>You’ll need one of these depending on your chosen test framework.</p>
 
 <ul>
-<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
+  <li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
 XML reports so it can be integrated with Jenkins JUnit features.</em></li>
-<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
-<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
+  <li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
+  <li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
 of an execution of a testing tool in Jenkins.</em></li>
-<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
+  <li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
 test results.</em></li>
 </ul>
 
-
 <p>Tick the check box next to each of the required Plugins and then click the
-&#8216;Download now and install after restart&#8217; button.</p>
+‘Download now and install after restart’ button.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
 
-<h3>Optional Plugins</h3>
+<h3 id="optional-plugins">Optional Plugins</h3>
 
 <p>These Plugins are optional but still recommend ranging from genuine
 productivity tools to just plain fun.</p>
 
-<h3>Jenkins Enhancements</h3>
+<h3 id="jenkins-enhancements">Jenkins Enhancements</h3>
 
 <ul>
-<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
-successful builds. <strong>Who doesn&#8217;t want Green Balls!</strong></em></li>
-<li><strong>Copy project link plugin</strong> - <em>This plugin adds the &#8220;Copy project&#8221; link into
+  <li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
+successful builds. <strong>Who doesn’t want Green Balls!</strong></em></li>
+  <li><strong>Copy project link plugin</strong> - <em>This plugin adds the “Copy project” link into
 left side panel in the main project page.</em></li>
-<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
+  <li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
 a highly visible manner. This is ideal for displaying on a screen on the
 office wall as a form of Extreme Feedback Device.</em></li>
 </ul>
 
-
-<h3>Authentication</h3>
+<h3 id="authentication">Authentication</h3>
 
 <ul>
-<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
+  <li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
 authenticates the username and the password through Active Directory.</em></li>
 </ul>
 
-
-<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
+<blockquote>
+  <p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
 guessing most of you already login via Active Directory so this Plugin saves
-you having to remember yet another password.</p></blockquote>
+you having to remember yet another password.</p>
+</blockquote>
 
-<h3>Code Analysis</h3>
+<h3 id="code-analysis">Code Analysis</h3>
 
 <ul>
-<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
+  <li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
 tasks and generates a trend report.</em></li>
-<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
+  <li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
 warnings in the console log or in log files.</em></li>
 </ul>
 
-
-<h3>Build Tools</h3>
+<h3 id="build-tools">Build Tools</h3>
 
 <ul>
-<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
+  <li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
 build step.</em></li>
-<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
+  <li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
 </ul>
 
-
-<h3>Fun, Fun, Fun</h3>
+<h3 id="fun-fun-fun">Fun, Fun, Fun</h3>
 
 <ul>
-<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
-Jenkins the butler) and a random Chuck Norris &#8216;The Programmer&#8217; fact on each
-build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
-<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
+  <li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
+Jenkins the butler) and a random Chuck Norris ‘The Programmer’ fact on each
+build page. <strong>Every build server needs a Chuck Norris, right?</strong></em></li>
+  <li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
 where users get points on improving the builds. Although this is indeed a fun
 plugin it can help when first introducing Jenkins to your team, a little
 healthy competition never did anyone any harm.</em></li>
 </ul>
-
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Jenkins.NET]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/"/>
+    <link href="http://justinramel.com/2012/09/17/jenkins-dot-net/"/>
     <updated>2012-09-17T21:58:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net</id>
+    <id>http://justinramel.com/2012/09/17/jenkins-dot-net</id>
     <content type="html"><![CDATA[<p>This post is part of a series:</p>
 
 <ol>
-<li><a href="http://justinramel.github.com/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="http://justinramel.github.com/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="http://justinramel.com/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="http://justinramel.com/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="http://justinramel.com/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="http://justinramel.com/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/security/">Security</a></li>
+  <li><a href="http://justinramel.com/2013/01/15/active-directory-security/">Active Directory Security</a></li>
 </ol>
 
+<ul>
+  <li>BONUS: <a href="http://justinramel.com/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
-<h2>Introduction</h2>
+<hr />
+
+<h2 id="introduction">Introduction</h2>
 
 <p>This is the first in a series of posts which I’ll be writing on using Jenkins
 to build .NET solutions. These posts will be as detailed as possible, probably
 too detailed in places.</p>
 
-<h2>Installing Jenkins</h2>
+<h2 id="installing-jenkins">Installing Jenkins</h2>
 
-<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as &#8216;Hudson&#8217; but when Oracle bought Sun there
-was a fall out between the then &#8216;Hudson&#8217; developers and Oracle so they decided
-to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
+<blockquote>
+  <p><strong>NOTE:</strong> Jenkins used to be known as ‘Hudson’ but when Oracle bought Sun there
+was a fall out between the then ‘Hudson’ developers and Oracle so they decided
+to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p>
+</blockquote>
 
-<p>I&#8217;m going to install and setup Jenkins on a freshly minted Windows 7 virtual
+<p>I’m going to install and setup Jenkins on a freshly minted Windows 7 virtual
 machine although this process should work fine on other versions of Windows.</p>
 
 <p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
 
-<p><a href="http://jenkins-ci.org/"><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
+<p><a href="http://jenkins-ci.org/"><img src="http://justinramel.com/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
 
-<h3>Download</h3>
+<h3 id="download">Download</h3>
 
-<p>Rather than the generic .war file we&#8217;ll download the Windows native package,
+<p>Rather than the generic .war file we’ll download the Windows native package,
 which saves as a few steps during installation. The latest windows package is
 available here:</p>
 
 <p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
 
-<p>I&#8217;m using Internet Explorer here, which by default blocks the installer from
+<p>I’m using Internet Explorer here, which by default blocks the installer from
 downloading. Notice the warning message shown at the top of the browser
 window.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
 
 <p>Click the message bar to get the download options context menu.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
 
 <p>Select the Download File… menu option. You will now see the File Download
 dialog.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
 
 <p>Click the Save button to download the installation zip file to your download
 folder. You will now see the Save As dialog again click the Save button to
 actually download the file.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
 
 <p>In a short while you will see the Download complete dialog. Click the Open
 button to open the zipped installation file.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
 
 <p>Internet Explorer Security may kick in and ask if you want to allow this
 operation. Click the Allow button to open the zip file.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
 
 <p>Once the zip file is open, Click Extract all files from the menu.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
 
 <p>You will now see the Extract zip file dialog, Click the Extract button to
 extract the files to the default location.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
 
-<p>Phew! That&#8217;s the download complete.</p>
+<p>Phew! That’s the download complete.</p>
 
-<h3>Setup</h3>
+<h3 id="setup">Setup</h3>
 
 <p>Finally we can run the Setup program. Double click setup to run the program.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
 
 <p>Windows will show a Security Warning to make sure you trust the publisher of
 this software. Click Run to begin the installation.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
 
 <p>You will now see the Jenkins installation wizard. Click the Next button.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
 
 <p>The wizard allows you to change the installation folder. Click Next to accept
 the default folder.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
 
 <p>You are now at the final page of the setup wizard. Click the Install button
 and the installation will begin.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
 
 <p>On Windows 7 the User Account Control may kick in to ask permission to run the
 installation. Click the Yes button to continue.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
 
 <p>The installation wizard will now copy Jenkins onto your machine and display a
 message upon completion. Click the Finish button.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
 
 <p>The install wizard will now open the Jenkins web page.</p>
 
-<p><img src="http://justinramel.github.com/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
+<p><img src="http://justinramel.com/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
 
 <p>Congratulation Jenkins is now installed on your machine!</p>
 ]]></content>
@@ -280,774 +1886,113 @@ message upon completion. Click the Finish button.</p>
   
   <entry>
     <title type="html"><![CDATA[vim tip: !mkdir %:h]]></title>
-    <link href="http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h/"/>
+    <link href="http://justinramel.com/2012/09/06/vim-tip-mkdir-percent-h/"/>
     <updated>2012-09-06T22:10:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/09/06/vim-tip-mkdir-percent-h</id>
+    <id>http://justinramel.com/2012/09/06/vim-tip-mkdir-percent-h</id>
     <content type="html"><![CDATA[<p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
-as well as the great content, I&#8217;m picking up lots of vim tips. I&#8217;m having to
+as well as the great content, I’m picking up lots of vim tips. I’m having to
 pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
-damn fast. Any way I&#8217;m going to start writing these vim gems down in the vain
-hope I&#8217;ll remember some of them.</p>
+damn fast. Any way I’m going to start writing these vim gems down in the vain
+hope I’ll remember some of them.</p>
 
-<h2>Quickly creating a project structure</h2>
+<h2 id="quickly-creating-a-project-structure">Quickly creating a project structure</h2>
 
-<p>It&#8217;s possible to setup a new project without leaving vim. Lets create a new dir
+<p>It’s possible to setup a new project without leaving vim. Lets create a new dir
 for a quick demo:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir demo
-</span><span class='line'>cd demo
-</span><span class='line'>vim</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">mkdir demo
+</span><span class="line">cd demo
+</span><span class="line">vim</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>From the vim command prompt we can create a new user model in the models dir
 using the vim command <code>:n models/user.rb</code></p>
 
-<p><img src="http://justinramel.github.com/images/vim-tip-1/new-file.png"></p>
+<p><img src="http://justinramel.com/images/vim-tip-1/new-file.png" /></p>
 
 <p>Lets break this command down:</p>
 
 <ul>
-<li><strong>:n</strong>             - n is short for new as in file</li>
-<li><strong>models/user.rb</strong> - the directory and name of our new file</li>
+  <li><strong>:n</strong>             - n is short for new as in file</li>
+  <li><strong>models/user.rb</strong> - the directory and name of our new file</li>
 </ul>
-
 
 <p>This creates the new file in a vim buffer but when we go to write this file we
 get an error <code>E212: Can't open file for writing</code>, this is because the directory
 models does not exist.</p>
 
-<p><img src="http://justinramel.github.com/images/vim-tip-1/write-error.png"></p>
+<p><img src="http://justinramel.com/images/vim-tip-1/write-error.png" /></p>
 
 <p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
 
-<p><img src="http://justinramel.github.com/images/vim-tip-1/mkdir-command.png"></p>
+<p><img src="http://justinramel.com/images/vim-tip-1/mkdir-command.png" /></p>
 
 <p>Now the directory has been created we can write the new file from vim.</p>
 
 <p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
 
 <ul>
-<li><strong>:!</strong>    - Execute {command} with the shell</li>
-<li><strong>mkdir</strong> - Make a directory shell command</li>
-<li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
+  <li><strong>:!</strong>    - Execute {command} with the shell</li>
+  <li><strong>mkdir</strong> - Make a directory shell command</li>
+  <li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
 </ul>
-
 
 <p>The full vim help text for <code>%:h</code>:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:h   Head of the file name (the last component and any separators
-</span><span class='line'>  removed).  Cannot be used with :e, :r or :t.
-</span><span class='line'>  Can be repeated to remove several components at the end.
-</span><span class='line'>  When the file name ends in a path separator, only the path
-</span><span class='line'>  separator is removed.  Thus ":p:h" on a directory name results
-</span><span class='line'>  on the directory name itself (without trailing slash).
-</span><span class='line'>  When the file name is an absolute path (starts with "/" for
-</span><span class='line'>  Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
-</span><span class='line'>  part is not removed.  When there is no head (path is relative
-</span><span class='line'>  to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:h	Head of the file name (the last component and any separators
+</span><span class="line">	removed).  Cannot be used with :e, :r or :t.
+</span><span class="line">	Can be repeated to remove several components at the end.
+</span><span class="line">	When the file name ends in a path separator, only the path
+</span><span class="line">	separator is removed.  Thus ":p:h" on a directory name results
+</span><span class="line">	on the directory name itself (without trailing slash).
+</span><span class="line">	When the file name is an absolute path (starts with "/" for
+</span><span class="line">	Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
+</span><span class="line">	part is not removed.  When there is no head (path is relative
+</span><span class="line">	to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h2>Deeper folder structure</h2>
+<h2 id="deeper-folder-structure">Deeper folder structure</h2>
 
 <p>You can create deeper folder structures using the same technique with one extra
 switch on the mkdir command.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:n specs/models/user_spec.rb
-</span><span class='line'>:!mkdir -p %:h
-</span><span class='line'>:w</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:n specs/models/user_spec.rb
+</span><span class="line">:!mkdir -p %:h
+</span><span class="line">:w</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<p>The <code>-p</code> switch will create the intermediate directories for you. If you don&#8217;t
+<p>The <code>-p</code> switch will create the intermediate directories for you. If you don’t
 use this switch the command will fail.</p>
 
 <p>The full command line help for the <code>mkdir -p</code> switch:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>-p   Create intermediate directories as required.  If this option is not
-</span><span class='line'>specified, the full path prefix of each operand must already exist.  On the
-</span><span class='line'>other hand, with this option specified, no error will be reported if a
-</span><span class='line'>directory given as an operand already exists.  Intermediate directories are
-</span><span class='line'>created with permission bits of rwxrwxrwx (0777) as modified by the current
-</span><span class='line'>umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I think that&#8217;s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello brave new world]]></title>
-    <link href="http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world/"/>
-    <updated>2012-08-31T21:21:00+01:00</updated>
-    <id>http://justinramel.github.com/blog/2012/08/31/hello-brave-new-world</id>
-    <content type="html"><![CDATA[<h1>Trying out Octopress</h1>
-
-<p><a href="http://octopress.org/">Octopress</a> for the win!</p>
-
-<p>Bloggin&#8217; from vim, yay.</p>
-
-<p>Updated the theme to <a href="https://github.com/amelandri/darkstripes">darkstripes</a></p>
-
-<p>Imported my old worpress posts using <a href="https://github.com/thomasf/exitwp">exitwp</a></p>
-
-<h2>Code</h2>
-
-<figure class='code'><figcaption><span>ruby, ruby, ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s1">&#39;hello world!&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Images</h2>
-
-<h3>I&#8217;m Old Gregg!</h3>
-
-<p><img src="http://justinramel.github.com/images/old-gregg.jpeg" title="I'm old Gregg" ></p>
-
-<h2>Quotes</h2>
-
-<h3>Block quote</h3>
-
-<blockquote><p>You ever drunk Baileys from a shoe?</p><footer><strong>Old Gregg</strong> <cite>The Mighty Boosh</cite></footer></blockquote>
-
-
-<h3>Pull quote</h3>
-
-<p><span class='pullquote-right' data-pullquote='half man half fish'>
-Old Gregg&#8217;s anatomy a species classification is a topic of debate. Some say
-he&#8217;s half man half fish, others say it&#8217;s more of a 70/30 split.
-</span></p>
-
-<h2>Video</h2>
-
-<iframe width="640" height="510" src="http://www.youtube.com/embed/5Enans8ABSM " frameborder="0" allowfullscreen></iframe>
-
-
-<p>That pretty much covers everything I want to do with this blog so I think
-Octopress is a go, go, go!</p>
-
-<p>I wonder if I can blog from my ipad? Hmmm&#8230;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My first Redcar plugin]]></title>
-    <link href="http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin/"/>
-    <updated>2011-08-19T01:04:35+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/08/19/my-first-redcar-plugin</id>
-    <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
-
-<h4>Introduction</h4>
-
-<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what&#8217;s not to like? Though I must confess I don&#8217;t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
-
-<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
-
-<h4>What&#8217;s da big idea</h4>
-
-<p>The idea for my first plugin is rather ambitious considering I&#8217;ve no idea how to write a plugin. I&#8217;d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
-
-<p>I&#8217;m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
-
-<h4>Install Redcar</h4>
-
-<p>I first followed the install instructions:</p>
-
-<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
-
-<p>All good no problems there (I&#8217;m running on a Mac OSX 10.7.1)</p>
-
-<h4>Plugin Guides</h4>
-
-<p>I then read the plugin guides I found here:</p>
-
-<ul>
-<li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
-<li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
-</ul>
-
-
-<h4>Plugin.rb</h4>
-
-<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin&#8217;s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
-
-<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
-</span><span class='line'>  <span class="no">RefreshBrowser</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
-
-<h4>Browser refresh script</h4>
-
-<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
-
-<p>I managed to find a script to refresh the browser here:</p>
-
-<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
-
-<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
-
-<h4>Storage</h4>
-
-<p>Redcar&#8217;s storage mechanism allows you to easily store configuration data into a yaml file.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">storage</span>
-</span><span class='line'>  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Here I am using this mechanism to store the &#8216;keyword&#8217; used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It&#8217;s also possible to setup a nice edit page but for now this will do.</p>
-
-<h4>Source</h4>
-
-<p>You can find the source for this plugin here:</p>
-
-<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
-
-<h4>Was it easy?</h4>
-
-<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I&#8217;ve spent more time fussing over this blog post than developing the plugin.</p>
-
-<p>So what you waiting for? Go give it a try!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
-    <updated>2011-07-20T20:19:55+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/20/upload-files-to-sharepoint-from-linux</id>
-    <content type="html"><![CDATA[<h4>Fortress</h4>
-
-<p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
-
-<h4>curl to the rescue!</h4>
-
-<p>You can upload files using curl directly into Sharepoint via it&#8217;s HTTP PUT interface.</p>
-
-<p><code>curl --ntlm --user username:password --upload-file myfile.xls https://sharepointserver.com/sites/mysite/myfile.xls</code></p>
-
-<p>Told you, easy when you know how.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Shibboleth settings for TorqueBox]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/16/shibboleth-settings-for-torquebox/"/>
-    <updated>2011-07-16T23:14:52+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/16/shibboleth-settings-for-torquebox</id>
-    <content type="html"><![CDATA[<h4>Authentication Settings</h4>
-
-<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
-
-<p>Config File: /etc/httpd/conf.d/shib.conf</p>
-
-<p><code> ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  require valid-user
-</code></p>
-
-<p>The &#8217;<code>ShibUseHeaders On</code>&#8217; setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
-
-<h4>Simple Authorisation</h4>
-
-<p>If you don&#8217;t need a complex authorisation system and you don&#8217;t mind users seeing a standard Shibboleth authorisation error page:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
-
-<p>You can implement this via your Shibboleth settings using the require statement:</p>
-
-<p><code> ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  **require grouper_groups ~ MySecurityGroup**
-</code></p>
-
-<p>Here we require the custom grouper_groups attribute matches on the regular expression after the &#8217;<code>~</code>&#8217;. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
-
-<h5>Top Tip</h5>
-
-<p>When playing with your Shib settings don&#8217;t forget to restart httpd to see the affect.
-<code>sudo /sbin/service httpd restart</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
-    <updated>2011-07-16T22:16:31+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
-    <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
-
-<h4>Apache Setup</h4>
-
-<h5>Proxy Module</h5>
-
-<p>For this to work Apache must have the mod_proxy module loaded:</p>
-
-<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
-
-<p>Config file: /etc/httpd/conf/httpd.conf</p>
-
-<p><code>ProxyRequests     Off                         # Switch off forward proxy
-ProxyPreserveHost On                               # Pass host name onto the proxy
-ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server
-ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
-</code>
-Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
-
-<h4>TorqueBox Setup</h4>
-
-<p>In your Torquebox application folder create a file &#8216;config/torquebox.yml&#8217; which contains a context which matches the Apache reverse proxy url.</p>
-
-<p>torquebox.yml</p>
-
-<p>web:
-  context: /myapp
-ruby:
-  version: 1.9</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TorqueBox - gem install error]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/14/torquebox-gem-install-error/"/>
-    <updated>2011-07-14T12:42:27+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/14/torquebox-gem-install-error</id>
-    <content type="html"><![CDATA[<h4>TorqueBox Install</h4>
-
-<p>I&#8217;m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
-
-<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
-
-<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
-
-<h4>Error</h4>
-
-<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
-
-<p>Error: Your application used more memory than the safety cap of 500m.
-Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
-
-<h4>Fix</h4>
-
-<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
-
-<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
-
-<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
-
-<p>Hope that helps someone or maybe me if have to do this again!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SETUP GIT REPO]]></title>
-    <link href="http://justinramel.github.com/blog/2011/07/12/setup-git-repo/"/>
-    <updated>2011-07-12T21:48:22+01:00</updated>
-    <id>http://justinramel.github.com/blog/2011/07/12/setup-git-repo</id>
-    <content type="html"><![CDATA[<h4>ADDING KEY TO SERVER</h4>
-
-<p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
-
-<h4>SERVER</h4>
-
-<p><code>sudo mkdir /home/git/myrepo
-cd /home/git/myrepo
-sudo git --bare init
-sudo chown -R git:git /home/git/myrepo
-</code></p>
-
-<h4>CLIENT</h4>
-
-<p>`mkdir myrepo
-cd myrepo
-git init</p>
-
-<h1>add some files</h1>
-
-<p>git add .
-git commit -m &#8220;added some files&#8221;</p>
-
-<p>git remote add origin git@myserver.com:myrepo
-git push origin master</p>
-
-<p>rm -r myrepo/
-git clone git@yourserver.com:myrepo
-`</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails new app workflow]]></title>
-    <link href="http://justinramel.github.com/blog/2011/01/11/rails-new-app-workflow/"/>
-    <updated>2011-01-11T14:58:47+00:00</updated>
-    <id>http://justinramel.github.com/blog/2011/01/11/rails-new-app-workflow</id>
-    <content type="html"><![CDATA[<p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
-
-<h4>Create app</h4>
-
-<p>rails new <app_name></p>
-
-<p>cd <app_name></p>
-
-<h4>git</h4>
-
-<p>git init</p>
-
-<p>git add .</p>
-
-<p>git commit –m &#8216;Initial commit&#8217;</p>
-
-<p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
-
-<h4>rvm and gemsets</h4>
-
-<p>rvm gemset create <app_name></p>
-
-<p>echo &#8216;rvm use 1.9.2@<app_name>&#8217; >> .rvmrc</p>
-
-<p>echo &#8216;.rvmrc&#8217; >> .gitignore</p>
-
-<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created.</p>
-
-<p>Change in and out of the directory to get rvm to kick in:</p>
-
-<p>cd ..</p>
-
-<p>cd <app_name></p>
-
-<h4>Gemfile</h4>
-
-<p>Edit ./Gemfile and add the following lines.</p>
-
-<p>gem &#8216;haml&#8217;</p>
-
-<p>group :test do</p>
-
-<p>gem &#8216;rspec&#8217;</p>
-
-<p>gem &#8216;rspec-rails&#8217;</p>
-
-<p>end</p>
-
-<p>Then install and run bundler:</p>
-
-<p>gem install bundler</p>
-
-<p>bundle install</p>
-
-<h4>rspec</h4>
-
-<p>Generate the rspec files:</p>
-
-<p>rails g rspec:install</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Method]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method/"/>
-    <updated>2010-12-31T01:32:57+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-method</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4>Extract Method</h4>
-
-<p>Extracts a selection into a method and places it above the current method.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/extractMethod.html">http://www.refactoring.com/catalog/extractMethod.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_before_thumb.png" alt="ExtractMethod_Before" /></a>    <br/>
-Visually select lines you wish to extract    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rem     <br/>
-</strong>You will now see a prompt to enter the new method name: <br/>
-Method name: print_details</p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractmethod_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractmethod_after_thumb.png" alt="ExtractMethod_After" /></a>    <br/>
-A new method <strong><em>print_details</em></strong> has been added above the <strong>print_owing</strong> method containing the contents of the selected lines.</p>
-
-<p><strong>rem</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>M</strong>ethod.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Instance Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable/"/>
-    <updated>2010-12-31T01:14:03+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-instance-variable</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4>Rename Instance Variable</h4>
-
-<p>Renames the selected instance variable.</p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_before_thumb.png" alt="RenameInstanceVar_Before" /></a>    <br/>
-Visually select the instance variable you wish to rename    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rriv      <br/>
-</strong>You will now see a prompt to enter the new variable name: <br/>
-Rename to: new_name</p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renameinstancevar_after_thumb.png" alt="RenameInstanceVar_After" /></a>    <br/>
-The instance variable <em><strong>@name</strong></em> has been renamed to <strong><em>@new_name</em></strong> in both locations within the class.</p>
-
-<p><strong>rriv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>I</strong>nstance <strong>V</strong>ariable.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Rename Local Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable/"/>
-    <updated>2010-12-31T00:59:58+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-rename-local-variable</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<p><strong>IMPORTANT:</strong> As well as installing the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin, you must also install the <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> plugin for this refactoring to work.</p>
-
-<h4>Rename Local Variable</h4>
-
-<p>Renames the selected local variable.</p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/renamevar_before.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_before_thumb.png" alt="RenameVar_Before" /></a>    <br/>
-Visually select the local variable you wish to rename    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rrlv      <br/>
-</strong>You will now see a prompt to enter the new variable name: <br/>
-Rename to: is_mac_os</p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/renamevar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/renamevar_after_thumb.png" alt="RenameVar_After" /></a>    <br/>
-The local variable <em><strong>mac_os</strong></em> has been renamed to <strong><em>is_mac_os</em></strong> in both locations within the method.</p>
-
-<p><strong>rrlv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>R</strong>ename <strong>L</strong>ocal <strong>V</strong>ariable.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Local Variable]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable/"/>
-    <updated>2010-12-31T00:27:45+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/31/vim-ruby-refactoring-extract-local-variable</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Extract Local Variable</h4>
-
-<p>Extracts a visual selection into a local variable.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/introduceExplainingVariable.html">http://www.refactoring.com/catalog/introduceExplainingVariable.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractvar_before1.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_before_thumb1.png" alt="ExtractVar_Before" /></a>    <br/>
-Visually select the value you wish to extract    <br/>
-Hit your <strong><leader-key></strong> then type <strong>relv      <br/>
-</strong>You will now see a prompt to enter the variable name: <br/>
-Variable name: mac_os</p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractvar_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractvar_after_thumb.png" alt="ExtractVar_After" /></a>    <br/>
-The value <strong><em>platform.upcase.include?(‘MAC’)</em></strong> has been extracted into a local variable <strong><em>mac_os</em></strong>.</p>
-
-<p><strong>relv</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>ocal <strong>V</strong>ariable.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Extract to Let]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let/"/>
-    <updated>2010-12-30T23:49:00+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-to-let</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Extract to Let</h4>
-
-<p>This is an <a href="http://rspec.info/">RSpec</a> specific refactoring which will extract an initialisation line and create a let method for you.</p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractlet_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_before_thumb.png" alt="ExtractLet_Before" /></a> <br/>
-Move the cursor on to the line you wish to extract    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rel </strong></p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractlet_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractlet_after_thumb.png" alt="ExtractLet_After" /></a>    <br/>
-The let method is created above the it block, using the initialisation line - account = Account.new.</p>
-
-<p><strong>rel</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>L</strong>et.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Extract Constant]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-constant/"/>
-    <updated>2010-12-30T23:04:56+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-extract-constant</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Extract Constant</h4>
-
-<p>Extracts a selection into a constant which is placed at the top of the current module or class.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html">http://www.refactoring.com/catalog/replaceMagicNumberWithSymbolicConstant.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_before.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_before_thumb.png" alt="ExtractConstant_Before" /></a> <br/>
-Visually select the value you wish to extract    <br/>
-Hit your <strong><leader-key></strong> then type <strong>rec      <br/>
-</strong>You will now see a prompt to enter the constant name: <br/>
-Constant name: Gravitational_Constant</p>
-
-<p>After refactoring:   <br/>
-<a href="http://justinram.files.wordpress.com/2010/12/extractconstant_after.png"><img src="http://justinram.files.wordpress.com/2010/12/extractconstant_after_thumb.png" alt="ExtractConstant_After" /></a>    <br/>
-The value <strong><em>9.81</em></strong> has been extracted into a constant <strong><em>GRAVITATIONAL_CONSTANT</em></strong> which is placed at the top of the module.</p>
-
-<p><strong>rec</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>E</strong>xtract <strong>C</strong>onstant.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Convert Post Conditional]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-convert-post-conditional/"/>
-    <updated>2010-12-30T22:37:07+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-convert-post-conditional</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Convert Post Conditional</h4>
-
-<p>Converts a post conditional expression to a conditional expression.</p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_before_thumb.png" alt="ConvertPostConditional_Before" /></a>     <br/>
-Move the cursor onto the line which contains the post conditional expression     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rcpc      <br/>
-</strong></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after.png"><img src="http://justinram.files.wordpress.com/2010/12/convertpostconditional_after_thumb.png" alt="ConvertPostConditional_After" /></a>     <br/>
-The post conditional expression is split across 3 lines and converted into a standard if expression.</p>
-
-<p><strong>rcpc</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>C</strong>onvert <strong>P</strong>ost <strong>C</strong>onditional.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Inline Temp]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-inline-temp/"/>
-    <updated>2010-12-30T21:37:59+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-inline-temp</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Inline Temp</h4>
-
-<p>Replaces a temporary variable with a direct call to the method or formula.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/inlineTemp.html">http://www.refactoring.com/catalog/inlineTemp.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_before.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_before_thumb.png" alt="InlineTemp_Before" /></a>     <br/>
-Move the cursor onto the temp variable (in this case base_price)     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rit      <br/>
-</strong></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/inlinetemp_after.png"><img src="http://justinram.files.wordpress.com/2010/12/inlinetemp_after_thumb.png" alt="InlineTemp_After" /></a>     <br/>
-The temp variable base_price has been replace with a direct call to the method and we’ve saved a line of code.</p>
-
-<p><strong>rit</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>I</strong>nline <strong>T</strong>emp.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim-ruby-refactoring - Add Parameter]]></title>
-    <link href="http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-add-parameter-2/"/>
-    <updated>2010-12-30T17:10:35+00:00</updated>
-    <id>http://justinramel.github.com/blog/2010/12/30/vim-ruby-refactoring-add-parameter-2</id>
-    <content type="html"><![CDATA[<p>This post is part of a <a href="http://justinram.wordpress.com/2010/12/30/vim-ruby-refactoring-series/">series</a> which documents the <a href="https://github.com/ecomba/vim-ruby-refactoring">vim-ruby-refactoring</a> plugin.</p>
-
-<h4>Add Parameter</h4>
-
-<p>Simply adds a parameter (or many separated with commas) to a method.</p>
-
-<p>The refactoring: <a href="http://www.refactoring.com/catalog/addParameter.html">http://www.refactoring.com/catalog/addParameter.html</a></p>
-
-<h4>Example</h4>
-
-<p>Before refactoring:<a href="http://justinram.files.wordpress.com/2010/12/addparameter_before.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_before_thumb.png" alt="AddParameter_Before" /></a>     <br/>
-Move your cursor onto the method where you wish to add the parameter     <br/>
-Hit your <strong><leader-key></strong> then type <strong>rap      <br/>
-</strong>You will now see a prompt to enter the parameter name:     <br/>
-Parameter name: <strong>date</strong></p>
-
-<p>After refactoring:</p>
-
-<p><a href="http://justinram.files.wordpress.com/2010/12/addparameter_after.png"><img src="http://justinram.files.wordpress.com/2010/12/addparameter_after_thumb.png" alt="AddParameter_After" /></a>     <br/>
-The contact method now has a date parameter added.</p>
-
-<p><strong>rap</strong> is the default binding for this refactoring, think <strong>R</strong>efactor <strong>A</strong>dd <strong>P</strong>arameter.</p>
-
-<p>The default <strong><leader-key></strong> in vim is the ‘\’ key but you can remap this to any key you like.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">-p	Create intermediate directories as required.  If this option is not
+</span><span class="line">specified, the full path prefix of each operand must already exist.  On the
+</span><span class="line">other hand, with this option specified, no error will be reported if a
+</span><span class="line">directory given as an operand already exists.  Intermediate directories are
+</span><span class="line">created with permission bits of rwxrwxrwx (0777) as modified by the current
+</span><span class="line">umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I think that’s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
 ]]></content>
   </entry>
   

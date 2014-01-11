@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: torquebox | just ram]]></title>
+  <link href="http://justinramel.com//categories/torquebox/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Shibboleth settings for TorqueBox]]></title>
+    <link href="http://justinramel.com/2011/07/16/shibboleth-settings-for-torquebox/"/>
+    <updated>2011-07-16T23:14:52+01:00</updated>
+    <id>http://justinramel.com/2011/07/16/shibboleth-settings-for-torquebox</id>
+    <content type="html"><![CDATA[<h4 id="authentication-settings">Authentication Settings</h4>
+
+<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
+
+<p>Config File: /etc/httpd/conf.d/shib.conf</p>
+
+<p><code>  ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  require valid-user
+</code></p>
+
+<p>The ‘<code>ShibUseHeaders On</code>’ setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
+
+<h4 id="simple-authorisation">Simple Authorisation</h4>
+
+<p>If you don’t need a complex authorisation system and you don’t mind users seeing a standard Shibboleth authorisation error page:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
+
+<p>You can implement this via your Shibboleth settings using the require statement:</p>
+
+<p><code>  ShibUseHeaders On
+  AuthType shibboleth
+  ShibRequestSetting requireSession 1
+  **require grouper_groups ~ MySecurityGroup**
+</code></p>
+
+<p>Here we require the custom grouper_groups attribute matches on the regular expression after the ‘<code>~</code>’. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
+
+<h5 id="top-tip">Top Tip</h5>
+
+<p>When playing with your Shib settings don’t forget to restart httpd to see the affect.
+<code>sudo /sbin/service httpd restart</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
+    <link href="http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
+    <updated>2011-07-16T22:16:31+01:00</updated>
+    <id>http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
+    <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
+
+<h4 id="apache-setup">Apache Setup</h4>
+
+<h5 id="proxy-module">Proxy Module</h5>
+
+<p>For this to work Apache must have the mod_proxy module loaded:</p>
+
+<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
+
+<p>Config file: /etc/httpd/conf/httpd.conf</p>
+
+<p><code>ProxyRequests     Off 						   # Switch off forward proxy
+ProxyPreserveHost On 							   # Pass host name onto the proxy
+ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server 
+ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
+</code>
+Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
+
+<h4 id="torquebox-setup">TorqueBox Setup</h4>
+
+<p>In your Torquebox application folder create a file ‘config/torquebox.yml’ which contains a context which matches the Apache reverse proxy url.</p>
+
+<p>torquebox.yml</p>
+
+<p>web:
+  context: /myapp
+ruby:
+  version: 1.9</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TorqueBox - gem install error]]></title>
+    <link href="http://justinramel.com/2011/07/14/torquebox-gem-install-error/"/>
+    <updated>2011-07-14T12:42:27+01:00</updated>
+    <id>http://justinramel.com/2011/07/14/torquebox-gem-install-error</id>
+    <content type="html"><![CDATA[<h4 id="torquebox-install">TorqueBox Install</h4>
+
+<p>I’m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
+
+<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
+
+<h4 id="error">Error</h4>
+
+<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
+
+<p>Error: Your application used more memory than the safety cap of 500m.
+Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
+
+<h4 id="fix">Fix</h4>
+
+<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
+
+<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+
+<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
+
+<p>Hope that helps someone or maybe me if have to do this again!</p>
+]]></content>
+  </entry>
+  
+</feed>

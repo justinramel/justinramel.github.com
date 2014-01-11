@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Resharper | just ram]]></title>
+  <link href="http://justinramel.com//categories/resharper/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Resharper format settings]]></title>
+    <link href="http://justinramel.com/2009/06/10/resharper-format-settings/"/>
+    <updated>2009-06-10T18:15:59+01:00</updated>
+    <id>http://justinramel.com/2009/06/10/resharper-format-settings</id>
+    <content type="html"><![CDATA[<p>I can never remember these so thought it best to write them down. Start with the settings from:</p>
+
+<p><a href="http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx">http://codebetter.com/blogs/aaron.jensen/archive/2008/10/19/getting-resharper-and-vs-to-play-nice-with-mspec.aspx</a></p>
+
+<p>Plus a few extras…</p>
+
+<p>Go to menu Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Formatting Style</p>
+
+<ul>
+  <li>
+    <p>Braces Layout –&gt; All set to (BSD style)</p>
+  </li>
+  <li>
+    <p>Braces Layout –&gt; Empty braces formatting = Together on the same line<a href="http://justinram.files.wordpress.com/2009/06/image6.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb6.png" alt="image" /></a></p>
+  </li>
+  <li>
+    <p>Blank lines – I don’t like a lot of blank lines so I set mostly to 1/0<a href="http://justinram.files.wordpress.com/2009/06/image13.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb13.png" alt="image" /></a></p>
+  </li>
+  <li></li>
+</ul>
+
+<p>Other –&gt; Align Multiline Constructs – Call arguments = Off</p>
+
+<ul>
+  <li></li>
+</ul>
+
+<p>Other –&gt; Align Multiline Constructs – Expression = Off<a href="http://justinram.files.wordpress.com/2009/06/image14.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb14.png" alt="image" /></a></p>
+
+<ul>
+  <li></li>
+</ul>
+
+<p>Other –&gt; Other – Indent array, object and collection initializer block = Off<a href="http://justinram.files.wordpress.com/2009/06/image9.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb9.png" alt="image" /></a></p>
+
+<h2 id="regions">Regions</h2>
+
+<p>Stop Resharper adding regions to interface implementations and nested classes:</p>
+
+<p>Go to menu: Resharper –&gt; Options –&gt; Languages –&gt; C# –&gt; Type Members Layout</p>
+
+<p>Un-tick Use Default Patterns and you get a text area full of xml. Scroll to the bottom and delete the section:</p>
+
+<group>     
+<implementsinterface immediate="true" region="${ImplementsInterface} Members" />      
+</group>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image10.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb10.png" alt="image" /></a></p>
+
+<p>Also delete the section:</p>
+
+<group>     
+<name region="Nested type: ${Name}" />      
+</group>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image11.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb11.png" alt="image" /></a></p>
+
+<p>Finally click Ok.</p>
+
+<h2 id="code-cleanup">Code Cleanup</h2>
+
+<p>Go to menu Resharper –&gt; Options –&gt; Tools –&gt; Code Cleanup</p>
+
+<p>Add a new profile with the following settings:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image12.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb12.png" alt="image" /></a></p>
+
+<p>I didn’t realise I had fiddled with the default settings so much no wonder I can never remember them.</p>
+]]></content>
+  </entry>
+  
+</feed>

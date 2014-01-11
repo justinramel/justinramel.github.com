@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Programming | just ram]]></title>
+  <link href="http://justinramel.com//categories/programming/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[TortoiseSVN + Global ignore pattern]]></title>
+    <link href="http://justinramel.com/2007/10/10/tortoisesvn-global-ignore-pattern/"/>
+    <updated>2007-10-10T14:37:22+01:00</updated>
+    <id>http://justinramel.com/2007/10/10/tortoisesvn-global-ignore-pattern</id>
+    <content type="html"><![CDATA[<p><img src="http://justinram.files.wordpress.com/2007/10/tortoise.GIF" alt="Tortoise" />
+<code>build_log.xml *.suo *.user _ReSharper* *.resharper bin obj class build</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Add a new project to Subversion server in Windows XP]]></title>
+    <link href="http://justinramel.com/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp/"/>
+    <updated>2006-02-22T12:12:00+00:00</updated>
+    <id>http://justinramel.com/2006/02/22/add-a-new-project-to-subversion-server-in-windows-xp</id>
+    <content type="html"><![CDATA[<p>NOTE: You must have <a href="http://tortoisesvn.tigris.org/">TortoiseSVN</a> installed for these instructions to work!</p>
+
+<p>First create your Project folder structure:</p>
+
+<pre><code>ProjectName
+branches
+tags
+trunk
+</code></pre>
+
+<p>Place your source in the trunk folder.</p>
+
+<p>In windows explorer right click on ProjectName folder and select TortiseSVN -&gt; Import from the menu.</p>
+
+<p>You will now see the import screen:</p>
+
+<p><a href="http://photos1.blogger.com/blogger/752/2322/1600/svnimport.jpg"><img src="http://photos1.blogger.com/blogger/752/2322/320/svnimport.jpg" alt="" /></a>
+Enter the repository/ProjectName an import message and click OK.</p>
+
+<p>You have now created the project in Subversion but you must still check out the source you just imported.  This can be done via TortoiseSVN or directly in eclipse using the <a href="http://subclipse.tigris.org/">subclipse</a> add in.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing subversion server on windows]]></title>
+    <link href="http://justinramel.com/2006/02/21/installing-subversion-server-on-windows/"/>
+    <updated>2006-02-21T17:24:00+00:00</updated>
+    <id>http://justinramel.com/2006/02/21/installing-subversion-server-on-windows</id>
+    <content type="html"><![CDATA[<p>We used subversion (or svn for short) server running on windows as our version control server as it integrates very nicely with eclipse.</p>
+
+<p>We found a guide for installation:</p>
+
+<p><a href="http://excastle.com/blog/archive/2005/05/31/1048.aspx">Mere-Moments Guide to installing a Subversion server on Windows</a></p>
+
+<p>But it turned out all we really needed was the subversion 1-click install:</p>
+
+<p><a href="http://svn1clicksetup.tigris.org/">svn 1-clicksetup</a></p>
+
+<p>Intergration with eclipse was easy too:</p>
+
+<p><a href="http://subclipse.tigris.org/">Subclipse</a></p>
+
+<p>We also found a nice windows client for subversion:</p>
+
+<p><a href="http://tortoisesvn.tigris.org/">tortoisesvn</a></p>
+
+<p>Job done we’re good to go.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: General | just ram]]></title>
+  <link href="http://justinramel.com//categories/general/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My first Redcar plugin]]></title>
+    <link href="http://justinramel.com/2011/08/19/my-first-redcar-plugin/"/>
+    <updated>2011-08-19T01:04:35+01:00</updated>
+    <id>http://justinramel.com/2011/08/19/my-first-redcar-plugin</id>
+    <content type="html"><![CDATA[<p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I’m documenting the process of creating my first plugin.</p>
+
+<h4 id="introduction">Introduction</h4>
+<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what’s not to like? Though I must confess I don’t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
+
+<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
+
+<h4 id="whats-da-big-idea">What’s da big idea</h4>
+<p>The idea for my first plugin is rather ambitious considering I’ve no idea how to write a plugin. I’d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
+
+<p>I’m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
+
+<h4 id="install-redcar">Install Redcar</h4>
+<p>I first followed the install instructions:</p>
+
+<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
+
+<p>All good no problems there (I’m running on a Mac OSX 10.7.1)</p>
+
+<h4 id="plugin-guides">Plugin Guides</h4>
+<p>I then read the plugin guides I found here:</p>
+
+<ul>
+  <li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
+  <li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
+</ul>
+
+<h4 id="pluginrb">Plugin.rb</h4>
+<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin’s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
+
+<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
+
+<p><code>ruby
+def self.project_refresh_task_type
+  RefreshBrowser
+end
+</code></p>
+
+<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
+
+<h4 id="browser-refresh-script">Browser refresh script</h4>
+<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
+
+<p>I managed to find a script to refresh the browser here:</p>
+
+<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
+
+<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
+
+<h4 id="storage">Storage</h4>
+<p>Redcar’s storage mechanism allows you to easily store configuration data into a yaml file.</p>
+
+<p><code>ruby
+def storage
+  @storage ||= Plugin::Storage.new('live_reload_plugin')
+  @storage.set_default('keyword', '')
+  @storage
+end
+</code></p>
+
+<p>Here I am using this mechanism to store the ‘keyword’ used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It’s also possible to setup a nice edit page but for now this will do.</p>
+
+<h4 id="source">Source</h4>
+<p>You can find the source for this plugin here:</p>
+
+<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
+
+<h4 id="was-it-easy">Was it easy?</h4>
+<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I’ve spent more time fussing over this blog post than developing the plugin.</p>
+
+<p>So what you waiting for? Go give it a try!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Upload files to Sharepoint from linux]]></title>
+    <link href="http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux/"/>
+    <updated>2011-07-20T20:19:55+01:00</updated>
+    <id>http://justinramel.com/2011/07/20/upload-files-to-sharepoint-from-linux</id>
+    <content type="html"><![CDATA[<h4 id="fortress">Fortress</h4>
+
+<p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
+
+<h4 id="curl-to-the-rescue">curl to the rescue!</h4>
+
+<p>You can upload files using curl directly into Sharepoint via it’s HTTP PUT interface.</p>
+
+<p><code>curl --ntlm --user username:password --upload-file myfile.xls https://sharepointserver.com/sites/mysite/myfile.xls</code></p>
+
+<p>Told you, easy when you know how.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Apache Reverse Proxy to Torquebox ]]></title>
+    <link href="http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox/"/>
+    <updated>2011-07-16T22:16:31+01:00</updated>
+    <id>http://justinramel.com/2011/07/16/setup-apache-reverse-proxy-to-torquebox</id>
+    <content type="html"><![CDATA[<p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
+
+<h4 id="apache-setup">Apache Setup</h4>
+
+<h5 id="proxy-module">Proxy Module</h5>
+
+<p>For this to work Apache must have the mod_proxy module loaded:</p>
+
+<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
+
+<p>Config file: /etc/httpd/conf/httpd.conf</p>
+
+<p><code>ProxyRequests     Off 						   # Switch off forward proxy
+ProxyPreserveHost On 							   # Pass host name onto the proxy
+ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server 
+ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
+</code>
+Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
+
+<h4 id="torquebox-setup">TorqueBox Setup</h4>
+
+<p>In your Torquebox application folder create a file ‘config/torquebox.yml’ which contains a context which matches the Apache reverse proxy url.</p>
+
+<p>torquebox.yml</p>
+
+<p>web:
+  context: /myapp
+ruby:
+  version: 1.9</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Building FubuMVC with a portable version of rake]]></title>
+    <link href="http://justinramel.com/2009/06/19/building-fubumvc-with-a-portable-version-of-rake/"/>
+    <updated>2009-06-19T16:55:24+01:00</updated>
+    <id>http://justinramel.com/2009/06/19/building-fubumvc-with-a-portable-version-of-rake</id>
+    <content type="html"><![CDATA[<p>To build <a href="http://fubumvc.pbworks.com/">FubuMVC</a> you need to install ruby, rake etc. Unfortunately for me the firewall at work will not allow me to get the rake gem (I’ve downloaded gems before using the HTTP_PROXY setting before but no luck this time). Any hoose I remember reading <a href="http://www.stephenbalkum.com/Default.aspx">Stephen Balkum</a> post on packaging up <a href="http://docs.rubyrake.org/index.html">Rake</a> as an executable.  I followed Stephens guide and created a portable rake package which got around my firewall problem <strong>but</strong> <a href="http://fubumvc.pbworks.com/">FubuMVC</a> required another gem <a href="http://rubyforge.org/frs/download.php/11376/rubyzip-0.9.1.zip">rubyzip</a> to allow a build.</p>
+
+<h2 id="adding-another-gem">Adding another gem</h2>
+
+<p>Luckily using <a href="http://www.stephenbalkum.com/archive/2009/06/09/when-all-you-need-is-a-rake.aspx">Stephen’s guide</a> its really easy to add extra gems, you just need to have them installed before you build your exe. So we follow the first part of the process outlined in <a href="http://www.stephenbalkum.com/archive/2009/06/09/when-all-you-need-is-a-rake.aspx">Stephen’s guide</a> then do the following:</p>
+
+<p><strong>NOTE:</strong> In this case we need rubyzip but it could be any old gem.</p>
+
+<ul>
+  <li>
+    <p>Download <a href="http://rubyforge.org/frs/download.php/11376/rubyzip-0.9.1.zip">rubyzip</a> and extract to contents to c:\rubywork\zip</p>
+  </li>
+  <li>
+    <p>To install rubyzip, at a command prompt in c:\rubywork\zip, run ..\ruby\bin\ruby install.rb</p>
+  </li>
+  <li>
+    <p>Download <a href="http://www.zlib.net/zlib123-dll.zip">zlib</a> and extract the zlib1.dll to C:\rubywork\ruby\lib\ruby\1.8\i386-mswin32</p>
+  </li>
+  <li>
+    <p>Rename zlib1.dll to zlib.dll (rubyzip required this extra dll other gems may not)</p>
+  </li>
+</ul>
+
+<p>Now continue part two of the process from <a href="http://www.stephenbalkum.com/archive/2009/06/09/when-all-you-need-is-a-rake.aspx">Stephen’s guide</a> to compile your very own allinoneruby.exe which includes, rake and rubyzip.</p>
+
+<p>You should now have allinoneruby.exe and rake.rb file.</p>
+
+<h2 id="building-fubumvc">Building FubuMVC</h2>
+
+<p>We can now drop these files into to the FubuMVC project under the build support folder:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image15.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb15.png" alt="image" /></a></p>
+
+<p>We need a helper batch file in the root folder of FubuMVC called rake.bat which contains:</p>
+
+<p>@.\build_support\allinoneruby.exe .\build_support\rake.rb %*</p>
+
+<p>This will be called when we run the build.</p>
+
+<h2 id="run-the-build-already">Run the build already</h2>
+
+<p>Drop to the command prompt and cd into the FubuMVC project root and simply type build. You should get something like:</p>
+
+<p><a href="http://justinram.files.wordpress.com/2009/06/image16.png"><img src="http://justinram.files.wordpress.com/2009/06/image_thumb16.png" alt="image" /></a></p>
+
+<h2 id="download">Download</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Don’t want to go through all that? You can download my version of portable rake [here](http://cid-d7d57b78b0ddedf5.skydrive.live.com/self.aspx/.Public/blog/portable</td>
+      <td><em>rake/portablerake.zip) (_I don’t think I’m breaking any licensing agreements here, this is all open source software. If I am let me know and I’ll remove the link</em>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>DISCLAIMER:</strong> I offer no guarantees I can only confirm this works on my machine!</p>
+
+<h2 id="one-final-note">One final note</h2>
+
+<p>I’ve used this method to build some of the other open source projects out there which use rake (<em>all the _<a href="http://blog.jpboodhoo.com/developwithpassionbdd.aspx">_cool kids_</a></em> seem to be using rake_) and so far I’ve not had any problems. This could be pretty frictionless way to introduce rake to a team of .net developers who don’t want the overhead of installing ruby on their machines. Just add it to a tools folder check it in to source control they’ll never know!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HOWTO: Download and run Microsoft Report Builder 1.0]]></title>
+    <link href="http://justinramel.com/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0/"/>
+    <updated>2009-05-20T17:58:51+01:00</updated>
+    <id>http://justinramel.com/2009/05/20/howto-download-and-run-microsoft-report-builder-1-0</id>
+    <content type="html"><![CDATA[<p>Assuming you have an SQL Server 2005 running reporting services you can run Report builder as a ClickOnce app using the following url:</p>
+
+<p>http://<_servername_>/reportserver/reportbuilder/reportbuilder.application</_servername_></p>
+]]></content>
+  </entry>
+  
+</feed>

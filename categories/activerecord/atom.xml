@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ActiveRecord | just ram]]></title>
+  <link href="http://justinramel.com//categories/activerecord/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Castle ActiveRecord – Exception : The ProxyFactoryFactory was not configured]]></title>
+    <link href="http://justinramel.com/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured/"/>
+    <updated>2009-01-23T16:38:12+00:00</updated>
+    <id>http://justinramel.com/2009/01/23/castle-activerecord-exception-the-proxyfactoryfactory-was-not-configured</id>
+    <content type="html"><![CDATA[<p>I’ve just updated to the latest version of the Castle stack and got hit with this exception:</p>
+
+<pre><code>The ProxyFactoryFactory was not configured.
+Initialize 'proxyfactory.factory_class' property of the session-factory configuration section with one of the available NHibernate.ByteCode providers.
+Example:
+NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu
+Example:
+NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle
+</code></pre>
+
+<p>Turns out the NHibernate config has changed and as the exception says you must now specify a factory class.</p>
+
+<p>To fix the exception add a new line to your active record facility config:</p>
+
+<facility id="activerecord.facility" isweb="true" type="Castle.Facilities.ActiveRecordIntegration.ActiveRecordFacility, Castle.Facilities.ActiveRecordIntegration">
+    
+<assemblies>
+
+    
+<item>Nu.Core</item>
+
+    
+</assemblies>
+
+    
+<config>
+
+    
+<add value="false" key="cache.use_query_cache" />
+
+    
+<add value="ReadCommitted" key="connection.isolation" />
+
+    
+<add value="false" key="show_sql" />
+
+    
+<add value="NHibernate.Dialect.SQLiteDialect" key="dialect" />
+
+    
+<add value="NHibernate.Driver.SQLite20Driver" key="connection.driver_class" />
+
+    
+<add value="true=1;false=0" key="query.substitutions" />
+
+    
+<add value="#{ConnectionString}" key="connection.connection_string" />
+
+    
+<add value="NHibernate.Connection.DriverConnectionProvider" key="connection.provider" />
+
+    
+** <add value="NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle" key="proxyfactory.factory_class" />
+      
+** </config>
+
+    
+</facility>
+
+<p>Then add a reference in your project to NHibernate.ByteCode.Castle.dll.</p>
+]]></content>
+  </entry>
+  
+</feed>

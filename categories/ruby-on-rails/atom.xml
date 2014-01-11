@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby on Rails | just ram]]></title>
+  <link href="http://justinramel.com//categories/ruby-on-rails/atom.xml" rel="self"/>
+  <link href="http://justinramel.com/"/>
+  <updated>2013-09-25T21:11:11+01:00</updated>
+  <id>http://justinramel.com/</id>
+  <author>
+    <name><![CDATA[Justin Ramel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails new app workflow]]></title>
+    <link href="http://justinramel.com/2011/01/11/rails-new-app-workflow/"/>
+    <updated>2011-01-11T14:58:47+00:00</updated>
+    <id>http://justinramel.com/2011/01/11/rails-new-app-workflow</id>
+    <content type="html"><![CDATA[<p>These are the steps I take when creating a new Rails app, documented here for when I forget.</p>
+
+<h4 id="create-app">Create app</h4>
+
+<p>rails new <app_name /></p>
+
+<p>cd <app_name /></p>
+
+<h4 id="git">git</h4>
+
+<p>git init</p>
+
+<p>git add .</p>
+
+<p>git commit –m ‘Initial commit’</p>
+
+<p><strong>Remember</strong>: Rails generates a .gitignore file for us.</p>
+
+<h4 id="rvm-and-gemsets">rvm and gemsets</h4>
+
+<p>rvm gemset create <app_name /></p>
+
+<p>echo ‘rvm use 1.9.2@<app_name>' &gt;&gt; .rvmrc</app_name></p>
+
+<p>echo ‘.rvmrc’ » .gitignore</p>
+
+<p>Creates a .rvmrc file in current directory that way when you cd into this directory rvm automatically switches to the correct version of ruby and the gemset we just created. </p>
+
+<p>Change in and out of the directory to get rvm to kick in:</p>
+
+<p>cd ..</p>
+
+<p>cd <app_name /></p>
+
+<h4 id="gemfile">Gemfile</h4>
+
+<p>Edit ./Gemfile and add the following lines.</p>
+
+<p>gem ‘haml’</p>
+
+<p>group :test do</p>
+
+<p>gem ‘rspec’</p>
+
+<p>gem ‘rspec-rails’</p>
+
+<p>end</p>
+
+<p>Then install and run bundler:</p>
+
+<p>gem install bundler</p>
+
+<p>bundle install</p>
+
+<h4 id="rspec">rspec</h4>
+
+<p>Generate the rspec files:</p>
+
+<p>rails g rspec:install</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Connecting Ruby on Rails to Microsoft SQL Server]]></title>
+    <link href="http://justinramel.com/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server/"/>
+    <updated>2006-04-07T21:39:21+01:00</updated>
+    <id>http://justinramel.com/2006/04/07/connecting-ruby-on-rails-to-microsoft-sql-server</id>
+    <content type="html"><![CDATA[<p><strong>NOTE: These instructions are now seriously out of date. You may want to check out my always up to date ebook instead. <a href="http://rails2ms-sql.heroku.com/">The secret of connecting Rails to Microsoft SQL Server</a></strong></p>
+
+<p><a href="http://rails2ms-sql.heroku.com/"><img src="http://justinram.files.wordpress.com/2010/12/banner.png" alt="" /></a></p>
+
+<p>It appears rails does not connect to MS SQL Server right out of the box.  You need to do the following to get the connection to work:</p>
+
+<p>Get the latest source distribution of <a href="http://rubyforge.org/projects/ruby-dbi/">Ruby-DBI</a> and copy the file:</p>
+
+<pre><code>bdi-0.1.0/lib/dbd/ADO.rb
+</code></pre>
+
+<p>to:</p>
+
+<pre><code>c:/ruby/lib/ruby/site_ruby/1.8/DBD/ADO/ADO.rb
+</code></pre>
+
+<p><strong>NOTE: The ADO directory does not exist on a standard install, you will need to create it.</strong></p>
+
+<p>Then simply set up your railsapp/config/database.yml</p>
+
+<p>Here’s an example for reference:</p>
+
+<pre><code>development:
+  adapter: sqlserver
+  database: database_name
+  host: server_name
+  username: user_name
+  password: your_pw_here
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Migrations 'Zombie State' and MS SQL]]></title>
+    <link href="http://justinramel.com/2006/04/04/migrations-zombie-state-and-ms-sql/"/>
+    <updated>2006-04-04T14:28:44+01:00</updated>
+    <id>http://justinramel.com/2006/04/04/migrations-zombie-state-and-ms-sql</id>
+    <content type="html"><![CDATA[<p>Getting ‘Zombie State’ errors with migrations and MS SQL Server? Add the following to your config/enviroment.rb:</p>
+
+<pre><code>ActiveRecord::Base.connection.instance_variable_get("@connection")["AutoCommit"] = false
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pluralize table names - no thanks!]]></title>
+    <link href="http://justinramel.com/2006/04/04/pluralize-table-names-no-thanks/"/>
+    <updated>2006-04-04T14:05:19+01:00</updated>
+    <id>http://justinramel.com/2006/04/04/pluralize-table-names-no-thanks</id>
+    <content type="html"><![CDATA[<p>Sorry I just can’t live with plural table names, I just can’t get my head around it! Luckily it is easily turned off. In RadRails there is a simple tick box when creating the project which simply adds the following line to the end of your applications config/environment.rb file:</p>
+
+<pre><code># Include your application configuration below
+ActiveRecord::Base.pluralize_table_names = false
+</code></pre>
+
+<p>I may live to regret not embracing plural table names but I doubt it!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up Ruby on Rails]]></title>
+    <link href="http://justinramel.com/2006/04/04/setting-up-ruby-on-rails/"/>
+    <updated>2006-04-04T11:26:22+01:00</updated>
+    <id>http://justinramel.com/2006/04/04/setting-up-ruby-on-rails</id>
+    <content type="html"><![CDATA[<p>I’m going to give Ruby on Rails (RoR) a try on my Windows XP machine.  Here’s how I’ve set it up…</p>
+
+<ol>
+  <li>
+    <p>Install Ruby
+Using the <a href="http://rubyforge.org/projects/rubyinstaller/">Ruby One Click Installer Ruby One Click Installer</a> (v184-16 release candidate 1)</p>
+  </li>
+  <li>
+    <p>Setup proxy</p>
+  </li>
+</ol>
+
+<pre><code>set HTTP_PROXY=http://wwwcache:8080
+</code></pre>
+
+<ol>
+  <li>GEM install Ruby on Rails</li>
+</ol>
+
+<pre><code>gem install rails --include-dependencies
+</code></pre>
+
+<ol>
+  <li>
+    <p>Install RadRails
+I also downloaded and installed the latest <a href="http://www.radrails.org/">RadRails</a> (v0.6.1) </p>
+  </li>
+  <li>
+    <p>Database
+I’m going to try rails with our dev MS-SQL server so no database to install. No doubt lots of configuring to do though!</p>
+  </li>
+</ol>
+
+<h4 id="note">NOTE:</h4>
+
+<p>There appears to be a problem with the WEBrick web server in this setup.  I couldn’t find the answer on google but I did find a work around. If you run the WEBrick server using the standard ruby script\server you will get the following error:</p>
+
+<pre><code>ruby script\server
+=&gt; Booting WEBrick...
+=&gt; Rails application started on http://0.0.0.0:3000
+=&gt; Ctrl-C to shutdown server; call with --help for options
+[2006-04-04 13:20:35] INFO  WEBrick 1.3.1
+[2006-04-04 13:20:35] INFO  ruby 1.8.4 (2005-12-24) [i386-mswin32]
+[2006-04-04 13:20:35] WARN  TCPServer Error: Bad file descriptor - bind(2)
+c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `initialize': Bad file descriptor - bind(2) (Errno::EBADF)
+        from c:/ruby/lib/ruby/1.8/webrick/utils.rb:73:in `create_listeners'
+        from c:/ruby/lib/ruby/1.8/webrick/utils.rb:70:in `create_listeners'
+        from c:/ruby/lib/ruby/1.8/webrick/server.rb:75:in `listen'
+        from c:/ruby/lib/ruby/1.8/webrick/server.rb:63:in `initialize'
+        from c:/ruby/lib/ruby/1.8/webrick/httpserver.rb:24:in `initialize'
+        from c:/ruby/lib/ruby/gems/1.8/gems/rails-1.1.0/lib/webrick_server.rb:59:in `dispatch'
+        from c:/ruby/lib/ruby/gems/1.8/gems/rails-1.1.0/lib/commands/servers/webrick.rb:59
+        from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+        from c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.3.0/lib/active_support/dependencies.rb:136:in `require'
+        from c:/ruby/lib/ruby/gems/1.8/gems/rails-1.1.0/lib/commands/server.rb:30
+        from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:21:in `require'
+        from c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.3.0/lib/active_support/dependencies.rb:136:in `require'
+        from script/server:3
+</code></pre>
+
+<p>There appears to be some problem binding to the port 3000, netstat shows nothing running on port 3000 so I’ve no idea what is causing it. Any hoose a work around is simply to run on another port:</p>
+
+<pre><code>ruby script\server --port=8000
+</code></pre>
+
+<p>If I do find out what is causing the problem I’ll update this post.</p>
+]]></content>
+  </entry>
+  
+</feed>

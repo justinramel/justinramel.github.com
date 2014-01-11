@@ -9,8 +9,7 @@
   <meta name="author" content="Justin Ramel">
 
   
-  <meta name="description" content="This post is part of a series: Jenkins.NET
-Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a few plugins to Jenkins. &hellip;">
+  <meta name="description" content="This post is part of a series: Vim to Emacs Vim to Emacs - Ace Jump Mode Vim to Emacs - YASnippets Vim to Emacs - Smart Tab The latest thing I’m &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,13 +18,14 @@ Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a f
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://justinramel.github.com/">
+  <link rel="canonical" href="http://justinramel.com">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="just ram" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@ Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a f
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-34670425-1']);
+    _gaq.push(['_setAccount', 'UA-35853047-1']);
     _gaq.push(['_trackPageview']);
 
     (function() {
@@ -62,7 +62,7 @@ Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a f
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:justinramel.github.com" />
+    <input type="hidden" name="q" value="site:justinramel.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -83,7 +83,7 @@ Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a f
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></h1>
+      <h1 class="entry-title"><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></h1>
     
     
       <p class="meta">
@@ -99,7 +99,7 @@ Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a f
   
 
 
-<time datetime="2012-09-20T18:43:00+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2012</time>
+<time datetime="2013-09-25T20:25:00+01:00" pubdate data-updated="true">Sep 25<span>th</span>, 2013</time>
         
       </p>
     
@@ -109,133 +109,44 @@ Jenkins.NET Plugins Plugins To compile .NET and run our tests we need to add a f
   <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
+<hr />
 
-<h2>Plugins</h2>
+<p>The latest thing I’m missing from Vim is tab completion. I’d like to hit tab and have Emacs either insert a snippet or try to auto-complete the word based on what I just typed.</p>
 
-<p>To compile .NET and run our tests we need to add a few plugins to Jenkins.
-Thankfully Jenkins makes is very easy to find and install plugins. On the main
-Jenkins menu click the &#8216;Manage Jenkins&#8217; link.</p>
+<p>With lots of Googlizing I’ve managed to hack together a solution, it’s not perfect (yet) but still meets most of my needs for now.</p>
 
-<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-menu.png" alt="" /></p>
+<h2 id="setup">Setup</h2>
+<p>Download <code>smart-tab.el</code> from <a href="https://github.com/genehack/smart-tab">genehack</a> (or from <a href="https://github.com/justinramel/prelude/blob/master/vendor/smart-tab.el">me</a>) and save it in to the <code>.emacs.d/vendor</code> folder.</p>
 
-<p>You will now see the Manage Jenkins page. Click the &#8216;Manage Plugins&#8217; link.</p>
+<p>Next create a <code>tab.el</code> in the <code>.emacs/personal</code> folder.</p>
 
-<p><img src="/images/jenkins-net/ch02/02-00-manage-jenkins-page.png" alt="" /></p>
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/tab.el">personal/tab.el</a></p>
 
-<p>You will now see a list of the currently installed plugins. Click the
-Available tab to see a list of all the Jenkins plugins, which are available to
-install.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(require 'smart-tab)
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">
+</span><span class="line">(cons 'yas/hippie-try-expand 'hippie-expand-try-functions-list)
+</span><span class="line">
+</span><span class="line">(setq smart-tab-using-hippie-expand t)
+</span><span class="line">(global-smart-tab-mode t)
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p><img src="/images/jenkins-net/ch02/02-00-plugin-manager.png" alt="" /></p>
+<p>Here I am using cons to push YASnippets to the front of the hippie expand list, this means snippets are found before trying to auto-complete words.</p>
 
-<p>As you can see Jenkins has a massive number of plugins. I encourage you to
-look through and play with the plugins they are really useful and the list is
-growing by the day.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-available-plugins.png" alt="" /></p>
-
-<h2>Required Plugins</h2>
-
-<p>Without these required Plugins you will not be able to build and test .NET
-solutions. So you must at least install these Plugins for the rest of this
-guide to work.</p>
-
-<h3>Build Plugins</h3>
-
-<p>The Build Plugin we’ll be using is MSBuild this allows us to build a .NET
-solution.</p>
-
-<ul>
-<li><strong>MSBuild Plugin</strong> - <em>This plugin allows you to use MSBuild to build .NET
-projects.</em></li>
-</ul>
-
-
-<h3>Testing Plugins</h3>
-
-<p>You&#8217;ll need one of these depending on your chosen test framework.</p>
-
-<ul>
-<li><strong>MSTest Plugin</strong> - <em>This plugin converts MSTest TRX test reports into JUnit
-XML reports so it can be integrated with Jenkins JUnit features.</em></li>
-<li><strong>NUnit Plugin</strong> - <em>This plugin allows you to publish NUnit test results.</em></li>
-<li><strong>xUnit Plugin</strong> - <em>This plugin makes it possible to publish the test results
-of an execution of a testing tool in Jenkins.</em></li>
-<li><strong>Gallio Plugin</strong> - <em>This plugin makes it possible to publish Gallio/MbUnit
-test results.</em></li>
-</ul>
-
-
-<p>Tick the check box next to each of the required Plugins and then click the
-&#8216;Download now and install after restart&#8217; button.</p>
-
-<p><img src="/images/jenkins-net/ch02/02-00-installing-plugins.png" alt="" /></p>
-
-<h3>Optional Plugins</h3>
-
-<p>These Plugins are optional but still recommend ranging from genuine
-productivity tools to just plain fun.</p>
-
-<h3>Jenkins Enhancements</h3>
-
-<ul>
-<li><strong>Green Balls</strong> - <em>Changes Hudson to use green balls instead of blue for
-successful builds. <strong>Who doesn&#8217;t want Green Balls!</strong></em></li>
-<li><strong>Copy project link plugin</strong> - <em>This plugin adds the &#8220;Copy project&#8221; link into
-left side panel in the main project page.</em></li>
-<li><strong>Radiator View Plugin</strong> - <em>Provides a job view displaying project status in
-a highly visible manner. This is ideal for displaying on a screen on the
-office wall as a form of Extreme Feedback Device.</em></li>
-</ul>
-
-
-<h3>Authentication</h3>
-
-<ul>
-<li><strong>Active Directory Plugin</strong> - <em>With this plugin, you can configure Jenkins
-authenticates the username and the password through Active Directory.</em></li>
-</ul>
-
-
-<blockquote><p><strong>NOTE:</strong> You can setup Authentication up without Active Directory but I’m
-guessing most of you already login via Active Directory so this Plugin saves
-you having to remember yet another password.</p></blockquote>
-
-<h3>Code Analysis</h3>
-
-<ul>
-<li><strong>Task Scanner Plugin</strong> - <em>This plugin scans the workspace files for open
-tasks and generates a trend report.</em></li>
-<li><strong>Warnings Plugin</strong> - <em>This plugin generates the trend report for compiler
-warnings in the console log or in log files.</em></li>
-</ul>
-
-
-<h3>Build Tools</h3>
-
-<ul>
-<li><strong>NAnt Plugin</strong> - <em>This plugin allows for the execution of a NAnt build as a
-build step.</em></li>
-<li><strong>PowerShell Plugin</strong> - <em>Integrates with Windows PowerShell.</em></li>
-</ul>
-
-
-<h3>Fun, Fun, Fun</h3>
-
-<ul>
-<li><strong>ChuckNorris Plugin</strong> - <em>Displays a picture of Chuck Norris (instead of
-Jenkins the butler) and a random Chuck Norris &#8216;The Programmer&#8217; fact on each
-build page. <strong>Every build server need a Chuck Norris, right?</strong></em></li>
-<li><strong>The Continuous Integration Game plugin</strong> - <em>This plugin introduces a game
-where users get points on improving the builds. Although this is indeed a fun
-plugin it can help when first introducing Jenkins to your team, a little
-healthy competition never did anyone any harm.</em></li>
-</ul>
-
+<p>As I said this is not perfect, I can’t auto-complete in the middle of a snippet process for instance but it’s not a bad start.</p>
 </div>
   
   
@@ -248,7 +159,7 @@ healthy competition never did anyone any harm.</em></li>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></h1>
+      <h1 class="entry-title"><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a></h1>
     
     
       <p class="meta">
@@ -264,7 +175,7 @@ healthy competition never did anyone any harm.</em></li>
   
 
 
-<time datetime="2012-09-17T21:58:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2012</time>
+<time datetime="2013-09-17T22:01:00+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
         
       </p>
     
@@ -274,122 +185,40 @@ healthy competition never did anyone any harm.</em></li>
   <div class="entry-content"><p>This post is part of a series:</p>
 
 <ol>
-<li><a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
-<li><a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
 </ol>
 
+<hr />
 
-<h2>Introduction</h2>
+<p>Another plugin I miss from Vim is <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a>, I use this plugin to insert snippets of code while programming. Once again Emacs has me covered, <a href="https://github.com/capitaomorte/yasnippet">YASnippet</a> offers the same functionality.</p>
 
-<p>This is the first in a series of posts which I’ll be writing on using Jenkins
-to build .NET solutions. These posts will be as detailed as possible, probably
-too detailed in places.</p>
+<h2 id="setup">Setup</h2>
+<p>Create a <code>yasnippet.el</code> in the <code>.emacs.d/personal</code> folder.</p>
 
-<h2>Installing Jenkins</h2>
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/yasnippet.el">personal/yasnippet.el</a></p>
 
-<blockquote><p><strong>NOTE:</strong> Jenkins used to be known as &#8216;Hudson&#8217; but when Oracle bought Sun there
-was a fall out between the then &#8216;Hudson&#8217; developers and Oracle so they decided
-to fork the project and rename themselves Jenkins. <a href="http://jenkins-ci.org/content/hudsons-future">Full details</a></p></blockquote>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(prelude-require-package 'yasnippet)
+</span><span class="line">
+</span><span class="line">(require 'yasnippet)
+</span><span class="line">(yas-global-mode 1)</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>I&#8217;m going to install and setup Jenkins on a freshly minted Windows 7 virtual
-machine although this process should work fine on other versions of Windows.</p>
+<p>Here I make sure the <code>yasnippet</code> package is available then require the package and enable it globally.</p>
 
-<p>Go to the Jenkins home page: <a href="http://jenkins-ci.org/">http://jenkins-ci.org/</a></p>
+<h2 id="personal-snippets">Personal Snippets</h2>
+<p>You can create your own personal snippets in the <code>.emas.d/snippets</code> folder. More details in this slightly outdated <a href="http://capitaomorte.github.io/yasnippet/">guide</a>.</p>
 
-<p><a href="http://jenkins-ci.org/"><img src="/images/jenkins-net/ch01/01-00-jenkins-home-page.png" alt="" /></a></p>
+<h2 id="ruby-snippets">Ruby Snippets</h2>
+<p>I have also installed a set of ruby and rspecs snippets from bmaland’s <a href="https://github.com/bmaland/yasnippet-ruby-mode">repo</a>. I simply cloned the repo into the personal snippest folder with name ruby-mode. Note the name is important it needs to match the Emacs mode where the snippets are used.</p>
 
-<h3>Download</h3>
-
-<p>Rather than the generic .war file we&#8217;ll download the Windows native package,
-which saves as a few steps during installation. The latest windows package is
-available here:</p>
-
-<p><a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-download.png" alt="" /></p>
-
-<p>I&#8217;m using Internet Explorer here, which by default blocks the installer from
-downloading. Notice the warning message shown at the top of the browser
-window.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-warning.png" alt="" /></p>
-
-<p>Click the message bar to get the download options context menu.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-context-menu.png" alt="" /></p>
-
-<p>Select the Download File… menu option. You will now see the File Download
-dialog.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-file-download-dialog.png" alt="" /></p>
-
-<p>Click the Save button to download the installation zip file to your download
-folder. You will now see the Save As dialog again click the Save button to
-actually download the file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-save-as-dialog.png" alt="" /></p>
-
-<p>In a short while you will see the Download complete dialog. Click the Open
-button to open the zipped installation file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-download-complete.png" alt="" /></p>
-
-<p>Internet Explorer Security may kick in and ask if you want to allow this
-operation. Click the Allow button to open the zip file.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-ie-security.png" alt="" /></p>
-
-<p>Once the zip file is open, Click Extract all files from the menu.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-open-zip.png" alt="" /></p>
-
-<p>You will now see the Extract zip file dialog, Click the Extract button to
-extract the files to the default location.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-01-zip-extract-dialog.png" alt="" /></p>
-
-<p>Phew! That&#8217;s the download complete.</p>
-
-<h3>Setup</h3>
-
-<p>Finally we can run the Setup program. Double click setup to run the program.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-setup.png" alt="" /></p>
-
-<p>Windows will show a Security Warning to make sure you trust the publisher of
-this software. Click Run to begin the installation.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-warning.png" alt="" /></p>
-
-<p>You will now see the Jenkins installation wizard. Click the Next button.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-1.png" alt="" /></p>
-
-<p>The wizard allows you to change the installation folder. Click Next to accept
-the default folder.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-2.png" alt="" /></p>
-
-<p>You are now at the final page of the setup wizard. Click the Install button
-and the installation will begin.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-3.png" alt="" /></p>
-
-<p>On Windows 7 the User Account Control may kick in to ask permission to run the
-installation. Click the Yes button to continue.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-user-access-control.png" alt="" /></p>
-
-<p>The installation wizard will now copy Jenkins onto your machine and display a
-message upon completion. Click the Finish button.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-wizard-complete.png" alt="" /></p>
-
-<p>The install wizard will now open the Jenkins web page.</p>
-
-<p><img src="/images/jenkins-net/ch01/01-02-jenkins.png" alt="" /></p>
-
-<p>Congratulation Jenkins is now installed on your machine!</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git clone git@github.com:bmaland/yasnippet-ruby-mode.git ~/.emacs.d/personal/ruby-mode</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
   
   
@@ -402,7 +231,7 @@ message upon completion. Click the Finish button.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a></h1>
+      <h1 class="entry-title"><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></h1>
     
     
       <p class="meta">
@@ -418,328 +247,213 @@ message upon completion. Click the Finish button.</p>
   
 
 
-<time datetime="2012-09-06T22:10:00+01:00" pubdate data-updated="true">Sep 6<span>th</span>, 2012</time>
+<time datetime="2013-09-15T23:19:00+01:00" pubdate data-updated="true">Sep 15<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I just subscribed to <a href="http://www.destroyallsoftware.com/">Destroy All Software</a>
-as well as the great content, I&#8217;m picking up lots of vim tips. I&#8217;m having to
-pause the video a lot, <a href="http://twitter.com/garybernhardt">Gary</a> is just too
-damn fast. Any way I&#8217;m going to start writing these vim gems down in the vain
-hope I&#8217;ll remember some of them.</p>
+  <div class="entry-content"><p>This post is part of a series:</p>
 
-<h2>Quickly creating a project structure</h2>
+<ol>
+  <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
 
-<p>It&#8217;s possible to setup a new project without leaving vim. Lets create a new dir
-for a quick demo:</p>
+<hr />
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir demo
-</span><span class='line'>cd demo
-</span><span class='line'>vim</span></code></pre></td></tr></table></div></figure>
+<p>One of the things I miss from Vim is the wonderful <a href="https://github.com/Lokaltog/vim-easymotion">Easy Motion</a> which allows you to jump quickly to any word in the buffer.</p>
+
+<p>Thankfully Emacs has a very similar package <a href="http://www.emacswiki.org/emacs/AceJump">Ace Jump Mode</a>.</p>
+
+<h2 id="setup">Setup</h2>
+<p>Using Prelude setup was simple, create a file in the personal folder and it will be auto loaded when Emacs starts.</p>
+
+<p><a href="https://github.com/justinramel/prelude/blob/master/personal/ace-jump-mode.el">personal/ace-jump-mode.el</a></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">(prelude-require-package 'ace-jump-mode)
+</span><span class="line">
+</span><span class="line">(require 'ace-jump-mode)
+</span><span class="line">(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’m using the <code>prelude-require-package</code> function to make sure the <code>ace-jump-mode</code> package is available just in case this is a new machine where the package has not been installed.</p>
+
+<p>I then require the <code>ace-jump-mode</code> package and bind a short cut key to <code>C-c SPC</code>.</p>
+
+<p>Now when I press Ctrl + c followed by Space Emacs asks for a <code>Head Char:</code> which will then highlight all words that begin with that Char. Pressing that char jumps straight to that Char.</p>
+
+<p>A screen cast is worth a thousand words:</p>
+
+<iframe width="640" height="510" src="http://www.youtube.com/embed/UZkpmegySnc " frameborder="0" allowfullscreen=""></iframe>
+</div>
+  
+  
 
 
-<p>From the vim command prompt we can create a new user model in the models dir
-using the vim command <code>:n models/user.rb</code></p>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<p><img src="/images/vim-tip-1/new-file.png"></p>
 
-<p>Lets break this command down:</p>
 
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-14T12:54:00+01:00" pubdate data-updated="true">Sep 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is part of a series:</p>
+
+<ol>
+  <li><a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a></li>
+  <li><a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a></li>
+  <li><a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emacs - YASnippets</a></li>
+  <li><a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a></li>
+</ol>
+
+<hr />
+
+<h2 id="why">Why?</h2>
+<p>Mostly curiosity. As a long time Vim user I’ve heard lots of good and bad about this other ancient editor Emacs. As well as my curiosity I’ve rubbed up against a few rough edges lately mixing Vim and Tmux’s modal modes and problems getting Vim plugin’s working cross platform.</p>
+
+<p>I decided to find out for myself, is Emacs is as good/bad as they say?</p>
+
+<h2 id="evil">Evil</h2>
+<p>I’ve tried Emacs before but quickly returned to Vim after becoming perplexed at the number of <code>Ctrl + x Ctrl + ?!?</code> keystrokes needed to do the simplest of actions. This time I’m trying the <a href="http://www.emacswiki.org/emacs/Evil">Evil</a> package with gives Vim like editing within Emacs. The best of both worlds? Or too good to be true?</p>
+
+<p>So far I’m very impressed with Evil, once this package was installed I was right at home. You really can’t get way without learning some of the basic Emacs control keys but they are very small in number.</p>
+
+<h2 id="emacs-redux">Emacs Redux</h2>
+<p>Out of the box Emacs is not the most pleasant of experiences, just like Vim it is very raw until you tweak the config. Thankfully Emacs is ridiculously configurable you really can create an editor suited to your own personal tastes. Configuration is done via Emacs Lisp, a little overwhelming for beginners but I do look forward to learning the language. It’s certainly looks a lot nicer than VIML!</p>
+
+<p>I quickly realised hacking on my init.el conifg file with my limited knowledge was not the way to go. I eventually found the excellent <a href="http://emacsredux.com/">Emacs Redux</a> blog and the <a href="https://github.com/bbatsov/prelude">Prelude</a> configuration project. This project has allowed me to have a solid foundation as I find my feet in Emacs land.</p>
+
+<h2 id="initial-config">Initial Config</h2>
 <ul>
-<li><strong>:n</strong>             - n is short for new as in file</li>
-<li><strong>models/user.rb</strong> - the directory and name of our new file</li>
+  <li><a href="http://www.emacswiki.org/emacs/Evil">Evil</a></li>
+  <li><a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a></li>
 </ul>
 
+<p>I’ve also changed a few Prelude defaults which can be found in my <a href="https://github.com/justinramel/prelude">personal fork</a>.</p>
 
-<p>This creates the new file in a vim buffer but when we go to write this file we
-get an error <code>E212: Can't open file for writing</code>, this is because the directory
-models does not exist.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>So far so good. I’m honestly surprised how quickly I’ve settled in with Emacs this time, there is lots here to like. I really don’t feel like I’m deserting Vim, thanks to Evil all that Vim ‘muscle memory’ is coming along with me.</p>
+</div>
+  
+  
 
-<p><img src="/images/vim-tip-1/write-error.png"></p>
 
-<p>We can create this directory right from the vim command prompt with <code>!mkdir %:h</code></p>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<p><img src="/images/vim-tip-1/mkdir-command.png"></p>
 
-<p>Now the directory has been created we can write the new file from vim.</p>
 
-<p>So what does the cryptic command <code>!mkdir %:h</code> actually mean? Let break it down:</p>
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-22T23:46:00+00:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="switch-on-vim-colour">Switch on vim colour</h2>
+
+<p>Do your self a favour and switch on git colour it makes the command line output
+much easier to read.</p>
+
+<p><code>git config --global --add color.ui true</code></p>
+
+<h2 id="remote-branches">Remote branches</h2>
+
+<p>Working as part of a team at some point you’ll need to take a look at a team
+mates branch, first they need to push their branch up to github.</p>
+
+<p><code>git push origin -u my-awesome-new-feature</code></p>
+
+<h2 id="pull-down-a-team-mates-branch">Pull down a team mates branch</h2>
+
+<p>Don’t know or can’t remember the remote branch name?</p>
+
+<p><code>git branch -r</code></p>
+
+<p>Next you need to create a local branch that tracks the remote branch.</p>
+
+<p><code>git checkout --track origin/my-awesome-new-feature</code></p>
+
+<p>This command creates a local branch named my-awesome-new-feature which is
+tracking the remote branch. Now when you push your changes the remote branch
+will be updated.</p>
 
 <ul>
-<li><strong>:!</strong>    - Execute {command} with the shell</li>
-<li><strong>mkdir</strong> - Make a directory shell command</li>
-<li><strong>%:h</strong>   - The directory of the current file (in our case models)</li>
+  <li>More info on <a href="http://stackoverflow.com/questions/9537392/git-fetch-remote-branch">stackoverflow</a></li>
 </ul>
 
+<h2 id="fix-a-conflict">Fix a conflict</h2>
 
-<p>The full vim help text for <code>%:h</code>:</p>
+<p>When you have a conflict in a feature branch you’ll not be able to auto merge
+on github you’ll need to merge the branch manually.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:h   Head of the file name (the last component and any separators
-</span><span class='line'>  removed).  Cannot be used with :e, :r or :t.
-</span><span class='line'>  Can be repeated to remove several components at the end.
-</span><span class='line'>  When the file name ends in a path separator, only the path
-</span><span class='line'>  separator is removed.  Thus ":p:h" on a directory name results
-</span><span class='line'>  on the directory name itself (without trailing slash).
-</span><span class='line'>  When the file name is an absolute path (starts with "/" for
-</span><span class='line'>  Unix; "x:\" for MS-DOS, WIN32, OS/2; "drive:" for Amiga), that
-</span><span class='line'>  part is not removed.  When there is no head (path is relative
-</span><span class='line'>  to current directory) the result is empty.</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git checkout master
+</span><span class="line">git merge my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-
-<h2>Deeper folder structure</h2>
-
-<p>You can create deeper folder structures using the same technique with one extra
-switch on the mkdir command.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:n specs/models/user_spec.rb
-</span><span class='line'>:!mkdir -p %:h
-</span><span class='line'>:w</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The <code>-p</code> switch will create the intermediate directories for you. If you don&#8217;t
-use this switch the command will fail.</p>
-
-<p>The full command line help for the <code>mkdir -p</code> switch:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>-p   Create intermediate directories as required.  If this option is not
-</span><span class='line'>specified, the full path prefix of each operand must already exist.  On the
-</span><span class='line'>other hand, with this option specified, no error will be reported if a
-</span><span class='line'>directory given as an operand already exists.  Intermediate directories are
-</span><span class='line'>created with permission bits of rwxrwxrwx (0777) as modified by the current
-</span><span class='line'>umask, plus write and search permission for the owner.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I think that&#8217;s as much as I need to know about <code>:!mkdir %:h</code> for now.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-31T21:21:00+01:00" pubdate data-updated="true">Aug 31<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Trying out Octopress</h1>
-
-<p><a href="http://octopress.org/">Octopress</a> for the win!</p>
-
-<p>Bloggin&#8217; from vim, yay.</p>
-
-<p>Updated the theme to <a href="https://github.com/amelandri/darkstripes">darkstripes</a></p>
-
-<p>Imported my old worpress posts using <a href="https://github.com/thomasf/exitwp">exitwp</a></p>
-
-<h2>Code</h2>
-
-<figure class='code'><figcaption><span>ruby, ruby, ruby</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s1">&#39;hello world!&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Images</h2>
-
-<h3>I&#8217;m Old Gregg!</h3>
-
-<p><img src="/images/old-gregg.jpeg" title="I'm old Gregg" ></p>
-
-<h2>Quotes</h2>
-
-<h3>Block quote</h3>
-
-<blockquote><p>You ever drunk Baileys from a shoe?</p><footer><strong>Old Gregg</strong> <cite>The Mighty Boosh</cite></footer></blockquote>
-
-
-<h3>Pull quote</h3>
-
-<p><span class='pullquote-right' data-pullquote='half man half fish'>
-Old Gregg&#8217;s anatomy a species classification is a topic of debate. Some say
-he&#8217;s half man half fish, others say it&#8217;s more of a 70/30 split.
-</span></p>
-
-<h2>Video</h2>
-
-<iframe width="640" height="510" src="http://www.youtube.com/embed/5Enans8ABSM " frameborder="0" allowfullscreen></iframe>
-
-
-<p>That pretty much covers everything I want to do with this blog so I think
-Octopress is a go, go, go!</p>
-
-<p>I wonder if I can blog from my ipad? Hmmm&#8230;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-19T01:04:35+01:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As a small thank you to the <a href="http://redcareditor.com/">Redcar</a> team for such a great editor and in the spirit of giving a little bit back I&#8217;m documenting the process of creating my first plugin.</p>
-
-<h4>Introduction</h4>
-
-<p>I really like the idea of the <a href="http://redcareditor.com/">Redcar</a> editor. Its written in Ruby, its possible to write your own plugins what&#8217;s not to like? Though I must confess I don&#8217;t use it as my day to day editor, I wonder if writing my own plugins will change that.</p>
-
-<p>Let see how easy it is to write a plugin for <a href="http://redcareditor.com/">Redcar</a>.</p>
-
-<h4>What&#8217;s da big idea</h4>
-
-<p>The idea for my first plugin is rather ambitious considering I&#8217;ve no idea how to write a plugin. I&#8217;d like to replicate some of the functionality of <a href="http://livereload.com/">Live Reload</a> - basically refresh a browser web page whenever I save a file in Redcar. This will save me constantly hitting refresh in the browser when working with <a href="http://documentcloud.github.com/backbone/">Backbone.js</a>.</p>
-
-<p>I&#8217;m hoping to trap the save event of <a href="http://redcareditor.com/">Redcar</a> and call out to my browser (Chrome) and tell it to refresh the page.</p>
-
-<h4>Install Redcar</h4>
-
-<p>I first followed the install instructions:</p>
-
-<p><a href="http://github.com/redcar/redcar/wiki/installation">http://github.com/redcar/redcar/wiki/installation</a></p>
-
-<p>All good no problems there (I&#8217;m running on a Mac OSX 10.7.1)</p>
-
-<h4>Plugin Guides</h4>
-
-<p>I then read the plugin guides I found here:</p>
+<p>Fix any conflicts.</p>
 
 <ul>
-<li><a href="http://simplic.it/blog/my-first-redcar-plugin.html">http://simplic.it/blog/my-first-redcar-plugin.html</a></li>
-<li><a href="http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf">http://quickwebdesign.net/documents/20110710_redcar_plugins.pdf</a></li>
+  <li>Check out this
+<a href="http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/">vimcast</a>
+for a nice way to fix conflicts in vim using the <a href="https://github.com/tpope/vim-fugitive">fugitive
+plugin</a>.</li>
 </ul>
 
+<blockquote>
+  <p>fugitive.vim: a Git wrapper so awesome, it should be illegal</p>
+</blockquote>
 
-<h4>Plugin.rb</h4>
-
-<p>Setting up a plugin is really easy and well described in the guides listed above. Redcar itself is made up of a bunch of plugin&#8217;s so there are no end of great examples to follow in the source code (<a href="http://github.com/redcar/redcar">http://github.com/redcar/redcar</a>)</p>
-
-<p>For trapping the save event I dug into the source code and came across the method <strong>project_refresh_task_type</strong> which is called on all plugins after a save. To hook into this process my plugin simply defines the method:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">project_refresh_task_type</span>
-</span><span class='line'>  <span class="no">RefreshBrowser</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This may not be the best place to hook into save, Redcar has the concept of events and that may be a better place to look but for now this is working.</p>
-
-<h4>Browser refresh script</h4>
-
-<p>RefreshBrowser is a Redcar::Task which I have created to run the browser refresh script.</p>
-
-<p>I managed to find a script to refresh the browser here:</p>
-
-<p><a href="http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/">http://brettterpstra.com/watch-for-file-changes-and-refresh-your-browser-automatically/</a></p>
-
-<p>The script uses a keyword to identify which tab to refresh in the browser so I needed this to be saved and configurable somewhere. Luckily Redcar has a storage mechanism built right in.</p>
-
-<h4>Storage</h4>
-
-<p>Redcar&#8217;s storage mechanism allows you to easily store configuration data into a yaml file.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">storage</span>
-</span><span class='line'>  <span class="vi">@storage</span> <span class="o">||=</span> <span class="no">Plugin</span><span class="o">::</span><span class="no">Storage</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;live_reload_plugin&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span><span class="o">.</span><span class="n">set_default</span><span class="p">(</span><span class="s1">&#39;keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vi">@storage</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Here I am using this mechanism to store the &#8216;keyword&#8217; used by the RefreshBrowser task. This allows the user to edit the yaml file via the Redcar plugin preferences. It&#8217;s also possible to setup a nice edit page but for now this will do.</p>
-
-<h4>Source</h4>
-
-<p>You can find the source for this plugin here:</p>
-
-<p><a href="http://github.com/justinramel/redcar_plugin_live_reload">http://github.com/justinramel/redcar_plugin_live_reload</a></p>
-
-<h4>Was it easy?</h4>
-
-<p>YES! The Redcar team have done a great job and made it incredibly easy to create your own plugins. In a couple of hours I made a useful plugin, useful to me at least. I&#8217;ve spent more time fussing over this blog post than developing the plugin.</p>
-
-<p>So what you waiting for? Go give it a try!</p>
+<p>Finally <code>git push</code> the merge up to github and you’re done.</p>
 </div>
   
   
@@ -752,7 +466,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/07/20/upload-files-to-sharepoint-from-linux/">Upload files to Sharepoint from linux</a></h1>
+      <h1 class="entry-title"><a href="/2013/03/15/git-feature-workflow-basic-commands/">Git feature workflow - basic commands</a></h1>
     
     
       <p class="meta">
@@ -768,24 +482,66 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-07-20T20:19:55+01:00" pubdate data-updated="true">Jul 20<span>th</span>, 2011</time>
+<time datetime="2013-03-15T13:06:00+00:00" pubdate data-updated="true">Mar 15<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h4>Fortress</h4>
+  <div class="entry-content"><p>List of basic commands to use during feature branch workflow.</p>
 
-<p>It seemed almost impossible to penetrate the fortress that is Sharepoint with only NTLM authentication enabled. Turns out its really easy when you know how.</p>
+<h2 id="create-feature-branch">Create feature branch</h2>
 
-<h4>curl to the rescue!</h4>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git checkout -b my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>You can upload files using curl directly into Sharepoint via it&#8217;s HTTP PUT interface.</p>
+<blockquote>
+  <p><strong>NOTE:</strong> The <em>-b</em> parameter means branch, it saves us having to use two separate git commands. Without this option we’d need to branch then checkout.</p>
+</blockquote>
 
-<p><code>curl --ntlm --user username:password --upload-file myfile.xls https://sharepointserver.com/sites/mysite/myfile.xls</code></p>
+<p>Now do lots of work on the new feature…</p>
 
-<p>Told you, easy when you know how.</p>
+<h2 id="find-out-what-has-changed">Find out what has changed</h2>
+
+<p>When finished working on the new feature find out what has changed.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git status</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="add-changes-to-git">Add changes to git</h2>
+
+<p>Either add each file manually using:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git add my-changed-file.txt</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Or add all the files in the current directory.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git add .</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Run <code>git status</code> one more time to get a list of everything that is going to be committed.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Accidentally added files can be removed using the command <code>git rm &lt;filename&gt;</code></p>
+</blockquote>
+
+<h2 id="commit-changes">Commit changes</h2>
+
+<p>Commit your changes with a <em>meaningful</em> message.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git commit -m "my awesome new feature, this changes everything!"</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="push-changes">Push changes</h2>
+
+<p>Push the new feature up to github so we can do a pull request.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">git push origin -u my-awesome-new-feature</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The new branch should now be visible on github and we can now issue a pull request.</p>
 </div>
   
   
@@ -798,7 +554,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/07/16/shibboleth-settings-for-torquebox/">Shibboleth settings for TorqueBox</a></h1>
+      <h1 class="entry-title"><a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></h1>
     
     
       <p class="meta">
@@ -814,47 +570,126 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-07-16T23:14:52+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+<time datetime="2013-01-15T23:33:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h4>Authentication Settings</h4>
+  <div class="entry-content"><p>This post is part of a series:</p>
 
-<p>Notes on setting up Shibboleth against an Apache Reverse Proxy to TorqueBox.</p>
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
 
-<p>Config File: /etc/httpd/conf.d/shib.conf</p>
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
-<p><code> ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  require valid-user
-</code></p>
+<hr />
 
-<p>The &#8217;<code>ShibUseHeaders On</code>&#8217; setting tells Shibboleth to pass along its attributes as request headers so your sinatra/rails application can gain access to them allowing you to implement your own authorisation system.</p>
+<p>For my final post on using Jenkins with .net, here’s how to set it all up in 5
+minutes!</p>
 
-<h4>Simple Authorisation</h4>
+<h3 id="install">Install</h3>
 
-<p>If you don&#8217;t need a complex authorisation system and you don&#8217;t mind users seeing a standard Shibboleth authorisation error page:</p>
+<ol>
+  <li>Download the latest version of Jenkins from:
+<a href="http://mirrors.jenkins-ci.org/windows/latest">http://mirrors.jenkins-ci.org/windows/latest</a></li>
+  <li>Extract the setup files from the zip file.</li>
+  <li>Run the Setup.exe.</li>
+  <li>Accept all the defaults in the setup wizard.</li>
+  <li>Jenkins will now be installed and the main Jenkins page will be open.</li>
+</ol>
 
-<p><a href="http://justinram.files.wordpress.com/2011/07/shib1.png"><img src="http://justinram.files.wordpress.com/2011/07/shib1.png?w=300" alt="" /></a></p>
+<h3 id="add-required-net-plugins">Add required .NET Plugins</h3>
 
-<p>You can implement this via your Shibboleth settings using the require statement:</p>
+<ol>
+  <li>Download and install your required .NET framework from:
+<a href="http://www.microsoft.com/net/download">http://www.microsoft.com/net/download</a></li>
+  <li>Open the Manage Plugins page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Manage Plugins.</li>
+  <li>Click the “Available” tab.</li>
+  <li>Tick the “MSBuild” plugin.</li>
+</ol>
 
-<p><code> ShibUseHeaders On
-  AuthType shibboleth
-  ShibRequestSetting requireSession 1
-  **require grouper_groups ~ MySecurityGroup**
-</code></p>
+<h3 id="add-optional-net-plugins">Add optional .NET Plugins</h3>
 
-<p>Here we require the custom grouper_groups attribute matches on the regular expression after the &#8217;<code>~</code>&#8217;. Basically to access the protected url the user must be a member of the MySecurityGroup.</p>
+<ol>
+  <li>Tick the plugin for the source control management software your using.</li>
+  <li>If you want to run unit tests as part of your build Tick your chosen testing
+plugin, this guide will use NUnit.</li>
+  <li>Tick the “Active Directory Plugin” if you want to use Active Directory for
+Authentication.</li>
+</ol>
 
-<h5>Top Tip</h5>
+<h3 id="setup-jenkins">Setup Jenkins</h3>
 
-<p>When playing with your Shib settings don&#8217;t forget to restart httpd to see the affect.
-<code>sudo /sbin/service httpd restart</code></p>
+<ol>
+  <li>Open the main setup page, from the Jenkins menu select Jenkins » Manage
+Jenkins » Configure System.</li>
+  <li>Under the MSBuild section, click the “Add MSBuild” button.</li>
+  <li>Set the name and path to MSBuild for example:
+Name: v3.5
+Path to MSBuild: C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe</li>
+  <li>Click the “Save” button.</li>
+</ol>
+
+<h3 id="setting-up-your-first-job">Setting up your first job</h3>
+
+<ol>
+  <li>From the Jenkins menu click Jenkins » New Job.</li>
+  <li>Set Job name for example: Demo.</li>
+  <li>Select the “Build a free-style software project” radio button.</li>
+  <li>Then click the “OK” button.</li>
+  <li>Jenkins will now create the Job workspace on disk and redirect you to the
+job configuration page.</li>
+</ol>
+
+<h3 id="source-control">Source Control</h3>
+
+<p>This guide will use Subversion but there are many available.</p>
+
+<ol>
+  <li>Under the Source Control Management section select the “Subversion” radio
+button.</li>
+  <li>Set the Repository URL for example:
+https://jenkins-net-demo.googlecode.com/svn/trunk</li>
+</ol>
+
+<h3 id="build-triggers">Build Triggers</h3>
+
+<ol>
+  <li>Under the Build Triggers section, tick the Poll SCM checkbox.</li>
+  <li>Enter “5 * * * *” in the Schedule text area, this translates to check for
+changes every 5 minutes.</li>
+</ol>
+
+<h3 id="build-the-solution">Build the Solution</h3>
+
+<ol>
+  <li>Under the Build section click the “Add build step” button and select “Build
+a Visual Studio project or solution using MSBuild”.</li>
+  <li>Set “MsBuild Version” to V3.5 (The version we setup previously)</li>
+  <li>Set “MsBuild Build File” to the name of the demo solution:
+Jenkins-net-demo.sln</li>
+  <li>Click the “Save” button and you’ll be redirected to the Demo project page</li>
+  <li>Click the “Build Now” link.</li>
+</ol>
+
+<p>You’re done!</p>
 </div>
   
   
@@ -867,7 +702,7 @@ Octopress is a go, go, go!</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/07/16/setup-apache-reverse-proxy-to-torquebox/">Setup Apache Reverse Proxy to Torquebox </a></h1>
+      <h1 class="entry-title"><a href="/2013/01/15/active-directory-security/">Active directory security</a></h1>
     
     
       <p class="meta">
@@ -883,42 +718,103 @@ Octopress is a go, go, go!</p>
   
 
 
-<time datetime="2011-07-16T22:16:31+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+<time datetime="2013-01-15T22:51:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Setup Apache as a Reverse Proxy in front of a standalone Torquebox server.</p>
+  <div class="entry-content"><p>This post is part of a series:</p>
 
-<h4>Apache Setup</h4>
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
 
-<h5>Proxy Module</h5>
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
-<p>For this to work Apache must have the mod_proxy module loaded:</p>
+<hr />
 
-<p><a href="http://httpd.apache.org/docs/2.1/mod/mod_proxy.html">http://httpd.apache.org/docs/2.1/mod/mod_proxy.html</a></p>
+<p>If you happen to be running Active Directory within your organization you can
+have Jenkins utilize it for authentication. This will save you and your team
+from having to remember yet another password when connecting to Jenkins.</p>
 
-<p>Config file: /etc/httpd/conf/httpd.conf</p>
+<p>Install the Active Directory Plugin via Jenkins » Manage Jenkins » Manage
+Plugins</p>
 
-<p><code>ProxyRequests     Off                         # Switch off forward proxy
-ProxyPreserveHost On                               # Pass host name onto the proxy
-ProxyPass         /myapp http://localhost:8080/myapp/  # Map url to remote server
-ProxyPassReverse  /myapp http://localhost:8080/myapp/  # Adjust header sent from remote server to match url
-</code>
-Here we are passing all calls to the /myapp/ url on to the Torquebox server http://localhost:8080/myapp/</p>
+<h3 id="configuration">Configuration</h3>
 
-<h4>TorqueBox Setup</h4>
+<p><img src="/images/jenkins-net/ch12/ad-1.png" alt="active directory 1" /></p>
 
-<p>In your Torquebox application folder create a file &#8216;config/torquebox.yml&#8217; which contains a context which matches the Apache reverse proxy url.</p>
+<p>Tick the “Enable security” check box to open up the security area.</p>
 
-<p>torquebox.yml</p>
+<h3 id="access-control">Access Control</h3>
 
-<p>web:
-  context: /myapp
-ruby:
-  version: 1.9</p>
+<p><img src="/images/jenkins-net/ch12/ad-2.png" alt="active directory 2" /></p>
+
+<p>Under the Access Control - Security Realm section select the “Active Directory”
+radio button.</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch12/ad-3.png" alt="active directory 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button.</p>
+
+<p>This option will give you the most flexibility over the security for Jenkins.
+I usually give Anonymous users Read access that allows me to share the build
+information with managers and stake holders if they are interested. As I trust
+my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<ul>
+  <li>Enter your Active Directory username in the “User/group to add” text box.</li>
+</ul>
+
+<p><strong>NOTE:</strong> Usernames are case sensitive! Kindly pointed out by bartensud, read
+his comments below for more details.</p>
+
+<ul>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<p>You have just given administrator access to this user, and they will be able to
+login to Jenkins using their Active Directory password.</p>
+
+<h3 id="trouble-shooting">Trouble shooting</h3>
+
+<p>If you find Jenkins is not connecting to your Active Directory controller, try
+setting the advanced settings for the Active Directory plugin.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-4.png" alt="active directory 4" /></p>
+
+<p>Click the “Advanced…” button. To reveal the area where you can specify the full
+details of your Active Directory Domain and Server.</p>
+
+<p><img src="/images/jenkins-net/ch12/ad-5.png" alt="active directory 5" /></p>
+
+<p>Start by setting the Domain Name of your Active Directory and clicking the
+“Save” button. Now retry your Active Directory access.</p>
+
+<p>This worked first time for me but if your not so lucky, try the same process
+again with the Active Directory Domain controller setting.</p>
 </div>
   
   
@@ -931,7 +827,7 @@ ruby:
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/07/14/torquebox-gem-install-error/">TorqueBox - gem install error</a></h1>
+      <h1 class="entry-title"><a href="/2013/01/15/security/">Security</a></h1>
     
     
       <p class="meta">
@@ -947,37 +843,127 @@ ruby:
   
 
 
-<time datetime="2011-07-14T12:42:27+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+<time datetime="2013-01-15T22:06:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h4>TorqueBox Install</h4>
+  <div class="entry-content"><p>This post is part of a series:</p>
 
-<p>I&#8217;m playing with latest version of TorqueBox (<a href="http://torquebox.org/2x/builds/">Currently 2.x.incremental.245</a>) the easiest way to install it is via a gem:</p>
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
 
-<p><code>gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
-<p>Full details on the TorqueBox blog (<a href="http://torquebox.org/news/2011/06/10/torquebox-gem/">http://torquebox.org/news/2011/06/10/torquebox-gem/</a>).</p>
+<hr />
 
-<h4>Error</h4>
+<p>By default Jenkins is wide open to anyone who stumbles across your web server,
+depending on your circumstances you may want to enable Jenkins security and
+force developers and even guests to login.</p>
 
-<p>Anyhoose when doing the gem install on my dev server (CentOS 5.6) I got the error:</p>
+<h3 id="configuration">Configuration</h3>
 
-<p>Error: Your application used more memory than the safety cap of 500m.
-Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
+<p>Jenkins security is configured from the main Jenkins configuration page which
+is accessed via Jenkins » Manage Jenkins » Configure System.</p>
 
-<h4>Fix</h4>
+<p><img src="/images/jenkins-net/ch11/security-1.png" alt="security 1" /></p>
 
-<p>After a bit digging around it turns out you need to set the heap size when running the gem install:</p>
+<p>Tick the “Enable security” check box to open up the security area.</p>
 
-<p><code>jruby -J-Xmx900m -S gem install torquebox-server --pre --source http://torquebox.org/2x/builds/LATEST/gem-repo/</code></p>
+<h3 id="access-control">Access Control</h3>
 
-<p>More details on <a href="http://stackoverflow.com/questions/1758374/error-your-application-used-more-memory-than-the-safety-cap-of-500m-specify-j">stackoverflow</a>.</p>
+<p><img src="/images/jenkins-net/ch11/security-2.png" alt="security 2" /></p>
 
-<p>Hope that helps someone or maybe me if have to do this again!</p>
+<p>Under the Access Control - Security Realm section select the “Jenkins’s own
+user database” radio button.</p>
+
+<p>Un-tick the “Allow users to sign up” check box otherwise anyone hitting the
+site will be able to sign up for an account (if your enabling security my guess
+is you don’t want that).</p>
+
+<h3 id="authorization">Authorization</h3>
+
+<p><img src="/images/jenkins-net/ch11/security-3.png" alt="security 3" /></p>
+
+<p>Under the Authorization section select the “Matrix-based security” radio
+button. This option will give you the most flexibility over the security for
+Jenkins. I usually give Anonymous users Read access that allows me to share the
+build information with managers and stake holders if they are interested.  As I
+trust my fellow developers I will usually give them Administrator access on the
+server. Of course you are free to setup whatever security Matrix you like, you
+can even take this as far as a project-based matrix.</p>
+
+<h3 id="add-administrator">Add Administrator</h3>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
+
+<h3 id="first-user-sign-up">First user sign up</h3>
+
+<p>If this is the first time you’ve setup a user on the server Jenkins will
+immediately ask for your user credentials.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-4.png" alt="security 4" /></p>
+
+<ul>
+  <li>Enter your user credentials.</li>
+  <li>Click the “Sign up” button.</li>
+</ul>
+
+<p>You should see a success message from Jenkins saying you are now logged in.</p>
+
+<h3 id="adding-users">Adding Users</h3>
+
+<p>You’ll want to add more users to the servers this is done via the Manage Users
+page. You can access this page via Jenkins » Manage Jenkins » Manage Users.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-5.png" alt="security 5" /></p>
+
+<h3 id="create-user">Create User</h3>
+
+<p>Click the Create User link to add another user.</p>
+
+<p>You will now see the Sign up page.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-6.png" alt="security 6" /></p>
+
+<p>Enter the credentials for the new user. Make sure you remember the username, as
+you’ll probably want to give the new user more than read only access to the
+server.</p>
+
+<h3 id="authorization-1">Authorization</h3>
+
+<p>After creating the user you’ll want to give them an authorization level. This
+is done via the main Jenkins configuration page, Jenkins » Manage Jenkins.</p>
+
+<p><img src="/images/jenkins-net/ch11/security-7.png" alt="security 7" /></p>
+
+<ul>
+  <li>Enter your username in the “User/group to add” text box.</li>
+  <li>Click the “Add” button.</li>
+  <li>Tick the Administer check box in the Overall area of the matrix.</li>
+  <li>Finally click the “Save” button.</li>
+</ul>
 </div>
   
   
@@ -990,7 +976,7 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/07/12/setup-git-repo/">SETUP GIT REPO</a></h1>
+      <h1 class="entry-title"><a href="/2013/01/15/code-analysis/">Code analysis</a></h1>
     
     
       <p class="meta">
@@ -1006,42 +992,146 @@ Specify -J-Xmx####m to increase it (#### = cap size in MB).</p>
   
 
 
-<time datetime="2011-07-12T21:48:22+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2011</time>
+<time datetime="2013-01-15T21:18:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h4>ADDING KEY TO SERVER</h4>
+  <div class="entry-content"><p>This post is part of a series:</p>
 
-<p><code>scp ~/.ssh/id_rsa.pub git@myserver.com:~/.ssh/authorized_keys</code></p>
+<ol>
+  <li><a href="/2012/09/17/jenkins-dot-net/">Jenkins.NET</a></li>
+  <li><a href="/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a></li>
+  <li><a href="/2012/10/09/setup-jenkins-dot-net/">Setup Jenkins.NET</a></li>
+  <li><a href="/2012/10/20/jenkins-dot-net-setting-up-your-first-job/">Setting up your first job</a></li>
+  <li><a href="/2012/10/24/jenkins-dot-net-your-first-build/">Your first build</a></li>
+  <li><a href="/2013/01/14/breaking-the-build/">Breaking the build</a></li>
+  <li><a href="/2013/01/14/diagnosing-and-fixing-a-broken-build/">Diagnosing and fixing a broken build</a></li>
+  <li><a href="/2013/01/14/monitoring-your-build/">Monitoring your build</a></li>
+  <li><a href="/2013/01/15/running-your-tests/">Running your tests</a></li>
+  <li><a href="/2013/01/15/code-analysis/">Code Analysis</a></li>
+  <li><a href="/2013/01/15/security/">Security</a></li>
+  <li><a href="/2013/01/15/active-directory-security/">Active Directory Security</a></li>
+</ol>
 
-<h4>SERVER</h4>
+<ul>
+  <li>BONUS: <a href="/2013/01/15/5-minute-setup/">Jenkins for .net in 5 Minutes</a></li>
+</ul>
 
-<p><code>sudo mkdir /home/git/myrepo
-cd /home/git/myrepo
-sudo git --bare init
-sudo chown -R git:git /home/git/myrepo
-</code></p>
+<hr />
 
-<h4>CLIENT</h4>
+<p>Jenkins can run a series of code analysis tools after each build, this will
+help you monitor the health of your solution.</p>
 
-<p>`mkdir myrepo
-cd myrepo
-git init</p>
+<h3 id="compiler-warnings">Compiler Warnings</h3>
 
-<h1>add some files</h1>
+<p>Ideally your solution will have no compiler warnings and you can have your
+solution fail to build if the any warnings appear. I know in the real world
+this isn’t always possible, so we can utilize Jenkins to make sure the number
+of warnings do not get out of hand.</p>
 
-<p>git add .
-git commit -m &#8220;added some files&#8221;</p>
+<p>This is accessed via the Jobs configuration page, for our Demo job we click
+Jenkins » Demo » Configure. You’ll find the “Scan for compiler warnings” at the
+bottom of this page under the “Post-Build Actions” section.</p>
 
-<p>git remote add origin git@myserver.com:myrepo
-git push origin master</p>
+<h3 id="configure">Configure</h3>
 
-<p>rm -r myrepo/
-git clone git@yourserver.com:myrepo
-`</p>
+<p><img src="/images/jenkins-net/ch10/code-1.png" alt="code 1" /></p>
+
+<ul>
+  <li>Tick the “Scan for compiler warnings”</li>
+  <li>Click the “Add” button under the “Scan console log” area</li>
+  <li>Select MSBuild from the Parser drop down list</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>Now when you carry out a build, you’ll get a compiler warnings section as part
+of your build report.</p>
+
+<h3 id="warnings-report">Warnings report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-2.png" alt="code 2" /></p>
+
+<p>Here we have no compiler warnings so I’ll commit a warning to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-3.png" alt="code 3" /></p>
+
+<p>We now have 2 compiler warnings and we can drill down for more details by
+clicking the 2 warnings link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-4.png" alt="code 4" /></p>
+
+<p>We can continue drilling and find the actual source file and line number
+causing the warning.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-5.png" alt="code 5" /></p>
+
+<h3 id="trending">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us a Compiler Warnings
+Trend graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-6.png" alt="code 6" /></p>
+
+<p>Your mission is to reverse this trend and keep your compiler warnings low or
+preferably non-existent.</p>
+
+<h3 id="tasks-and-to-dos">Tasks and To-dos</h3>
+
+<p>Another sign of Technical Debt is lots of To-dos, hack, and fix-me comments in
+your code. Lets use Jenkins to monitor these type of comments.  For our Demo
+job we click Jenkins » Demo » Configure. You’ll find the “Scan workspace for
+open tasks” at the bottom of this page under the “Post-Build Actions” section.</p>
+
+<h3 id="configure-1">Configure</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-7.png" alt="code 7" /></p>
+
+<ul>
+  <li>Tick the “Scan workspace for open tasks” check box</li>
+  <li>In the “Files to scan” textbox enter: <em>*/</em>.cs which scans all C Sharp files
+for these comments.</li>
+  <li>In the “Tasks tags” High priority textbox enter: HACK, FIXME</li>
+  <li>In the “Tasks tags” Normal priority textbox enter: TODO, TO-DO</li>
+  <li>Tick the “Ignore case” check box</li>
+  <li>Click the “Save” button</li>
+</ul>
+
+<p>These task tags can be anything you or your team use to indicate work that
+needs to be carried out in your source. When we carry out a build, we’ll get a
+compiler warnings section as part of our build report.</p>
+
+<h3 id="task-scanner-report">Task Scanner Report</h3>
+
+<p><img src="/images/jenkins-net/ch10/code-8.png" alt="code 8" /></p>
+
+<p>Here we have no tasks, I’ll commit a few To-dos and Hack comments to show the
+information Jenkins tracks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-9.png" alt="code 9" /></p>
+
+<p>We now have 3 open tasks and we can drill down for more details by clicking the
+3 open tasks link.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-10.png" alt="code 10" /></p>
+
+<p>As you can see depending on the priority of the open task we get different
+color bars to indicate they severity.</p>
+
+<p>We can continue drilling and find the actual source file and line number of the
+tasks.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-11.png" alt="code 11" /></p>
+
+<h3 id="trending-1">Trending</h3>
+
+<p>As well as the low level details Jenkins also gives us an Open Tasks Trend
+graph.</p>
+
+<p><img src="/images/jenkins-net/ch10/code-12.png" alt="code 12" /></p>
 </div>
   
   
@@ -1051,7 +1141,7 @@ git clone git@yourserver.com:myrepo
   
   <div class="pagination">
     
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+      <a class="prev" href="/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -1064,74 +1154,37 @@ git clone git@yourserver.com:myrepo
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/09/20/jenkins-dot-net-plugins/">Jenkins.NET Plugins</a>
+        <a href="/2013/09/25/vim-to-emacs-smart-tab/">Vim to Emacs - Smart Tab</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/17/jenkins-dot-net/">Jenkins.NET</a>
+        <a href="/2013/09/17/vim-to-emacs-yasnippets/">Vim to Emas - YASnippet</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/06/vim-tip-mkdir-percent-h/">vim tip: !mkdir %:h</a>
+        <a href="/2013/09/15/vim-to-emacs-ace-jump-mode/">Vim to Emacs - Ace Jump Mode</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/08/31/hello-brave-new-world/">Hello brave new world</a>
+        <a href="/2013/09/14/vim-to-emacs/">Vim to Emacs</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/08/19/my-first-redcar-plugin/">My first Redcar plugin</a>
+        <a href="/2013/03/22/git-feature-workflow-more-basic-commands/">Git feature workflow - more basic commands</a>
       </li>
     
   </ul>
 </section>
-
 <section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/justinramel">@justinramel</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'justinramel',
-            count: 3,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
+  <h1>Strava</h1>
+  <br />
+  <iframe height='160' width='272' frameborder='0' allowtransparency='true' scrolling='no' src='http://app.strava.com/athletes/1108047/activity-summary/38bbd39fbf5da9f3bf5e3845fb2f4592704e5de4'></iframe>
 </section>
-
-
 <section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("justinramel", 0, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/justinramel" class="twitter-follow-button" data-show-count="false">Follow @justinramel</a>
-  
+<h1>Twitter</h1>
+<a class="twitter-timeline" href="https://twitter.com/justinramel" data-widget-id="379381495074287617">Tweets by @justinramel</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </section>
-
 
 <section>
   <h1>My Pinboard</h1>
@@ -1169,12 +1222,25 @@ git clone git@yourserver.com:myrepo
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Justin Ramel -
+  Copyright &copy; 2013 - Justin Ramel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'justinramel';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
@@ -1195,7 +1261,7 @@ git clone git@yourserver.com:myrepo
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
