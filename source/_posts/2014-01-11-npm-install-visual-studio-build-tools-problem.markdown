@@ -3,7 +3,7 @@ layout: post
 title: "npm install - visual studio build tools problem"
 date: 2014-01-11 13:58
 comments: true
-categories:
+categories: javascript
 ---
 Trying to install a node module on windows (via npm) and I keep getting the annoying error message:
 
